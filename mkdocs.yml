@@ -1,0 +1,49 @@
+repo_url: https://github.com/SBD1/2024.1-TumbaDosHorrores
+repo_name: 2024.1-TumbaDosHorrores
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+site_name: Tumba dos Horrores
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+  palette:
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: claro 
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para o modo escuro
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para a preferência do sistema
+
+  language: pt-BR
+  #favicon: assets/arquivo.png
+  #logo: assets/arquivo.png
+
+extra:
+  version:
+    provider: mike
