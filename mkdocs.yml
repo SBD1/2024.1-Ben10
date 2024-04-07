@@ -41,8 +41,8 @@ theme:
         name: Mudar para a preferência do sistema
 
   language: pt-BR
-  favicon: assets/arquivo.png
-  logo: assets/arquivo.png
+  #favicon: assets/arquivo.png
+  #logo: assets/arquivo.png
 
 extra:
   version:
