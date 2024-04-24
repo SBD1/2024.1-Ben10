@@ -24,12 +24,17 @@ Armados apenas com coragem e determinação, os aventureiros embarcam em uma jor
 
 ## Entregas
 - Módulo 1
-    - [Diagrama entidade-relacionamento](index.md)
-    - [Mapeamento do MER pro modelo relacional](index.md)
-    - [Dicionário de dados](index.md)
+    - [Diagrama entidade-relacionamento](./docs/index.md)
+    - [Mapeamento do MER pro modelo relacional](./docs/index.md)
+    - [Dicionário de dados](./docs/index.md)
 
 ## Apresentações
-- [Módulo 1](index.md)
+| Módulo | Link da gravação        | Data       |
+| ------ | ----------------------- | ---------- |
+| 1      | [Apresentação Módulo 1](./docs/index.md) | ----- |
+| 2      | [Apresentação Módulo 2](./docs/index.md) | ----- |
+| 3      | [Apresentação Módulo 3](./docs/index.md) | ----- |
+| Final  | [Apresentação Final](./docs/index.md)  | ----- |
 
 ## Equipe
 
