@@ -15,6 +15,15 @@ markdown_extensions:
   - pymdownx.tilde
 
 site_name: Tumba dos Horrores
+nav:
+    - Início: "index.md"
+    - Apresentações: 
+        - Apresentação 1: "apresentacao/apresentacao1.md"
+    - Modelagem:
+        - Diagrama Entidade Relacionamento: "modulo1/DER.md"
+        - Modelo Entidade Relacionamento: "modulo1/MER.md"
+        - Dicionário de Dados: "modulo1/DD.md"
+        - Modelo Relacional: "modulo1/MR.md"
 theme:
   name: material
   features:
