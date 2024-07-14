@@ -1,5 +1,5 @@
-repo_url: https://github.com/SBD1/2024.1-TumbaDosHorrores
-repo_name: 2024.1-TumbaDosHorrores
+repo_url: https://github.com/SBD1/2024.1-Ben10
+repo_name: 2024.1-Ben10
 
 markdown_extensions:
   - admonition
@@ -14,7 +14,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-site_name: Tumba dos Horrores
+site_name: Ben 10
 nav:
     - Início: "index.md"
     - Apresentações: 
