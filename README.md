@@ -1,7 +1,7 @@
 # 2024.1 - Ben 10
 
 <div align="center">
-    <img src="assets\ben10.png" style="width:35vw"/>
+    <img src="assets\ben-10.jpg" style="width:35vw"/>
     <p> Figura 1: Logo do Ben 10</p> 
 </div>
 
