@@ -23,10 +23,10 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 ## Apresentações
 | Módulo | Link da gravação        | Data       |
 | ------ | ----------------------- | ---------- |
-| 1      | [Apresentação Módulo 1](./docs/index.md) | ----- |
-| 2      | [Apresentação Módulo 2](./docs/index.md) | ----- |
-| 3      | [Apresentação Módulo 3](./docs/index.md) | ----- |
-| Final  | [Apresentação Final](./docs/index.md)  | ----- |
+| 1      | [Apresentação Módulo 1](./docs/apresentacao/apresentacao1.md) | ----- |
+| 2      | [Apresentação Módulo 2](./docs/apresentacao/apresentacao2.md) | ----- |
+| 3      | [Apresentação Módulo 3](./docs/apresentacao/apresentacao3.md) | ----- |
+| Final  | [Apresentação Final](./docs/apresentacao/apresentacaoFinal.md)  | ----- |
 
 ## Equipe
 
