@@ -15,10 +15,10 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 
 ## Entregas
 - Módulo 1
-    - [Diagrama Entidade Relacionamento](./docs/modulo1/DER.md)
     - [Modelo Entidade Relacionamento](./docs/modulo1/MER.md)
-    - [Dicionário de Dados](./docs/modulo1/DD.md)
+    - [Diagrama Entidade Relacionamento](./docs/modulo1/DER.md)
     - [Modelo Relacional](./docs/modulo1/MR.md)
+    - [Dicionário de Dados](./docs/modulo1/DD.md)
 
 ## Apresentações
 | Módulo | Link da gravação        | Data       |
