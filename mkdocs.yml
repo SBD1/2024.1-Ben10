@@ -19,11 +19,15 @@ nav:
     - Início: "index.md"
     - Apresentações: 
         - Apresentação 1: "apresentacao/apresentacao1.md"
+        - Apresentação 2: "apresentacao/apresentacao2.md"
+        - Apresentação 3: "apresentacao/apresentacao3.md"
+        - Apresentação 4: "apresentacao/apresentacaoFinal.md"
     - Modelagem:
-        - Diagrama Entidade Relacionamento: "modulo1/DER.md"
         - Modelo Entidade Relacionamento: "modulo1/MER.md"
-        - Dicionário de Dados: "modulo1/DD.md"
+        - Diagrama Entidade Relacionamento: "modulo1/DER.md"
         - Modelo Relacional: "modulo1/MR.md"
+        - Dicionário de Dados: "modulo1/DD.md"
+
 theme:
   name: material
   features:
