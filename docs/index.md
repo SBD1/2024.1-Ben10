@@ -2,7 +2,7 @@
 
 <div align="center">
     <img src="assets\ben-10.jpg" style="width:35vw"/>
-    <p> Figura 1: Logo do Ben 10</p> 
+    <p> Figura 1: Logo do Ben 10</p>
 </div>
 
 ## Sobre o Projeto
@@ -14,12 +14,14 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 **Em desenvolvimento**
 
 ## Entregas
+
 - Módulo 1
-    - [Diagrama entidade-relacionamento](index.md)
-    - [Mapeamento do MER pro modelo relacional](index.md)
-    - [Dicionário de dados](index.md)
+  - [Diagrama entidade-relacionamento](index.md)
+  - [Mapeamento do MER pro modelo relacional](index.md)
+  - [Dicionário de dados](index.md)
 
 ## Apresentações
+
 - [Módulo 1](index.md)
 
 ## Equipe
@@ -29,5 +31,6 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
     <td align="center"><a href="https://github.com/Arthrok"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98776585?v=4" width="100px;" alt=""/><br /><sub><b>Arthur Melo</b></sub></a><br />
     <td align="center"><a href="https://github.com/ericbky"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/65634855?v=4" width="100px;" alt=""/><br /><sub><b>Eric Silveira</b></sub></a><br />
     <td align="center"><a href="https://github.com/joao-artl"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/124414056?v=4" width="100px;" alt=""/><br /><sub><b>João Artur Leles</b></sub></a><br />
+    <td align="center"><a href="https://github.com/joao-artl"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/9947506?s=400&u=9099a80d33941ce041da685cda67347896a85a4b&v=4" width="100px;" alt=""/><br /><sub><b>Rodolfo Cabral Neves</b></sub></a><br />
   </tr>
 </table>
