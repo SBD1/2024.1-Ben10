@@ -19,7 +19,7 @@ A figura 1 a seguir mostra o Diagrama Entidade Relacionamento desenvolvido pelo 
 
 ![Diagrama Entidade Relacionamento](./assets/DER_v1.png){width: 500}
 
-<font size="3"><p style="text-align: center">Arthur Alves, Eric Silveira, João Artur, Rodolfo Cabral</p></font>
+<font size="3"><p style="text-align: center">Fonte: Arthur Alves, Eric Silveira, João Artur, Rodolfo Cabral</p></font>
 
 ## <a>Referência Bibliográfica</a>
 
