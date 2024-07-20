@@ -15,18 +15,18 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 
 ## Entregas
 - Módulo 1
-    - [Modelo Entidade Relacionamento](./docs/modulo1/MER.md)
-    - [Diagrama Entidade Relacionamento](./docs/modulo1/DER.md)
-    - [Modelo Relacional](./docs/modulo1/MR.md)
-    - [Dicionário de Dados](./docs/modulo1/DD.md)
+    - [Modelo Entidade Relacionamento](https://sbd1.github.io/2024.1-Ben10/modulo1/MER/)
+    - [Diagrama Entidade Relacionamento](https://sbd1.github.io/2024.1-Ben10/modulo1/DER/)
+    - [Modelo Relacional](https://sbd1.github.io/2024.1-Ben10/modulo1/MR/)
+    - [Dicionário de Dados](https://sbd1.github.io/2024.1-Ben10/modulo1/DD/)
 
 ## Apresentações
 | Módulo | Link da gravação        | Data       |
 | ------ | ----------------------- | ---------- |
-| 1      | [Apresentação Módulo 1](./docs/apresentacao/apresentacao1.md) | ----- |
-| 2      | [Apresentação Módulo 2](./docs/apresentacao/apresentacao2.md) | ----- |
-| 3      | [Apresentação Módulo 3](./docs/apresentacao/apresentacao3.md) | ----- |
-| Final  | [Apresentação Final](./docs/apresentacao/apresentacaoFinal.md)  | ----- |
+| 1 | [Apresentação Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/) | --- |
+| 2 | [Apresentação Módulo 2](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao2/)| --- |
+| 3 | [Apresentação Módulo 3](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao3/) | --- |
+| Final | [Apresentação Final](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacaoFinal/)| --- |
 
 ## Equipe
 
