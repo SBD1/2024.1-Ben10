@@ -15,18 +15,18 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 
 ## Entregas
 - Módulo 1
-    - [Diagrama Entidade Relacionamento](./docs/modulo1/DER.md)
     - [Modelo Entidade Relacionamento](./docs/modulo1/MER.md)
-    - [Dicionário de Dados](./docs/modulo1/DD.md)
+    - [Diagrama Entidade Relacionamento](./docs/modulo1/DER.md)
     - [Modelo Relacional](./docs/modulo1/MR.md)
+    - [Dicionário de Dados](./docs/modulo1/DD.md)
 
 ## Apresentações
 | Módulo | Link da gravação        | Data       |
 | ------ | ----------------------- | ---------- |
-| 1      | [Apresentação Módulo 1](./docs/index.md) | ----- |
-| 2      | [Apresentação Módulo 2](./docs/index.md) | ----- |
-| 3      | [Apresentação Módulo 3](./docs/index.md) | ----- |
-| Final  | [Apresentação Final](./docs/index.md)  | ----- |
+| 1      | [Apresentação Módulo 1](./docs/apresentacao/apresentacao1.md) | ----- |
+| 2      | [Apresentação Módulo 2](./docs/apresentacao/apresentacao2.md) | ----- |
+| 3      | [Apresentação Módulo 3](./docs/apresentacao/apresentacao3.md) | ----- |
+| Final  | [Apresentação Final](./docs/apresentacao/apresentacaoFinal.md)  | ----- |
 
 ## Equipe
 
@@ -35,5 +35,6 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
     <td align="center"><a href="https://github.com/Arthrok"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98776585?v=4" width="100px;" alt=""/><br /><sub><b>Arthur Melo</b></sub></a><br />
     <td align="center"><a href="https://github.com/ericbky"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/65634855?v=4" width="100px;" alt=""/><br /><sub><b>Eric Silveira</b></sub></a><br />
     <td align="center"><a href="https://github.com/joao-artl"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/124414056?v=4" width="100px;" alt=""/><br /><sub><b>João Artur Leles</b></sub></a><br />
+    <td align="center"><a href="https://github.com/roddas"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/9947506?v=4" width="100px;" alt=""/><br /><sub><b>Rodolfo Cabral</b></sub></a><br />
   </tr>
 </table>

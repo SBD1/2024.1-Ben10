@@ -16,13 +16,14 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 ## Entregas
 
 - Módulo 1
-  - [Diagrama entidade-relacionamento](index.md)
-  - [Mapeamento do MER pro modelo relacional](index.md)
-  - [Dicionário de dados](index.md)
+  - [Modelo Entidade Relacionamento](https://sbd1.github.io/2024.1-Ben10/modulo1/MER/)
+  - [Diagrama Entidade Relacionamento](https://sbd1.github.io/2024.1-Ben10/modulo1/DER/)
+  - [Modelo Relacional](https://sbd1.github.io/2024.1-Ben10/modulo1/MR/)
+  - [Dicionário de Dados](https://sbd1.github.io/2024.1-Ben10/modulo1/DD/)
 
 ## Apresentações
 
-- [Módulo 1](index.md)
+- [Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/)
 
 ## Equipe
 
