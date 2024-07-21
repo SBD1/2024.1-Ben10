@@ -64,18 +64,25 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 ### <a>Relacionamentos</a>
 
 **PERSONAGEM é _contido_ em INSTACIA_ZONA_DE_GUERRA**
+
 - O PERSONAGEM pode ser contido em nenhuma ou varias INSTACIA_ZONA_DE_GUERRA (O,N)
 - A INSTACIA_ZONA_DE_GUERRA contém apenas um personagem (1,1)
 
+
 **PERSONAGEM _possui_ STATUS_DO_ALIEN**
+
 - O PERSONAGEM possui um ou varios STATUS_DO_ALIEN (1,N)
 - O STATUS_DO_ALIEN é possuído por apenas um PERSONAGEM (1,1)
 
+
 **PERSONAGEM _contém_ INVENTARIO**
+
 - O PERSONAGEM contem apenas um INVENTARIO (1,1)
 - O INVENTARIO é contido por apenas um PERSONAGEM(1,1)
 
+
 **INVENTARIO _inclui_ ITEM**
+
 - O INVENTARIO pode incluir nenhum ou varios ITEM (0,N)
 - O ITEM é incluso em nenhum ou varios INVENTARIO (0,N)
 
