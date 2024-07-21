@@ -4,7 +4,7 @@
 
 De acordo com Elmasri e Navathe<a id="anchor_1" href="#REF1">^1^</a>, a modelagem conceitual é uma etapa fundamental no desenvolvimento de uma aplicação de banco de dados bem-sucedida. Esta fase envolve o design das estruturas e restrições do banco de dados, bem como a elaboração de programas para realizar consultas e atualizações. A modelagem conceitual não apenas facilita a compreensão e o planejamento do banco de dados, mas também assegura a eficiência e a segurança das operações.
 
-O Diagrama Entidade Relacionamento (DER) é uma representação gráfica do Modelo Entidade Relacionamento (MER). Ele é composto por entidades, relacionamentos e atributos. As entidades são representadas por retângulos, os atributos são representados por elipses e os relacionamentos são representados por losangos<a id="anchor_1" href="#REF1">^1^</a>.
+O Diagrama Entidade Relacionamento (DER) é uma representação gráfica do Modelo Entidade Relacionamento (MER). Ele é composto por entidades, relacionamentos e atributos. As entidades são representadas por retângulos, os atributos são representados por elipses e os relacionamentos são representados por losangos.<a id="anchor_1" href="#REF1">^1^</a>
 
 ## <a>Objetivo</a>
 
