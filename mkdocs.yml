@@ -41,7 +41,9 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: claro 
+      scheme: default
+      primary: 'green'
+      accent: 'light green'
       toggle:
         icon: material/brightness-7
         name: Mudar para o modo escuro
@@ -56,6 +58,9 @@ theme:
   language: pt-BR
   #favicon: assets/arquivo.png
   #logo: assets/arquivo.png
+
+extra_css:
+  - assets/extra.css
 
 extra:
   version:

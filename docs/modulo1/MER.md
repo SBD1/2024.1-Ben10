@@ -11,7 +11,7 @@ O Modelo Entidade-Relacionamento (MER) é uma ferramenta popular de alto nível 
 Este documento tem como objetivo detalhar as entidades, atributos e relacionamentos no contexto do Modelo Entidade-Relacionamento (MER). 
 A representação gráfica deste modelo pode ser vista no artefato [DER](https://sbd1.github.io/2024.1-Ben10/modulo1/DER/).
 
-## <a>Modelo Entidade Relacionamento/a>
+## <a>Modelo Entidade Relacionamento</a>
 
 ### <a>Entidades</a>
 
