@@ -26,8 +26,11 @@ A figura 1 a seguir mostra o Diagrama Entidade Relacionamento desenvolvido pelo 
 > <a id="REF1" href="#anchor_1">1.</a> ELMASRI, Ramez; NAVATHE, Shamkant B. Sistemas de banco de dados. Tradução: Daniel Vieira. Revisão técnica: Enzo Seraphim; Thatyana de Faria Piola Seraphim. 6. ed. São Paulo: Pearson Addison Wesley, 2011. Capítulo 7. Modelagem de dados usando o modelo Entidade-Relacionamento (ER), página 146 e 147.
 
 ## <a>Bibliografia</a>
-> <a id="REF1" href="#anchor_1">1.</a> Diagrama Entidade Relacionamento Stardew Valley. Disponível em: <https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/main/docs/Entrega-01/DER_StardewValley_v1.0.md>. Acesso em 20 de julho de 2024.
+
+> Diagrama Entidade Relacionamento Stardew Valley. Disponível em: <https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/main/docs/Entrega-01/DER_StardewValley_v1.0.md>. Acesso em 20 de julho de 2024.
+
 > Diagrama Entidade Relacionamento Bruvic. Disponível em: <https://github.com/SBD1/Grupo12_Bruvic/blob/main/Modulo%201%20-%20DER/der_bruvic_v1.png>. Acesso em 20 de julho de 2024.
+
 
 ## <a>Histórico de Versão</a>
 
