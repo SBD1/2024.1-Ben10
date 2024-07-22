@@ -21,7 +21,7 @@ nav:
         - Apresentação 1: "apresentacao/apresentacao1.md"
         - Apresentação 2: "apresentacao/apresentacao2.md"
         - Apresentação 3: "apresentacao/apresentacao3.md"
-        - Apresentação 4: "apresentacao/apresentacaoFinal.md"
+        - Apresentação Final: "apresentacao/apresentacaoFinal.md"
     - Modelagem:
         - Modelo Entidade Relacionamento: "modulo1/MER.md"
         - Diagrama Entidade Relacionamento: "modulo1/DER.md"
@@ -41,7 +41,9 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: claro 
+      scheme: default
+      primary: 'green'
+      accent: 'light green'
       toggle:
         icon: material/brightness-7
         name: Mudar para o modo escuro
@@ -56,6 +58,9 @@ theme:
   language: pt-BR
   #favicon: assets/arquivo.png
   #logo: assets/arquivo.png
+
+extra_css:
+  - assets/extra.css
 
 extra:
   version:
