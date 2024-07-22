@@ -1,19 +1,21 @@
-# 2024.1 - Ben 10
+<center>
+# <a>Ben 10 - 2024.1</a>
+</center>
 
 <div align="center">
     <img src="assets\ben-10.jpg" style="width:35vw"/>
     <p> Figura 1: Logo do Ben 10</p> 
 </div>
 
-## Sobre o Projeto
+## <a>Sobre o Projeto</a>
 
 Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, será desenvolvido um MUD onde os conceitos de bancos de dados serão aplicados. Serão solicitadas 3 entregas, cada uma com suas próprias avaliações. Ao fim do projeto, será entregue um jogo funcional inspirado no famoso desenho Ben 10, criada pelo [Man of Action](https://manofaction.tv/) .
 
-## Como jogar
+## <a>Como jogar</a>
 
 **Em desenvolvimento**
 
-## Entregas
+## <a>Entregas</a>
 - Módulo 1
     - [Modelo Entidade Relacionamento](https://sbd1.github.io/2024.1-Ben10/modulo1/MER/)
     - [Diagrama Entidade Relacionamento](https://sbd1.github.io/2024.1-Ben10/modulo1/DER/)
@@ -21,11 +23,11 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
     - [Dicionário de Dados](https://sbd1.github.io/2024.1-Ben10/modulo1/DD/)
 
 
-## Apresentações
+## <a>Apresentações</a>
 - [Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/)
 
-## Equipe
-
+## <a>Equipe</a>
+<center>
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Arthrok"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98776585?v=4" width="100px;" alt=""/><br /><sub><b>Arthur Melo</b></sub></a><br />
@@ -34,3 +36,4 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
     <td align="center"><a href="https://github.com/roddas"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/9947506?v=4" width="100px;" alt=""/><br /><sub><b>Rodolfo Cabral</b></sub></a><br />
   </tr>
 </table>
+</center>
