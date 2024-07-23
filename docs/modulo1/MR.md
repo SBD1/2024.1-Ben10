@@ -13,7 +13,7 @@ A figura 1 a seguir exibe o Modelo Relacional desenvolvido pelo grupo:
 
 <font size="3"><p style="text-align: center"><b>Figura 1</b> - Modelo Relacional para navegação.</p></font>
 
-![Modelo Relacional](./assets/M_Relacional.jpg){width: 500}
+![Modelo Relacional](assets/Modelo_Relacional.jpg){width: 500}
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky).</p></font>
 
