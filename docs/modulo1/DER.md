@@ -32,7 +32,7 @@ A figura 2 a seguir mostra a segunda e atual versão do Diagrama Entidade Relaci
 
 <font size="3"><p style="text-align: center"><b>Figura 2</b> - Segunda e atual versão do Diagrama Entidade Relacionamento.</p></font>
 
-![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_v2.jpg){width: 500}
+![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_V2.png){width: 500}
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
 
