@@ -12,12 +12,40 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
 
 
 ## <a>Diagrama Entidade Relacionamento</a>
-A figura 1 a seguir mostra o Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+
+??? - "Primeira Versão do Diagrama Entidade Relacionamento"
+
+    A figura 1 a seguir mostra a primeira versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+
+
+    <figure markdown>
+    <font size="3"><p style="text-align: center"><b>Figura 1</b> - Primeira Versão do Diagrama Entidade Relacionamento.</p></font>
+
+    ![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_v1.png){width: 500}
+
+    <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
+
+### <a>Versão atual</a>
+
+A figura 2 a seguir mostra a segunda e atual versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
 <figure markdown>
-<font size="3"><p style="text-align: center"><b>Figura 1</b> - Diagrama Entidade Relacionamento.</p></font>
+<font size="3"><p style="text-align: center"><b>Figura 2</b> - Segunda e atual versão do Diagrama Entidade Relacionamento.</p></font>
 
-![Diagrama Entidade Relacionamento](./assets/DER_v1.png){width: 500}
+![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_v2.png){width: 500}
+
+<font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
+
+
+A figura 3 exibe o Diagrama Entidade Relacionamento desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
+
+
+<figure markdown>
+<font size="3"><p style="text-align: center"><b>Figura 3</b> - Diagrama Entidade Relacionamento para navegação.</p></font>
+
+<center>
+<iframe width="500" height="432" src="https://miro.com/app/live-embed/uXjVKyitvt0=/?moveToViewport=-4530,-2109,10350,6576&embedId=114192275621" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+</center>
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
 
