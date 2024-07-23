@@ -39,8 +39,6 @@ A figura 2 a seguir mostra a segunda e atual versão do Diagrama Entidade Relaci
 
 A figura 3 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
 
-
-
 <font size="3"><p style="text-align: center"><b>Figura 3</b> - Diagrama Entidade Relacionamento para navegação.</p></font>
 
 <center>
