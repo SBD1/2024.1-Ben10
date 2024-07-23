@@ -1,3 +1,12 @@
+## Introdução
+Segundo Elmasri e Navathe<a id="anchor_1" href="#REF1">^1^</a>, a modelagem conceitual é uma etapa essencial no desenvolvimento de uma aplicação de banco de dados bem-sucedida. Essa fase abrange o design de estruturas e restrições do banco de dados, além da criação de programas que realizam consultas e atualizações. A modelagem conceitual não apenas facilita a compreensão e o planejamento do banco de dados, mas também garante que as operações sejam eficientes e seguras.
+
+O modelo relacional é um modelo de dados estruturado para servir como a base de um Sistema Gerenciador de Banco de Dados (SGBD). Ele se fundamenta na ideia de que todos os dados são armazenados em tabelas, conhecidas formalmente como relações. Este modelo é essencialmente teórico, derivando seus princípios da lógica de predicados e da teoria dos conjuntos<a id="anchor_1" href="#REF1">^1^</a>.
+
+## Objetivo
+
+O objetivo deste documento é apresentar um modelo relacional (MREL) detalhado para um banco de dados, focando na representação lógica dos dados através de tabelas inter-relacionadas. Ao estabelecer um MREL, buscamos garantir a integridade, consistência e eficiência do banco de dados, facilitando operações como inserção, atualização e consulta de dados. 
+
 
 ## <a>Modelo Relacional</a>
 A figura 1 a seguir exibe o Modelo Relacional desenvolvido pelo grupo:
