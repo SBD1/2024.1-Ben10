@@ -37,7 +37,7 @@ A figura 2 a seguir mostra a segunda e atual versão do Diagrama Entidade Relaci
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
 
 
-A figura 3 exibe o Diagrama Entidade Relacionamento desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
+A figura 3 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
 
 
 <figure markdown>
