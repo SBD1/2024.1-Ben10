@@ -2,10 +2,11 @@
 # <a>Ben 10 - 2024.1</a>
 </center>
 
-<div align="center">
-    <img src="assets\ben-10.jpg" style="width:35vw"/>
-    <p> Figura 1: Logo do Ben 10</p>
+<div style="text-align: center;">
+    <img src="assets/ben-10.jpg" style="width: 30vw; border-radius: 20%;"/>
+    <p><b>Figura 1:</b> Logo do Ben 10</p>
 </div>
+
 
 ## <a>Sobre o Projeto</a>
 

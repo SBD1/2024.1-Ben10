@@ -23,7 +23,7 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 ## Apresentações
 | Módulo | Link da gravação        | Data       |
 | ------ | ----------------------- | ---------- |
-| 1 | [Apresentação Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/) | --- |
+| 1 | [Apresentação Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/) | 22/07 |
 | 2 | [Apresentação Módulo 2](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao2/)| --- |
 | 3 | [Apresentação Módulo 3](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao3/) | --- |
 | Final | [Apresentação Final](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacaoFinal/)| --- |
