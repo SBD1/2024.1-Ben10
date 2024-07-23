@@ -44,7 +44,7 @@ A figura 3 exibe o Diagrama Entidade Relacionamento desenvolvido pelo grupo na p
 <font size="3"><p style="text-align: center"><b>Figura 3</b> - Diagrama Entidade Relacionamento para navegação.</p></font>
 
 <center>
-<iframe width="500" height="432" src="https://miro.com/app/live-embed/uXjVKyitvt0=/?moveToViewport=-4530,-2109,10350,6576&embedId=114192275621" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+<iframe width="768" height="500" src="https://miro.com/app/live-embed/uXjVKyitvt0=/?moveToViewport=-4530,-2109,10350,6576&embedId=114192275621" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 </center>
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
