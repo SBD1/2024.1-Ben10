@@ -18,7 +18,7 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
     A figura 1 a seguir mostra a primeira versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
 
-    <figure markdown>
+    
     <font size="3"><p style="text-align: center"><b>Figura 1</b> - Primeira Versão do Diagrama Entidade Relacionamento.</p></font>
 
     ![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_v1.png){width: 500}
@@ -29,7 +29,7 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
 
 A figura 2 a seguir mostra a segunda e atual versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
-<figure markdown>
+
 <font size="3"><p style="text-align: center"><b>Figura 2</b> - Segunda e atual versão do Diagrama Entidade Relacionamento.</p></font>
 
 ![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_v2.png){width: 500}
@@ -40,7 +40,7 @@ A figura 2 a seguir mostra a segunda e atual versão do Diagrama Entidade Relaci
 A figura 3 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
 
 
-<figure markdown>
+
 <font size="3"><p style="text-align: center"><b>Figura 3</b> - Diagrama Entidade Relacionamento para navegação.</p></font>
 
 <center>
@@ -48,8 +48,6 @@ A figura 3 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na p
 </center>
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
-
-</figure>
 
 ## <a>Referência Bibliográfica</a>
 
@@ -67,3 +65,4 @@ A figura 3 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na p
 | Versão| Data | Descrição  | Autor(es)  | Revisor(es) |
 | ----- |----- | ---------- | ---------- | ----------- | 
 | `1.0` | 20/07| Criando DER |[Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas)| [João Artur](https://github.com/joao-artl) |
+| `1.1` | 22/07| Inserindo versão final do DER e ajustando documento. |[Eric Silveira](https://github.com/ericbky)| [João Artur](https://github.com/joao-artl) |
