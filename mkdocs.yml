@@ -26,6 +26,8 @@ nav:
         - Modelo Entidade Relacionamento: "modulo1/MER.md"
         - Diagrama Entidade Relacionamento: "modulo1/DER.md"
         - Modelo Relacional: "modulo1/MR.md"
+    - Seila:
+        - DDL: "modulo2/ddl.md"
 
 theme:
   name: material
