@@ -10,7 +10,7 @@
 
 ## <a>Sobre o Projeto</a>
 
-Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, será desenvolvido um MUD onde os conceitos de bancos de dados serão aplicados. Serão solicitadas 3 entregas, cada uma com suas próprias avaliações. Ao fim do projeto, será entregue um jogo funcional inspirado no famoso desenho Ben 10, criada pelo [Man of Action](https://manofaction.tv/) .
+Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, será desenvolvido um MUD onde os conceitos de bancos de dados serão aplicados. Serão solicitadas 3 entregas, cada uma com suas próprias avaliações. Ao fim do projeto, será entregue um jogo funcional inspirado no famoso desenho Ben 10, criada pelo [Man of Action](https://manofaction.tv/).
 
 ## <a>Como jogar</a>
 
