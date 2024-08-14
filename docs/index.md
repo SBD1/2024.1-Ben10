@@ -24,10 +24,15 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
     - [Modelo Relacional](https://sbd1.github.io/2024.1-Ben10/modulo1/MR/)
     - [Dicionário de Dados](https://github.com/SBD1/2024.1-Ben10/blob/main/docs/modulo1/dicionario-de-dados.pdf)
 
+- Módulo 2
+    - [DDL](https://sbd1.github.io/2024.1-Ben10/modulo2/ddl/)
+    - [DML](https://sbd1.github.io/2024.1-Ben10/modulo2/dml/)
+
 
 ## <a>Apresentações</a>
 
 - [Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/)
+- [Módulo 2](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao2/)
 
 ## <a>Equipe</a>
 <center>
