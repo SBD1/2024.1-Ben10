@@ -13,7 +13,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 
 ## <a>Dados</a>
 
-**A inserção dos dados foi dividida em xxxx arquivos, que serão representados a seguir:**
+**A inserção dos dados foi dividida em 6 arquivos, que serão representados a seguir:**
 
 ??? "Itens"
     #### Itens
@@ -475,58 +475,74 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
     #### Instâncias
 
     ```sql
+    -- Inserir status do alien na tabela STATUS_DO_ALIEN
+    INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
+    VALUES('Chama',150, 1);
 
+    INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
+    VALUES('Ultra T',75, 2);
+
+    INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
+    VALUES('XLR8',120, 3);
+
+    INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
+    VALUES('Massa Cinzenta',130, 4);
+
+    -- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO
+    INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
+    VALUES (1, 'Humano Hipnotizado', 80);
+
+    INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
+    VALUES (2, 'Servo', 75);
+
+    INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
+    VALUES (3, 'Demônio', 50);
+
+    INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
+    VALUES (4, 'Soldado de Elite', 250);
+
+    -- Inserir dados da zona de guerra na tabela INSTANCIA_ZONA_GUERRA
+    INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
+    VALUES (3, 1, 1);
+
+    INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
+    VALUES (4, 2, 2);
+
+    INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
+    VALUES (7, 3, 3);
+
+    INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
+    VALUES (8, 4, 4);
+
+    -- Inserir dados de NPC na tabela INSTANCIA_NPC_NA_SALA
+    INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
+    VALUES (1, 1);
+
+    INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
+    VALUES (2, 2);
+
+    INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
+    VALUES (3, 3);
+
+    INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
+    VALUES (12, 8);
+
+    INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
+    VALUES (13, 7);
+
+    -- Inserir recompensas na tabela RECOMPENSA
+    INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
+    VALUES (1, 3, 'Kit Médico', 500);  -- Personagem 1 recebe 'Kit Médico' na Sala 3
+
+    INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
+    VALUES (2, 4, 'Placa de Armadura', 600);  -- Personagem 2 recebe 'Placa de Armadura' na Sala 4
+
+    INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
+    VALUES (3, 7, 'Jato de Fuga', 1000);  -- Personagem 3 recebe 'Jato de Fuga' na Sala 7
+
+    INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
+    VALUES (4, 8, 'Campo de Força Portátil', 400);  -- Personagem 4 recebe 'Campo de Força Portátil' na Sala 8
     ```
-<!--
-CREATE TYPE tipo_reducao_acrescimo AS ENUM ('redução', 'acréscimo');
-CREATE TYPE tipo_status AS ENUM ('ativo', 'inativo');
-CREATE TYPE tipo_status_missao AS ENUM ('incompleta', 'completa', 'em progresso');
-
-
-CREATE TABLE STATUS_DO_ALIEN (
-    nome_alien VARCHAR(30) NOT NULL,
-    saude INT NOT NULL,
-    id_personagem INT NOT NULL,
-    PRIMARY KEY (nome_alien, id_personagem),
-    FOREIGN KEY (id_personagem) REFERENCES PERSONAGEM(id_personagem)
-);
-
-CREATE TABLE INSTANCIA_MONSTRO (
-    id_monstro INT PRIMARY KEY,
-    nome_especie VARCHAR(30),
-    saude_atual INT NOT NULL,
-    FOREIGN KEY (nome_especie) REFERENCES ESPECIE(nome)
-);
-
-CREATE TABLE INSTANCIA_ZONA_GUERRA (
-    id_zona_guerra INT,
-    id_personagem INT,
-    id_monstro INT,
-    PRIMARY KEY(id_zona_guerra, id_personagem, id_monstro),
-    FOREIGN KEY (id_personagem) REFERENCES PERSONAGEM(id_personagem),
-    FOREIGN KEY (id_monstro) REFERENCES INSTANCIA_MONSTRO(id_monstro),
-    FOREIGN KEY (id_zona_guerra) REFERENCES SALA(id_sala)
-);
-
-CREATE TABLE INSTANCIA_NPC_NA_SALA (
-    id_sala INT,
-    id_npc INT,
-    PRIMARY KEY (id_sala, id_npc),
-    FOREIGN KEY (id_sala) REFERENCES SALA(id_sala),
-    FOREIGN KEY (id_npc) REFERENCES NPC(id_npc)
-);
-
-CREATE TABLE RECOMPENSA (
-    id_personagem INT,
-    id_sala INT,
-    nome_item VARCHAR(30),
-    recompensa_recebida INT NOT NULL,
-    PRIMARY KEY (id_personagem, id_sala),
-    FOREIGN KEY (nome_item) REFERENCES ITEM(nome_item),
-    FOREIGN KEY (id_personagem) REFERENCES PERSONAGEM(id_personagem),
-    FOREIGN KEY (id_sala) REFERENCES SALA(id_sala)
-);
--->
 
 ## <a>Referência Bibliográfica</a>
 
