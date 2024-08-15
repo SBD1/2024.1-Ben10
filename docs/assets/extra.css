@@ -12,7 +12,6 @@
   --md-accent-fg-color: rgba(102, 255, 0, 1) !important; /* Verde claro */
   --md-default-bg-color: #000000; /* Fundo preto */
   --md-typeset-a-color: rgba(102, 255, 0, 1) !important; /* Verde claro para links */
-  --md-code-bg-color: rgb(0, 0, 0); /* Fundo preto para blocos de código */
   --md-code-fg-color: rgb(255, 255, 255); /* Texto branco para código */
   --md-typeset-table-color: rgba(255, 255, 255, 0.211); /* Cores das tabelas */
   --md-typeset-table-color--light: rgba(128, 128, 128, 0.157); /* Cores das tabelas claras */

@@ -22,10 +22,13 @@ nav:
         - Apresentação 2: "apresentacao/apresentacao2.md"
         - Apresentação 3: "apresentacao/apresentacao3.md"
         - Apresentação Final: "apresentacao/apresentacaoFinal.md"
-    - Modelagem:
+    - Módulo 1:
         - Modelo Entidade Relacionamento: "modulo1/MER.md"
         - Diagrama Entidade Relacionamento: "modulo1/DER.md"
         - Modelo Relacional: "modulo1/MR.md"
+    - Módulo 2:
+        - DDL: "modulo2/ddl.md"
+        - DML: "modulo2/dml.md"
 
 theme:
   name: material

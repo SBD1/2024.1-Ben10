@@ -7,7 +7,7 @@
 
 ## Sobre o Projeto
 
-Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, será desenvolvido um MUD onde os conceitos de bancos de dados serão aplicados. Serão solicitadas 3 entregas, cada uma com suas próprias avaliações. Ao fim do projeto, será entregue um jogo funcional inspirado no famoso desenho Ben 10, criada pelo [Man of Action](https://manofaction.tv/) .
+Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, será desenvolvido um MUD onde os conceitos de bancos de dados serão aplicados. Serão solicitadas 3 entregas, cada uma com suas próprias avaliações. Ao fim do projeto, será entregue um jogo funcional inspirado no famoso desenho Ben 10, criada pelo [Man of Action](https://manofaction.tv/).
 
 ## Como jogar
 
@@ -20,11 +20,15 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
     - [Modelo Relacional](https://sbd1.github.io/2024.1-Ben10/modulo1/MR/)
     - [Dicionário de Dados](https://github.com/SBD1/2024.1-Ben10/blob/main/docs/modulo1/dicionario-de-dados.pdf)
 
+- Módulo 2
+    - [DDL](https://sbd1.github.io/2024.1-Ben10/modulo2/ddl/)
+    - [DML](https://sbd1.github.io/2024.1-Ben10/modulo2/dml/)
+
 ## Apresentações
 | Módulo | Link da gravação        | Data       |
 | ------ | ----------------------- | ---------- |
 | 1 | [Apresentação Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/) | 22/07 |
-| 2 | [Apresentação Módulo 2](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao2/)| --- |
+| 2 | [Apresentação Módulo 2](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao2/)| 19/08 |
 | 3 | [Apresentação Módulo 3](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao3/) | --- |
 | Final | [Apresentação Final](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacaoFinal/)| --- |
 
