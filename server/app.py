@@ -24,6 +24,7 @@ def connection_postgreSQL():
         if 'cursor' in locals():
             cursor.close()
         if 'connection' in locals():
+            print("close")
             connection.close()
 
 connection_postgreSQL()
