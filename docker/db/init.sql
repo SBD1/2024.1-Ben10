@@ -1,11 +1,11 @@
 CREATE TYPE tipo_reducao_acrescimo AS ENUM ('redução', 'acréscimo');
 CREATE TYPE tipo_status AS ENUM ('ativo', 'inativo');
 CREATE TYPE tipo_status_missao AS ENUM ('incompleta', 'completa', 'em progresso');
+CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura', 'paralisia', 'defesa');
 
 CREATE TABLE ESPECIE (
     nome VARCHAR(30) PRIMARY KEY,
     saude INT NOT NULL,
-    habilidade INT NOT NULL,
     defesa INT NOT NULL,
     status_base INT NOT NULL
 );
@@ -32,20 +32,28 @@ CREATE TABLE MISSAO (
     recompensa_em_moedas INT NOT NULL
 );
 
+CREATE TABLE HABILIDADE (
+    nome_especie VARCHAR(30) NOT NULL,
+    nome_habilidade VARCHAR(30) NOT NULL,
+    efeito tipo_habilidade NOT NULL,
+    quantidade INT NOT NULL,
+    PRIMARY KEY (nome_especie, nome_habilidade),
+    FOREIGN KEY (nome_especie) REFERENCES ESPECIE(nome)
+);
+
 CREATE TABLE ALIEN (
     nome VARCHAR(30) PRIMARY KEY,
-    primeira_habilidade VARCHAR(30) NOT NULL,
-    segunda_habilidade VARCHAR(30) NOT NULL,
+    descricao TEXT NOT NULL,
     FOREIGN KEY (nome) REFERENCES ESPECIE(nome)
 );
 
 CREATE TABLE MONSTRO (
     nome VARCHAR(30) PRIMARY KEY,
-    id_recompensa VARCHAR(30), -- Mudança de INT para VARCHAR(30)
+    id_recompensa VARCHAR(30),
     dificuldade INT NOT NULL,
     recompensa_em_moedas INT NOT NULL,
     FOREIGN KEY (nome) REFERENCES ESPECIE(nome),
-    FOREIGN KEY (id_recompensa) REFERENCES ITEM(nome_item) -- Ajuste para referenciar o nome_item
+    FOREIGN KEY (id_recompensa) REFERENCES ITEM(nome_item)
 );
 
 CREATE TABLE SALA (
