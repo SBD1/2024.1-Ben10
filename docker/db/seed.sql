@@ -1,65 +1,46 @@
 -- Insere itens na tabela ITEM
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Kit Médico', 5000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Placa de Armadura', 3000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Jato de Fuga', 10000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Campo de Força Portátil', 4000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Camuflagem Alienígena', 4000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Projétil Laser', 2000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Arma Tennyson', 12500);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Espada Proto-Arma', 4000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Granada Inibidora', 4000);
-
-INSERT INTO ITEM (nome_item, preco) 
-VALUES ('Pistola dos Encanadores', 4000);
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Placa de Armadura', 'Consumível');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Jato de Fuga', 'Consumível');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Campo de Força Portátil', 'Consumível');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Camuflagem Alienígena', 'Consumível');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Projétil Laser', 'Arma');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Arma Tennyson', 'Arma');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Espada Proto-Arma', 'Arma');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Granada Inibidora', 'Arma');
+INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Pistola dos Encanadores', 'Arma');
 
 -- Inserir itens na tabela CONSUMIVEL
-INSERT INTO CONSUMIVEL (nome_item, status, valor_consumivel) 
-VALUES ('Kit Médico', 'inativo', 3);
+INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
+VALUES ('Kit Médico', 5000, 'inativo', 3);
 
-INSERT INTO CONSUMIVEL (nome_item, status, valor_consumivel) 
-VALUES ('Placa de Armadura', 'inativo', 3);
+INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
+VALUES ('Placa de Armadura', 3000, 'inativo', 3);
 
-INSERT INTO CONSUMIVEL (nome_item, status, valor_consumivel) 
-VALUES ('Jato de Fuga', 'inativo', 1);
+INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
+VALUES ('Jato de Fuga', 10000, 'inativo', 1);
 
-INSERT INTO CONSUMIVEL (nome_item, status, valor_consumivel) 
-VALUES ('Campo de Força Portátil', 'inativo', 1);
+INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
+VALUES ('Campo de Força Portátil', 4000, 'inativo', 1);
 
-INSERT INTO CONSUMIVEL (nome_item, status, valor_consumivel) 
-VALUES ('Camuflagem Alienígena', 'inativo', 2);
+INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
+VALUES ('Camuflagem Alienígena', 4000, 'inativo', 2);
 
 -- Inserir itens na tabela ARMA
-INSERT INTO ARMA (nome_item, dano) 
-VALUES ('Projétil Laser', 40);
+INSERT INTO ARMA (nome_item, preco, dano) 
+VALUES ('Projétil Laser', 2000, 40);
 
-INSERT INTO ARMA (nome_item, dano) 
-VALUES ('Arma Tennyson', 120);
+INSERT INTO ARMA (nome_item, preco, dano) 
+VALUES ('Arma Tennyson', 12500, 120);
 
-INSERT INTO ARMA (nome_item, dano) 
-VALUES ('Espada Proto-Arma', 60);
+INSERT INTO ARMA (nome_item, preco, dano) 
+VALUES ('Espada Proto-Arma', 4000, 60);
 
-INSERT INTO ARMA (nome_item, dano) 
-VALUES ('Granada Inibidora', 50);
+INSERT INTO ARMA (nome_item, preco, dano) 
+VALUES ('Granada Inibidora', 4000, 50);
 
-INSERT INTO ARMA (nome_item, dano) 
-VALUES ('Pistola dos Encanadores', 60);
+INSERT INTO ARMA (nome_item, preco, dano) 
+VALUES ('Pistola dos Encanadores', 4000, 60);
 
 -- Inserir espécies na tabela ESPECIE
 INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Quatro Braços', 'Alien');

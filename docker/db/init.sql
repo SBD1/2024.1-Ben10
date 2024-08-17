@@ -11,7 +11,7 @@ CREATE TABLE ESPECIE (
 
 CREATE TABLE ITEM (
     nome_item VARCHAR(30) PRIMARY KEY,
-    preco INT NOT NULL
+    tipo_item VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE NPC (
@@ -169,7 +169,8 @@ CREATE TABLE REGISTRO_DA_MISSAO (
 );
 
 CREATE TABLE CONSUMIVEL (
-    nome_item VARCHAR(30) PRIMARY KEY,      
+    nome_item VARCHAR(30) PRIMARY KEY, 
+    preco INT NOT NULL,     
     status tipo_status NOT NULL,
     valor_consumivel INT NOT NULL,
     FOREIGN KEY (nome_item) REFERENCES ITEM(nome_item)
@@ -177,6 +178,7 @@ CREATE TABLE CONSUMIVEL (
 
 CREATE TABLE ARMA (
     nome_item VARCHAR(30) PRIMARY KEY,
+    preco INT NOT NULL, 
     dano INT NOT NULL,
     FOREIGN KEY (nome_item) REFERENCES ITEM(nome_item)
 );
