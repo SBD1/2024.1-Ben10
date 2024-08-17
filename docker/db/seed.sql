@@ -62,118 +62,47 @@ INSERT INTO ARMA (nome_item, dano)
 VALUES ('Pistola dos Encanadores', 60);
 
 -- Inserir espécies na tabela ESPECIE
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Quatro Braços', 170, 120, 90);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('XLR8', 75, 65, 85);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Chama', 100, 85, 90);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Diamante', 160, 120, 95);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Besta', 95, 80, 90);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Insectóide', 85, 75, 88);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Fantasmático', 80, 70, 85);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Ultra T', 105, 110, 92);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Massa Cinzenta', 40, 50, 120);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Aquático', 95, 90, 87);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Vilgax', 550, 140, 130);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Humano Hipnotizado', 40, 50, 60);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Servo', 70, 80, 100);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Demônio', 150, 80, 150);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Soldado de Elite', 80, 30, 100);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Lobo de duas-cabeças', 100, 100, 100);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Cavaleiro Eterno', 300, 100, 100);
-
-INSERT INTO ESPECIE (nome, saude, defesa, status_base) 
-VALUES ('Encanador Traidor', 200, 100, 70);
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Quatro Braços', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('XLR8', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Chama', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Diamante', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Besta', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Insectóide', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Fantasmático', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Ultra T', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Massa Cinzenta', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Aquático', 'Alien');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Vilgax', 'Monstro');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Humano Hipnotizado', 'Monstro');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Servo', 'Monstro');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Demônio', 'Monstro');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Soldado de Elite', 'Monstro');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Lobo de duas-cabeças', 'Monstro');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Cavaleiro Eterno', 'Monstro');
+INSERT INTO ESPECIE (nome, tipo_especie) VALUES ('Encanador Traidor', 'Monstro');
 
 -- Inserir aliens na tabela ALIEN
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Quatro Braços', 'Alien com quatro braços e grande força física.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('XLR8', 'Alien extremamente rápido e ágil.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Chama', 'Alien que pode manipular e lançar fogo.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Diamante', 'Alien com corpo cristalino e resistente.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Besta', 'Alien com sentidos aguçados e força animal.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Insectóide', 'Alien com capacidade de voo e rajadas de ferrão.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Fantasmático', 'Alien que pode se tornar intangível e invisível.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Ultra T', 'Alien com armadura tecnológica e super força.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Massa Cinzenta', 'Alien com intelecto superior e habilidades tecnológicas.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Aquático', 'Alien que pode respirar debaixo dágua e manipular a água.');
-
-INSERT INTO ALIEN (nome, descricao) 
-VALUES ('Vilgax', 'Alien com força descomunal e resistência extrema.');
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Quatro Braços', 'Alien com quatro braços e grande força física.', 170, 120, 90);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('XLR8', 'Alien extremamente rápido e ágil.', 75, 65, 85);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Chama', 'Alien que pode manipular e lançar fogo.', 100, 85, 90);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Diamante', 'Alien com corpo cristalino e resistente.', 160, 120, 95);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Besta', 'Alien com sentidos aguçados e força animal.', 95, 80, 90);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Insectóide', 'Alien com capacidade de voo e rajadas de ferrão.', 85, 75, 88);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Fantasmático', 'Alien que pode se tornar intangível e invisível.', 80, 70, 85);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Ultra T', 'Alien com armadura tecnológica e super força.', 105, 110, 92);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Massa Cinzenta', 'Alien com intelecto superior e habilidades tecnológicas.', 40, 50, 120);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Aquático', 'Alien que pode respirar debaixo dágua e manipular a água.', 95, 90, 87);
+INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Vilgax', 'Alien com força descomunal e resistência extrema.', 550, 140, 130);
 
 -- Inserir monstros na tabela MONSTRO
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Vilgax', 'Espada Proto-Arma', 10, 10000);
-
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Humano Hipnotizado', 'Kit Médico', 1, 300);
-
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Servo', 'Granada Inibidora', 2, 500);
-
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Demônio', 'Pistola dos Encanadores', 3, 800);
-
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Soldado de Elite', 'Placa de Armadura', 3, 1000);
-
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Lobo de duas-cabeças', 'Camuflagem Alienígena', 4, 1500);
-
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Cavaleiro Eterno', 'Arma Tennyson', 5, 4000);
-
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas) 
-VALUES ('Encanador Traidor', 'Campo de Força Portátil', 5, 3000);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Vilgax', 'Espada Proto-Arma', 10, 10000, 550, 140, 130);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Humano Hipnotizado', 'Kit Médico', 1, 300, 40, 50, 60);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Servo', 'Granada Inibidora', 2, 500, 70, 80, 100);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Demônio', 'Pistola dos Encanadores', 3, 800, 150, 80, 150);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Soldado de Elite', 'Placa de Armadura', 3, 1000, 80, 30, 100);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Lobo de duas-cabeças', 'Camuflagem Alienígena', 4, 1500, 100, 100, 100);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Cavaleiro Eterno', 'Arma Tennyson', 5, 4000, 300, 100, 100);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Encanador Traidor', 'Campo de Força Portátil', 5, 3000, 200, 100, 70);
 
 -- Inserir habilidades na tabela HABILIDADE
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 

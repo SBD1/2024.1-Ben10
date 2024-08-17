@@ -6,9 +6,7 @@ CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura', 'paralisia', 'defesa');
 
 CREATE TABLE ESPECIE (
     nome VARCHAR(30) PRIMARY KEY,
-    saude INT NOT NULL,
-    defesa INT NOT NULL,
-    status_base INT NOT NULL
+    tipo_especie VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE ITEM (
@@ -45,6 +43,9 @@ CREATE TABLE HABILIDADE (
 CREATE TABLE ALIEN (
     nome VARCHAR(30) PRIMARY KEY,
     descricao TEXT NOT NULL,
+    saude INT NOT NULL,
+    defesa INT NOT NULL,
+    status_base INT NOT NULL,
     FOREIGN KEY (nome) REFERENCES ESPECIE(nome)
 );
 
@@ -53,6 +54,9 @@ CREATE TABLE MONSTRO (
     id_recompensa VARCHAR(30),
     dificuldade INT NOT NULL,
     recompensa_em_moedas INT NOT NULL,
+    saude INT NOT NULL,
+    defesa INT NOT NULL,
+    status_base INT NOT NULL,
     FOREIGN KEY (nome) REFERENCES ESPECIE(nome),
     FOREIGN KEY (id_recompensa) REFERENCES ITEM(nome_item)
 );
