@@ -3,6 +3,7 @@ CREATE TYPE tipo_status AS ENUM ('ativo', 'inativo');
 CREATE TYPE tipo_status_missao AS ENUM ('incompleta', 'completa', 'em progresso');
 CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura', 'paralisia', 'defesa');
 
+
 CREATE TABLE ESPECIE (
     nome VARCHAR(30) PRIMARY KEY,
     saude INT NOT NULL,
