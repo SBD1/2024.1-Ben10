@@ -96,3 +96,27 @@ union
 select s.id_sala 
 from sala s
 WHERE s.id_pre_req_missao ISNULL;
+
+
+-- =========================================== MONSTRO ==================================
+
+-- Consultar todas as instâncias de monstros em uma determinada sala
+SELECT izg.id_zona_guerra, im.id_monstro, im.nome_especie, im.saude_atual
+FROM instancia_monstro im
+JOIN instancia_zona_guerra izg ON im.id_monstro = izg.id_monstro
+where izg.id_zona_guerra = 3;
+
+-- Consultar dados especificos de uma espécie
+select m.*, im.saude_atual 
+from monstro m
+join instancia_monstro im on im.nome_especie = m.nome;
+
+-- Monstro e Drop do item
+SELECT im.id_monstro, 
+       COALESCE(c.nome_item, a.nome_item) AS nome_item_recompensa
+FROM instancia_monstro im
+JOIN monstro m ON m.nome = im.nome_especie
+left JOIN consumivel c ON m.id_recompensa = c.nome_item
+left JOIN arma a ON m.id_recompensa = a.nome_item
+where im.id_monstro = 3;
+
