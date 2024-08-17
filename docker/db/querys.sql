@@ -24,3 +24,39 @@ join personagem p on p.id_personagem = rdm.id_personagem and rdm.status = 'compl
 select pr.id_pre_requisito 
 from personagem p, registro_da_missao rdm, missao m, pre_requisito pr
 where p.id_personagem = rdm.id_personagem and rdm.id_missao <> m.id_missao;
+
+
+-- ============================================= PERSONAGEM =============================================
+
+-- Verificando a capacidade do iventário
+select count(i.id_personagem) 
+from personagem p
+join inventario i on i.id_personagem = p.id_personagem
+where i.id_personagem = 3;
+
+-- Nome do personagem
+select nome
+from personagem p
+where p.id_personagem = 3;
+
+-- Nivel do personagem
+select nivel
+from personagem p
+where p.id_personagem = 3;
+
+-- Saude do personagem
+select saude
+from personagem p
+where p.id_personagem = 3;
+
+-- Quantidade de moedas do personagem
+select quantidade_moedas
+from personagem p
+where p.id_personagem = 3;
+
+
+-- Recompensa relacionada a um personagem específico
+select r.*
+from personagem p
+join recompensa r on r.id_personagem = p.id_personagem
+where p.id_personagem = 3;
