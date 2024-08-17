@@ -156,83 +156,85 @@ INSERT INTO PRE_REQUISITO (id_missao, id_pre_requisito)
 VALUES (5, 3); -- Necessário completar missão 3 para fazer missão 5
 
 -- Inserir salas para a região 'Base dos Cavaleiros Eternos'
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (1, 'Base dos Cavaleiros Eternos');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (1, 'Base dos Cavaleiros Eternos', 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (2, 'Base dos Cavaleiros Eternos');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (2, 'Base dos Cavaleiros Eternos', 'Zona de Armadilha');
 
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (3, 'Base dos Cavaleiros Eternos');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (3, 'Base dos Cavaleiros Eternos', 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao) 
-VALUES (4, 'Base dos Cavaleiros Eternos', 1);
+INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao, tipo_sala) 
+VALUES (4, 'Base dos Cavaleiros Eternos', 1, 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao) 
-VALUES (5, 'Base dos Cavaleiros Eternos', 3);
+INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao, tipo_sala) 
+VALUES (5, 'Base dos Cavaleiros Eternos', 3, 'Zona de Armadilha');
 
 -- Inserir salas para a região 'Base dos Encanadores'
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (6, 'Base dos Encanadores');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (6, 'Base dos Encanadores', 'Zona de Armadilha');
 
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (7, 'Base dos Encanadores');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (7, 'Base dos Encanadores', 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (8, 'Base dos Encanadores');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (8, 'Base dos Encanadores', 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao) 
-VALUES (9, 'Base dos Encanadores', 3);
+INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao, tipo_sala) 
+VALUES (9, 'Base dos Encanadores', 3, 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao) 
-VALUES (10, 'Base dos Encanadores', 5);
+INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao, tipo_sala) 
+VALUES (10, 'Base dos Encanadores', 5, 'Zona de Armadilha');
 
 -- Inserir salas para a região 'Nave do Vilgax'
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (11, 'Nave do Vilgax');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (11, 'Nave do Vilgax', 'Zona de Armadilha');
 
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (12, 'Nave do Vilgax');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (12, 'Nave do Vilgax', 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao) 
-VALUES (13, 'Nave do Vilgax');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
+VALUES (13, 'Nave do Vilgax', 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao)  
-VALUES (14, 'Nave do Vilgax', 4);
+INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao, tipo_sala)  
+VALUES (14, 'Nave do Vilgax', 4, 'Zona de Guerra');
 
-INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao) 
-VALUES (15, 'Nave do Vilgax', 2);
+INSERT INTO SALA (id_sala, nome_regiao, id_pre_req_missao, tipo_sala) 
+VALUES (15, 'Nave do Vilgax', 2, 'Zona de Guerra');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (1, 1);
+-- Inserir zonas de guerra na tabela ZONA_DE_GUERRA
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (1, 1, 'Zona de combate contra os Cavaleiros Eternos');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (3, 1);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (3, 1, 'Zona de combate com armadilhas leves');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (4, 10);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (4, 10, 'Zona de combate intensa com chefe da região');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (7, 1);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (7, 1, 'Zona de combate inicial dos Encanadores');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (8, 3);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (8, 3, 'Zona de combate médio');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (9, 4);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (9, 4, 'Zona de combate avançado dos Encanadores');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (12, 5);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (12, 5, 'Zona de combate intermediária da Nave do Vilgax');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (13, 4);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (13, 4, 'Zona de combate com inimigos múltiplos');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (14, 3);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (14, 3, 'Zona de combate estratégica');
 
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade) 
-VALUES (15, 3);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
+VALUES (15, 3, 'Zona de combate final da Nave do Vilgax');
 
+-- Inserir zonas de armadilha na tabela ZONA_DE_ARMADILHA
 INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) 
 VALUES (2, 3, 'acréscimo');
 

@@ -65,6 +65,7 @@ CREATE TABLE SALA (
     id_sala INT PRIMARY KEY,
     nome_regiao VARCHAR(30),
     id_pre_req_missao INT,
+    tipo_sala VARCHAR(30) NOT NULL,
     FOREIGN KEY (nome_regiao) REFERENCES REGIAO(nome_regiao),
     FOREIGN KEY (id_pre_req_missao) REFERENCES MISSAO(id_missao)
 );
@@ -109,6 +110,7 @@ CREATE TABLE INSTANCIA_ZONA_GUERRA (
 CREATE TABLE ZONA_DE_GUERRA (
     id_sala INT PRIMARY KEY,
     dificuldade INT NOT NULL,
+    descricao TEXT NOT NULL,
     FOREIGN KEY (id_sala) REFERENCES SALA(id_sala)
 );
 
