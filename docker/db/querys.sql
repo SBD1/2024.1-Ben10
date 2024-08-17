@@ -120,3 +120,40 @@ left JOIN consumivel c ON m.id_recompensa = c.nome_item
 left JOIN arma a ON m.id_recompensa = a.nome_item
 where im.id_monstro = 3;
 
+
+-- ========================================= ITEM ===============================
+
+-- Verificando os itens do inventário do personagem
+select i.nome_item 
+from personagem p
+join inventario i on i.id_personagem = p.id_personagem
+where i.id_personagem = 3;
+
+-- Verificando o valor de venda do item do personagem
+select i.nome_item,  COALESCE(c.valor_consumivel, a.preco) AS atributo
+from personagem p
+join inventario i on i.id_personagem = p.id_personagem
+join consumivel c on c.nome_item = i.nome_item
+join arma a on a.nome_item = i.nome_item;
+
+-- Listar todos os itens disponíveis para venda por um NPC
+SELECT edi.nome_item, edi.preco
+FROM estoque_do_item edi
+join vendedor v on edi.id_npc = v.id_npc
+where edi.id_npc = 6;
+
+-- Consultar as recompensas de uma sala específica
+SELECT s.id_sala, r.nome_item, r.recompensa_recebida
+FROM recompensa r
+join sala s on s.id_sala = r.id_sala
+where s.id_sala = 3;
+
+-- Consultar qual a recompensa em forma de item
+SELECT r.nome_item, 
+       COALESCE(c.valor_consumivel, a.dano) AS atributo
+FROM recompensa r
+JOIN estoque_do_item edi ON r.nome_item = edi.nome_item
+left JOIN consumivel c ON c.nome_item = edi.nome_item 
+left JOIN arma a ON a.nome_item = edi.nome_item
+WHERE edi.nome_item ='Kit Médico';
+
