@@ -41,6 +41,29 @@ class SalaRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
             return None
+        
+    def verificar_permissao_sala(self, id_personagem, id_sala):
+        """
+        Retorna para o jogador se ele pode entrar em uma sala específica
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                select COUNT(*)
+                from sala s 
+                left join registro_da_missao rdm on rdm.id_missao = s.id_pre_req_missao
+                where (rdm.id_personagem = %s
+                    and rdm.status = 'completa' 
+                    or s.id_pre_req_missao is null) 
+                and s.id_sala = %s
+            """
+            cursor.execute(query, (id_personagem, id_sala,))
+            salas = cursor.fetchall()
+            cursor.close()
+            return salas
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
 
 
     def close(self):

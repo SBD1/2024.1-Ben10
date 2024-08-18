@@ -19,3 +19,10 @@ class SalaService:
         :return: Lista de salas da região especificada.
         """
         return self.sala_repository.obter_salas_por_regiao(nome_regiao)
+    
+    def verificar_permissao_sala(self, id_personagem, id_sala):
+        """
+        Retorna se o jogador pode entrar em uma sala específica.
+        :return: Retorna 1 se o jogador puder entrar na sala, caso contrário retorna 0
+        """
+        return self.sala_repository.verificar_permissao_sala(id_personagem, id_sala)

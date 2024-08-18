@@ -1,8 +1,10 @@
 from services.sala_service import SalaService
+from services.personagem_service import PersonagemService
 
 class SalaController:
     def __init__(self):
         self.sala_service = SalaService()
+        self.personagem_service = PersonagemService()
 
     def desenhar_mapa_regiao(self, nome_regiao):
         salas = self.sala_service.obter_salas_por_regiao(nome_regiao)
@@ -37,4 +39,11 @@ class SalaController:
                 print(f"+{'-' * (largura_quadrado - 2)}+", end=' ')
 
         print(f"\n\nRegião: {nome_regiao}")
-        
+
+    def trocar_jogador_de_sala(self, id_personagem, id_sala):
+        permissao = self.sala_service.verificar_permissao_sala(id_personagem, id_sala)[0][0]
+        if permissao:
+            self.personagem_service.atualizar_sala_personagem(id_personagem, id_sala)
+            print(f'Você foi para a sala {id_sala}')
+        else:
+            print('troca de sala não permitida')

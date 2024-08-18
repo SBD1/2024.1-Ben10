@@ -3,11 +3,15 @@ from controllers.sala_controller import SalaController
 def main():
     sala_controller = SalaController()
 
+    GLOBAL_SETS = {
+        'id_personagem': 2
+    }
+
     lista_comandos = {
         'sala trocar': {
             'argumento': 'id_sala',
             'descrição': 'comando para trocar de sala',
-            'executar': lambda id_sala: print(f"Trocando para a sala {id_sala}...")
+            'executar': lambda id_sala: sala_controller.trocar_jogador_de_sala(GLOBAL_SETS['id_personagem'], id_sala)
         },
         'mapa atual': {
             'descrição': 'comando para ver o mapa da região atual',
@@ -41,7 +45,7 @@ def main():
         else:
             print("Comando inválido. Tente novamente.")
 
-    print("Bem-vindo ao jogo!")
+    print("Bem-vindo ao jogo!------")
     listar_comandos()
 
     while True:
