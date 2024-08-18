@@ -133,7 +133,7 @@ CREATE TABLE RECOMPENSA (
     PRIMARY KEY (id_personagem, id_sala),
     FOREIGN KEY (nome_item) REFERENCES ITEM(nome_item),
     FOREIGN KEY (id_personagem) REFERENCES PERSONAGEM(id_personagem),
-    FOREIGN KEY (id_sala) REFERENCES SALA(id_sala)
+    FOREIGN KEY (id_sala) REFERENCES ZONA_DE_ARMADILHA(id_sala)
 );
 
 CREATE TABLE INSTANCIA_NPC_NA_SALA (
