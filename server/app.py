@@ -3,8 +3,10 @@ from controllers.sala_controller import SalaController
 def main():
     sala_controller = SalaController()
 
-    sala_controller.desenhar_mapa_regiao('Nave do Vilgax')
+    print("bem vindo")
+
+    teste = input()
+    sala_controller.desenhar_mapa_regiao(teste)
 
 if __name__ == "__main__":
     main()
-    

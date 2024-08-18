@@ -9,5 +9,3 @@ WORKDIR /home/app
 COPY ./server .
 
 RUN pip install --no-cache-dir --user -r requirements.txt
-
-CMD [ "python3", "app.py" ]
