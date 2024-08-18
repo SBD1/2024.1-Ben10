@@ -14,9 +14,6 @@ CREATE TABLE ITEM (
     tipo_item VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE NPC (
-    id_npc INT PRIMARY KEY
-);
 
 CREATE TABLE REGIAO (
     nome_regiao VARCHAR(30) PRIMARY KEY,
@@ -29,6 +26,13 @@ CREATE TABLE MISSAO (
     experiencia INT NOT NULL,
     descricao TEXT NOT NULL,
     recompensa_em_moedas INT NOT NULL
+);
+
+CREATE TABLE NPC (
+    id_npc INT PRIMARY KEY,
+    dialogo_associado_venda TEXT,
+    id_missao_associada INT,
+    FOREIGN KEY (id_missao_associada) REFERENCES MISSAO(id_missao)
 );
 
 CREATE TABLE HABILIDADE (
@@ -137,19 +141,6 @@ CREATE TABLE INSTANCIA_NPC_NA_SALA (
     id_npc INT,
     PRIMARY KEY (id_sala, id_npc),
     FOREIGN KEY (id_sala) REFERENCES SALA(id_sala),
-    FOREIGN KEY (id_npc) REFERENCES NPC(id_npc)
-);
-
-CREATE TABLE GUIA_DE_MISSOES (
-    id_npc INT PRIMARY KEY,
-    id_missao_associada INT,
-    FOREIGN KEY (id_npc) REFERENCES NPC(id_npc),
-    FOREIGN KEY (id_missao_associada) REFERENCES MISSAO(id_missao)
-);
-
-CREATE TABLE VENDEDOR (
-    id_npc INT PRIMARY KEY,
-    dialogo_associado_venda TEXT NOT NULL,
     FOREIGN KEY (id_npc) REFERENCES NPC(id_npc)
 );
 

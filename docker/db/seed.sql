@@ -12,7 +12,7 @@ INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Pistola dos Encanadores', 'Arma
 
 -- Inserir itens na tabela CONSUMIVEL
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Kit Médico', 5000, 'inativo', 3);
+VALUES ('Kit Médico', 5000, 'ativo', 3);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
 VALUES ('Placa de Armadura', 3000, 'inativo', 3);
@@ -21,10 +21,10 @@ INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel)
 VALUES ('Jato de Fuga', 10000, 'inativo', 1);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Campo de Força Portátil', 4000, 'inativo', 1);
+VALUES ('Campo de Força Portátil', 4000, 'ativo', 1);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Camuflagem Alienígena', 4000, 'inativo', 2);
+VALUES ('Camuflagem Alienígena', 4000, 'ativo', 2);
 
 -- Inserir itens na tabela ARMA
 INSERT INTO ARMA (nome_item, preco, dano) 
@@ -121,10 +121,10 @@ VALUES ('Vilgax', 'Força Descomunal', 'dano', 150);
 
 -- Inserir regiões na tabela REGIAO 
 INSERT INTO REGIAO(nome_regiao, descricao)
-VALUES ('Base dos Cavaleiros Eternos', 'Base central dos Cavaeiros Eternos');
+VALUES ('Base dos Cavaleiros Eternos', 'Base central dos Cavaleiros Eternos');
 
 INSERT INTO REGIAO(nome_regiao, descricao)
-VALUES ('Base dos Encanadores', 'Base principal dos Encanadores, parcialmente destruída após um invasão');
+VALUES ('Base dos Encanadores', 'Base principal dos Encanadores, parcialmente destruída após uma invasão');
 
 INSERT INTO REGIAO(nome_regiao, descricao)
 VALUES ('Nave do Vilgax', 'Nave principal de Vilgax');
@@ -143,7 +143,7 @@ INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_e
 VALUES (4, 'Recuperar o Omnitrix', 400, 'Recupere o Omnitrix que foi roubado por um misterioso inimigo.', 800);
 
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas) 
-VALUES (5, 'Enfrente o Colecionador', 600, 'Derrote o Colecionador e suas criaturas mutantes que ameaçam os encanadores', 1200);
+VALUES (5, 'Enfrente o Colecionador', 600, 'Derrote o Colecionador e suas criaturas mutantes que ameaçam os encanadores.', 1200);
 
 -- Inserir pre-requisito das missões na tabela PRE_REQUISITO
 INSERT INTO PRE_REQUISITO (id_missao, id_pre_requisito) 
@@ -250,194 +250,89 @@ VALUES (10, 5, 'redução');
 INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) 
 VALUES (11, 3, 'acréscimo');
 
--- Inserir NPC na tabela NPC
-INSERT INTO NPC (id_npc) 
+-- Inserir NPCs na tabela NPC e associar missões e vendas
+INSERT INTO NPC (id_npc, dialogo_associado_venda, id_missao_associada) 
 VALUES 
-    (1),
-    (2),
-    (3),
-    (4),
-    (5),
-    (6),
-    (7),
-    (8),
-    (9);
+    (1, 'Pronto para começar a missão?', 1), -- NPC com missão
+    (2, 'Tenho uma missão para você!', 2), -- NPC com missão
+    (3, NULL, 3), -- NPC apenas com missão
+    (4, 'Missão perigosa à vista!', 4), -- NPC com missão
+    (5, NULL, NULL), -- NPC sem missão e sem venda
+    (6, 'Bem-vindo! Veja nossas ofertas especiais.', NULL), -- NPC apenas vendedor
+    (7, 'Olá, Herói! Temos itens raros para você.', NULL), -- NPC apenas vendedor
+    (8, 'Saudações! Aposto que esses itens são o que você estava procurando.', NULL), -- NPC apenas vendedor
+    (9, 'Oi! Está procurando algo específico? Tenho itens únicos.', 5); -- NPC vendedor e com missão
 
--- Assosciar NPC a uma MISSAO
-INSERT INTO GUIA_DE_MISSOES (id_npc, id_missao_associada) 
-VALUES (1, 1);  -- NPC 1 associado à Missão 1
-
-INSERT INTO GUIA_DE_MISSOES (id_npc, id_missao_associada) 
-VALUES (2, 2);  -- NPC 2 associado à Missão 2
-
-INSERT INTO GUIA_DE_MISSOES (id_npc, id_missao_associada) 
-VALUES (3, 3);  -- NPC 3 associado à Missão 3
-
-INSERT INTO GUIA_DE_MISSOES (id_npc, id_missao_associada) 
-VALUES (4, 4);  -- NPC 4 associado à Missão 4
-
-INSERT INTO GUIA_DE_MISSOES (id_npc, id_missao_associada) 
-VALUES (5, 5);  -- NPC 5 associado à Missão 5
-
--- Inserir NPC VENDEDOR
-INSERT INTO VENDEDOR (id_npc, dialogo_associado_venda) 
-VALUES (6, 'Bem-vindo! Veja nossas ofertas especiais de itens e equipamentos.');
-
-INSERT INTO VENDEDOR (id_npc, dialogo_associado_venda) 
-VALUES (7, 'Olá, Herói! Temos itens raros e poderosos disponíveis para você.');
-
-INSERT INTO VENDEDOR (id_npc, dialogo_associado_venda) 
-VALUES (8, 'Saudações! Aposto que esses itens são o que você estava procurando.');
-
-INSERT INTO VENDEDOR (id_npc, dialogo_associado_venda) 
-VALUES (9, 'Oi! Está procurando algo específico? Tenho itens únicos à sua disposição.');
-
--- Inserir ESTOQUE_DO_ITEM para um NPC
+-- Inserir estoque para NPCs vendedores
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Kit Médico', 6, 5000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Kit Médico', 7, 5000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Kit Médico', 8, 5000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Kit Médico', 9, 5000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Camuflagem Alienígena', 6, 4000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Placa de Armadura', 7, 3000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Granada Inibidora', 7, 3000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Jato de Fuga', 8, 10000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Arma Tennyson', 8, 3500);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Campo de Força Portátil', 9, 4000);
-
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Espada Proto-Arma', 9, 5000);
+VALUES ('Kit Médico', 6, 5000),
+       ('Kit Médico', 7, 5000),
+       ('Kit Médico', 8, 5000),
+       ('Kit Médico', 9, 5000),
+       ('Camuflagem Alienígena', 6, 4000),
+       ('Placa de Armadura', 7, 3000),
+       ('Granada Inibidora', 7, 3000),
+       ('Jato de Fuga', 8, 10000),
+       ('Arma Tennyson', 8, 3500),
+       ('Campo de Força Portátil', 9, 4000),
+       ('Espada Proto-Arma', 9, 5000);
 
 -- Inserir personagens na tabela PERSONAGEM
 INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-VALUES (1, 5000, 'Chama', 'Ben', 3, 350, 10);
-
-INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-VALUES (2, 500, 'Ultra T', 'Max', 1, 100, 1);
-
-INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-VALUES (3, 500, 'XLR8', 'Kevin', 1, 100, 1);
-
-INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-VALUES (4, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
+VALUES (1, 5000, 'Chama', 'Ben', 3, 350, 10),
+       (2, 500, 'Ultra T', 'Max', 1, 100, 1),
+       (3, 500, 'XLR8', 'Kevin', 1, 100, 1),
+       (4, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
 
 -- Inserir registros de missões na tabela REGISTRO_DA_MISSAO
 INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status) 
-VALUES (1, 4, 'em progresso');  -- Personagem 1 em Missão 4
-
-INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status) 
-VALUES (2, 1, 'completa');    -- Personagem 2 em Missão 1
-
-INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status) 
-VALUES (3, 1, 'incompleta');     -- Personagem 3 em Missão 1
-
-INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status) 
-VALUES (4, 1, 'incompleta');  -- Personagem 4 em Missão 1
+VALUES (1, 4, 'em progresso'),
+       (2, 1, 'completa'),
+       (3, 1, 'incompleta'),
+       (4, 1, 'incompleta');
 
 -- Inserir itens na tabela INVENTARIO
 INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (1, 1, 'Kit Médico');  -- Personagem 1 possui o item 'Kit Médico'
-
-INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (2, 1, 'Placa de Armadura');  -- Personagem 2 possui o item 'Placa de Armadura'
-
-INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (2, 2, 'Kit Médico');  -- Personagem 2 possui o item 'Kit Médico'
-
-INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (3, 1, 'Jato de Fuga');  -- Personagem 3 possui o item 'Jato de Fuga'
-
-INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (3, 2, 'Kit Médico');  -- Personagem 3 possui o item 'Kit Médico'
-
-INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (4, 1, 'Campo de Força Portátil');  -- Personagem 4 possui o item 'Campo de Força Portátil'
-
-INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (4, 2, 'Kit Médico');  -- Personagem 4 possui o item 'Kit Médico'
+VALUES (1, 1, 'Kit Médico'),
+       (2, 1, 'Placa de Armadura'),
+       (2, 2, 'Kit Médico'),
+       (3, 1, 'Jato de Fuga'),
+       (3, 2, 'Kit Médico'),
+       (4, 1, 'Campo de Força Portátil'),
+       (4, 2, 'Kit Médico');
 
 -- Inserir status do alien na tabela STATUS_DO_ALIEN
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
-VALUES('Chama',150, 1);
-
-INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
-VALUES('Ultra T',75, 2);
-
-INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
-VALUES('XLR8',120, 3);
-
-INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
-VALUES('Massa Cinzenta',130, 4);
+VALUES ('Chama',150, 1),
+       ('Ultra T',75, 2),
+       ('XLR8',120, 3),
+       ('Massa Cinzenta',130, 4);
 
 -- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO
 INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
-VALUES (1, 'Humano Hipnotizado', 80);
-
-INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
-VALUES (2, 'Servo', 75);
-
-INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
-VALUES (3, 'Demônio', 50);
-
-INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
-VALUES (4, 'Soldado de Elite', 250);
+VALUES (1, 'Humano Hipnotizado', 80),
+       (2, 'Servo', 75),
+       (3, 'Demônio', 50),
+       (4, 'Soldado de Elite', 250);
 
 -- Inserir dados da zona de guerra na tabela INSTANCIA_ZONA_GUERRA
 INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
-VALUES (3, 1, 1);
-
-INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
-VALUES (4, 2, 2);
-
-INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
-VALUES (7, 3, 3);
-
-INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
-VALUES (8, 4, 4);
+VALUES (3, 1, 1),
+       (4, 2, 2),
+       (7, 3, 3),
+       (8, 4, 4);
 
 -- Inserir dados de NPC na tabela INSTANCIA_NPC_NA_SALA
 INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
-VALUES (1, 1);
-
-INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
-VALUES (2, 2);
-
-INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
-VALUES (3, 3);
-
-INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
-VALUES (12, 8);
-
-INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
-VALUES (13, 7);
+VALUES (1, 1),
+       (2, 2),
+       (3, 3),
+       (12, 8),
+       (13, 7);
 
 -- Inserir recompensas na tabela RECOMPENSA
 INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
-VALUES (1, 3, 'Kit Médico', 500);  -- Personagem 1 recebe 'Kit Médico' na Sala 3
-
-INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
-VALUES (2, 4, 'Placa de Armadura', 600);  -- Personagem 2 recebe 'Placa de Armadura' na Sala 4
-
-INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
-VALUES (3, 7, 'Jato de Fuga', 1000);  -- Personagem 3 recebe 'Jato de Fuga' na Sala 7
-
-INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
-VALUES (4, 8, 'Campo de Força Portátil', 400);  -- Personagem 4 recebe 'Campo de Força Portátil' na Sala 8
+VALUES (1, 3, 'Kit Médico', 500), 
+       (2, 4, 'Placa de Armadura', 600),
+       (3, 7, 'Jato de Fuga', 1000), 
+       (4, 8, 'Campo de Força Portátil', 400);
