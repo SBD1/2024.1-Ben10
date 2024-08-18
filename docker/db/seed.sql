@@ -332,7 +332,8 @@ VALUES (1, 1),
 
 -- Inserir recompensas na tabela RECOMPENSA
 INSERT INTO RECOMPENSA (id_personagem, id_sala, nome_item, recompensa_recebida) 
-VALUES (1, 3, 'Kit Médico', 500), 
-       (2, 4, 'Placa de Armadura', 600),
-       (3, 7, 'Jato de Fuga', 1000), 
-       (4, 8, 'Campo de Força Portátil', 400);
+VALUES (1, 2, 'Kit Médico', 500), 
+       (2, 5, 'Placa de Armadura', 600),
+       (3, 6, 'Jato de Fuga', 1000), 
+       (4, 10, 'Campo de Força Portátil', 400),
+       (1, 11, 'Campo de Força Portátil', 400);
