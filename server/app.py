@@ -1,30 +1,10 @@
-import psycopg2
+from controllers.sala_controller import SalaController
 
-def connection_postgreSQL():
-    try:
-        # Conexão com o banco de dados
-        connection = psycopg2.connect(
-            host="postgres",  # Usar 'localhost' se testar local, 'postgres' se testar com docker
-            database="postgres_ben10",
-            port="5432",
-            user="postgres_trabalho_ben10",
-            password="1234"
-        )
-        cursor = connection.cursor()
+def main():
+    sala_controller = SalaController()
 
-        # Verificar a versão do PostgreSQL
-        cursor.execute("SELECT version();")
-        db_version = cursor.fetchone()
-        print(f"Versão do PostgreSQL: {db_version[0]}\n")
+    sala_controller.desenhar_mapa_regiao('Nave do Vilgax')
 
-    except Exception as error:
-        print(f"Erro na conexão com o PostgreSQL: {error}")
-
-    finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'connection' in locals():
-            print("close")
-            connection.close()
-
-connection_postgreSQL()
+if __name__ == "__main__":
+    main()
+    
