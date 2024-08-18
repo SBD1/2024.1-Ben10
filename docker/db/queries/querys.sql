@@ -83,3 +83,81 @@ select r.*
 from personagem p
 join recompensa r on r.id_personagem = p.id_personagem
 where p.id_personagem = 3;
+
+
+-- ============================================ SALAS E REGIÕES ======================================
+
+-- Listar um npc em uma sala
+select inns.id_npc, inns.id_sala
+from instancia_npc_na_sala inns
+join sala s on s.id_sala = inns.id_sala
+where s.id_sala = 3;
+
+-- Listar todas as zonas de guerra de uma região e sua dificuldade
+SELECT zg.id_sala, zg.dificuldade, s.nome_regiao
+FROM zona_de_guerra zg
+JOIN sala s ON s.id_sala = zg.id_sala
+join regiao r on r.nome_regiao = s.nome_regiao
+where s.tipo_sala = 'Zona de Guerra';
+
+-- Listar todas as zonas de armadilha de uma região
+SELECT zda.*, s.nome_regiao
+FROM zona_de_armadilha zda 
+JOIN sala s ON s.id_sala = zda.id_sala
+join regiao r on r.nome_regiao = s.nome_regiao
+where s.tipo_sala = 'Zona de Armadilha';
+
+-- listar todas as regiões
+select *
+from regiao r;
+
+-- listar todas as regiões e suas salas
+SELECT r.*, s.id_sala, s.id_pre_req_missao, s.tipo_sala 
+FROM regiao r
+join sala s on r.nome_regiao = s.nome_regiao;
+
+
+-- Listar todas as regiões
+select r.*
+from regiao r;
+
+-- Listar todas as salas de uma determinada região, com seus pré requisitos
+select r.nome_regiao, s.id_sala, s.id_pre_req_missao
+from sala s
+join regiao r on s.nome_regiao = r.nome_regiao
+where r.nome_regiao = 'Nave do Vilgax';
+
+-- Lista as salas que não tem pre-requisito
+SELECT s.id_sala
+FROM sala s
+join registro_da_missao rdm ON s.id_pre_req_missao = rdm.id_missao
+join personagem p on rdm.id_personagem = p.id_personagem
+where p.id_personagem = 3 and rdm.status = 'completa'
+union 
+select s.id_sala 
+from sala s
+WHERE s.id_pre_req_missao ISNULL;
+
+-- Buscando o log de uma determinada sala
+select izg.*, zdg.descricao
+from zona_de_guerra zdg
+join instancia_zona_guerra izg on izg.id_zona_guerra = zdg.id_sala
+where zdg.id_sala = 3;
+
+-- Buscando o log de um personagem específico
+select izg.*
+from personagem p
+join instancia_zona_guerra izg on izg.id_zona_guerra = p.id_sala
+where izg.id_personagem = 1;
+
+-- Buscando detalhes da recompensa na zona de armadilha
+select r.*
+from zona_de_armadilha zda
+join recompensa r on r.id_sala = zda.id_sala
+where r.id_sala = 3;
+
+-- Verificar qual sala está desbloqueada para um personagem
+SELECT s.*
+FROM sala s
+LEFT JOIN registro_da_missao rdm ON s.id_pre_req_missao = rdm.id_missao AND rdm.id_personagem = 2 AND rdm.status = 'completa'
+WHERE rdm.id_missao IS NOT NULL OR s.id_pre_req_missao IS NULL;
