@@ -17,6 +17,12 @@ WHERE ns.id_sala = 1 AND ns.id_npc = 3;
 
 -- ========================================= SALA ===============================
 
+-- Excluir Especie da tabela especie
+DELETE FROM especie e
+WHERE e.nome = 'VILGAX';
+
+-- ========================================= SALA ===============================
+
 
 
 
