@@ -36,3 +36,50 @@ from missao m
 join pre_requisito pr on pr.id_pre_requisito = m.id_missao
 where m.id_missao = 3;
 
+
+-- ============================================= PERSONAGEM =============================================
+
+-- Verificando a capacidade do iventário
+select count(i.id_personagem) 
+from personagem p
+join inventario i on i.id_personagem = p.id_personagem
+where i.id_personagem = 3;
+
+-- Verificando todos os itens do iventário
+select i.nome_item 
+from personagem p
+join inventario i on i.id_personagem = p.id_personagem
+where i.id_personagem = 3;
+
+-- Verificando todos os aliens de um personagem
+select sda.nome_alien
+from personagem p
+join status_do_alien sda on sda.id_personagem = p.id_personagem
+where sda.id_personagem = 3;
+
+-- Nome do personagem
+select nome
+from personagem p
+where p.id_personagem = 3;
+
+-- Nivel do personagem
+select nivel
+from personagem p
+where p.id_personagem = 3;
+
+-- Saude do personagem
+select saude
+from personagem p
+where p.id_personagem = 3;
+
+-- Quantidade de moedas do personagem
+select quantidade_moedas
+from personagem p
+where p.id_personagem = 3;
+
+
+-- Recompensa relacionada a um personagem específico
+select r.*
+from personagem p
+join recompensa r on r.id_personagem = p.id_personagem
+where p.id_personagem = 3;
