@@ -15,7 +15,7 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
 
 ??? - "Primeira Versão do Diagrama Entidade Relacionamento"
 
-    A figura 1 a seguir mostra a Primeira versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+    A figura 1 a seguir mostra a primeira versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
 
     
@@ -27,7 +27,7 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
 
 ??? - "Segunda Versão do Diagrama Entidade Relacionamento"
 
-    A figura 2 a seguir mostra a Segunda versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+    A figura 2 a seguir mostra a segunda versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
 
     
