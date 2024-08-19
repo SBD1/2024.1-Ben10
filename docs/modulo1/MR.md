@@ -24,7 +24,7 @@ A figura 2 a seguir exibe o Modelo Relacional desenvolvido pelo grupo na sua ver
 
 <font size="3"><p style="text-align: center"><b>Figura 2</b> - Modelo Relacional.</p></font>
 
-![Modelo Relacional](assets/Modelo_Relacional_Atual.jpg){width: 500}
+![Modelo Relacional](assets/MR_Atual.jpg){width: 500}
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky).</p></font>
 
