@@ -51,5 +51,6 @@ docker compose up --build -d
 Depois que os contêineres estiverem em execução, você pode acessar o contêiner principal e iniciar o jogo com o seguinte comando:
 
 ```bash
+clear
 docker exec -it game /bin/bash -c "python3 -u app.py"
 ```
