@@ -9,19 +9,30 @@ O objetivo deste documento é apresentar um modelo relacional (MREL) detalhado p
 
 
 ## <a>Modelo Relacional</a>
-A figura 1 a seguir exibe o Modelo Relacional desenvolvido pelo grupo:
 
-<font size="3"><p style="text-align: center"><b>Figura 1</b> - Modelo Relacional para navegação.</p></font>
+??? - "Primeira Versão do Diagrama Entidade Relacionamento"
 
-![Modelo Relacional](assets/Modelo_Relacional.jpg){width: 500}
+    A figura 1 a seguir exibe o Modelo Relacional desenvolvido pelo grupo na sua primeira versão:
+
+    <font size="3"><p style="text-align: center"><b>Figura 1</b> - Modelo Relacional primeira versão.</p></font>
+
+    ![Modelo Relacional](assets/Modelo_Relacional.jpg){width: 500}
+
+    <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky).</p></font>
+
+A figura 2 a seguir exibe o Modelo Relacional desenvolvido pelo grupo na sua versão atual:
+
+<font size="3"><p style="text-align: center"><b>Figura 2</b> - Modelo Relacional.</p></font>
+
+![Modelo Relacional](assets/Modelo_Relacional_Atual.jpg){width: 500}
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky).</p></font>
 
-A figura 2 exibe o Modelo Relacional desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
+A figura 3 exibe o Modelo Relacional desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
 
-<font size="3"><p style="text-align: center"><b>Figura 2</b> - Modelo Relacional para navegação.</p></font>
+<font size="3"><p style="text-align: center"><b>Figura 3</b> - Modelo Relacional para navegação.</p></font>
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVKw6wS9U=/?moveToViewport=1063,-752,1750,1241&embedId=61056314889" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVKw6wS9U=/?moveToViewport=-11036,-3375,1909,1523&embedId=969142602692" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky).</p></font>
 
@@ -41,3 +52,4 @@ A figura 2 exibe o Modelo Relacional desenvolvido pelo grupo na plataforma Miro,
 | Versão| Data | Descrição  | Autor(es)  | Revisor(es) |
 | ----- |----- | ---------- | ---------- | ----------- | 
 | `1.0` | 21/07| Criando o Modelo Relacional |[Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky)| [João Artur](https://github.com/joao-artl) |
+| `1.1` | 19/08| Atualizando o Modelo Relacional com a versão 2.0 |[Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky)| [João Artur](https://github.com/joao-artl) |
