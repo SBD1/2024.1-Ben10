@@ -330,6 +330,9 @@ Nesta seção, são apresentadas as diversas instruções DDL (Data Definition L
     );
     ```
 
+<font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky).</p></font>
+
+
 
 ## <a>Referência Bibliográfica</a>
 
