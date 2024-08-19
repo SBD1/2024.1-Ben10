@@ -358,7 +358,8 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
        (3, 6, 'Jato de Fuga', 1000), 
        (4, 10, 'Campo de Força Portátil', 400),
        (1, 11, 'Campo de Força Portátil', 400);
-   ```
+    ```
+
 <font size="3"><p style="text-align: center">Fonte: [João Artur](https://github.com/joao-artl).</p></font>
 
 ??? "DELETE"
