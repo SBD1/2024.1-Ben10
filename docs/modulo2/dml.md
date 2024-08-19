@@ -364,7 +364,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 ??? "DELETE"
     #### DELETE
 
-    ```sql
+   ```sql
    -- =============================== INSTÂNCIA ====================================
    -- Excluir Alien de Status do Alien
    DELETE FROM status_do_alien a
@@ -514,7 +514,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 
    -- Depois, remove o item da tabela item
    DELETE FROM item i
-    ```
+   ```
 <font size="3"><p style="text-align: center">Fonte: [João Artur](https://github.com/joao-artl).</p></font>
 
 ??? "UPDATE"
