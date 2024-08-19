@@ -213,6 +213,40 @@ Ao todo são **36 queryes** inicialmente, podendo se adaptar de acordo com o des
     ON s.id_pre_req_missao = rdm.id_missao AND rdm.id_personagem = 2 AND rdm.status = 'completa'
     WHERE rdm.id_missao IS NOT NULL OR s.id_pre_req_missao IS NULL;
 
+
+    -- ================ MONSTRO ================
+
+    -- Consultar todas as instâncias de monstros em uma determinada sala
+    SELECT izg.id_zona_guerra, im.id_monstro, im.nome_especie, im.saude_atual
+    FROM instancia_monstro im
+    JOIN instancia_zona_guerra izg
+    ON im.id_monstro = izg.id_monstro
+    where izg.id_zona_guerra = 3;
+
+    -- Consultar dados especificos de uma espécie
+    SELECT e.*, a.*, m.*
+    FROM especie e
+    LEFT JOIN alien a
+    ON a.nome = e.nome AND e.tipo_especie = 'Alien'
+    LEFT JOIN monstro m
+    ON m.nome = e.nome AND e.tipo_especie = 'Monstro'
+    WHERE e.nome = 'Insectóide';
+
+    -- Consultar habilidades especificas de uma espécie
+    SELECT e.*, h.*
+    FROM especie e
+    LEFT JOIN habilidade h
+    ON h.nome_especie = e.nome
+    WHERE e.nome = 'Insectóide';
+
+
+    -- Monstro e Drop do item
+    SELECT m.nome, i.*
+    FROM monstro m 
+    join item i
+    ON m.id_recompensa = i.nome_item
+    where m.nome = 'Demônio';
+
     ```
 <font size="3"><p style="text-align: center">Fonte: [Eric Silveira](https://github.com/ericbky).</p></font>
 
