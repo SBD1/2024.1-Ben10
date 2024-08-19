@@ -36,6 +36,7 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 - **ITEM**
 - **ARMA**
 - **CONSUMIVEL**
+- **HABILIDADE**
 
 ### <a>Atributos</a>
 
