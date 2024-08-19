@@ -35,6 +35,7 @@ class PersonagemRepository:
                 WHERE id_personagem = %s;
             """
             cursor.execute(query, (id_personagem, id_sala))
+            self.connection.commit()
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
