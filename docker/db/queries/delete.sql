@@ -1,4 +1,4 @@
--- ========================================= INSTÂNCIA ===============================
+-- =============================== INSTÂNCIA ====================================
 -- Excluir Alien de Status do Alien
 DELETE FROM status_do_alien a
 WHERE a.id_personagem = 1 AND a.nome_alien = 'Massa Cinzenta';
@@ -15,56 +15,113 @@ WHERE zg.id_zona_guerra = 1 AND zg.id_personagem = 2 AND zg.id_monstro = 3;
 DELETE FROM instancia_npc_na_sala ns
 WHERE ns.id_sala = 1 AND ns.id_npc = 3;
 
--- ========================================= SALA ===============================
+-- ========================================= ESPÉCIE ===============================
+
+-- Excluir um Alien
+BEGIN TRANSACTION;
+
+-- Primeiro remove o alien da tabela alien
+DELETE FROM alien a
+WHERE a.nome = 'Massa Cinzenta';
+
+-- Depois, remove o alien da tabela especie
+DELETE FROM especie e
+WHERE e.nome = 'Massa Cinzenta';
+
+COMMIT;
+
+-- Excluir um Monstro
+BEGIN TRANSACTION;
+
+-- Primeiro remove o monstro da tabela monstro
+DELETE FROM monstro m
+WHERE m.nome = 'VILGAX';
+
+-- Depois, remove o alien da tabela especie
+DELETE FROM especie e
+WHERE e.nome = 'VILGAX';
+
+COMMIT;
 
 -- Excluir Especie da tabela especie
 DELETE FROM especie e
 WHERE e.nome = 'VILGAX';
 
+-- Excluir uma Habilidade
+DELETE FROM habilidade h
+WHERE h.nome_habilidade = 'Super Velocidade';
+
+
 -- ========================================= SALA ===============================
 
+-- Excluir uma Zona de Guerra
+BEGIN TRANSACTION;
 
+-- Primeiro remove a sala de zona de Guerra
+DELETE FROM zona_de_guerra
+WHERE s.id_sala = 4;
 
+-- Depois, exclui a sala
+DELETE FROM sala s
+WHERE s.id_sala = 4;
 
+COMMIT;
+
+-- Excluir uma Zona de Armadilha
+BEGIN TRANSACTION;
+
+-- Primeiro remove a sala de zona armadilha
+DELETE FROM zona_de_armadilha 
+WHERE s.id_sala = 3;
+
+-- Depois, exclui a sala
+DELETE FROM sala s
+WHERE s.id_sala = 3;
+
+COMMIT;
+
+-- Excluir sala da tabela Sala
+DELETE FROM sala s
+WHERE s.id_sala = 5;
 
 -- =========================================== MISSÃO ===================================================
 
 -- Excluir pré-requisitos da missão
-DELETE FROM pre_requisito 
-WHERE id_missao = 1 AND id_pre_requisito = 2;
+DELETE FROM pre_requisito pr
+WHERE pr.id_missao = 1 AND pr.id_pre_requisito = 2;
 
 -- Excluir registro da missão de um personagem
 DELETE FROM registro_da_missao r
 JOIN personagem p ON r.id_personagem = p.id_personagem
-WHERE id_missao = 1 AND id_personagem = 2;
+WHERE r.id_missao = 1 AND p.id_personagem = 2;
 
 -- Excluir a missão
-DELETE FROM missao 
-WHERE id_missao = 2;
+DELETE FROM missao m
+WHERE m.id_missao = 2;
 
 -- ============================================= PERSONAGEM =============================================
 
 -- Excluir item do inventário do personagem
-DELETE FROM inventario
-WHERE id_personagem = 1 AND id_item = 1;
+DELETE FROM inventario i
+WHERE i.id_personagem = 1 AND i.id_item = 1;
 
 -- Excluir o personagem
-DELETE FROM personagem 
-WHERE id_personagem = 5;
+DELETE FROM personagem p
+WHERE p.id_personagem = 5;
 
 -- =========================================== NPC ==================================
 
--- Excluir a associação do NPC com uma missão
-DELETE FROM npc 
-WHERE id_missao_associada = 2 AND id_npc = 1;
+-- Excluir um npc associado a missao
+DELETE FROM npc n
+WHERE n.id_missao_associada = 2 AND n.id_npc = 1;
 
 -- Excluir o item do Estoque do Item
-DELETE FROM estoque_do_item
-WHERE id_npc = 1 AND nome_item = 'Kit Médico';
+DELETE FROM estoque_do_item ei
+WHERE ei.id_npc = 1 AND ei.nome_item = 'Kit Médico';
 
 -- Excluir o NPC
-DELETE FROM npc 
-WHERE id_npc = 1;
+DELETE FROM npc n
+WHERE n.id_npc = 1;
 
 -- ========================================= ITEM ===============================
 
@@ -72,12 +129,12 @@ WHERE id_npc = 1;
 BEGIN TRANSACTION;
 
 -- Primeiro remove o item da tabela consumível
-DELETE FROM consumivel 
-WHERE nome_item = 'Kit Médico';
+DELETE FROM consumivel c
+WHERE c.nome_item = 'Kit Médico';
 
 -- Depois, remove o item da tabela item
-DELETE FROM item 
-WHERE nome_item = 'Kit Médico';
+DELETE FROM item i
+WHERE i.nome_item = 'Kit Médico';
 
 COMMIT;
 
@@ -85,13 +142,11 @@ COMMIT;
 BEGIN TRANSACTION;
 
 -- Primeiro remove o item da tabela arma
-DELETE FROM consumivel 
-WHERE nome_item = 'Arma Tennyson';
+DELETE FROM arma a
+WHERE c.nome_item = 'Arma Tennyson';
 
 -- Depois, remove o item da tabela item
-DELETE FROM item 
-WHERE nome_item = 'Arma Tennyson';
+DELETE FROM item i
+WHERE i.nome_item = 'Arma Tennyson';
 
 COMMIT;
-
-
