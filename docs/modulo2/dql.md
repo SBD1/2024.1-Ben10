@@ -286,6 +286,25 @@ Ao todo são **36 queryes** inicialmente, podendo se adaptar de acordo com o des
     LEFT JOIN ARMA a
     ON i.nome_item = c.nome_item AND i.tipo_item = 'Arma'
     WHERE r.nome_item = 'Kit Médico';
+
+
+    -- ================ ALIEN ================
+
+    -- Verificar o status de vida de um alien de um personagem
+    SELECT p.id_personagem, sda.nome_alien, sda.saude
+    FROM status_do_alien sda
+    join personagem p
+    on p.id_personagem = sda.id_personagem
+    where p.id_personagem = 3 and sda.nome_alien = 'XLR8';
+
+    -- Verificar os detalhes do alien dos aliens dos personagens
+    SELECT a.*
+    FROM status_do_alien sda
+    join personagem p
+    on p.id_personagem = sda.id_personagem
+    left join alien a
+    on a.nome = sda.nome_alien
+    where p.id_personagem = 3;
     ```
 <font size="3"><p style="text-align: center">Fonte: [Eric Silveira](https://github.com/ericbky).</p></font>
 
