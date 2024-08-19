@@ -13,7 +13,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 
 ## <a>Dados</a>
 
-**As operações foram divididas em 4 arquivos: Insert, Delete, Update, e Consulta. O arquivo correspondente às consultas pode ser localizado na página [DQL], enquanto os demais estão exibidos abaixo:**
+**As operações foram divididas em 4 arquivos: Insert, Delete, Update, e Consulta. O arquivo correspondente às consultas pode ser localizado na página [DQL](), enquanto os demais estão exibidos abaixo:**
 
 ??? "INSERT"
     #### INSERT
