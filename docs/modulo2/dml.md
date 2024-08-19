@@ -13,7 +13,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 
 ## <a>Dados</a>
 
-**As operações foram divididas em 4 arquivos: Insert, Delete, Update, e Consulta. O arquivo correspondente às consultas pode ser localizado na página [DQL](), enquanto os demais estão exibidos abaixo:**
+**As operações foram divididas em 4 arquivos: Insert, Delete, Update, e Select. O arquivo correspondente às consultas pode ser localizado na página [DQL](https://sbd1.github.io/2024.1-Ben10/modulo2/dql/), enquanto os demais estão exibidos abaixo:**
 
 ??? "INSERT"
     #### INSERT
@@ -359,6 +359,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
        (4, 10, 'Campo de Força Portátil', 400),
        (1, 11, 'Campo de Força Portátil', 400);
     ```
+<font size="3"><p style="text-align: center">Fonte: [João Artur](https://github.com/joao-artl).</p></font>
 
 ??? "DELETE"
     #### DELETE
@@ -366,6 +367,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
     ```sql
     DELETE
     ```
+<font size="3"><p style="text-align: center">Fonte: [João Artur](https://github.com/joao-artl).</p></font>
 
 ??? "UPDATE"
     #### UPDATE
@@ -463,6 +465,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       WHERE nome_item = 'Placa de Armadura';
       -- nome_item será recebido dinamicamente
     ```
+<font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/arthrok).</p></font>
 
 ## <a>Referência Bibliográfica</a>
 
@@ -483,4 +486,4 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 | `1.0` | 13/08 | Criando documento e adicionando introdução e referencias bibliográficas| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
 | `1.1` | 14/08 | Adicionando INSERT| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
 | `1.2` | 19/08 | Atualizando INSERT e adicionando DELETE| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
-| `1.6` | 19/08 | Adicionando UPDATE | [Arthur Alves](https://github.com/arthrok) | [João Artur](https://github.com/joao-artl)|
+| `1.3` | 19/08 | Adicionando UPDATE | [Arthur Alves](https://github.com/arthrok) | [João Artur](https://github.com/joao-artl)|
