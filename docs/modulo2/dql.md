@@ -70,6 +70,58 @@ Ao todo são **36 queryes** inicialmente, podendo se adaptar de acordo com o des
     join pre_requisito pr
     on pr.id_pre_requisito = m.id_missao
     where m.id_missao = 3;
+
+
+    -- ================ PERSONAGEM ================
+
+    -- Verificando a capacidade do iventário
+    SELECT count(i.id_personagem) 
+    FROM personagem p
+    join inventario i on i.id_personagem = p.id_personagem
+    where i.id_personagem = 3;
+
+    -- Verificando todos os itens do iventário
+    SELECT i.nome_item 
+    FROM personagem p
+    join inventario i
+    on i.id_personagem = p.id_personagem
+    where i.id_personagem = 3;
+
+    -- Verificando todos os aliens de um personagem
+    SELECT sda.nome_alien
+    FROM personagem p
+    join status_do_alien sda
+    on sda.id_personagem = p.id_personagem
+    where sda.id_personagem = 3;
+
+    -- Nome do personagem
+    SELECT nome
+    FROM personagem p
+    where p.id_personagem = 3;
+
+    -- Nivel do personagem
+    SELECT nivel
+    FROM personagem p
+    where p.id_personagem = 3;
+
+    -- Saude do personagem
+    SELECT saude
+    FROM personagem p
+    where p.id_personagem = 3;
+
+    -- Quantidade de moedas do personagem
+    SELECT quantidade_moedas
+    FROM personagem p
+    where p.id_personagem = 3;
+
+
+    -- Recompensa relacionada a um personagem específico
+    SELECT r.*
+    FROM personagem p
+    join recompensa r
+    on r.id_personagem = p.id_personagem
+    where p.id_personagem = 3;
+
     ```
 <font size="3"><p style="text-align: center">Fonte: [Eric Silveira](https://github.com/ericbky).</p></font>
 
