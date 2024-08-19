@@ -1,3 +1,32 @@
+# DDL Data Definition Language
+
+## <a>Introdução</a>
+
+Segundo Elmasri e Navathe (2011), a Data Definition Language (DDL) é um componente essencial no gerenciamento de bancos de dados, sendo responsável pela definição e estruturação do esquema de dados. A DDL permite a criação, modificação e remoção de objetos dentro de um banco de dados, como tabelas, índices, e visões. Além disso, através da DDL, é possível definir restrições e integridade referencial, garantindo que os dados sejam armazenados de maneira consistente e organizada.
+
+De acordo com Silberschatz, Korth e Sudarshan (2011), a DDL desempenha um papel crucial na especificação do layout físico e da organização lógica dos dados. Comandos como CREATE, ALTER e DROP são usados para estabelecer a arquitetura do banco de dados, que serve como a base para as operações subsequentes de manipulação de dados (DML). A DDL não apenas define a estrutura do banco de dados, mas também influencia diretamente o desempenho e a eficiência das operações de consulta e manipulação de dados, ao permitir a otimização da organização interna dos dados.
+
+A importância da DDL reside na sua capacidade de fornecer uma base sólida para a construção e manutenção de um banco de dados robusto. Através de um esquema bem definido, utilizando a DDL, os administradores de banco de dados podem assegurar que a integridade e a segurança dos dados sejam mantidas, enquanto facilitam futuras expansões ou modificações no sistema sem comprometer a consistência dos dados armazenados.
+
+## <a>Objetivo</a>
+
+Este documento tem como objetivo detalhar o uso da DDL (Data Definition Language) no contexto do projeto. Serão abordadas as principais operações de criação, alteração e exclusão de estruturas de dados, com ênfase em como essas operações são utilizadas para definir e organizar o esquema do banco de dados. O foco será em garantir que a estrutura do banco de dados seja robusta, flexível e eficiente, proporcionando uma base sólida para as operações subsequentes de manipulação de dados, mantendo a integridade e a consistência dos dados ao longo do ciclo de vida do sistema.
+
+## <a>Tabelas</a>
+
+
+Nesta seção, são apresentadas as diversas instruções DDL (Data Definition Language) utilizadas no projeto. Estão listadas cada operação de criação e outros objetos do banco de dados. Este registro serve como referência para entender o propósito de cada definição e a lógica aplicada, facilitando a manutenção, expansão e otimização do esquema do banco de dados ao longo do desenvolvimento futuro do projeto.
+
+??? "Tipos: ENUM"
+    #### Tipos: ENUM
+
+    ```sql
+    CREATE TYPE tipo_reducao_acrescimo AS ENUM ('redução', 'acréscimo');
+    CREATE TYPE tipo_status AS ENUM ('ativo', 'inativo');
+    CREATE TYPE tipo_status_missao AS ENUM ('incompleta', 'completa', 'em progresso');
+    CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura', 'paralisia', 'defesa');
+    ```
+
 ??? "Tabela: PERSONAGEM"
     #### PERSONAGEM
 
@@ -300,6 +329,13 @@
     FOREIGN KEY (id_npc) REFERENCES NPC(id_npc)
     );
     ```
+
+
+## <a>Referência Bibliográfica</a>
+
+> <a id="REF1" href="#anchor_1">1.</a> ELMASRI, Ramez; NAVATHE, Shamkant B. Sistemas de banco de dados. Tradução: Daniel Vieira. Revisão técnica: Enzo Seraphim; Thatyana de Faria Piola Seraphim. 6. ed. São Paulo: Pearson Addison Wesley, 2011. Capítulo 2 Conceitos e arquitetura do sistema de banco de dados, tópico 2.3 Linguagens e interfaces do banco de dados, páginas 24 e 25.
+
+> <a id="REF2" href="#anchor_2">2.</a> SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Database system concepts. 6. ed. New York: McGraw-Hill, 2011. Capítulo 1 Introduction, tópico 1.4.2 Data-Definition Language, páginas 12 a 13.
 
 ## <a>Bibliografia</a>
 
