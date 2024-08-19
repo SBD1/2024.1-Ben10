@@ -15,7 +15,7 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
 
 ??? - "Primeira Versão do Diagrama Entidade Relacionamento"
 
-    A figura 1 a seguir mostra a primeira versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+    A figura 1 a seguir mostra a Primeira versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
 
     
@@ -27,7 +27,7 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
 
 ??? - "Segunda Versão do Diagrama Entidade Relacionamento"
 
-    A figura 2 a seguir mostra a segunda versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+    A figura 2 a seguir mostra a Segunda versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
 
     
@@ -74,4 +74,4 @@ A figura 4 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na p
 | ----- |----- | ---------- | ---------- | ----------- | 
 | `1.0` | 20/07| Criando DER |[Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas)| [João Artur](https://github.com/joao-artl) |
 | `1.1` | 22/07| Inserindo versão 2 do DER e ajustando documento. |[Eric Silveira](https://github.com/ericbky)| [João Artur](https://github.com/joao-artl) |
-| `1.1` | 19/08| Inserindo versão 3 do DER e ajustando documento. |[João Artur](https://github.com/joao-artl)| [Eric Silveira](https://github.com/ericbky)| 
+| `1.2` | 19/08| Inserindo versão 3 do DER e ajustando documento. |[João Artur](https://github.com/joao-artl)| [Eric Silveira](https://github.com/ericbky)| 
