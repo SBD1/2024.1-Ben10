@@ -247,6 +247,45 @@ Ao todo são **36 queryes** inicialmente, podendo se adaptar de acordo com o des
     ON m.id_recompensa = i.nome_item
     where m.nome = 'Demônio';
 
+
+    -- ================ ITEM ================
+
+    -- Verificando os itens do inventário do personagem
+    SELECT i.nome_item 
+    FROM personagem p
+    join inventario i
+    on i.id_personagem = p.id_personagem
+    where i.id_personagem = 3;
+
+    -- Verificando o valor de venda do item do personagem
+    SELECT i.nome_item,  c.preco, a.preco 
+    FROM personagem p
+    left join inventario i
+    on i.id_personagem = p.id_personagem
+    left join item it
+    on it.nome_item = i.nome_item
+    left join consumivel c
+    on c.nome_item = i.nome_item and it.tipo_item = 'Consumível'
+    left join arma a
+    on a.nome_item = i.nome_item and it.tipo_item = 'Arma'
+    where p.id_personagem = 3;
+
+    -- Consultar as recompensas de uma sala específica
+    SELECT s.id_sala, r.nome_item, r.recompensa_recebida
+    FROM recompensa r
+    join sala s
+    on s.id_sala = r.id_sala
+    where s.id_sala = 3;
+
+    -- Consultar qual a recompensa em forma de item
+    SELECT r.*, c.*, a.*
+    FROM recompensa r
+    join item i on r.nome_item = i.nome_item
+    LEFT JOIN CONSUMIVEL c
+    ON i.nome_item = c.nome_item AND i.tipo_item = 'Consumível'
+    LEFT JOIN ARMA a
+    ON i.nome_item = c.nome_item AND i.tipo_item = 'Arma'
+    WHERE r.nome_item = 'Kit Médico';
     ```
 <font size="3"><p style="text-align: center">Fonte: [Eric Silveira](https://github.com/ericbky).</p></font>
 
