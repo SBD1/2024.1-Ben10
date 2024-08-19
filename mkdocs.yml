@@ -29,6 +29,7 @@ nav:
     - Módulo 2:
         - DDL: "modulo2/ddl.md"
         - DML: "modulo2/dml.md"
+        - DQL: "modulo2/dql.md"
 
 theme:
   name: material
