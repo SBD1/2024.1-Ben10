@@ -10,7 +10,7 @@ Este trabalho tem como objetivo explorar as funcionalidades da instrução **SEL
 
 Nesta seção, são apresentadas as diversas consultas **SELECT** utilizadas no projeto. Cada consulta é acompanhada por uma breve descrição, com o objetivo de documentar de forma clara e objetiva as operações realizadas. Este registro serve como referência para entender o propósito de cada consulta e a lógica aplicada, facilitando a manutenção e o desenvolvimento futuro do projeto. 
 
-Ao todo são **36 queryes** inicialmente, podendo se adaptar de acordo com o desenvolvimento do projeto e necessidades.
+Ao todo são **36 queries** inicialmente, podendo se adaptar de acordo com o desenvolvimento do projeto e necessidades.
 
 ??? "Todas as consultas"
 
@@ -314,7 +314,7 @@ Ao todo são **36 queryes** inicialmente, podendo se adaptar de acordo com o des
 
 ## <a>Bibliografia</a>
 
-> Queryes de consulta, Entrega 02, Stardew Valley. Disponível em: <https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/queries-de-consulta/docs/Entrega-02/DQL.sql>. Acesso em 15 de agosto de 2024.
+> Queries de consulta, Entrega 02, Stardew Valley. Disponível em: <https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/queries-de-consulta/docs/Entrega-02/DQL.sql>. Acesso em 15 de agosto de 2024.
 
 
 ## <a>Histórico de Versão</a>
