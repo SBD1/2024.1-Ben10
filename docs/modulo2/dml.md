@@ -515,6 +515,9 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 
       -- Depois, remove o item da tabela item
       DELETE FROM item i
+      WHERE i.nome_item = 'Arma Tennyson';
+
+      COMMIT;
     ```
 <font size="3"><p style="text-align: center">Fonte: [João Artur](https://github.com/joao-artl).</p></font>
 
