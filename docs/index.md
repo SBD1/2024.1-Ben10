@@ -27,7 +27,7 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 - Módulo 2
     - [DDL](https://sbd1.github.io/2024.1-Ben10/modulo2/ddl/)
     - [DML](https://sbd1.github.io/2024.1-Ben10/modulo2/dml/)
-
+    - [DQL](https://sbd1.github.io/2024.1-Ben10/modulo2/dql/)
 
 ## <a>Apresentações</a>
 
