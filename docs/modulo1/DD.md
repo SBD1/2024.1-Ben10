@@ -1,6 +1,14 @@
+# Dicionário de Dados
 
-# Dicionário de dados
+## <a>Introdução</a>
 
+Segundo Elmasri e Navathe, a modelagem conceitual é uma etapa essencial no desenvolvimento de uma aplicação de banco de dados bem-sucedida. Essa fase abrange o design de estruturas e restrições do banco de dados, além da criação de programas que realizam consultas e atualizações. A modelagem conceitual não apenas facilita a compreensão e o planejamento do banco de dados, mas também garante que as operações sejam eficientes e seguras.
+
+## <a>Objetivo</a>
+
+Este documento tem como objetivo detalhar as tabelas, colunas e relacionamentos do banco de dados no contexto do modelo de dados físico. Ele descreve cada entidade do sistema, suas restrições e as relações entre elas, conforme definido no processo de modelagem conceitual. A representação gráfica deste modelo pode ser visualizada no artefato de Diagrama Entidade-Relacionamento (DER), que serve como base para a implementação deste dicionário de dados.
+
+## <a>Dicionário de Dados</a>
 
 ![alien](./assets/DD/alien.png){width: 500}
 
@@ -100,9 +108,9 @@
 
 ## <a>Bibliografia</a>
 
-> Modelo Relacional, Stardew Valley. Disponível em: <https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/main/docs/Entrega-01/MREL_StardewValley_v1.0.md>. Acesso em 21 de julho de 2024.
+> Dicionário de Dados, Stardew Valley. Disponível em: <https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/main/docs/Entrega-01/MREL_StardewValley_v1.0.md>. Acesso em 19 de agosto de 2024.
 
-> Modelo Relacional, Bruvic. Disponível em: <https://github.com/SBD1/Grupo12_Bruvic/tree/main/Modulo%202%20-%20Modelo%20Relacional>. Acesso em 21 de julho de 2024.
+> Dicionário de Dados, Bruvic. Disponível em: <https://link.springer.com/referenceworkentry/10.1007/978-1-4614-8265-9_903>. Acesso em 19 de agosto de 2024.
 
 
 ## <a>Histórico de Versão</a>
