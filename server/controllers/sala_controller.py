@@ -30,7 +30,7 @@ class SalaController:
 
             # Desenhar o conteúdo de cada grupo (ID da sala)
             for sala in salas_parte:
-                id_sala = sala[0]
+                id_sala = sala['id_sala']
                 print(f"| {id_sala:^6} |", end=' ')
             print()
 
@@ -41,8 +41,8 @@ class SalaController:
         print(f"\n\nRegião: {nome_regiao}")
 
     def trocar_jogador_de_sala(self, id_personagem, id_sala):
-        permissao = self.sala_service.verificar_permissao_sala(id_personagem, id_sala)[0][0]
-        if permissao:
+        permissao = self.sala_service.verificar_permissao_sala(id_personagem, id_sala)
+        if permissao[0]['count']:
             self.personagem_service.atualizar_sala_personagem(id_personagem, id_sala)
             print(f'Você foi para a sala {id_sala}')
         else:

@@ -1,4 +1,5 @@
 from database.db import create_connection
+from utils.database_helpers import fetch_as_dict
 
 class SalaRepository:
     def __init__(self):
@@ -16,7 +17,7 @@ class SalaRepository:
                 WHERE tipo_sala = %s
             """
             cursor.execute(query, (tipo_sala,))
-            salas = cursor.fetchall()
+            salas = fetch_as_dict(cursor)
             cursor.close()
             return salas
         except Exception as e:
@@ -30,12 +31,12 @@ class SalaRepository:
         try:
             cursor = self.connection.cursor()
             query = """
-                SELECT  s.id_sala, s.nome_regiao
+                SELECT  s.id_sala
                 FROM SALA s
                 WHERE nome_regiao = %s
             """
             cursor.execute(query, (nome_regiao,))
-            salas = cursor.fetchall()
+            salas = fetch_as_dict(cursor)
             cursor.close()
             return salas
         except Exception as e:
@@ -44,7 +45,8 @@ class SalaRepository:
         
     def verificar_permissao_sala(self, id_personagem, id_sala):
         """
-        Retorna para o jogador se ele pode entrar em uma sala específica
+        Retorna um número indicando a quantidade de tuplas
+        No caso de existir tupla, ele tem os pré-requisitos pra entrar na sala
         """
         try:
             cursor = self.connection.cursor()
@@ -58,9 +60,9 @@ class SalaRepository:
                 and s.id_sala = %s
             """
             cursor.execute(query, (id_personagem, id_sala,))
-            salas = cursor.fetchall()
+            resultado = fetch_as_dict(cursor)
             cursor.close()
-            return salas
+            return resultado
         except Exception as e:
             print(f"An error occurred: {e}")
             return None

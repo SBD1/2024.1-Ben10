@@ -19,6 +19,8 @@ services:
 
   game:
     container_name: game
+    volumes:
+          - ../server:/home/app
     build:
       context: ..
       dockerfile: docker/dockerfile

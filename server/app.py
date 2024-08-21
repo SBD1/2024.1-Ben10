@@ -68,7 +68,7 @@ def main():
         else:
             print("Comando inválido. Tente novamente.")
 
-    print("Bem-vindo ao jogo!------")
+    print("Bem-vindo ao jogo!")
     listar_comandos()
 
     while True:
