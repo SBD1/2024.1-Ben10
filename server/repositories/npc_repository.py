@@ -65,24 +65,6 @@ class NpcRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
             return None
-        
-    def exibir_fala_npc_na_sala(self, id_sala):
-
-        # Verifica se há um NPC na sala com o ID especificado e exibe a fala do NPC.
-        
-        try:
-            npc = self.verificar_npc_na_sala(id_sala)  # Verifica se existe NPC na sala
-            if npc:
-                fala_npc = self.obter_fala_npc(npc)  # Pega a fala do NPC
-                if fala_npc:
-                    if fala_npc.get("textoComercio"):
-                        print(f"NPC: {fala_npc['textoComercio']}")
-                    if fala_npc.get("textoMissao"):
-                        print(f"NPC: {fala_npc['textoMissao']}")
-            else:
-                print(f"A sala parece estar vazia.")
-        except Exception as e:
-            print(f"Ocorreu um erro: {e}")
 
     def close(self):
         
