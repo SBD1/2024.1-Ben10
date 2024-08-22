@@ -16,7 +16,7 @@ def verificar_npc_na_sala(id_sala):
         npc = cursor.fetchone()  # Pega o npc associado a sala
         cursor.close()
         connection.close()
-        return npc  # Retorna o NPC ou None caso não exista
+        return npc[0] # Retorna o NPC ou None caso não exista
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
