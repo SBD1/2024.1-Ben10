@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2 import OperationalError
 
-def create_connection():
+def create_connection(silent=False):
     try:
         connection = psycopg2.connect(
             host="postgres",  # Usar 'localhost' se testar localmente, 'postgres' se testar com Docker
@@ -10,7 +10,8 @@ def create_connection():
             user="postgres_trabalho_ben10",
             password="1234"
         )
-        print("Connection to PostgreSQL DB successful")
+        if not silent:
+            print("Connection to PostgreSQL DB successful")
         return connection
     except OperationalError as e:
         print(f"The error '{e}' occurred")
