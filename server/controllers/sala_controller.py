@@ -41,9 +41,4 @@ class SalaController:
         print(f"\n\nRegião: {nome_regiao}")
 
     def trocar_jogador_de_sala(self, id_personagem, id_sala):
-        permissao = self.sala_service.verificar_permissao_sala(id_personagem, id_sala)
-        if permissao[0]['count']:
-            self.personagem_service.atualizar_sala_personagem(id_personagem, id_sala)
-            print(f'Você foi para a sala {id_sala}')
-        else:
-            print('troca de sala não permitida')
+        return self.personagem_service.trocar_jogador_de_sala(id_personagem, id_sala)
