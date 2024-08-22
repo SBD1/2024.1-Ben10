@@ -5,7 +5,9 @@ class NpcRepository:
         self.connection = create_connection(silent=True)
 
     def verificar_npc_na_sala(self, id_sala):
-        # Retorna o NPC atrelado à sala com o ID especificado.
+        """
+        Retorna o NPC atrelado à sala com o ID especificado.
+        """
         try:
             cursor = self.connection.cursor()
             query = """
@@ -22,7 +24,9 @@ class NpcRepository:
             return None
 
     def obter_texto_missao(self, id_missao):
-        # Obtém o texto da missão baseado no ID da missão.
+        """
+        Obtém o texto da missão baseado no ID da missão.
+        """
         try:
             cursor = self.connection.cursor()
             query = """
@@ -39,7 +43,9 @@ class NpcRepository:
             return None
 
     def obter_fala_npc(self, id_npc):
-        # Obtém a fala do NPC com base no ID do NPC.
+        """
+        Obtém a fala do NPC com base no ID do NPC.
+        """
         try:
             cursor = self.connection.cursor()
             query = """
@@ -67,8 +73,8 @@ class NpcRepository:
             return None
 
     def close(self):
-        
-        #Fecha a conexão com o banco de dados.
-        
+        """
+        Fecha a conexão com o banco de dados.
+        """
         if self.connection:
             self.connection.close()
