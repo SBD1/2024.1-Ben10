@@ -1,4 +1,5 @@
 from database.db import create_connection
+from utils.database_helpers import fetch_as_dict
 
 class PersonagemRepository:
     def __init__(self):

@@ -95,7 +95,7 @@ CREATE TABLE STATUS_DO_ALIEN (
 );
 
 CREATE TABLE INSTANCIA_MONSTRO (
-    id_monstro INT PRIMARY KEY,
+    id_monstro SERIAL PRIMARY KEY,
     nome_especie VARCHAR(30),
     saude_atual INT NOT NULL,
     FOREIGN KEY (nome_especie) REFERENCES ESPECIE(nome)
