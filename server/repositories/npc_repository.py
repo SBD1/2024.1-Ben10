@@ -12,7 +12,7 @@ def verificar_npc_na_sala(id_sala):
             FROM INSTANCIA_NPC_NA_SALA
             WHERE id_sala = %s
         """
-        cursor.execute(query, id_sala)
+        cursor.execute(query, (id_sala,))
         npc = cursor.fetchone()  # Pega o npc associado a sala
         cursor.close()
         connection.close()
@@ -20,3 +20,4 @@ def verificar_npc_na_sala(id_sala):
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
+
