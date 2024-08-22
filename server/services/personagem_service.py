@@ -1,6 +1,6 @@
 from repositories.personagem_repository import PersonagemRepository
 from services.sala_service import SalaService
-from repositories.npc_repository import verificar_npc_na_sala
+from repositories.npc_repository import *
 
 class PersonagemService:
     def __init__(self):
@@ -17,8 +17,14 @@ class PersonagemService:
             print(f'Você foi para a sala {id_sala}')
             npc = verificar_npc_na_sala(id_sala) # verifica se existe npc na sala
             if npc:
-                print(f"NPC encontrado na sala {id_sala}: {npc}")
+                fala_npc = obter_fala_npc(npc) # pega fala do npc
+                if fala_npc:
+                    if fala_npc["textoComercio"]:
+                        print(f"NPC: {fala_npc['textoComercio']}")
+                if fala_npc["textoMissao"]:
+                    print(f"NPC: {fala_npc['textoMissao']}")
             else:
-                print(f"Não há NPC na sala com ID {id_sala}.")
+                print(f"A sala parece estar vazia.")
         else:
             print('troca de sala não permitida')
+        
