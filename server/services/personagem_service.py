@@ -1,11 +1,12 @@
 from repositories.personagem_repository import PersonagemRepository
 from services.sala_service import SalaService
-from repositories.npc_repository import *
+from repositories.npc_repository import NpcRepository
 
 class PersonagemService:
     def __init__(self):
         self.personagem_repository = PersonagemRepository()
         self.sala_service = SalaService()
+        self.npc_repository = NpcRepository()
     
     def atualizar_sala_personagem(self, id_personagem, id_sala):
         return self.personagem_repository.atualizar_sala_personagem(id_personagem, id_sala)
@@ -15,16 +16,7 @@ class PersonagemService:
         if permissao[0]['count']:
             self.atualizar_sala_personagem(id_personagem, id_sala)
             print(f'Você foi para a sala {id_sala}')
-            npc = verificar_npc_na_sala(id_sala) # verifica se existe npc na sala
-            if npc:
-                fala_npc = obter_fala_npc(npc) # pega fala do npc
-                if fala_npc:
-                    if fala_npc["textoComercio"]:
-                        print(f"NPC: {fala_npc['textoComercio']}")
-                if fala_npc["textoMissao"]:
-                    print(f"NPC: {fala_npc['textoMissao']}")
-            else:
-                print(f"A sala parece estar vazia.")
+            self.npc_repository.exibir_fala_npc_na_sala(id_sala)
         else:
             print('troca de sala não permitida')
         
