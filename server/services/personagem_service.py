@@ -1,12 +1,12 @@
 from repositories.personagem_repository import PersonagemRepository
 from services.sala_service import SalaService
-from repositories.npc_repository import NpcRepository
+from services.npc_service import NpcService
 
 class PersonagemService:
     def __init__(self):
         self.personagem_repository = PersonagemRepository()
         self.sala_service = SalaService()
-        self.npc_repository = NpcRepository()
+        self.npc_repository = NpcService()
     
     def atualizar_sala_personagem(self, id_personagem, id_sala):
         return self.personagem_repository.atualizar_sala_personagem(id_personagem, id_sala)
