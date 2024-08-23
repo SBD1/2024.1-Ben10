@@ -310,10 +310,10 @@ VALUES ('Chama',150, 1),
 
 -- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO
 INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
-VALUES (1, 'Humano Hipnotizado', 80),
-       (2, 'Servo', 75),
-       (3, 'Demônio', 50),
-       (4, 'Soldado de Elite', 250);
+VALUES (DEFAULT, 'Humano Hipnotizado', 80),
+       (DEFAULT, 'Servo', 75),
+       (DEFAULT, 'Demônio', 50),
+       (DEFAULT, 'Soldado de Elite', 250);
 
 -- Inserir dados da zona de guerra na tabela INSTANCIA_ZONA_GUERRA
 INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 

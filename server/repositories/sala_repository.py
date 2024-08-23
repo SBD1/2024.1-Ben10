@@ -67,6 +67,41 @@ class SalaRepository:
             print(f"An error occurred: {e}")
             return None
 
+    def verificar_zona_guerra(self, id_sala):
+        """
+        Retorna 1 quando a sala for uma zona de guerra
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT COUNT(*)
+                FROM SALA
+                WHERE id_sala = %s and tipo_sala = 'Zona de Guerra';
+            """
+            cursor.execute(query, (id_sala))
+            resposta = fetch_as_dict(cursor)
+            cursor.close()
+            return resposta
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def verificar_instancia_zona_guerra(self, id_personagem, id_zona_guerra):
+        """
+        Retorna a tupla do personagem em uma zona de guerra específica
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT *
+                FROM INSTANCIA_ZONA_GUERRA
+                WHERE id_personagem = %s and id_zona_guerra = %s;
+            """
+            cursor.execute(query, (id_personagem, id_zona_guerra))
+            resposta = fetch_as_dict(cursor)
+            cursor.close()
+            return resposta
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
     def close(self):
         """
