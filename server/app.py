@@ -22,9 +22,9 @@ def main():
                 'executar': lambda _: sala_controller.desenhar_mapa_regiao('regiao_atual')  # Placeholder
             },
             'regiao': {
-                'argumento': 'nome_regiao',
-                'descrição': 'comando para ver o mapa de uma determinada região',
-                'executar': lambda nome_regiao: sala_controller.desenhar_mapa_regiao(nome_regiao)
+                'argumento': 'id_regiao',
+                'descrição': 'comando para ver o mapa de uma determinada região. Selecione o ID da região, execute o comando \"mapa listar\" para conhecer todas as regiões',
+                'executar': lambda id_regiao: sala_controller.desenhar_mapa_regiao(id_regiao)
             },
             'listar': {
                 'descrição': 'comando para listar todas as regiões.',
