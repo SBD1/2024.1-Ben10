@@ -25,6 +25,11 @@ def main():
                 'argumento': 'nome_regiao',
                 'descrição': 'comando para ver o mapa de uma determinada região',
                 'executar': lambda nome_regiao: sala_controller.desenhar_mapa_regiao(nome_regiao)
+            },
+            'listar': {
+                'argumento': 'lugar',
+                'descrição': 'comando para listar os nomes de sala ou região. Argumentos permitidos sala ou regiao',
+                'executar': lambda lugar: sala_controller.listar(lugar)
             }
         }
     }
