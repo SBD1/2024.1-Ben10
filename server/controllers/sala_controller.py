@@ -11,11 +11,14 @@ class SalaController:
         if tipo == 'regiao' or tipo == 'região':
             print("Eis as regiões existentes:")
             lista_regioes = self.sala_service.obter_todas_regioes()
+
             if isinstance(lista_regioes,list):
                 for counter in range(len(lista_regioes)):
-                    print(f"{counter + 1} - {lista_regioes[counter]}")
-                # listar
-            print()
+                    nome_regiao = lista_regioes[counter].get('nome_regiao')
+                    descricao = lista_regioes[counter].get('descricao')
+
+                    print(f"ID: {counter + 1}\nNome: {nome_regiao}\nDescrição: {descricao}")
+                    print("=")
 
         elif tipo  == 'sala':
             print("Eis as salas existentes:")
