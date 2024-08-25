@@ -6,21 +6,19 @@ class SalaController:
         self.sala_service = SalaService()
         self.personagem_service = PersonagemService()
     
-    def listar(self,tipo : str):
-        tipo = tipo.strip()
-        if tipo == 'regiao' or tipo == 'região':
-            print("Eis as regiões existentes:")
-            lista_regioes = self.sala_service.obter_todas_regioes()
+    # Listar a região
+    def listar(self):
+        print("Eis as regiões existentes:")
+        lista_regioes = self.sala_service.obter_todas_regioes()
 
-            if isinstance(lista_regioes,list):
-                for counter in range(len(lista_regioes)):
-                    nome_regiao = lista_regioes[counter].get('nome_regiao')
-                    descricao = lista_regioes[counter].get('descricao')
+        if isinstance(lista_regioes,list):
+            for counter in range(len(lista_regioes)):
+                nome_regiao = lista_regioes[counter].get('nome_regiao')
+                descricao = lista_regioes[counter].get('descricao')
 
-                    print(f"ID: {counter + 1}\nNome: {nome_regiao}\nDescrição: {descricao}")
-                    print("=")
-        else:
-            print("Tipo de lugar não reconhecido. Os tipos permitidos são : sala ou regiao")
+                print(f"ID: {counter + 1}\nNome: {nome_regiao}\nDescrição: {descricao}")
+                print("=")
+       
 
     # apresentar todas as regiões
     def desenhar_mapa_regiao(self, nome_regiao):
