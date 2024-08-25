@@ -19,11 +19,6 @@ class SalaController:
 
                     print(f"ID: {counter + 1}\nNome: {nome_regiao}\nDescrição: {descricao}")
                     print("=")
-
-        elif tipo  == 'sala':
-            print("Eis as salas existentes:")
-            # listar
-            
         else:
             print("Tipo de lugar não reconhecido. Os tipos permitidos são : sala ou regiao")
 
