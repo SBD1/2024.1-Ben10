@@ -33,7 +33,7 @@ class SalaController:
         if self.get_regiao() == UNSET:
             print("Não existe nenhum mapa selecionado. Escreva \"mapa listar\" para listar as regiões.")
         else:
-            self.desenhar_mapa_regiao(str(self.get_regiao()))
+            self.desdesenhar_mapa_regiaoenhar_mapa_regiao(str(self.get_regiao()))
 
     # apresentar todas as regiões
     def desenhar_mapa_regiao(self, id_regiao : str):
