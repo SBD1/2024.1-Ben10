@@ -22,6 +22,34 @@ class PersonagemRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
 
+    def exibir_personagem(self, id_personagem):
+
+        result = []
+
+        try:
+            cursor = self.connection.cursor()
+            query =  """
+            SELECT p.*
+            FROM personagem p
+            WHERE p.id_personagem = %s;
+            """
+            
+            cursor.execute(query, (id_personagem,))
+            dados = cursor.fetchall()
+            cursor.close()
+
+            for row in dados:
+                result.append(row)
+
+            if result:
+                return result
+            else:
+                return None
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
+
     def close(self):
         """
         Fecha a conexão com o banco de dados.
