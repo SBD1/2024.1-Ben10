@@ -19,7 +19,7 @@ def main():
         'mapa': {
             'atual': {
                 'descrição': 'comando para ver o mapa da região atual',
-                'executar': lambda _: sala_controller.desenhar_mapa_regiao('regiao_atual')  # Placeholder
+                'executar': lambda _: sala_controller.desenhar_mapa_regiao_atual()
             },
             'regiao': {
                 'argumento': 'id_regiao',
