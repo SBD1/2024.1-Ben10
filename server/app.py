@@ -1,7 +1,10 @@
 from controllers.sala_controller import SalaController
+from controllers.personagem_controller import PersonagemController
+import os
 
 def main():
     sala_controller = SalaController()
+    personagem_controller = PersonagemController()
 
     GLOBAL_SETS = {
         'id_personagem': 2
@@ -9,6 +12,12 @@ def main():
 
 
     lista_comandos = {
+        'personagem': {
+            'exibir': {
+                'descrição': 'comando para exibir informações sobre o seu personagem no jogo',
+                'executar': lambda _: personagem_controller.exibirPersonagem(GLOBAL_SETS['id_personagem'])
+            }
+        },
         'sala': {
             'trocar': {
                 'argumento': 'id_sala',
@@ -71,6 +80,8 @@ def main():
                 print("Subcomando inválido. Use '-h' para ver os comandos disponíveis.")
         else:
             print("Comando inválido. Tente novamente.")
+
+    os.system('clear')
 
     print("Bem-vindo ao jogo!")
     listar_comandos()
