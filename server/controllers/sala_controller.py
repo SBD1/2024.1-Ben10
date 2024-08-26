@@ -1,11 +1,21 @@
 from services.sala_service import SalaService
 from services.personagem_service import PersonagemService
 
+# Constante para definir que uma determinada variável não possui valor definido
+UNSET = -1
+
 class SalaController:
     def __init__(self):
         self.sala_service = SalaService()
+        self.id_regiao_selecionada = UNSET
         self.personagem_service = PersonagemService()
     
+    def set_regiao(self, id_regiao : int) -> None:
+        self.id_regiao_selecionada = id_regiao
+     
+    def get_regiao(self) -> int:
+        return self.id_regiao_selecionada
+
     # Listar a região
     def listar(self):
         print("Eis as regiões existentes:")
@@ -19,9 +29,18 @@ class SalaController:
                 print(f"ID: {counter + 1}\nNome: {nome_regiao}\nDescrição: {descricao}")
                 print("=")
        
+    def desenhar_mapa_regiao_atual(self) -> None:
+        if self.get_regiao() == UNSET:
+            print("Não existe nenhum mapa selecionado. Escreva \"mapa listar\" para listar as regiões.")
+        else:
+            self.desenhar_mapa_regiao(str(self.get_regiao()))
 
     # apresentar todas as regiões
     def desenhar_mapa_regiao(self, id_regiao : str):
+        
+        if self.get_regiao() == UNSET or self.get_regiao() != int(id_regiao):
+             self.set_regiao(int(id_regiao))
+
         lista_regioes = self.sala_service.obter_todas_regioes()
         size = len(lista_regioes)
         indice = int(id_regiao)
