@@ -6,6 +6,7 @@ class PersonagemRepository:
         self.connection = create_connection()
 
     def atualizar_sala_personagem(self, id_personagem, id_sala):
+        print(id_personagem, id_sala)
         """
         Atualiza a sala em que o personagem está
         """
@@ -16,7 +17,7 @@ class PersonagemRepository:
                 SET id_sala = %s
                 WHERE id_personagem = %s;
             """
-            cursor.execute(query, (id_personagem, id_sala))
+            cursor.execute(query, (id_sala, id_personagem))
             self.connection.commit()
             cursor.close()
         except Exception as e:
