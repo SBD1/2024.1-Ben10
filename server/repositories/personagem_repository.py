@@ -103,8 +103,37 @@ class PersonagemRepository:
 
             self.connection.commit()
 
+            cursor.close()
+
             return id_personagem_criado
 
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
+        
+    def exibir_inventario(self, id_personagem):
+
+        itens = []
+
+        try:
+            cursor = self.connection.cursor()
+
+            query_inventario = """
+
+            SELECT i.*
+            FROM inventario i
+            WHERE i.id_personagem = %s
+
+            """
+
+            cursor.execute(query_inventario, (id_personagem,))
+
+            itens = cursor.fetchall()
+
+            cursor.close()
+
+            return itens
+        
         except Exception as e:
             print(f"An error occurred: {e}")
             return None

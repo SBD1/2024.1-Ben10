@@ -17,7 +17,11 @@ def main():
         'personagem': {
             'exibir': {
                 'descrição': 'comando para exibir informações sobre o seu personagem no jogo',
-                'executar': lambda _: personagem_controller.exibirPersonagem(GLOBAL_SETS['id_personagem'], 'S')
+                'executar': lambda _: personagem_controller.exibir_personagem(GLOBAL_SETS['id_personagem'], 'S')
+            },
+            'inventario': {
+                'descrição': 'comando para exibir informações sobre os itens do seu personagem no jogo',
+                'executar': lambda _: personagem_controller.exibir_inventario(GLOBAL_SETS['id_personagem'])
             }
         },
         'sala': {
@@ -108,11 +112,11 @@ def main():
             if confirmacao == 'S' or confirmacao == 's':
                     id_personagem_atual = input("Digite o ID do seu personagem para que possamos achá-lo no nosso sistema:")
 
-                    if personagem_controller.exibirPersonagem(id_personagem_atual, 'N') == None:
+                    if personagem_controller.exibir_personagem(id_personagem_atual, 'N') == None:
                         condicao = False
                         print('ID não encontrado, por favor, digite novamente!')
                     else:
-                        personagem_controller.exibirPersonagem(id_personagem_atual, 'S')
+                        personagem_controller.exibir_personagem(id_personagem_atual, 'S')
                         GLOBAL_SETS['id_personagem'] = id_personagem_atual
                         condicao = True
             elif confirmacao == 'N' or confirmacao == 'n':

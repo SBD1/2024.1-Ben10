@@ -2,7 +2,7 @@ from repositories.personagem_repository import PersonagemRepository
 from services.sala_service import SalaService
 from services.npc_service import NpcService
 from services.monstro_service import MonstroService
-import pandas as pd
+import os
 
 
 class PersonagemService:
@@ -48,3 +48,18 @@ class PersonagemService:
         id_personage_criado = self.personagem_repository.criar_personagem(personagem, alien)
         self.exibir_personagem(id_personage_criado, 'S')
         return id_personage_criado
+    
+    def exibir_inventario(self, id_personagem):
+        itens = self.personagem_repository.exibir_inventario(id_personagem)
+
+        nome_itens = [item[2] for item in itens]
+
+
+        os.system('clear')
+        print(f"\n-----------------------------------------------")
+        print('-------------Itens do iventário----------------\n')
+
+        for row in nome_itens:
+            print(row)
+
+        print(f"\n-----------------------------------------------")
