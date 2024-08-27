@@ -75,7 +75,7 @@ CREATE TABLE SALA (
 );
 
 CREATE TABLE PERSONAGEM (
-    id_personagem INT PRIMARY KEY,
+    id_personagem SERIAL PRIMARY KEY,
     quantidade_moedas INT NOT NULL,
     nome_alien VARCHAR(30),
     nome VARCHAR(30) NOT NULL,

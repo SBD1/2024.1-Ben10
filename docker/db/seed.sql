@@ -279,10 +279,10 @@ VALUES ('Kit Médico', 6, 5000),
 
 -- Inserir personagens na tabela PERSONAGEM
 INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-VALUES (1, 5000, 'Chama', 'Ben', 3, 350, 10),
-       (2, 500, 'Ultra T', 'Max', 1, 100, 1),
-       (3, 500, 'XLR8', 'Kevin', 1, 100, 1),
-       (4, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
+VALUES (DEFAULT, 5000, 'Chama', 'Ben', 3, 350, 10),
+       (DEFAULT, 500, 'Ultra T', 'Max', 1, 100, 1),
+       (DEFAULT, 500, 'XLR8', 'Kevin', 1, 100, 1),
+       (DEFAULT, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
 
 -- Inserir registros de missões na tabela REGISTRO_DA_MISSAO
 INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status) 
