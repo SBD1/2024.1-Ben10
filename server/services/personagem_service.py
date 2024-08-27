@@ -25,20 +25,26 @@ class PersonagemService:
         else:
             print('troca de sala não permitida')
 
-    def exibir_personagem(self, id_personagem):
+    def exibir_personagem(self, id_personagem, infos):
         dados_personagem = self.personagem_repository.exibir_personagem(id_personagem)
 
-        print(f"\n\n--------------------------------------------------\n")
+        if infos == 'S':
+            print(f"\n-----------------------------------------------\n")
 
-        for personagem in dados_personagem:
-            print(f" ID do seu personagem: {personagem[0]}")
-            print(f" Quantidade de moedas do personagem: {personagem[1]}")
-            print(f" Nome do Alien atual do personagem: {personagem[2]}")
-            print(f" Nome do personagem: {personagem[3]}")
-            print(f" ID da sala atual do personagem: {personagem[4]}")
-            print(f" Saúde do personagem: {personagem[5]}")
-            print(f" Nível do personagem atual: {personagem[6]}")
+            for personagem in dados_personagem:
+                print(f" ID do seu personagem: {personagem[0]}")
+                print(f" Quantidade de moedas do personagem: {personagem[1]}")
+                print(f" Nome do Alien atual do personagem: {personagem[2]}")
+                print(f" Nome do personagem: {personagem[3]}")
+                print(f" ID da sala atual do personagem: {personagem[4]}")
+                print(f" Saúde do personagem: {personagem[5]}")
+                print(f" Nível do personagem atual: {personagem[6]}")
 
-        print(f"\n--------------------------------------------------")
+            print(f"\n-----------------------------------------------")
 
         return dados_personagem
+    
+    def criar_personagem(self, personagem, alien):
+        id_personage_criado = self.personagem_repository.criar_personagem(personagem, alien)
+        self.exibir_personagem(id_personage_criado, 'S')
+        return id_personage_criado

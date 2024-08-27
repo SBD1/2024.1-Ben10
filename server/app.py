@@ -3,11 +3,13 @@ from controllers.personagem_controller import PersonagemController
 import os
 
 def main():
+    global GLOBAL_SETS 
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
 
+
     GLOBAL_SETS = {
-        'id_personagem': 2
+        'id_personagem': None
     }
 
 
@@ -15,7 +17,7 @@ def main():
         'personagem': {
             'exibir': {
                 'descrição': 'comando para exibir informações sobre o seu personagem no jogo',
-                'executar': lambda _: personagem_controller.exibirPersonagem(GLOBAL_SETS['id_personagem'])
+                'executar': lambda _: personagem_controller.exibirPersonagem(GLOBAL_SETS['id_personagem'], 'S')
             }
         },
         'sala': {
@@ -41,6 +43,96 @@ def main():
             }
         }
     }
+
+    def criar_personagem():
+        global GLOBAL_SETS
+        id_personagem_atual = 0
+        verificacao = False
+        personagem = 0
+        alien = 0
+
+        aliens = {
+        1: 'Quatro',
+        2: 'Braços',
+        3: 'XLR8',
+        4: 'Chama',
+        5: 'Diamante',
+        6: 'Besta',
+        7: 'Insectóide',
+        8: 'Fantasmático',
+        9: 'Ultra T',
+        10: 'Massa Cinzenta',
+        11: 'Aquático',
+        12: 'Vilgax'}
+
+        personagens = {
+            1: 'Ben', 
+            2: 'Kevin', 
+            3: 'Gwen', 
+            4: 'Max'}
+
+        print('Esses são nossos personagens disponíveis! Escolha um deles: (Digite o numero)')
+
+        while verificacao == False:
+            for key, value in personagens.items():
+                print(f"{key} - {value}")
+
+            personagem = int(input(''))
+            if personagem <= 0 or personagem > 4:
+                personagem = 0
+                os.system('clear')
+                print('Por favor insira um número válido')
+            else:
+                verificacao = True
+
+        verificacao = False
+
+        print('\nAgora esses são nossos Aliens disponíveis! Escolha um deles de forma sábia! (Digite o numero)')
+
+        while verificacao == False:
+            for key, value in aliens.items():
+                print(f"{key} - {value}")
+
+            alien = int(input(''))
+            if alien <= 0 or alien > 12:
+                alien = 0
+                os.system('clear')
+                print('Por favor insira um número válido')
+            else:
+                verificacao = True
+
+        GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagens[personagem], aliens[alien])
+
+
+
+    def personagem():
+        global GLOBAL_SETS
+        id_personagem_atual = 0
+        condicao = 0
+        
+        while condicao == False:
+
+            confirmacao = input("Você já possui um personagem? (S / N):\n")
+
+            if confirmacao == 'S' or confirmacao == 's':
+                    id_personagem_atual = input("Digite o ID do seu personagem para que possamos achá-lo no nosso sistema:")
+
+                    if personagem_controller.exibirPersonagem(id_personagem_atual, 'N') == None:
+                        condicao = False
+                        print('ID não encontrado, por favor, digite novamente!')
+                    else:
+                        personagem_controller.exibirPersonagem(id_personagem_atual, 'N')
+                        GLOBAL_SETS['id_personagem'] = id_personagem_atual
+                        condicao = True
+            elif confirmacao == 'N' or confirmacao == 'n':
+                os.system('clear')
+                print('Ok, não se preocupe!\nVamos criar seu personagem...\n')
+                criar_personagem()
+                condicao = True
+            
+            else:
+                os.system('clear')
+                print('Digite um valor válido!')
 
     def listar_comandos():
         print("\nComandos disponíveis:")
@@ -84,9 +176,13 @@ def main():
     os.system('clear')
 
     print("Bem-vindo ao jogo!")
+
+    personagem()
+
     listar_comandos()
 
     while True:
+        listar_comandos()
         comando = input("\nDigite um comando: ")
         executar_comando(comando)
 
