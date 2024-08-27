@@ -52,36 +52,27 @@ def main():
         alien = 0
 
         aliens = {
-        1: 'Quatro',
-        2: 'Braços',
-        3: 'XLR8',
-        4: 'Chama',
-        5: 'Diamante',
-        6: 'Besta',
-        7: 'Insectóide',
-        8: 'Fantasmático',
-        9: 'Ultra T',
-        10: 'Massa Cinzenta',
-        11: 'Aquático',
-        12: 'Vilgax'}
+        1: 'Quatro Braços',
+        2: 'XLR8',
+        3: 'Chama',
+        4: 'Diamante',
+        5: 'Besta',
+        6: 'Insectóide',
+        7: 'Fantasmático',
+        8: 'Ultra T',
+        9: 'Massa Cinzenta',
+        10: 'Aquático',
+        11: 'Vilgax'}
 
-        personagens = {
-            1: 'Ben', 
-            2: 'Kevin', 
-            3: 'Gwen', 
-            4: 'Max'}
-
-        print('Esses são nossos personagens disponíveis! Escolha um deles: (Digite o numero)')
+        print('Digite o nome que deseja ser chamado no jogo:')
 
         while verificacao == False:
-            for key, value in personagens.items():
-                print(f"{key} - {value}")
 
-            personagem = int(input(''))
-            if personagem <= 0 or personagem > 4:
-                personagem = 0
+            personagem = input('')
+            if len(personagem) <= 2:
+                personagem = ''
                 os.system('clear')
-                print('Por favor insira um número válido')
+                print('Por favor insira um nome válido')
             else:
                 verificacao = True
 
@@ -101,7 +92,7 @@ def main():
             else:
                 verificacao = True
 
-        GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagens[personagem], aliens[alien])
+        GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
 
 
 
@@ -121,7 +112,7 @@ def main():
                         condicao = False
                         print('ID não encontrado, por favor, digite novamente!')
                     else:
-                        personagem_controller.exibirPersonagem(id_personagem_atual, 'N')
+                        personagem_controller.exibirPersonagem(id_personagem_atual, 'S')
                         GLOBAL_SETS['id_personagem'] = id_personagem_atual
                         condicao = True
             elif confirmacao == 'N' or confirmacao == 'n':

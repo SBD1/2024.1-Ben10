@@ -56,33 +56,54 @@ class PersonagemRepository:
         try:
             cursor = self.connection.cursor()
 
-            query_id = """
-                SELECT COUNT(p.*)
-                FROM PERSONAGEM p;
-            """
-
-            cursor.execute(query_id)
-
-            qtd = cursor.fetchone()[0] # vai definir o id no banco, de acordo com a quantidade de personagens
-
             insert = """
                 INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-                VALUES (%s, 1000, %s, %s, 1, 100, 1);
+                VALUES (DEFAULT, 1000, %s, %s, 1, 100, 1)
+                RETURNING id_personagem;
             """
 
-            cursor.execute(insert, (qtd+1, alien, personagem,))
+            cursor.execute(insert, (alien, personagem,))
+
+            id_personagem_criado = cursor.fetchone()[0]
 
             self.connection.commit()
-            cursor.close()
-
-            cursor.close()
 
             os.system('clear')
 
-            print(f'\n O ID do seu personagem é o número: {qtd+1}')
+            print(f'\n O ID do seu personagem é o número: {id_personagem_criado}')
             print(f'\n Guarde-o para entrar das próximas vezes!\n')
 
-            return qtd+1
+            query_inventario = """
+            INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
+            VALUES (%s, 1, 'Kit Médico'),
+                (%s, 2, 'Placa de Armadura');
+            """
+
+            cursor.execute(query_inventario, (id_personagem_criado, id_personagem_criado,))
+
+            self.connection.commit()
+
+            query_alien = """
+            SELECT a.*
+            FROM alien a
+            WHERE a.nome = %s;
+            """
+
+            cursor.execute(query_alien, (alien,))
+
+            vida_alien = cursor.fetchone()[2]
+
+            print(f"vida alien ---------------- {vida_alien}")
+
+            query_status_alien = """
+            INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
+            VALUES (%s, %s, %s);
+            """
+            cursor.execute(query_status_alien, (alien, vida_alien, id_personagem_criado,))
+
+            self.connection.commit()
+
+            return id_personagem_criado
 
         except Exception as e:
             print(f"An error occurred: {e}")
