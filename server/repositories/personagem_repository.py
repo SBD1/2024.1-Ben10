@@ -93,8 +93,6 @@ class PersonagemRepository:
 
             vida_alien = cursor.fetchone()[2]
 
-            print(f"vida alien ---------------- {vida_alien}")
-
             query_status_alien = """
             INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
             VALUES (%s, %s, %s);
