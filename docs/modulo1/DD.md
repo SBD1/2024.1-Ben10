@@ -2,7 +2,7 @@
 
 ## <a>Introdução</a>
 
-Segundo Elmasri e Navathe, a modelagem conceitual é uma etapa essencial no desenvolvimento de uma aplicação de banco de dados bem-sucedida. Essa fase abrange o design de estruturas e restrições do banco de dados, além da criação de programas que realizam consultas e atualizações. A modelagem conceitual não apenas facilita a compreensão e o planejamento do banco de dados, mas também garante que as operações sejam eficientes e seguras.
+Segundo Elmasri e Navathe, a modelagem conceitual é uma etapa essencial no desenvolvimento de uma aplicação de banco de dados bem-sucedida. Essa fase abrange o design de estruturas e restrições do banco de dados, além da criação de programas que realizam consultas e atualizações. A modelagem conceitual não apenas facilita a compreensão e o planejamento do banco de dados, mas também garante que as operações sejam eficientes e seguras.<a id="anchor_1" href="#REF1">^1^</a>
 
 ## <a>Objetivo</a>
 
@@ -118,3 +118,4 @@ Este documento tem como objetivo detalhar as tabelas, colunas e relacionamentos 
 | Versão| Data | Descrição  | Autor(es)  | Revisor(es) |
 | ----- |----- | ---------- | ---------- | ----------- | 
 | `1.0` | 18/08| Inserindo o Dicionário de Dados |[Arthur Alves](https://github.com/Arthrok) e [Eric Silveira](https://github.com/ericbky)| [João Artur](https://github.com/joao-artl) |
+| `1.1` | 28/08| Corrigindo Referências Bibliográficas |[João Artur](https://github.com/joao-artl)| [Arthur Alves](https://github.com/Arthrok) |
