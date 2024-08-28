@@ -40,7 +40,7 @@ Este documento tem como objetivo detalhar a Álgebra Relacional utilizada nas pr
 
 ```π quantidade_moedas (σ p.id_personagem = 3 (personagem))```
 
-### <a>8. Recompensa relacionada a um personagem específico</a>
+### <a>8. Verificar recompensa relacionada a um personagem específico</a>
 
 ```π r.* (σ p.id_personagem = 3 (personagem ⨝ recompensa (personagem.id_personagem = recompensa.id_personagem)))```
 
@@ -56,11 +56,11 @@ Este documento tem como objetivo detalhar a Álgebra Relacional utilizada nas pr
 
 ```π r.* (σ r.id_sala = 3 (zona_de_armadilha ⨝ recompensa (zona_de_armadilha.id_sala = recompensa.id_sala)))```
 
-### <a>12. Monstro e drop do item</a>
+### <a>12. Buscar informações sobre os itens que dropam de um monstro específico</a>
 
 ```π m.nome, i.* (σ m.nome = 'Demônio' (monstro ⨝ item (monstro.id_recompensa = item.nome_item)))```
 
-### <a>13. Verificar o status de vida de um alien de um personagem</a>
+### <a>13. Verificar o status de vida de um alien de um personagem específico</a>
 
 ```π p.id_personagem, sda.nome_alien, sda.saude (σ p.id_personagem = 3 ∧ sda.nome_alien = 'XLR8' (status_do_alien ⨝ personagem (status_do_alien.id_personagem = personagem.id_personagem)))```
 
