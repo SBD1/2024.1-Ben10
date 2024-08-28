@@ -31,7 +31,7 @@ nav:
         - DDL: "modulo2/ddl.md"
         - DML: "modulo2/dml.md"
         - DQL: "modulo2/dql.md"
-        - Álgebra Relacional: "modulo2/algebraRelacional.md"
+
 
 theme:
   name: material
