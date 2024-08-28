@@ -2,7 +2,7 @@
 
 ## <a>Introdução</a>
 
-Segundo Elmasri e Navathe, a modelagem conceitual é uma etapa essencial no desenvolvimento de uma aplicação de banco de dados bem-sucedida. Essa fase abrange o design de estruturas e restrições do banco de dados, além da criação de programas que realizam consultas e atualizações. A modelagem conceitual não apenas facilita a compreensão e o planejamento do banco de dados, mas também garante que as operações sejam eficientes e seguras.<a id="anchor_1" href="#REF1">^1^</a>
+Segundo Elmasri e Navathe<a id="anchor_1" href="#REF1">^1^</a>, a modelagem conceitual é uma etapa essencial no desenvolvimento de uma aplicação de banco de dados bem-sucedida. Essa fase abrange o design de estruturas e restrições do banco de dados, além da criação de programas que realizam consultas e atualizações. A modelagem conceitual não apenas facilita a compreensão e o planejamento do banco de dados, mas também garante que as operações sejam eficientes e seguras.
 
 ## <a>Objetivo</a>
 
