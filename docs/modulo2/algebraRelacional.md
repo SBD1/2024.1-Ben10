@@ -5,10 +5,7 @@
 
 **1. Consultar os detalhes de todas as missões associadas a um determinado NPC:**
 
-\[
-\pi_{n.id\_npc, m.*} (\sigma_{inns.id\_sala = 2} ((instancia\_npc\_na\_sala \bowtie_{id\_npc} npc) \bowtie_{id\_missao = id\_missao\_associada} missao))
-\]
-
+```πn.id_npc,m.∗​(σinns.id_sala=2​((instancia_npc_na_sala⋈id_npc​npc)⋈id_missao=id_missao_associada​missao))```
 
 ## <a>Histórico de Versão</a>
 
