@@ -426,8 +426,8 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       BEGIN TRANSACTION;
 
       -- Primeiro remove a sala de zona de Guerra
-      DELETE FROM zona_de_guerra
-      WHERE s.id_sala = 4;
+      DELETE FROM zona_de_guerra zg
+      WHERE zg.id_sala = 4;
 
       -- Depois, exclui a sala
       DELETE FROM sala s
@@ -439,8 +439,8 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       BEGIN TRANSACTION;
 
       -- Primeiro remove a sala de zona armadilha
-      DELETE FROM zona_de_armadilha 
-      WHERE s.id_sala = 3;
+      DELETE FROM zona_de_armadilha za
+      WHERE za.id_sala = 3;
 
       -- Depois, exclui a sala
       DELETE FROM sala s
@@ -511,7 +511,7 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 
       -- Primeiro remove o item da tabela arma
       DELETE FROM arma a
-      WHERE c.nome_item = 'Arma Tennyson';
+      WHERE a.nome_item = 'Arma Tennyson';
 
       -- Depois, remove o item da tabela item
       DELETE FROM item i
