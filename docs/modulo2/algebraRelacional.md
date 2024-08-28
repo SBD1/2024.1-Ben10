@@ -11,11 +11,13 @@ Este documento tem como objetivo detalhar a Álgebra Relacional utilizada nas pr
 ## <a>Consultas</a>
 
 
-1. Consultar os detalhes de todas as missões associadas a um determinado NPC
+### 1. Consultar os detalhes de todas as missões associadas a um determinado NPC
+
 ```π n.id_npc, m.* (σ inns.id_sala = 2 (instancia_npc_na_sala ⨝ npc (instancia_npc_na_sala.id_npc = npc.id_npc) ⨝ missao (npc.id_missao_associada = missao.id_missao)))```
 
-2. Selecionar missões concluídas pelo personagem
-```π p.id_personagem, rdm.id_missao, rdm.status (σ rdm.status = 'completa' ∧ rdm.id_personagem = 2 (personagem ⨝ registro_da_missao (personagem.id_personagem = registro_da_missao.id_personagem)))```
+#### 2. Selecionar missões concluídas pelo personagem
+
+π p.id_personagem, rdm.id_missao, rdm.status (σ rdm.status = 'completa' ∧ rdm.id_personagem = 2 (personagem ⨝ registro_da_missao (personagem.id_personagem = registro_da_missao.id_personagem)))
 
 3. Verificar os pré-requisitos para uma missão específica
 ```π m.id_missao, m.nome_missao, pr.id_pre_requisito (σ m.id_missao = 5 (missao ⨝ pre_requisito (missao.id_missao = pre_requisito.id_missao)))```
@@ -54,6 +56,128 @@ Este documento tem como objetivo detalhar a Álgebra Relacional utilizada nas pr
 ```π s.id_sala, r.nome_item, r.recompensa_recebida (σ s.id_sala = 3 (recompensa ⨝ sala (recompensa.id_sala = sala.id_sala)))```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Consultar os detalhes de todas as missões associadas a um determinado NPC
+select n.id_npc, m.*
+from instancia_npc_na_sala inns 
+join npc n ON inns.id_npc = n.id_npc
+join missao m on m.id_missao = n.id_missao_associada
+where inns.id_sala = 2;
+
+-- SELECIONANDO MISSÕES CONCLUÍDAS PELO PERSONAGEM
+SELECT p.id_personagem, rdm.id_missao, rdm.status
+FROM personagem p
+JOIN registro_da_missao rdm ON p.id_personagem = rdm.id_personagem
+WHERE rdm.status ='completa' and rdm.id_personagem = 2;
+
+-- Verificando os pré requisitos para uma missão específica
+select m.id_missao, m.nome_missao, pr.id_pre_requisito 
+from missao m
+join pre_requisito pr ON m.id_missao = pr.id_missao
+where m.id_missao = 5;
+
+-- Verificando a capacidade do iventário
+select count(i.id_personagem) 
+from personagem p
+join inventario i on i.id_personagem = p.id_personagem
+where i.id_personagem = 3;
+
+-- Verificando todos os itens do iventário
+select i.nome_item 
+from personagem p
+join inventario i on i.id_personagem = p.id_personagem
+where i.id_personagem = 3;
+
+-- Verificando todos os aliens de um personagem
+select sda.nome_alien
+from personagem p
+join status_do_alien sda on sda.id_personagem = p.id_personagem
+where sda.id_personagem = 3;
+
+-- Quantidade de moedas do personagem
+select quantidade_moedas
+from personagem p
+where p.id_personagem = 3;
+
+
+-- Recompensa relacionada a um personagem específico
+select r.*
+from personagem p
+join recompensa r on r.id_personagem = p.id_personagem
+where p.id_personagem = 3;
+
+-- Listar um npc em uma sala
+select inns.id_npc, inns.id_sala
+from instancia_npc_na_sala inns
+join sala s on s.id_sala = inns.id_sala
+where s.id_sala = 3;
+
+-- Listar todas as salas de uma determinada região, com seus pré requisitos
+select r.nome_regiao, s.id_sala, s.id_pre_req_missao
+from sala s
+join regiao r on s.nome_regiao = r.nome_regiao
+where r.nome_regiao = 'Nave do Vilgax';
+
+-- Buscando detalhes da recompensa na zona de armadilha
+select r.*
+from zona_de_armadilha zda
+join recompensa r on r.id_sala = zda.id_sala
+where r.id_sala = 3;
+
+-- Monstro e Drop do item
+SELECT m.nome, i.*
+from monstro m 
+join item i ON m.id_recompensa = i.nome_item
+where m.nome = 'Demônio';
+
+-- Verificar o status de vida de um alien de um personagem
+SELECT p.id_personagem, sda.nome_alien, sda.saude
+FROM status_do_alien sda
+join personagem p on p.id_personagem = sda.id_personagem
+where p.id_personagem = 3 and sda.nome_alien = 'XLR8';
+
+-- Consultar as recompensas de uma sala específica
+SELECT s.id_sala, r.nome_item, r.recompensa_recebida
+FROM recompensa r
+join sala s on s.id_sala = r.id_sala
+where s.id_sala = 3;
 
 ## <a>Referência Bibliográfica</a>
 
