@@ -1,8 +1,10 @@
 from repositories.npc_repository import NpcRepository
+from utils.validation_utils import ValidationUtils
 
 class NpcService:
     def __init__(self):
         self.npc_repository = NpcRepository()
+        self.validation_utils = ValidationUtils()
 
     def verificar_npc_na_sala(self, id_sala):
         """
@@ -35,6 +37,10 @@ class NpcService:
                     print(f"NPC: {fala_npc['textoMissao']}")
         else:
             print("A sala parece estar vazia.")
+
+    def obter_npcs_sala(self, id_sala):
+        self.validation_utils.validate_integer(id_sala)
+        return self.npc_repository.obter_npcs_sala(id_sala)
 
     def close(self):
         """

@@ -25,6 +25,10 @@ class PersonagemService:
         else:
             print('troca de sala não permitida')
 
+    def obter_sala_personagem(self, id_personagem):
+        id_sala = self.personagem_repository.exibir_personagem(id_personagem)[0][4]
+        return id_sala
+
     def exibir_personagem(self, id_personagem, infos):
         dados_personagem = self.personagem_repository.exibir_personagem(id_personagem)
 

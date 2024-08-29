@@ -1,4 +1,5 @@
 from database.db import create_connection
+from utils.database_helpers import fetch_as_dict
 
 class NpcRepository:
     def __init__(self):
@@ -68,6 +69,26 @@ class NpcRepository:
                 return fala
             else:
                 return None
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
+
+    def obter_npcs_sala(self, id_sala):
+        """
+        Retorna as informações de todos npcs em uma sala
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT n.id_npc, n.dialogo_associado_venda, n.id_missao_associada
+                FROM NPC n
+                JOIN INSTANCIA_NPC_NA_SALA ins ON ins.id_npc = n.id_npc
+                WHERE ins.id_sala = %s;
+            """
+            cursor.execute(query, (id_sala,))
+            lista_npc = fetch_as_dict(cursor)
+            cursor.close()
+            return lista_npc
         except Exception as e:
             print(f"An error occurred: {e}")
             return None

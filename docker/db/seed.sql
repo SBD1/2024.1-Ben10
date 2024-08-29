@@ -326,6 +326,7 @@ VALUES (3, 1, 1),
 INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
 VALUES (1, 1),
        (2, 2),
+       (2, 5),
        (3, 3),
        (12, 8),
        (13, 7);

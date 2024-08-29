@@ -1,11 +1,13 @@
 from controllers.sala_controller import SalaController
 from controllers.personagem_controller import PersonagemController
 import os
+from utils.validation_utils import ValidationUtils
 
 def main():
     global GLOBAL_SETS 
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
+    validation_utils = ValidationUtils()
 
 
     GLOBAL_SETS = {
@@ -29,6 +31,10 @@ def main():
                 'argumento': 'id_sala',
                 'descrição': 'comando para trocar de sala',
                 'executar': lambda id_sala: sala_controller.trocar_jogador_de_sala(GLOBAL_SETS['id_personagem'], id_sala)
+            },
+            'npc': {
+                'descrição': 'comando para listar os npcs na sala atual com sua role',
+                'executar': lambda _: sala_controller.mostrar_npcs_na_sala(GLOBAL_SETS['id_personagem'])
             }
         },
         'mapa': {
@@ -187,7 +193,7 @@ def main():
     listar_comandos()
 
     while True:
-        listar_comandos()
+        # listar_comandos()
         comando = input("\nDigite um comando: ")
         executar_comando(comando)
 
