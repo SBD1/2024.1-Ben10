@@ -88,13 +88,18 @@ def main():
             for key, value in aliens.items():
                 print(f"{key} - {value}")
 
-            alien = int(input(''))
-            if alien <= 0 or alien > 12:
-                alien = 0
-                os.system('clear')
-                print('Por favor insira um número válido')
+            alien = input('')
+
+            if not alien.isdigit():
+                print('Por favor, digite um número válido!')
             else:
-                verificacao = True
+                alien = int(alien)
+                if alien <= 0 or alien > 12:
+                    alien = 0
+                    os.system('clear')
+                    print('Por favor insira um número válido')
+                else:
+                    verificacao = True
 
         GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
 
@@ -112,13 +117,18 @@ def main():
             if confirmacao == 'S' or confirmacao == 's':
                     id_personagem_atual = input("Digite o ID do seu personagem para que possamos achá-lo no nosso sistema:")
 
-                    if personagem_controller.exibir_personagem(id_personagem_atual, 'N') == None:
-                        condicao = False
-                        print('ID não encontrado, por favor, digite novamente!')
+                    if not id_personagem_atual.isdigit():
+                        print('Por favor, digite um número válido!')
+
                     else:
-                        personagem_controller.exibir_personagem(id_personagem_atual, 'S')
-                        GLOBAL_SETS['id_personagem'] = id_personagem_atual
-                        condicao = True
+                        if personagem_controller.exibir_personagem(id_personagem_atual, 'N') == None:
+                            condicao = False
+                            print('ID não encontrado, por favor, digite novamente!')
+                        else:
+                            personagem_controller.exibir_personagem(id_personagem_atual, 'S')
+                            GLOBAL_SETS['id_personagem'] = id_personagem_atual
+                            condicao = True
+
             elif confirmacao == 'N' or confirmacao == 'n':
                 os.system('clear')
                 print('Ok, não se preocupe!\nVamos criar seu personagem...\n')
