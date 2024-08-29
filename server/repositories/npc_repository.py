@@ -112,6 +112,43 @@ class NpcRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
             return None
+        
+    def listar_estoque_npc(self, id_npc):
+        """
+        Retorna o estoque do npc
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT nome_item, preco
+                FROM ESTOQUE_DO_ITEM
+                WHERE id_npc = %s;
+            """
+            cursor.execute(query, (id_npc,))
+            estoque = fetch_as_dict(cursor)
+            cursor.close()
+            return estoque
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
+
+    def inserir_item_inventario(self, id_personagem, nome_item):
+        """
+        Insere um item no inventário do personagem.
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
+                VALUES (%s, DEFAULT, %s);
+            """
+            cursor.execute(query, (id_personagem, nome_item))
+            self.connection.commit() 
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.connection.rollback()
+            return None
 
     def close(self):
         """

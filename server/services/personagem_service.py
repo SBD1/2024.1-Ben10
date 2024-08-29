@@ -29,6 +29,10 @@ class PersonagemService:
         id_sala = self.personagem_repository.exibir_personagem(id_personagem)[0][4]
         return id_sala
 
+    def obter_saldo_personagem(self, id_personagem):
+        id_sala = self.personagem_repository.exibir_personagem(id_personagem)[0][1]
+        return id_sala
+
     def exibir_personagem(self, id_personagem, infos):
         dados_personagem = self.personagem_repository.exibir_personagem(id_personagem)
 
@@ -67,3 +71,6 @@ class PersonagemService:
             print(row)
 
         print(f"\n-----------------------------------------------")
+
+    def descontar_moedas_personagem(self, id_personagem, quantidade):
+        return self.personagem_repository.descontar_moedas_personagem(id_personagem, quantidade)

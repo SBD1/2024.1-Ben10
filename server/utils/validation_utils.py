@@ -52,7 +52,7 @@ class ValidationUtils:
 
         # Verifica se o valor está dentro do intervalo
         if value < min_value or value > max_value:
-            print(f"O valor deve estar entre {min_value} e {max_value}.")
+            print(f"Entrada inválida: o valor deve estar entre {min_value} e {max_value}.")
             return False
 
         return True
