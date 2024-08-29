@@ -2,11 +2,13 @@ from controllers.sala_controller import SalaController
 from controllers.personagem_controller import PersonagemController
 import os
 from utils.validation_utils import ValidationUtils
+from controllers.npc_controller import NpcController
 
 def main():
     global GLOBAL_SETS 
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
+    npc_controller = NpcController()
     validation_utils = ValidationUtils()
 
 
@@ -50,6 +52,13 @@ def main():
             'listar': {
                 'descrição': 'comando para listar todas as regiões.',
                 'executar': lambda _: sala_controller.listar()
+            }
+        },
+        'npc': {
+            'falar': {
+                'argumento': 'id_npc',
+                'descrição': 'comando para falar com um npc',
+                'executar': lambda id_npc: npc_controller.interagir_com_npc(GLOBAL_SETS['id_personagem'], id_npc)
             }
         }
     }

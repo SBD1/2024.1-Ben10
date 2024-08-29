@@ -1,6 +1,9 @@
 from repositories.npc_repository import NpcRepository
 from utils.validation_utils import ValidationUtils
 
+class NpcError(Exception):
+    pass
+
 class NpcService:
     def __init__(self):
         self.npc_repository = NpcRepository()
@@ -41,6 +44,13 @@ class NpcService:
     def obter_npcs_sala(self, id_sala):
         self.validation_utils.validate_integer(id_sala)
         return self.npc_repository.obter_npcs_sala(id_sala)
+    
+    def npc_roles(self, id_npc, id_sala):
+        if not self.validation_utils.validate_integer(id_npc):
+            raise NpcError("ID do NPC inválido.")
+        
+        npc = self.npc_repository.obter_roles_npc(id_npc, id_sala)
+        return npc
 
     def close(self):
         """

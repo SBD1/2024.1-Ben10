@@ -92,6 +92,26 @@ class NpcRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
             return None
+        
+    def obter_roles_npc(self, id_npc, id_sala):
+        """
+        Retorna as roles de um npc em determinada sala
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT n.id_npc, n.dialogo_associado_venda, n.id_missao_associada
+                FROM NPC n
+                JOIN INSTANCIA_NPC_NA_SALA ins ON ins.id_npc = n.id_npc
+                WHERE ins.id_sala = %s and n.id_npc = %s;
+            """
+            cursor.execute(query, (id_sala, id_npc,))
+            lista_npc = fetch_as_dict(cursor)
+            cursor.close()
+            return lista_npc
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
 
     def close(self):
         """
