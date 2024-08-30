@@ -25,7 +25,8 @@ CREATE TABLE MISSAO (
     nome_missao VARCHAR(30) NOT NULL,
     experiencia INT NOT NULL,
     descricao TEXT NOT NULL,
-    recompensa_em_moedas INT NOT NULL
+    recompensa_em_moedas INT NOT NULL,
+    tipo_missao VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE NPC (
@@ -152,10 +153,24 @@ CREATE TABLE PRE_REQUISITO (
     FOREIGN KEY (id_missao) REFERENCES MISSAO(id_missao)  -- id_missao se refere à missão principal
 );
 
+CREATE TABLE CACA (
+    id_missao INT PRIMARY KEY,
+    quantidade_monstros INT NOT NULL,
+    dificuldade_monstro INT NOT NULL,
+    FOREIGN KEY (id_missao) REFERENCES MISSAO(id_missao)
+);
+
+CREATE TABLE ENTREGA (
+    id_missao INT PRIMARY KEY,
+    nome_item VARCHAR(50) NOT NULL,
+    FOREIGN KEY (id_missao) REFERENCES MISSAO(id_missao)
+);
+
 CREATE TABLE REGISTRO_DA_MISSAO (
     id_personagem INT,
     id_missao INT,
     status tipo_status_missao NOT NULL,
+    quantidade_monstros INT,
     PRIMARY KEY (id_personagem, id_missao),
     FOREIGN KEY (id_personagem) REFERENCES PERSONAGEM(id_personagem),
     FOREIGN KEY (id_missao) REFERENCES MISSAO(id_missao)
