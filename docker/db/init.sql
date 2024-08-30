@@ -178,7 +178,7 @@ CREATE TABLE ARMA (
 
 CREATE TABLE INVENTARIO (
     id_personagem INT,
-    id_item INT,
+    id_item SERIAL,
     nome_item VARCHAR(30),
     PRIMARY KEY (id_personagem, id_item),
     FOREIGN KEY (nome_item) REFERENCES ITEM(nome_item)

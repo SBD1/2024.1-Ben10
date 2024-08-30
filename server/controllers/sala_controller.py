@@ -1,5 +1,6 @@
 from services.sala_service import SalaService
 from services.personagem_service import PersonagemService
+from services.npc_service import NpcService
 
 # Constante para definir que uma determinada variável não possui valor definido
 UNSET = -1
@@ -9,6 +10,7 @@ class SalaController:
         self.sala_service = SalaService()
         self.id_regiao_selecionada = UNSET
         self.personagem_service = PersonagemService()
+        self.npc_service = NpcService()
     
     def set_regiao(self, id_regiao : int) -> None:
         self.id_regiao_selecionada = id_regiao
@@ -83,3 +85,18 @@ class SalaController:
 
     def trocar_jogador_de_sala(self, id_personagem, id_sala):
         return self.personagem_service.trocar_jogador_de_sala(id_personagem, id_sala)
+    
+    def mostrar_npcs_na_sala(self, id_personagem):
+        id_sala = self.personagem_service.obter_sala_personagem(id_personagem)
+        npcs = self.npc_service.obter_npcs_sala(id_sala)
+
+        if not len(npcs):
+            print("Nenhum NPC na sala!")
+
+        for npc in npcs:
+            output = f"NPC: {npc['id_npc']}"
+            if npc['dialogo_associado_venda']:
+                output += " [VENDEDOR]"
+            if npc['id_missao_associada']:
+                output += " [MISSÃO]"
+            print(output)

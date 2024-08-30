@@ -1,8 +1,15 @@
 from repositories.npc_repository import NpcRepository
+from utils.validation_utils import ValidationUtils
+from repositories.personagem_repository import PersonagemRepository
+
+class NpcError(Exception):
+    pass
 
 class NpcService:
     def __init__(self):
         self.npc_repository = NpcRepository()
+        self.validation_utils = ValidationUtils()
+        self.personagem_repository = PersonagemRepository()
 
     def verificar_npc_na_sala(self, id_sala):
         """
@@ -35,6 +42,29 @@ class NpcService:
                     print(f"NPC: {fala_npc['textoMissao']}")
         else:
             print("A sala parece estar vazia.")
+
+    def obter_npcs_sala(self, id_sala):
+        self.validation_utils.validate_integer(id_sala)
+        return self.npc_repository.obter_npcs_sala(id_sala)
+    
+    def npc_roles(self, id_npc, id_sala):
+        if not self.validation_utils.validate_integer(id_npc):
+            raise NpcError("ID do NPC inválido.")
+        
+        npc = self.npc_repository.obter_roles_npc(id_npc, id_sala)
+        return npc
+    
+    def listar_estoque_npc(self, id_npc):
+        if not self.validation_utils.validate_integer(id_npc):
+            raise NpcError("ID do NPC inválido.")
+        
+        estoque = self.npc_repository.listar_estoque_npc(id_npc)
+        return estoque
+
+    def comprar_item(self, id_personagem, item):
+        self.npc_repository.inserir_item_inventario(id_personagem, item['nome_item'])
+        self.personagem_repository.descontar_moedas_personagem(id_personagem, item['preco'])
+        print(f"\nVocê comprou {item['nome_item']}, veja no seu inventário!")
 
     def close(self):
         """

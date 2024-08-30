@@ -7,7 +7,6 @@ class PersonagemRepository:
         self.connection = create_connection()
 
     def atualizar_sala_personagem(self, id_personagem, id_sala):
-        print(id_personagem, id_sala)
         """
         Atualiza a sala em que o personagem está
         """
@@ -136,6 +135,23 @@ class PersonagemRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
             return None
+        
+    def descontar_moedas_personagem(self, id_personagem, preco):
+        """
+        Desconta as moedas do personagem
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET quantidade_moedas = quantidade_moedas - %s
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (preco, id_personagem))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
     def close(self):
         """

@@ -280,7 +280,7 @@ VALUES ('Kit Médico', 6, 5000),
 -- Inserir personagens na tabela PERSONAGEM
 INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
 VALUES (DEFAULT, 5000, 'Chama', 'Ben', 3, 350, 10),
-       (DEFAULT, 500, 'Ultra T', 'Max', 1, 100, 1),
+       (DEFAULT, 10000000, 'Ultra T', 'Max', 1, 100, 1),
        (DEFAULT, 500, 'XLR8', 'Kevin', 1, 100, 1),
        (DEFAULT, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
 
@@ -293,13 +293,13 @@ VALUES (1, 4, 'em progresso'),
 
 -- Inserir itens na tabela INVENTARIO
 INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (1, 1, 'Kit Médico'),
-       (2, 1, 'Placa de Armadura'),
-       (2, 2, 'Kit Médico'),
-       (3, 1, 'Jato de Fuga'),
-       (3, 2, 'Kit Médico'),
-       (4, 1, 'Campo de Força Portátil'),
-       (4, 2, 'Kit Médico');
+VALUES (1, DEFAULT, 'Kit Médico'),
+       (2, DEFAULT, 'Placa de Armadura'),
+       (2, DEFAULT, 'Kit Médico'),
+       (3, DEFAULT, 'Jato de Fuga'),
+       (3, DEFAULT, 'Kit Médico'),
+       (4, DEFAULT, 'Campo de Força Portátil'),
+       (4, DEFAULT, 'Kit Médico');
 
 -- Inserir status do alien na tabela STATUS_DO_ALIEN
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
@@ -326,6 +326,8 @@ VALUES (3, 1, 1),
 INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
 VALUES (1, 1),
        (2, 2),
+       (2, 5),
+       (2, 6),
        (3, 3),
        (12, 8),
        (13, 7);
