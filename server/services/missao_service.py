@@ -42,3 +42,30 @@ class MissaoService:
         
     def instanciar_registro_da_missao(self, id_personagem, id_missao):
         return self.missao_repository.instanciar_registro_da_missao(id_personagem, id_missao)
+    
+
+    def verificar_item_inventario(self, id_personagem, id_missao):
+        item = self.missao_repository.verificar_item_inventario(id_personagem, id_missao)
+
+        if len(item):
+            return item[0]
+        
+        return None
+    
+    def entregar_recompensa(self, id_personagem, missao):
+        return self.missao_repository.entregar_recompensa(id_personagem, missao['experiencia'], missao['recompensa_em_moedas'])
+
+    def entregar_missao(self, id_personagem, missao):
+        if missao['tipo_missao'] == 'ENTREGA':
+            item = self.verificar_item_inventario(id_personagem, missao['id_missao'])
+
+            if not item:
+                print("Você ainda não possui o item para ser entregue!")
+                raise MissaoError("Jogador não possui o item")
+                        
+            self.missao_repository.concluir_missao(id_personagem, missao['id_missao'])
+            self.missao_repository.tirar_item_inventario(id_personagem, item['id_item'])
+            print('\nMissão concluída com sucesso, parabéns!')
+        
+        print("Por favor, aceite a recompensa de bom grado!")
+        self.entregar_recompensa(id_personagem, missao)

@@ -106,6 +106,88 @@ class MissaoRepository:
             print(f"An error occurred: {e}")
             self.connection.rollback()  # Desfaz a transação em caso de erro
 
+    def verificar_item_inventario(self, id_personagem, id_missao):
+        """
+        Retorna o item no inventario do personagem
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT *
+                FROM INVENTARIO
+                WHERE id_personagem = %s and nome_item = (
+                    SELECT nome_item
+                    FROM ENTREGA
+                    WHERE id_missao = %s
+                )
+                LIMIT 1
+            """
+            cursor.execute(query, (id_personagem, id_missao,))
+            item = fetch_as_dict(cursor)
+            cursor.close()
+            return item
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None        
+
+    def concluir_missao(self, id_personagem, id_missao):
+        """
+        Atualiza o status de uma missão para 'completa' na tabela REGISTRO_DA_MISSAO.
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE REGISTRO_DA_MISSAO
+                SET status = 'completa'
+                WHERE id_personagem = %s AND id_missao = %s
+            """
+
+            cursor.execute(query, (id_personagem, id_missao))
+            self.connection.commit()  # Confirma a transação
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.connection.rollback()  # Desfaz a transação em caso de erro
+
+    def entregar_recompensa(self, id_personagem, experiencia, moedas):
+        """
+        Atualiza o dinherio e nível do personagem de acordo com a recompensa da missao
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET nivel = nivel + %s,
+                    quantidade_moedas = quantidade_moedas + %s
+                WHERE id_personagem = %s
+            """
+
+
+            cursor.execute(query, (experiencia, moedas, id_personagem))
+            self.connection.commit()  # Confirma a transação
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.connection.rollback()  # Desfaz a transação em caso de erro        
+
+
+    def tirar_item_inventario(self, id_personagem, id_item):
+        """
+        Remove um item específico do inventário de um personagem.
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                DELETE FROM INVENTARIO
+                WHERE id_personagem = %s AND id_item = %s
+            """
+
+            cursor.execute(query, (id_personagem, id_item))
+            self.connection.commit()  # Confirma a transação
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.connection.rollback()  # Desfaz a transação em caso de erro
 
     def close(self):
         """

@@ -56,8 +56,8 @@ class NpcController:
             tem_missao = self.missao_service.verificar_registro_missao(id_personagem, missao['id_missao'])
             self.missao_service.pode_fazer_missao(id_personagem, missao['id_missao'])
 
-            print("\nDescrição: ", missao['descricao'])
-            print("Recompensa: ", missao['recompensa_em_moedas'])
+            print("\nDescrição:", missao['descricao'])
+            print("Recompensa:", missao['recompensa_em_moedas'])
 
             if not tem_missao:
                 resposta = input("\nDeseja aceitar a missão? \"S\" (SIM) ou \"N\" (NÃO)\n")
@@ -70,12 +70,8 @@ class NpcController:
                     print("\nMissão em progresso!")
 
                 return
-
-            print("entregar missao")
-
             
-            
-
+            self.missao_service.entregar_missao(id_personagem, missao)
         except:
             return
 
