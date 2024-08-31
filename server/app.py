@@ -11,11 +11,9 @@ def main():
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
 
-
     GLOBAL_SETS = {
         'id_personagem': None
     }
-
 
     lista_comandos = {
         'personagem': {
@@ -60,6 +58,12 @@ def main():
                 'descrição': 'comando para falar com um npc',
                 'executar': lambda id_npc: npc_controller.interagir_com_npc(GLOBAL_SETS['id_personagem'], id_npc)
             }
+        },
+        'help': {
+            'comandos': {
+                'descrição': 'lista todos os comandos disponíveis no jogo',
+                'executar': lambda _: listar_comandos()
+            }
         }
     }
 
@@ -80,8 +84,7 @@ def main():
         7: 'Fantasmático',
         8: 'Ultra T',
         9: 'Massa Cinzenta',
-        10: 'Aquático',
-        11: 'Vilgax'}
+        10: 'Aquático'}
 
         print('Digite o nome que deseja ser chamado no jogo:')
 
@@ -109,7 +112,7 @@ def main():
                 print('Por favor, digite um número válido!')
             else:
                 alien = int(alien)
-                if alien <= 0 or alien > 12:
+                if alien <= 0 or alien > 10:
                     alien = 0
                     os.system('clear')
                     print('Por favor insira um número válido')
@@ -117,8 +120,6 @@ def main():
                     verificacao = True
 
         GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
-
-
 
     def personagem():
         global GLOBAL_SETS
@@ -199,10 +200,10 @@ def main():
 
     personagem()
 
+    # Exibe comandos do jogo ao iniciar
     listar_comandos()
 
     while True:
-        # listar_comandos()
         comando = input("\nDigite um comando: ")
         executar_comando(comando)
 

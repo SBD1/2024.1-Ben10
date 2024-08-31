@@ -9,7 +9,7 @@ class PersonagemService:
     def __init__(self):
         self.personagem_repository = PersonagemRepository()
         self.sala_service = SalaService()
-        self.npc_repository = NpcService()
+        self.npc_service = NpcService()
         self.monstro_service = MonstroService()
 
     def atualizar_sala_personagem(self, id_personagem, id_sala):
@@ -20,7 +20,7 @@ class PersonagemService:
         if permissao[0]['count']:
             self.personagem_repository.atualizar_sala_personagem(id_personagem, id_sala)
             print(f'Você foi para a sala {id_sala}')
-            self.npc_repository.exibir_fala_npc_na_sala(id_sala)
+            self.npc_service.exibir_fala_npc_na_sala(id_sala)
             self.monstro_service.instanciar_monstro(id_sala, id_personagem)
         else:
             print('troca de sala não permitida')

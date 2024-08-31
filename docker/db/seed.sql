@@ -121,7 +121,6 @@ INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Fantasm
 INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Ultra T', 'Alien com armadura tecnológica e super força.', 105, 110, 92);
 INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Massa Cinzenta', 'Alien com intelecto superior e habilidades tecnológicas.', 40, 50, 120);
 INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Aquático', 'Alien que pode respirar debaixo dágua e manipular a água.', 95, 90, 87);
-INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Vilgax', 'Alien com força descomunal e resistência extrema.', 550, 140, 130);
 
 -- Inserir monstros na tabela MONSTRO
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Vilgax', 'Espada Proto-Arma', 10, 10000, 550, 140, 130);
