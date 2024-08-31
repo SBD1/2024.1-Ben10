@@ -20,7 +20,7 @@ class MonstroRepository:
                     WHERE zn2.id_sala = %s
                 );
             """
-            cursor.execute(query, (id_sala))
+            cursor.execute(query, (id_sala,))
             monstros = fetch_as_dict(cursor)
             cursor.close()
             return monstros

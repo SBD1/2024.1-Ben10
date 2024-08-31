@@ -92,8 +92,6 @@ class MissaoRepository:
         """
         try:
             cursor = self.connection.cursor()
-
-            # Aqui, você pode adaptar a lógica para inserir a quantidade_monstros dependendo do tipo da missão.
             query = """
                 INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status, quantidade_monstros)
                 VALUES (%s, %s, 'em progresso', 0)
