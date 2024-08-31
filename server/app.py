@@ -113,7 +113,7 @@ def main():
                 print('Por favor, digite um número válido!')
             else:
                 alien = int(alien)
-                if alien <= 0 or alien > 11:
+                if alien <= 0 or alien > 10:
                     alien = 0
                     os.system('clear')
                     print('Por favor insira um número válido')
