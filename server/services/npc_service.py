@@ -27,21 +27,27 @@ class NpcService:
         """
         return self.npc_repository.obter_fala_npc(id_npc)
 
+    def obter_texto_missao(self, fala_npc):
+        """
+        Retorna o texto da missão do NPC, se disponível.
+        :param fala_npc: Dicionário contendo informações sobre o NPC.
+        :return: Texto da missão ou None se não estiver disponível.
+        """
+        return fala_npc.get("textoMissao")
+
     def exibir_fala_npc_na_sala(self, id_sala):
         """
-        Verifica se há um NPC na sala com o ID especificado e exibe a fala do NPC.
+        Verifica se há um NPC na sala com o ID especificado e exibe as falas do NPC.
         :param id_sala: ID da sala a ser verificada.
         """
         npc_id = self.verificar_npc_na_sala(id_sala)
         if npc_id:
             fala_npc = self.obter_fala_npc(npc_id)
             if fala_npc:
-                if fala_npc.get("textoComercio"):
-                    print(f"NPC: {fala_npc['textoComercio']}")
-                if fala_npc.get("textoMissao"):
-                    print(f"NPC: {fala_npc['textoMissao']}")
+                print(f"NPC: {fala_npc['textoComercio']}")
         else:
             print("A sala parece estar vazia.")
+        return None
 
     def obter_npcs_sala(self, id_sala):
         self.validation_utils.validate_integer(id_sala)
