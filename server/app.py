@@ -84,8 +84,7 @@ def main():
         7: 'Fantasmático',
         8: 'Ultra T',
         9: 'Massa Cinzenta',
-        10: 'Aquático',
-        11: 'Vilgax'}
+        10: 'Aquático'}
 
         print('Digite o nome que deseja ser chamado no jogo:')
 
