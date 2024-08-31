@@ -108,7 +108,7 @@ class SalaRepository:
                 FROM SALA
                 WHERE id_sala = %s and tipo_sala = 'Zona de Guerra';
             """
-            cursor.execute(query, (id_sala))
+            cursor.execute(query, (id_sala,))
             resposta = fetch_as_dict(cursor)
             cursor.close()
             return resposta

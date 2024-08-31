@@ -1,6 +1,7 @@
 from services.sala_service import SalaService
 from services.personagem_service import PersonagemService
 from services.npc_service import NpcService
+from utils.validation_utils import ValidationUtils
 
 # Constante para definir que uma determinada variável não possui valor definido
 UNSET = -1
@@ -11,6 +12,7 @@ class SalaController:
         self.id_regiao_selecionada = UNSET
         self.personagem_service = PersonagemService()
         self.npc_service = NpcService()
+        self.validation_utils = ValidationUtils()
     
     def set_regiao(self, id_regiao : int) -> None:
         self.id_regiao_selecionada = id_regiao
@@ -84,6 +86,11 @@ class SalaController:
             print(f"\n\nRegião: {nome_regiao}")
 
     def trocar_jogador_de_sala(self, id_personagem, id_sala):
+        if not self.validation_utils.validate_integer(id_sala):
+            print("Digite um número!")
+            return
+
+        id_sala = int(id_sala)
         return self.personagem_service.trocar_jogador_de_sala(id_personagem, id_sala)
     
     def mostrar_npcs_na_sala(self, id_personagem):
