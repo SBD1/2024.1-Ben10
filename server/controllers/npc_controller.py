@@ -82,8 +82,6 @@ class NpcController:
             npc = self.npc_service.npc_roles(id_npc, id_sala)[0]
 
             i = 1
-            opcao_missao = None
-            texto_missao = None
 
             if not npc['dialogo_associado_venda'] and not npc['id_missao_associada']:
                 print("Nenhuma interação disponível com o NPC")
@@ -94,12 +92,7 @@ class NpcController:
                 print(f"{i} - Negociar")
                 i += 1
             if npc['id_missao_associada']:
-                opcao_missao = i
-                # Obtém o texto da missão
-                fala_npc = self.npc_service.obter_fala_npc(id_sala)
-                texto_missao = self.npc_service.obter_texto_missao(fala_npc)
-                if texto_missao:
-                    print(f"{i} - Ver Missão")
+                print(f"{i} - Ver Missão")
 
             opcao = input()
             if not self.validation_utils.validate_integer_in_range(opcao, 1, i):
