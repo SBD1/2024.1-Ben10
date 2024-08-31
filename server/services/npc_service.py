@@ -72,6 +72,7 @@ class NpcService:
         self.personagem_repository.descontar_moedas_personagem(id_personagem, item['preco'])
         print(f"\nVocê comprou {item['nome_item']}, veja no seu inventário!")
 
+
     def close(self):
         """
         Fecha a conexão com o banco de dados no repositório.

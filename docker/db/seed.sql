@@ -22,6 +22,30 @@ CREATE TRIGGER trigger_verificar_exclusividade_entrega
 BEFORE INSERT OR UPDATE ON ENTREGA
 FOR EACH ROW EXECUTE FUNCTION verificar_exclusividade_missao();
 
+-- Trigger Function
+CREATE OR REPLACE FUNCTION ajustar_quantidade_monstros()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Verifica se a missão é do tipo ENTREGA
+    IF (SELECT tipo_missao FROM MISSAO WHERE id_missao = NEW.id_missao) = 'ENTREGA' THEN
+        -- Se for do tipo ENTREGA, seta quantidade_monstros como NULL
+        NEW.quantidade_monstros := NULL;
+    ELSE
+        -- Para outros tipos de missão, garante que quantidade_monstros não seja NULL
+        IF NEW.quantidade_monstros IS NULL THEN
+            RAISE EXCEPTION 'Quantidade de monstros não pode ser NULL para missões que não sejam do tipo ENTREGA.';
+        END IF;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger
+CREATE TRIGGER trigger_ajustar_quantidade_monstros
+BEFORE INSERT OR UPDATE ON REGISTRO_DA_MISSAO
+FOR EACH ROW EXECUTE FUNCTION ajustar_quantidade_monstros();
+
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Placa de Armadura', 'Consumível');
@@ -160,7 +184,7 @@ INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_e
 VALUES (2, 'Derrotar Vilgax', 1000, 'Enfrente Vilgax e impeça seus planos de dominação.', 10000, 'CACA');
 
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (3, 'Recuperar o any', 300, 'recupere any', 700, 'ENTREGA');
+VALUES (3, 'Recuperar a Placa de Armadura', 300, 'recupere Placa de Armadura', 700, 'ENTREGA');
 
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
 VALUES (4, 'Recuperar o Omnitrix', 400, 'Recupere o Omnitrix que foi roubado por um misterioso inimigo.', 800, 'ENTREGA');
@@ -187,7 +211,7 @@ INSERT INTO ENTREGA (id_missao, nome_item)
 VALUES (4, 'Omnitrix');
 
 INSERT INTO ENTREGA (id_missao, nome_item) 
-VALUES (3, 'Omnitrix');
+VALUES (3, 'Placa de Armadura');
 
 -- Inserir salas para a região 'Base dos Cavaleiros Eternos'
 INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
@@ -322,8 +346,8 @@ VALUES (DEFAULT, 5000, 'Chama', 'Ben', 3, 350, 10),
 INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status, quantidade_monstros) 
 VALUES (1, 4, 'em progresso', 0),
        (2, 1, 'completa', 0),
-       (3, 1, 'incompleta', 0),
-       (4, 1, 'incompleta', 0);
+       (3, 1, 'em progresso', 0),
+       (4, 1, 'em progresso', 0);
 
 -- Inserir itens na tabela INVENTARIO
 INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 

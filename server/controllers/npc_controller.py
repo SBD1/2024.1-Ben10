@@ -3,7 +3,7 @@ from services.personagem_service import PersonagemService
 from services.npc_service import NpcService
 from utils.validation_utils import ValidationUtils
 from tabulate import tabulate
-
+from services.missao_service import MissaoService
 
 class NpcError(Exception):
     pass
@@ -14,6 +14,7 @@ class NpcController:
         self.personagem_service = PersonagemService()
         self.npc_service = NpcService()
         self.validation_utils = ValidationUtils()
+        self.missao_service = MissaoService()
 
 
     def listar_estoque_npc(self, id_npc):
@@ -49,6 +50,32 @@ class NpcController:
         
         self.npc_service.comprar_item(id_personagem, item_escolhido)
 
+    def falar_sobre_missao(self, id_npc, id_personagem):
+        missao = self.missao_service.obter_missao_por_npc(id_npc)[0]
+        try:
+            tem_missao = self.missao_service.verificar_registro_missao(id_personagem, missao['id_missao'])
+            self.missao_service.pode_fazer_missao(id_personagem, missao['id_missao'])
+            
+            print("\nMissão:", missao['nome_missao'])
+            print("Descrição:", missao['descricao'])
+            print("Recompensa:", missao['recompensa_em_moedas'])
+
+            if not tem_missao:
+                resposta = input("\nDeseja aceitar a missão? \"S\" (SIM) ou \"N\" (NÃO)\n")
+                while resposta != 'S' and resposta != "s" and resposta != "N" and resposta != "n":
+                    print("Entrada inválida. Por favor, digite \"S\" (SIM) ou \"N\" (NÃO).")
+                    resposta = input("\nDeseja aceitar a missão? \"S\" (SIM) ou \"N\" (NÃO)\n")
+
+                if resposta == 's' or resposta == 'S':
+                    self.missao_service.instanciar_registro_da_missao(id_personagem, missao['id_missao'])
+                    print("\nMissão em progresso!")
+
+                return
+            
+            self.missao_service.entregar_missao(id_personagem, missao)
+        except:
+            return
+
     def interagir_com_npc(self, id_personagem, id_npc):
         try:
             id_sala = self.personagem_service.obter_sala_personagem(id_personagem)
@@ -79,11 +106,11 @@ class NpcController:
                 raise NpcError("Opção inválida!")
             
             opcao = int(opcao)
+
             if opcao == 1 and npc['dialogo_associado_venda']:
                 self.negociar_com_npc(id_npc, id_personagem)
-            elif opcao == opcao_missao and texto_missao:
-                print(f"NPC: {texto_missao}")
-            else:
-                print("Nenhuma opção válida selecionada.")
-        except Exception as e:
-            print(f"Erro ao interagir com o NPC: {str(e)}")
+                return
+            self.falar_sobre_missao(id_npc, id_personagem)
+
+        except:
+            return
