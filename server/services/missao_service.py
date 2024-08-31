@@ -61,11 +61,20 @@ class MissaoService:
 
             if not item:
                 print("Você ainda não possui o item para ser entregue!")
-                raise MissaoError("Jogador não possui o item")
-                        
-            self.missao_repository.concluir_missao(id_personagem, missao['id_missao'])
-            self.missao_repository.tirar_item_inventario(id_personagem, item['id_item'])
-            print('\nMissão concluída com sucesso, parabéns!')
-        
+                raise MissaoError("Jogador não possui o item")         
+
+            self.missao_repository.tirar_item_inventario(id_personagem, item['id_item'])                   
+        else:
+            missao_caca = self.missao_repository.obter_missao_caca(missao['id_missao'])[0]
+            verifica_quantidade = self.missao_repository.verificar_monstros_mortos_missao(id_personagem, missao['id_missao'], missao_caca['quantidade_monstros'])
+
+            if not verifica_quantidade:
+                print("Você ainda não matou monstros suficientes!")
+                raise MissaoError("Jogador não tem a quantidade de monstros mínima") 
+
+        self.missao_repository.concluir_missao(id_personagem, missao['id_missao'])
+
+        print('\nMissão concluída com sucesso, parabéns!')
         print("Por favor, aceite a recompensa de bom grado!")
+        
         self.entregar_recompensa(id_personagem, missao)

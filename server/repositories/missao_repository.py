@@ -170,6 +170,53 @@ class MissaoRepository:
             print(f"An error occurred: {e}")
             self.connection.rollback()  # Desfaz a transação em caso de erro        
 
+    def obter_missao_caca(self, id_missao):
+        """
+        Retorna a missao de caça pelo id da missao
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT *
+                FROM CACA
+                WHERE id_missao = %s
+            """
+            cursor.execute(query, (id_missao,))
+            missao = fetch_as_dict(cursor)
+            cursor.close()
+            return missao
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None      
+
+    def verificar_monstros_mortos_missao(self, id_personagem, id_missao, quantidade_monstros):
+        """
+        Verifica se a quantidade de monstros na tabela REGISTRO_DA_MISSAO 
+        é maior ou igual ao argumento quantidade_monstros.
+        Retorna True se a condição for satisfeita, caso contrário, False.
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT quantidade_monstros
+                FROM REGISTRO_DA_MISSAO
+                WHERE id_personagem = %s AND id_missao = %s
+            """
+
+            cursor.execute(query, (id_personagem, id_missao))
+            result = cursor.fetchone()  # Obtém o primeiro resultado
+
+            cursor.close()
+
+            if result and result[0] >= quantidade_monstros:
+                return True
+            else:
+                return False
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return False
+
 
     def tirar_item_inventario(self, id_personagem, id_item):
         """

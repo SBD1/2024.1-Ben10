@@ -55,8 +55,9 @@ class NpcController:
         try:
             tem_missao = self.missao_service.verificar_registro_missao(id_personagem, missao['id_missao'])
             self.missao_service.pode_fazer_missao(id_personagem, missao['id_missao'])
-
-            print("\nDescrição:", missao['descricao'])
+            
+            print("\nMissão:", missao['nome_missao'])
+            print("Descrição:", missao['descricao'])
             print("Recompensa:", missao['recompensa_em_moedas'])
 
             if not tem_missao:
