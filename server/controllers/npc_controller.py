@@ -55,6 +55,8 @@ class NpcController:
             npc = self.npc_service.npc_roles(id_npc, id_sala)[0]
 
             i = 1
+            opcao_missao = None
+            texto_missao = None
 
             if not npc['dialogo_associado_venda'] and not npc['id_missao_associada']:
                 print("Nenhuma interação disponível com o NPC")
@@ -65,14 +67,23 @@ class NpcController:
                 print(f"{i} - Negociar")
                 i += 1
             if npc['id_missao_associada']:
-                print(f"{i} - Ver Missão")
+                opcao_missao = i
+                # Obtém o texto da missão
+                fala_npc = self.npc_service.obter_fala_npc(id_sala)
+                texto_missao = self.npc_service.obter_texto_missao(fala_npc)
+                if texto_missao:
+                    print(f"{i} - Ver Missão")
 
             opcao = input()
             if not self.validation_utils.validate_integer_in_range(opcao, 1, i):
                 raise NpcError("Opção inválida!")
             
-            if int(opcao) == 1:
+            opcao = int(opcao)
+            if opcao == 1 and npc['dialogo_associado_venda']:
                 self.negociar_com_npc(id_npc, id_personagem)
-
-        except:
-            return
+            elif opcao == opcao_missao and texto_missao:
+                print(f"NPC: {texto_missao}")
+            else:
+                print("Nenhuma opção válida selecionada.")
+        except Exception as e:
+            print(f"Erro ao interagir com o NPC: {str(e)}")
