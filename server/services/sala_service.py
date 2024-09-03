@@ -1,8 +1,11 @@
 from repositories.sala_repository import SalaRepository
+from utils.database_helpers import fetch_as_dict
+from repositories.regiao_repository import RegiaoRepository
 
 class SalaService:
     def __init__(self):
         self.sala_repository = SalaRepository()
+        self.regiao_repository = RegiaoRepository()
 
     def obter_salas_por_tipo(self, tipo_sala):
         """
@@ -38,3 +41,21 @@ class SalaService:
         Retorna a tupla do personagem em uma zona de guerra específica
         """
         return self.sala_repository.verificar_instancia_zona_guerra(id_personagem, id_zona_guerra)
+    
+    def obter_todas_regioes(self):
+        """
+        Retorna todas as salas de uma determinada região
+        """
+        return self.regiao_repository.obter_todas_regioes()
+        
+    def obter_regiao_por_nome(self, indice_regiao : int) -> dict:
+        """
+        Retorna as informações de uma determinada região
+        """
+        lista_regiao = self.obter_todas_regioes()
+        try:
+            return lista_regiao[indice_regiao -1]
+        except IndexError:
+            print("Não existe esta região.")
+        
+        return None 

@@ -1,3 +1,51 @@
+-- Função que será chamada pelo trigger
+CREATE OR REPLACE FUNCTION verificar_exclusividade_missao()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Verifica se a missão já está em outra tabela de especialização
+    IF EXISTS (SELECT 1 FROM CACA WHERE id_missao = NEW.id_missao)
+        OR EXISTS (SELECT 1 FROM ENTREGA WHERE id_missao = NEW.id_missao) THEN
+        RAISE EXCEPTION 'A missão já está associada a uma especialização diferente.';
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger para a tabela CACA
+CREATE TRIGGER trigger_verificar_exclusividade_caca
+BEFORE INSERT OR UPDATE ON CACA
+FOR EACH ROW EXECUTE FUNCTION verificar_exclusividade_missao();
+
+-- Trigger para a tabela ENTREGA
+CREATE TRIGGER trigger_verificar_exclusividade_entrega
+BEFORE INSERT OR UPDATE ON ENTREGA
+FOR EACH ROW EXECUTE FUNCTION verificar_exclusividade_missao();
+
+-- Trigger Function
+CREATE OR REPLACE FUNCTION ajustar_quantidade_monstros()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Verifica se a missão é do tipo ENTREGA
+    IF (SELECT tipo_missao FROM MISSAO WHERE id_missao = NEW.id_missao) = 'ENTREGA' THEN
+        -- Se for do tipo ENTREGA, seta quantidade_monstros como NULL
+        NEW.quantidade_monstros := NULL;
+    ELSE
+        -- Para outros tipos de missão, garante que quantidade_monstros não seja NULL
+        IF NEW.quantidade_monstros IS NULL THEN
+            RAISE EXCEPTION 'Quantidade de monstros não pode ser NULL para missões que não sejam do tipo ENTREGA.';
+        END IF;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger
+CREATE TRIGGER trigger_ajustar_quantidade_monstros
+BEFORE INSERT OR UPDATE ON REGISTRO_DA_MISSAO
+FOR EACH ROW EXECUTE FUNCTION ajustar_quantidade_monstros();
+
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Placa de Armadura', 'Consumível');
@@ -129,31 +177,42 @@ VALUES ('Base dos Encanadores', 'Base principal dos Encanadores, parcialmente de
 INSERT INTO REGIAO(nome_regiao, descricao)
 VALUES ('Nave do Vilgax', 'Nave principal de Vilgax');
 
--- Inserir missões na tabela MISSAO 
-INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas) 
-VALUES (1, 'Investigar a Base', 200, 'Descubra o que os Cavaleiros Eternos estão tramando na base secreta.', 500);
+-- Inserção de missões na tabela MISSAO com o tipo de missão especificado
+INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
+VALUES (1, 'Investigar a Base', 200, 'Descubra o que os Cavaleiros Eternos estão tramando na base secreta.', 500, 'CACA');
 
-INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas) 
-VALUES (2, 'Derrotar Vilgax', 1000, 'Enfrente Vilgax e impeça seus planos de dominação.', 10000);
+INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
+VALUES (2, 'Derrotar Vilgax', 1000, 'Enfrente Vilgax e impeça seus planos de dominação.', 10000, 'CACA');
 
-INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas) 
-VALUES (3, 'Resgate Gwen', 300, 'Salve Gwen, que foi sequestrada por alienígenas.', 700);
+INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
+VALUES (3, 'Recuperar a Placa de Armadura', 300, 'recupere Placa de Armadura', 700, 'ENTREGA');
 
-INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas) 
-VALUES (4, 'Recuperar o Omnitrix', 400, 'Recupere o Omnitrix que foi roubado por um misterioso inimigo.', 800);
+INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
+VALUES (4, 'Recuperar o Omnitrix', 400, 'Recupere o Omnitrix que foi roubado por um misterioso inimigo.', 800, 'ENTREGA');
 
-INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas) 
-VALUES (5, 'Enfrente o Colecionador', 600, 'Derrote o Colecionador e suas criaturas mutantes que ameaçam os encanadores.', 1200);
+INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
+VALUES (5, 'Enfrente o Colecionador', 600, 'Derrote o Colecionador e suas criaturas mutantes que ameaçam os encanadores.', 1200, 'CACA');
 
--- Inserir pre-requisito das missões na tabela PRE_REQUISITO
+-- Inserção de pre-requisitos das missões na tabela PRE_REQUISITO
 INSERT INTO PRE_REQUISITO (id_missao, id_pre_requisito) 
 VALUES (2, 4); -- Necessário completar missão 4 para fazer missão 2
 
-INSERT INTO PRE_REQUISITO (id_missao, id_pre_requisito) 
-VALUES (3, 1); -- Necessário completar missão 1 para fazer missão 3
+-- inserção na tabela CACA
+INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
+VALUES (1, 10, 1);
 
-INSERT INTO PRE_REQUISITO (id_missao, id_pre_requisito) 
-VALUES (5, 3); -- Necessário completar missão 3 para fazer missão 5
+INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
+VALUES (2, 15, 2);
+
+INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
+VALUES (5, 20, 3);
+
+-- inserção na tabela ENTREGA
+INSERT INTO ENTREGA (id_missao, nome_item) 
+VALUES (4, 'Omnitrix');
+
+INSERT INTO ENTREGA (id_missao, nome_item) 
+VALUES (3, 'Placa de Armadura');
 
 -- Inserir salas para a região 'Base dos Cavaleiros Eternos'
 INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
@@ -279,27 +338,27 @@ VALUES ('Kit Médico', 6, 5000),
 
 -- Inserir personagens na tabela PERSONAGEM
 INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-VALUES (1, 5000, 'Chama', 'Ben', 3, 350, 10),
-       (2, 500, 'Ultra T', 'Max', 1, 100, 1),
-       (3, 500, 'XLR8', 'Kevin', 1, 100, 1),
-       (4, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
+VALUES (DEFAULT, 5000, 'Chama', 'Ben', 3, 350, 10),
+       (DEFAULT, 10000000, 'Ultra T', 'Max', 1, 100, 1),
+       (DEFAULT, 500, 'XLR8', 'Kevin', 1, 100, 1),
+       (DEFAULT, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
 
 -- Inserir registros de missões na tabela REGISTRO_DA_MISSAO
-INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status) 
-VALUES (1, 4, 'em progresso'),
-       (2, 1, 'completa'),
-       (3, 1, 'incompleta'),
-       (4, 1, 'incompleta');
+INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status, quantidade_monstros) 
+VALUES (1, 4, 'em progresso', 0),
+       (2, 1, 'completa', 0),
+       (3, 1, 'em progresso', 0),
+       (4, 1, 'em progresso', 0);
 
 -- Inserir itens na tabela INVENTARIO
 INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
-VALUES (1, 1, 'Kit Médico'),
-       (2, 1, 'Placa de Armadura'),
-       (2, 2, 'Kit Médico'),
-       (3, 1, 'Jato de Fuga'),
-       (3, 2, 'Kit Médico'),
-       (4, 1, 'Campo de Força Portátil'),
-       (4, 2, 'Kit Médico');
+VALUES (1, DEFAULT, 'Kit Médico'),
+       (2, DEFAULT, 'Placa de Armadura'),
+       (2, DEFAULT, 'Kit Médico'),
+       (3, DEFAULT, 'Jato de Fuga'),
+       (3, DEFAULT, 'Kit Médico'),
+       (4, DEFAULT, 'Campo de Força Portátil'),
+       (4, DEFAULT, 'Kit Médico');
 
 -- Inserir status do alien na tabela STATUS_DO_ALIEN
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
@@ -326,6 +385,8 @@ VALUES (3, 1, 1),
 INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
 VALUES (1, 1),
        (2, 2),
+       (2, 5),
+       (2, 6),
        (3, 3),
        (12, 8),
        (13, 7);

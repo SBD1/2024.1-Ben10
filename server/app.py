@@ -1,33 +1,158 @@
 from controllers.sala_controller import SalaController
+from controllers.personagem_controller import PersonagemController
+import os
+from utils.validation_utils import ValidationUtils
+from controllers.npc_controller import NpcController
 
 def main():
+    global GLOBAL_SETS 
     sala_controller = SalaController()
+    personagem_controller = PersonagemController()
+    npc_controller = NpcController()
+    validation_utils = ValidationUtils()
+
 
     GLOBAL_SETS = {
-        'id_personagem': 2
+        'id_personagem': None
     }
 
 
     lista_comandos = {
+        'personagem': {
+            'exibir': {
+                'descrição': 'comando para exibir informações sobre o seu personagem no jogo',
+                'executar': lambda _: personagem_controller.exibir_personagem(GLOBAL_SETS['id_personagem'], 'S')
+            },
+            'inventario': {
+                'descrição': 'comando para exibir informações sobre os itens do seu personagem no jogo',
+                'executar': lambda _: personagem_controller.exibir_inventario(GLOBAL_SETS['id_personagem'])
+            }
+        },
         'sala': {
             'trocar': {
                 'argumento': 'id_sala',
                 'descrição': 'comando para trocar de sala',
                 'executar': lambda id_sala: sala_controller.trocar_jogador_de_sala(GLOBAL_SETS['id_personagem'], id_sala)
+            },
+            'npc': {
+                'descrição': 'comando para listar os npcs na sala atual com sua role',
+                'executar': lambda _: sala_controller.mostrar_npcs_na_sala(GLOBAL_SETS['id_personagem'])
             }
         },
         'mapa': {
             'atual': {
                 'descrição': 'comando para ver o mapa da região atual',
-                'executar': lambda _: sala_controller.desenhar_mapa_regiao('regiao_atual')  # Placeholder
+                'executar': lambda _: sala_controller.desenhar_mapa_regiao_atual()
             },
             'regiao': {
-                'argumento': 'nome_regiao',
-                'descrição': 'comando para ver o mapa de uma determinada região',
-                'executar': lambda nome_regiao: sala_controller.desenhar_mapa_regiao(nome_regiao)
+                'argumento': 'id_regiao',
+                'descrição': 'comando para ver o mapa de uma determinada região. Selecione o ID da região, execute o comando \"mapa listar\" para conhecer todas as regiões',
+                'executar': lambda id_regiao: sala_controller.desenhar_mapa_regiao(id_regiao)
+            },
+            'listar': {
+                'descrição': 'comando para listar todas as regiões.',
+                'executar': lambda _: sala_controller.listar()
+            }
+        },
+        'npc': {
+            'falar': {
+                'argumento': 'id_npc',
+                'descrição': 'comando para falar com um npc',
+                'executar': lambda id_npc: npc_controller.interagir_com_npc(GLOBAL_SETS['id_personagem'], id_npc)
             }
         }
     }
+
+    def criar_personagem():
+        global GLOBAL_SETS
+        id_personagem_atual = 0
+        verificacao = False
+        personagem = 0
+        alien = 0
+
+        aliens = {
+        1: 'Quatro Braços',
+        2: 'XLR8',
+        3: 'Chama',
+        4: 'Diamante',
+        5: 'Besta',
+        6: 'Insectóide',
+        7: 'Fantasmático',
+        8: 'Ultra T',
+        9: 'Massa Cinzenta',
+        10: 'Aquático',
+        11: 'Vilgax'}
+
+        print('Digite o nome que deseja ser chamado no jogo:')
+
+        while verificacao == False:
+
+            personagem = input('')
+            if len(personagem) <= 2:
+                personagem = ''
+                os.system('clear')
+                print('Por favor insira um nome válido')
+            else:
+                verificacao = True
+
+        verificacao = False
+
+        print('\nAgora esses são nossos Aliens disponíveis! Escolha um deles de forma sábia! (Digite o numero)')
+
+        while verificacao == False:
+            for key, value in aliens.items():
+                print(f"{key} - {value}")
+
+            alien = input('')
+
+            if not alien.isdigit():
+                print('Por favor, digite um número válido!')
+            else:
+                alien = int(alien)
+                if alien <= 0 or alien > 12:
+                    alien = 0
+                    os.system('clear')
+                    print('Por favor insira um número válido')
+                else:
+                    verificacao = True
+
+        GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
+
+
+
+    def personagem():
+        global GLOBAL_SETS
+        id_personagem_atual = 0
+        condicao = 0
+        
+        while condicao == False:
+
+            confirmacao = input("Você já possui um personagem? (S / N):\n")
+
+            if confirmacao == 'S' or confirmacao == 's':
+                    id_personagem_atual = input("Digite o ID do seu personagem para que possamos achá-lo no nosso sistema:")
+
+                    if not id_personagem_atual.isdigit():
+                        print('Por favor, digite um número válido!')
+
+                    else:
+                        if personagem_controller.exibir_personagem(id_personagem_atual, 'N') == None:
+                            condicao = False
+                            print('ID não encontrado, por favor, digite novamente!')
+                        else:
+                            personagem_controller.exibir_personagem(id_personagem_atual, 'S')
+                            GLOBAL_SETS['id_personagem'] = id_personagem_atual
+                            condicao = True
+
+            elif confirmacao == 'N' or confirmacao == 'n':
+                os.system('clear')
+                print('Ok, não se preocupe!\nVamos criar seu personagem...\n')
+                criar_personagem()
+                condicao = True
+            
+            else:
+                os.system('clear')
+                print('Digite um valor válido!')
 
     def listar_comandos():
         print("\nComandos disponíveis:")
@@ -68,10 +193,16 @@ def main():
         else:
             print("Comando inválido. Tente novamente.")
 
+    os.system('clear')
+
     print("Bem-vindo ao jogo!")
+
+    personagem()
+
     listar_comandos()
 
     while True:
+        # listar_comandos()
         comando = input("\nDigite um comando: ")
         executar_comando(comando)
 
