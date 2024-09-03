@@ -27,14 +27,6 @@ class NpcService:
         """
         return self.npc_repository.obter_fala_npc(id_npc)
 
-    def obter_texto_missao(self, fala_npc):
-        """
-        Retorna o texto da missão do NPC, se disponível.
-        :param fala_npc: Dicionário contendo informações sobre o NPC.
-        :return: Texto da missão ou None se não estiver disponível.
-        """
-        return fala_npc.get("textoMissao")
-
     def exibir_fala_npc_na_sala(self, id_sala):
         """
         Verifica se há um NPC na sala com o ID especificado e exibe as falas do NPC.
