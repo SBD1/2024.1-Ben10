@@ -51,7 +51,7 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 - **SALA**: <ins>id_sala</ins>, nome_regiao, id_pre_req_missao
 - **ZONA_DE_ARMADILHA**: fator, tipo;
 - **INSTANCIA_NPC_NA_SALA**: <ins>id_sala</ins>, <ins>id_npc</ins>;
-- **NPC**: <ins>id_npc</ins>;
+- **NPC**: <ins>id_npc,nome_npc</ins>;
 - **VENDEDOR**: dialogo_associado_venda
 - **GUIA_DE_MISSOES**: <ins>id_missao_associada</ins>;
 - **MISSAO**: <ins>id_missao</ins>, nome_missao, descricao, experiencia, recompensa_em_moedas
@@ -202,3 +202,4 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 | ----- |----- | ---------- | ---------- | ----------- | 
 | `1.0` | 20/07| Criando documento e adicionando entidades, relacionamentos e atributos | [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
 | `1.1` | 19/08 | Atualizando MER| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
+| `1.2` | 04/09 | Adicionando npc_nome ao mer| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
