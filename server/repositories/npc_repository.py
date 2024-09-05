@@ -50,7 +50,7 @@ class NpcRepository:
         try:
             cursor = self.connection.cursor()
             query = """
-                SELECT dialogo_associado_venda, id_missao_associada
+                SELECT dialogo_associado_venda, id_missao_associada, nome_npc
                 FROM NPC
                 WHERE id_npc = %s
             """
@@ -59,10 +59,11 @@ class NpcRepository:
             cursor.close()
 
             if resultado:
-                texto_comercio, id_missao = resultado
+                texto_comercio, id_missao, nome_npc = resultado
                 texto_missao = self.obter_texto_missao(id_missao) if id_missao else None
 
                 fala = {
+                    "nomeNpc": nome_npc,
                     "textoComercio": texto_comercio,
                     "textoMissao": texto_missao
                 }

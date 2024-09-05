@@ -36,7 +36,7 @@ class NpcService:
         if npc_id:
             fala_npc = self.obter_fala_npc(npc_id)
             if fala_npc:
-                print(f"NPC: {fala_npc['textoComercio']}")
+                print(f"{fala_npc['nomeNpc']}: {fala_npc['textoComercio']}")
         else:
             print("A sala parece estar vazia.")
         return None
