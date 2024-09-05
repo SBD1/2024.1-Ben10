@@ -32,6 +32,8 @@ nav:
         - DML: "modulo2/dml.md"
         - DQL: "modulo2/dql.md"
         - Álgebra Relacional: "modulo2/algebraRelacional.md"
+    - Módulo 3:
+        - Triggers e Stored Procedures : "modulo3/triggers.md"
 
 theme:
   name: material
