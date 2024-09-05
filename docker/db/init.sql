@@ -1,7 +1,7 @@
 CREATE TYPE tipo_reducao_acrescimo AS ENUM ('redução', 'acréscimo');
 CREATE TYPE tipo_status AS ENUM ('buff_dano', 'critico', 'imunidade', 'vida_extra', 'cura');
 CREATE TYPE tipo_status_missao AS ENUM ('completa', 'em progresso');
-CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura', 'paralisia', 'defesa');
+CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura');
 
 
 CREATE TABLE ESPECIE (
@@ -81,7 +81,7 @@ CREATE TABLE PERSONAGEM (
     nome_alien VARCHAR(30),
     nome VARCHAR(30) NOT NULL,
     id_sala INT,
-    saude INT NOT NULL,
+    saude INT NOT NULL CHECK (saude >= 0),
     nivel INT NOT NULL,
     FOREIGN KEY (nome_alien) REFERENCES ALIEN(nome),
     FOREIGN KEY (id_sala) REFERENCES SALA(id_sala)

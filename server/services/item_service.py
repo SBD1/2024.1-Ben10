@@ -34,8 +34,10 @@ class ItemService:
     def consumivel_cura(self, id_personagem, item):
         if GLOBAL_SETS['transformado']:
             self.item_repository.curar_vida_alien(id_personagem, GLOBAL_SETS['transformado'], item['valor_consumivel'])
+            ## atualizar no global set
         else:
             self.item_repository.curar_vida_personagem(id_personagem, item['valor_consumivel'])
+            ## atualizar no global set
             print(f"\nVocê curou {item['valor_consumivel']} de vida!\n")
         return
 

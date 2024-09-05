@@ -172,6 +172,24 @@ class PersonagemRepository:
             print(f"An error occurred: {e}")
             return None        
 
+    def receber_dano(self, id_personagem, fator):
+        """
+        Faz o personagem levar dano
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = saude - %s
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (fator, id_personagem,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
     def close(self):
         """
         Fecha a conexão com o banco de dados.
