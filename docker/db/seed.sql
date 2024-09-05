@@ -111,13 +111,13 @@ INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel)
 VALUES ('Placa de Armadura', 3000, 'imunidade', 3);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Jato de Fuga', 10000, 'vida_extra', 1);
+VALUES ('Jato de Fuga', 10000, 'vida_extra', 50);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Campo de Força Portátil', 4000, 'buff_dano', 1);
+VALUES ('Campo de Força Portátil', 4000, 'buff_dano', 15);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Camuflagem Alienígena', 4000, 'critico', 2);
+VALUES ('Camuflagem Alienígena', 4000, 'critico', 50);
 
 -- Inserir itens na tabela ARMA
 INSERT INTO ARMA (nome_item, preco, dano) 
@@ -399,7 +399,8 @@ INSERT INTO INVENTARIO (id_personagem, id_item, nome_item)
 VALUES (1, DEFAULT, 'Kit Médico'),
        (2, DEFAULT, 'Placa de Armadura'),
        (2, DEFAULT, 'Kit Médico'),
-       (2, DEFAULT, 'Kit Médico'),
+       (2, DEFAULT, 'Campo de Força Portátil'),
+       (2, DEFAULT, 'Camuflagem Alienígena'),
        (3, DEFAULT, 'Jato de Fuga'),
        (3, DEFAULT, 'Kit Médico'),
        (4, DEFAULT, 'Campo de Força Portátil'),

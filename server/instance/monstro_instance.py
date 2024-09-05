@@ -31,14 +31,18 @@ class MonstroInstance:
 
         if self.saude_atual == 0:
             print("O monstro foi derrotado")
-            # entregar recompensa
+            # entregar recompensa função aqui
 
     def atacar(self):
         if self.saude_atual == 0:
             return
-        
-        # decidir qual fator vai ser (habilidade ou dano padrão)
+                
         fator = self.status_base
+
+        if GLOBAL_SETS['consumivel']['imunidade']:
+            GLOBAL_SETS['consumivel']['imunidade'] = GLOBAL_SETS['consumivel']['imunidade'] - 1
+            print(f"\n{fator} de dano ignorado!\n")
+            return
 
         if GLOBAL_SETS['transformado']:
             if GLOBAL_SETS['alien']['vida_atual'] - fator < 0:

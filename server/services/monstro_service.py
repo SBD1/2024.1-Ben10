@@ -5,6 +5,9 @@ from services.sala_service import SalaService
 import random
 from instance.monstro_instance import MonstroInstance
 from utils.validation_utils import ValidationUtils
+from random import randint
+import math
+from config.config import GLOBAL_SETS
 
 class MonstroService:
     def __init__(self):
@@ -25,11 +28,25 @@ class MonstroService:
         
         return monstros_escolhidos
     
+    def calcular_dano(self, dano_base):
+        dano_final = dano_base
+
+        if GLOBAL_SETS['consumivel']['buff_dano']:
+            dano_final = dano_final + GLOBAL_SETS['consumivel']['buff_dano']
+        
+        if GLOBAL_SETS['consumivel']['critico']:
+            critico = (GLOBAL_SETS['consumivel']['critico'] / 100) + 1
+            acertou_critico = randint(0, 1)
+            if acertou_critico:
+                dano_final = dano_final * critico
+
+        return math.ceil(dano_final)
+
     def vez_jogador(self, id_personagem, instancias):
         j = 0
 
         for i in range(0, len(instancias)):
-            if i == 1:
+            if i == 1 or i == 3:
                 continue
 
             print(f"{j} - Monstro: {instancias[i].nome_especie} [Saúde Atual: {instancias[i].saude_atual}]")
@@ -48,7 +65,11 @@ class MonstroService:
         if opcao != 0:
             opcao = 2
 
-        instancias[opcao].receber_dano(100)
+        dano = self.calcular_dano(20) # falta somar o dano da arma que o personagem ta usando, além dele poder escolher a habilidade do alien ou ataque básico
+
+        print(f"\nVocê deu aplicou {dano} de dano!\n")
+
+        instancias[opcao].receber_dano(dano)
     
     def entrar_em_combate(self, id_sala, id_personagem):
         turno = 1
@@ -57,16 +78,15 @@ class MonstroService:
         instancias = []
         for monstro in info_monstros:
             instancias.append(MonstroInstance(monstro))
-            if len(instancias) == 1:
-                instancias.append('jogador') ## sim, isso é gambiarra
+            instancias.append('jogador') ## sim, isso é gambiarra
 
         num_instancias = len(instancias)
 
         while instancias[0].saude_atual or instancias[2].saude_atual:
-            if turno%num_instancias == 1:
+            if turno%num_instancias == 1 or turno%num_instancias == 3:
                 self.vez_jogador(id_personagem, instancias)
             else:
-                instancias[turno%3].atacar()
+                instancias[turno%4].atacar()
 
             turno = turno + 1
         
