@@ -60,19 +60,19 @@ INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Pistola dos Encanadores', 'Arma
 
 -- Inserir itens na tabela CONSUMIVEL
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Kit Médico', 5000, 'ativo', 3);
+VALUES ('Kit Médico', 5000, 'cura', 3);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Placa de Armadura', 3000, 'inativo', 3);
+VALUES ('Placa de Armadura', 3000, 'imunidade', 3);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Jato de Fuga', 10000, 'inativo', 1);
+VALUES ('Jato de Fuga', 10000, 'vida_extra', 1);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Campo de Força Portátil', 4000, 'ativo', 1);
+VALUES ('Campo de Força Portátil', 4000, 'buff_dano', 1);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Camuflagem Alienígena', 4000, 'ativo', 2);
+VALUES ('Camuflagem Alienígena', 4000, 'critico', 2);
 
 -- Inserir itens na tabela ARMA
 INSERT INTO ARMA (nome_item, preco, dano) 

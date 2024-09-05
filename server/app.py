@@ -3,17 +3,14 @@ from controllers.personagem_controller import PersonagemController
 import os
 from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
+from config.config import GLOBAL_SETS
 
 def main():
-    global GLOBAL_SETS 
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
 
-    GLOBAL_SETS = {
-        'id_personagem': None
-    }
 
     lista_comandos = {
         'personagem': {

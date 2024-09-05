@@ -65,7 +65,7 @@ class PersonagemService:
 
         os.system('clear')
         print(f"\n-----------------------------------------------")
-        print('-------------Itens do iventário----------------\n')
+        print('-------------Itens do inventário----------------\n')
 
         for row in nome_itens:
             print(row)
