@@ -29,10 +29,9 @@ class ItemService:
         """Desativa o buff após o tempo de duração especificado."""
         time.sleep(duration)
         GLOBAL_SETS['consumivel'][buff_name] = None
-        print(f"\n{buff_name} expirou!")
+        print(f"\n\n{buff_name} expirou!\n")
 
     def consumivel_cura(self, id_personagem, item):
-        self.missao_repository.tirar_item_inventario(id_personagem, item['id_item'])
         if GLOBAL_SETS['transformado']:
             self.item_repository.curar_vida_alien(id_personagem, GLOBAL_SETS['transformado'], item['valor_consumivel'])
         else:
@@ -41,6 +40,10 @@ class ItemService:
         return
 
     def usar_consumivel(self, id_personagem, item):
+        self.missao_repository.tirar_item_inventario(id_personagem, item['id_item'])
+
         if item['status'] == 'cura':
             self.consumivel_cura(id_personagem, item)
+        else:
+            self.ativar_buff(item['status'], item['valor_consumivel'])
         return
