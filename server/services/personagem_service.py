@@ -65,7 +65,7 @@ class PersonagemService:
 
         os.system('clear')
         print(f"\n-----------------------------------------------")
-        print('-------------Itens do iventário----------------\n')
+        print('-------------Itens do inventário----------------\n')
 
         for row in nome_itens:
             print(row)
@@ -74,3 +74,7 @@ class PersonagemService:
 
     def descontar_moedas_personagem(self, id_personagem, quantidade):
         return self.personagem_repository.descontar_moedas_personagem(id_personagem, quantidade)
+    
+    def obter_itens_tipo_consumivel(self, id_personagem):
+        items = self.personagem_repository.obter_itens_tipo_consumivel(id_personagem)
+        return items

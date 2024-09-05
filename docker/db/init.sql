@@ -1,5 +1,5 @@
 CREATE TYPE tipo_reducao_acrescimo AS ENUM ('redução', 'acréscimo');
-CREATE TYPE tipo_status AS ENUM ('ativo', 'inativo');
+CREATE TYPE tipo_status AS ENUM ('buff_dano', 'critico', 'imunidade', 'vida_extra', 'cura');
 CREATE TYPE tipo_status_missao AS ENUM ('completa', 'em progresso');
 CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura', 'paralisia', 'defesa');
 
