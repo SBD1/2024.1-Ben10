@@ -4,11 +4,13 @@ import os
 from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
 from controllers.alien_controller import AlienController
+from controllers.inventario_controller import InventarioController
 
 def main():
     global GLOBAL_SETS 
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
+    inventario_controller = InventarioController()
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
     alien_controller = AlienController()
@@ -26,6 +28,12 @@ def main():
             'inventario': {
                 'descrição': 'comando para exibir informações sobre os itens do seu personagem no jogo',
                 'executar': lambda _: personagem_controller.exibir_inventario(GLOBAL_SETS['id_personagem'])
+            }
+        },
+        'inventario': {
+            'listar': {
+                'descrição': 'comando para exibir informações sobre os inventários que estão no sistema e que podem ser comprados',
+                'executar': lambda _: inventario_controller.listar_consumiveis()
             }
         },
         'alien':{

@@ -13,3 +13,6 @@ class PersonagemController:
     
     def exibir_inventario(self, id_personagem):
         return self.personagem_service.exibir_inventario(id_personagem)
+    
+    def listar_inventario(self, id_personagem):
+        return self.personagem_service.exibir_inventario(id_personagem)
