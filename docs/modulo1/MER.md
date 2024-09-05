@@ -202,4 +202,4 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 | ----- |----- | ---------- | ---------- | ----------- | 
 | `1.0` | 20/07| Criando documento e adicionando entidades, relacionamentos e atributos | [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
 | `1.1` | 19/08 | Atualizando MER| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
-| `1.2` | 04/09 | Adicionando npc_nome ao mer| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
+| `1.2` | 04/09 | Adicionando nome_npc ao MER| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
