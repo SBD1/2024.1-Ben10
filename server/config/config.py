@@ -1,8 +1,6 @@
-import time
-import threading
-
 GLOBAL_SETS = {
     'id_personagem': None,
+    'transformado': None,
     'vida_maxima': None,
     'vida_atual': None,
     'consumivel': {

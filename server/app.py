@@ -21,6 +21,10 @@ def main():
             'inventario': {
                 'descrição': 'comando para exibir informações sobre os itens do seu personagem no jogo',
                 'executar': lambda _: personagem_controller.exibir_inventario(GLOBAL_SETS['id_personagem'])
+            },
+            'consumivel': {
+                'descrição': 'comando para exibir os itens consumíveis do jogador',
+                'executar': lambda _: personagem_controller.usar_consumivel(GLOBAL_SETS['id_personagem'])
             }
         },
         'sala': {

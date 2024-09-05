@@ -1,4 +1,5 @@
 from repositories.item_repository import ItemRepository
+from repositories.missao_repository import MissaoRepository
 from config.config import GLOBAL_SETS
 import threading
 import time
@@ -9,6 +10,7 @@ class ItemError(Exception):
 class ItemService:
     def __init__(self):
         self.item_repository = ItemRepository()
+        self.missao_repository = MissaoRepository()
         self.BUFF_DURATION = 90 # 1 minuto e 30 segundos
 
     def ativar_buff(self, buff_name, fator: int):
@@ -29,5 +31,16 @@ class ItemService:
         GLOBAL_SETS['consumivel'][buff_name] = None
         print(f"\n{buff_name} expirou!")
 
-    def usar_consumivel(self):
+    def consumivel_cura(self, id_personagem, item):
+        self.missao_repository.tirar_item_inventario(id_personagem, item['id_item'])
+        if GLOBAL_SETS['transformado']:
+            self.item_repository.curar_vida_alien(id_personagem, GLOBAL_SETS['transformado'], item['valor_consumivel'])
+        else:
+            self.item_repository.curar_vida_personagem(id_personagem, item['valor_consumivel'])
+            print(f"\nVocê curou {item['valor_consumivel']} de vida!\n")
+        return
+
+    def usar_consumivel(self, id_personagem, item):
+        if item['status'] == 'cura':
+            self.consumivel_cura(id_personagem, item)
         return

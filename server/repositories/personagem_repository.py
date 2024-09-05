@@ -153,6 +153,25 @@ class PersonagemRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
 
+    def obter_itens_tipo_consumivel(self, id_personagem):
+        try:
+            cursor = self.connection.cursor()
+            query_inventario = """
+                SELECT *
+                FROM inventario i
+                JOIN ITEM it ON it.nome_item = i.nome_item
+                JOIN CONSUMIVEL c ON c.nome_item = i.nome_item
+                WHERE i.id_personagem = %s AND it.tipo_item = 'Consumível'
+            """
+
+            cursor.execute(query_inventario, (id_personagem,))
+            itens = fetch_as_dict(cursor)
+            cursor.close()
+            return itens
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None        
+
     def close(self):
         """
         Fecha a conexão com o banco de dados.

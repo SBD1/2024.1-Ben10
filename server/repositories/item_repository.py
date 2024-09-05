@@ -28,6 +28,41 @@ class ItemRepository:
             print(f"An error occurred: {e}")
             return None
         
+    def curar_vida_personagem(self, id_personagem, fator):
+        """
+        Cura a vida do personagem
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = saude + %s
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (fator, id_personagem,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None       
+
+    def curar_vida_alien(self, id_personagem, nome_alien, fator):
+        """
+        Cura a vida do alien
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE STATUS_DO_ALIEN
+                SET saude = saude + %s
+                WHERE id_personagem = %s and nome_alien = %s;
+            """
+            cursor.execute(query, (fator, id_personagem, nome_alien,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None         
 
     def close(self):
         """

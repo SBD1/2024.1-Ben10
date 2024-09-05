@@ -74,3 +74,7 @@ class PersonagemService:
 
     def descontar_moedas_personagem(self, id_personagem, quantidade):
         return self.personagem_repository.descontar_moedas_personagem(id_personagem, quantidade)
+    
+    def obter_itens_tipo_consumivel(self, id_personagem):
+        items = self.personagem_repository.obter_itens_tipo_consumivel(id_personagem)
+        return items
