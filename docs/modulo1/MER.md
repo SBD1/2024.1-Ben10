@@ -36,21 +36,22 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 - **ITEM**
 - **ARMA**
 - **CONSUMIVEL**
+- **HABILIDADE**
 
 ### <a>Atributos</a>
 
 - **PERSONAGEM**: <ins>id_personagem</ins>, nome, nivel, saude, id_sala, nome_alien, quantidade_moedas;
 - **STATUS_DO_ALIEN**: <ins>nome_alien</ins>, saude;
-- **ESPECIE**: <ins>nome</ins>, status_base, saude, defesa, habilidade;
-- **ALIEN**: terceira_habilidade, segunda_habilidade;
+- **ESPECIE**: <ins>nome</ins>, status_base, saude, defesa;
+- **ALIEN**: descrição;
 - **MONSTRO**: id_recompensa, dificuldade, recompensa_em_moedas;
 - **INSTANCIA_MONSTRO**: <ins>id_monstro</ins>, saude_atual, nome_especie;
 - **INSTANCIA_ZONA_GUERRA**: <ins>id_monstro</ins>, <ins>id_zona_guerra</ins>, <ins>id_personagem</ins>;
-- **ZONA_DE_GUERRA**: dificuldade;
+- **ZONA_DE_GUERRA**: dificuldade, descrição;
 - **SALA**: <ins>id_sala</ins>, nome_regiao, id_pre_req_missao
 - **ZONA_DE_ARMADILHA**: fator, tipo;
 - **INSTANCIA_NPC_NA_SALA**: <ins>id_sala</ins>, <ins>id_npc</ins>;
-- **NPC**: <ins>id_npc</ins>;
+- **NPC**: <ins>id_npc,nome_npc</ins>;
 - **VENDEDOR**: dialogo_associado_venda
 - **GUIA_DE_MISSOES**: <ins>id_missao_associada</ins>;
 - **MISSAO**: <ins>id_missao</ins>, nome_missao, descricao, experiencia, recompensa_em_moedas
@@ -60,6 +61,7 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 - **ITEM**: <ins>nome</ins>, preco;
 - **ARMA**: dano;
 - **CONSUMIVEL**: status, valor_consumivel;
+- **HABILIDADE**: <ins>nome_habilidade</ins>, <ins>nome_especie</ins>, efeito, quantidade;
 
 ### <a>Relacionamentos</a>
 
@@ -176,6 +178,10 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 - A INSTANCIA_NPC_NA_SALA pode estar em apenas uma SALA (1,1)
 - A SALA pode ter nenhuma ou várias INSTANCIA_NPC_NA_SALA (0,N)
 
+**ESPECIE _possui_ HABILIDADE**
+
+- A ESPECIE pode possuir apenas uma HABILIDADE (1,1)
+- A HABILIDADE pode ser possuída por nenhuma ou várias ESPECIE (0,N)
 
 
 ## <a>Referência Bibliográfica</a>
@@ -195,3 +201,5 @@ A representação gráfica deste modelo pode ser vista no artefato [DER](https:/
 | Versão| Data | Descrição  | Autor(es)  | Revisor(es) |
 | ----- |----- | ---------- | ---------- | ----------- | 
 | `1.0` | 20/07| Criando documento e adicionando entidades, relacionamentos e atributos | [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
+| `1.1` | 19/08 | Atualizando MER| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
+| `1.2` | 04/09 | Adicionando npc_nome ao mer| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
