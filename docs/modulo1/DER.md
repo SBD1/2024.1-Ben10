@@ -37,19 +37,31 @@ O Diagrama Entidade-Relacionamento (DER) deve fornecer uma representação visua
 
     <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
 
+??? - "Terceira Versão do Diagrama Entidade Relacionamento"
+
+    A figura 3 a seguir mostra a terceira versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+
+
+    
+    <font size="3"><p style="text-align: center"><b>Figura 3</b> - Terceira Versão do Diagrama Entidade Relacionamento.</p></font>
+
+    ![Diagrama Entidade Relacionamento Versão 3](./assets/DER_V3.png){width: 500}
+
+    <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
+
 ### <a>Versão atual</a>
 
-A figura 3 a seguir mostra a terceira e atual versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
+A figura 4 a seguir mostra a quarta e atual versão do Diagrama Entidade Relacionamento desenvolvido pelo grupo:
 
-<font size="3"><p style="text-align: center"><b>Figura 3</b> - Terceira e atual versão do Diagrama Entidade Relacionamento.</p></font>
+<font size="3"><p style="text-align: center"><b>Figura 4</b> - Quarta e atual versão do Diagrama Entidade Relacionamento.</p></font>
 
-![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_V3.png){width: 500}
+![Diagrama Entidade Relacionamento Versão Atual](./assets/DER_V4.png){width: 500}
 
 <font size="3"><p style="text-align: center">Fonte: [Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas).</p></font>
 
-A figura 4 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
+A figura 5 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na plataforma Miro, para uma melhor visualização e navegação pelo diagrama desenvolvido:
 
-<font size="3"><p style="text-align: center"><b>Figura 4</b> - Diagrama Entidade Relacionamento para navegação.</p></font>
+<font size="3"><p style="text-align: center"><b>Figura 5</b> - Diagrama Entidade Relacionamento para navegação.</p></font>
 
 <center>
 <iframe width="768" height="500" src="https://miro.com/app/live-embed/uXjVKyitvt0=/?moveToViewport=-4530,-2109,10350,6576&embedId=114192275621" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
@@ -75,3 +87,4 @@ A figura 4 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na p
 | `1.0` | 20/07| Criando DER |[Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas)| [João Artur](https://github.com/joao-artl) |
 | `1.1` | 22/07| Inserindo versão 2 do DER e ajustando documento. |[Eric Silveira](https://github.com/ericbky)| [João Artur](https://github.com/joao-artl) |
 | `1.2` | 19/08| Inserindo versão 3 do DER e ajustando documento. |[João Artur](https://github.com/joao-artl)| [Eric Silveira](https://github.com/ericbky)| 
+| `1.2` | 04/09| Inserindo versão 4 do DER e ajustando documento. |[João Artur](https://github.com/joao-artl)| [Eric Silveira](https://github.com/ericbky)| 
