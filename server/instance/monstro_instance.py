@@ -1,8 +1,10 @@
 from repositories.monstro_repository import MonstroRepository
 from repositories.personagem_repository import PersonagemRepository
+from config.config import GLOBAL_SETS
 
 personagem_repository = PersonagemRepository()
 monstro_repository = MonstroRepository()
+
 
 class MonstroInstance:
     def __init__(self, monstro):
@@ -35,8 +37,21 @@ class MonstroInstance:
         if self.saude_atual == 0:
             return
         
-        # função pra dar dano no personagem
         # decidir qual fator vai ser (habilidade ou dano padrão)
         fator = self.status_base
-        personagem_repository.receber_dano(self.id_personagem, fator)
-        print(f"Você recebeu {fator} de dano!")
+
+        if GLOBAL_SETS['transformado']:
+            if GLOBAL_SETS['alien']['vida_atual'] - fator < 0:
+                fator = GLOBAL_SETS['alien']['vida_atual']
+
+            GLOBAL_SETS['alien']['vida_atual'] = GLOBAL_SETS['alien']['vida_atual'] - fator
+            personagem_repository.receber_dano_alien(self.id_personagem, fator, GLOBAL_SETS['transformado'])
+        else:
+            if GLOBAL_SETS['vida_atual'] - fator < 0:
+                fator = GLOBAL_SETS['vida_atual']
+ 
+            GLOBAL_SETS['vida_atual'] = GLOBAL_SETS['vida_atual'] - fator
+            personagem_repository.receber_dano(self.id_personagem, fator)
+          
+
+        print(f"\nVocê recebeu {fator} de dano!\n")

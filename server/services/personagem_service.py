@@ -82,3 +82,6 @@ class PersonagemService:
     def receber_dano(self, id_personagem, fator):
         ## diminuir no global set
         return self.personagem_repository.receber_dano(id_personagem, fator)
+    
+    def obter_informacoes_personagem(self, id_personagem):
+        return self.personagem_repository.obter_informacoes_personagem(id_personagem)

@@ -2,6 +2,7 @@ from services.personagem_service import PersonagemService
 from tabulate import tabulate
 from utils.validation_utils import ValidationUtils
 from services.item_service import ItemService
+from config.config import GLOBAL_SETS
 
 class PersonagemController:
 
@@ -11,6 +12,7 @@ class PersonagemController:
         self.item_service = ItemService()
 
     def exibir_personagem(self, id_personagem, infos):
+        print(GLOBAL_SETS)
         return self.personagem_service.exibir_personagem(id_personagem, infos)
     
     def criar_personagem(self, personagem, alien):
@@ -49,3 +51,12 @@ class PersonagemController:
 
         return 
         
+    def setar_global_set(self, id_personagem):
+        personagem = self.personagem_service.obter_informacoes_personagem(id_personagem)[0]
+
+        GLOBAL_SETS['transformado'] = personagem['nome_alien']
+        GLOBAL_SETS['vida_maxima'] = personagem['nivel'] * 100
+        GLOBAL_SETS['vida_atual'] = personagem['saude']
+        GLOBAL_SETS['alien']['vida_maxima'] = personagem['saude_especie'] * personagem['nivel']
+        GLOBAL_SETS['alien']['vida_atual'] = personagem['saude_alien']
+        GLOBAL_SETS['alien']['dano'] = personagem['dano_alien']

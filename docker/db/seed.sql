@@ -409,22 +409,10 @@ VALUES (1, DEFAULT, 'Kit Médico'),
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
 VALUES ('Chama',150, 1),
        ('Ultra T',75, 2),
+       ('XLR8',120, 2),
        ('XLR8',120, 3),
        ('Massa Cinzenta',130, 4);
 
--- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO
-INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
-VALUES (DEFAULT, 'Humano Hipnotizado', 80),
-       (DEFAULT, 'Servo', 75),
-       (DEFAULT, 'Demônio', 50),
-       (DEFAULT, 'Soldado de Elite', 250);
-
--- Inserir dados da zona de guerra na tabela INSTANCIA_ZONA_GUERRA
-INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
-VALUES (3, 1, 1),
-       (4, 2, 2),
-       (7, 3, 3),
-       (8, 4, 4);
 
 -- Inserir dados de NPC na tabela INSTANCIA_NPC_NA_SALA
 INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 

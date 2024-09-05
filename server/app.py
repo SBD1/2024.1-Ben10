@@ -228,6 +228,7 @@ def main():
     print("Bem-vindo ao jogo!")
 
     personagem()
+    personagem_controller.setar_global_set(GLOBAL_SETS['id_personagem'])
 
     # Exibe comandos do jogo ao iniciar
     listar_comandos()
