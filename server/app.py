@@ -4,12 +4,14 @@ import os
 from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
 from config.config import GLOBAL_SETS
+from controllers.alien_controller import AlienController
 
 def main():
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
+    alien_controller = AlienController()
 
 
     lista_comandos = {
@@ -25,6 +27,34 @@ def main():
             'consumivel': {
                 'descrição': 'comando para exibir os itens consumíveis do jogador',
                 'executar': lambda _: personagem_controller.usar_consumivel(GLOBAL_SETS['id_personagem'])
+            }
+        },
+        'alien':{
+            'atual':{
+                'descrição': 'comando para exibir alien que o personagem está',
+                'executar': lambda _: alien_controller.exibir_alien_atual(GLOBAL_SETS['id_personagem'])
+            },
+            'todos': {
+                'descrição': 'comando para exibir lista de aliens do personagem',
+                'executar': lambda _: alien_controller.exibir_aliens(GLOBAL_SETS['id_personagem'], "N")
+            },
+            'trocar': {
+                'descrição': 'comando para trocar de alien',
+                'executar': lambda _: alien_controller.exibir_aliens(GLOBAL_SETS['id_personagem'], "S")
+            }
+        },
+        'alien':{
+            'atual':{
+                'descrição': 'comando para exibir alien que o personagem está',
+                'executar': lambda _: alien_controller.exibir_alien_atual(GLOBAL_SETS['id_personagem'])
+            },
+            'todos': {
+                'descrição': 'comando para exibir lista de aliens do personagem',
+                'executar': lambda _: alien_controller.exibir_aliens(GLOBAL_SETS['id_personagem'], "N")
+            },
+            'trocar': {
+                'descrição': 'comando para trocar de alien',
+                'executar': lambda _: alien_controller.exibir_aliens(GLOBAL_SETS['id_personagem'], "S")
             }
         },
         'sala': {
@@ -69,7 +99,6 @@ def main():
     }
 
     def criar_personagem():
-        global GLOBAL_SETS
         id_personagem_atual = 0
         verificacao = False
         personagem = 0
@@ -123,7 +152,6 @@ def main():
         GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
 
     def personagem():
-        global GLOBAL_SETS
         id_personagem_atual = 0
         condicao = 0
         
