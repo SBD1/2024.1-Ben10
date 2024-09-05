@@ -87,4 +87,4 @@ A figura 5 exibe o Diagrama Entidade relacionamento desenvolvido pelo grupo na p
 | `1.0` | 20/07| Criando DER |[Arthur Alves](https://github.com/Arthrok), [Eric Silveira](https://github.com/ericbky), [João Artur](https://github.com/joao-artl) e [Rodolfo Cabral](https://github.com/roddas)| [João Artur](https://github.com/joao-artl) |
 | `1.1` | 22/07| Inserindo versão 2 do DER e ajustando documento. |[Eric Silveira](https://github.com/ericbky)| [João Artur](https://github.com/joao-artl) |
 | `1.2` | 19/08| Inserindo versão 3 do DER e ajustando documento. |[João Artur](https://github.com/joao-artl)| [Eric Silveira](https://github.com/ericbky)| 
-| `1.2` | 04/09| Inserindo versão 4 do DER e ajustando documento. |[João Artur](https://github.com/joao-artl)| [Eric Silveira](https://github.com/ericbky)| 
+| `1.3` | 04/09| Inserindo versão 4 do DER e ajustando documento. |[João Artur](https://github.com/joao-artl)| [Eric Silveira](https://github.com/ericbky)| 
