@@ -35,17 +35,17 @@ BEGIN TRANSACTION;
 
 -- Primeiro remove o monstro da tabela monstro
 DELETE FROM monstro m
-WHERE m.nome = 'VILGAX';
+WHERE m.nome = 'Vilgax';
 
 -- Depois, remove o alien da tabela especie
 DELETE FROM especie e
-WHERE e.nome = 'VILGAX';
+WHERE e.nome = 'Vilgax';
 
 COMMIT;
 
 -- Excluir Especie da tabela especie
 DELETE FROM especie e
-WHERE e.nome = 'VILGAX';
+WHERE e.nome = 'Vilgax';
 
 -- Excluir uma Habilidade
 DELETE FROM habilidade h
@@ -58,8 +58,8 @@ WHERE h.nome_habilidade = 'Super Velocidade';
 BEGIN TRANSACTION;
 
 -- Primeiro remove a sala de zona de Guerra
-DELETE FROM zona_de_guerra
-WHERE s.id_sala = 4;
+DELETE FROM zona_de_guerra zg
+WHERE zg.id_sala = 4;
 
 -- Depois, exclui a sala
 DELETE FROM sala s
@@ -71,8 +71,8 @@ COMMIT;
 BEGIN TRANSACTION;
 
 -- Primeiro remove a sala de zona armadilha
-DELETE FROM zona_de_armadilha 
-WHERE s.id_sala = 3;
+DELETE FROM zona_de_armadilha za
+WHERE za.id_sala = 3;
 
 -- Depois, exclui a sala
 DELETE FROM sala s
@@ -143,7 +143,7 @@ BEGIN TRANSACTION;
 
 -- Primeiro remove o item da tabela arma
 DELETE FROM arma a
-WHERE c.nome_item = 'Arma Tennyson';
+WHERE a.nome_item = 'Arma Tennyson';
 
 -- Depois, remove o item da tabela item
 DELETE FROM item i
