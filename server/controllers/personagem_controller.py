@@ -12,7 +12,6 @@ class PersonagemController:
         self.item_service = ItemService()
 
     def exibir_personagem(self, id_personagem, infos):
-        print(GLOBAL_SETS)
         return self.personagem_service.exibir_personagem(id_personagem, infos)
     
     def criar_personagem(self, personagem, alien):

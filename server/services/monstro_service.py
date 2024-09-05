@@ -66,10 +66,9 @@ class MonstroService:
             opcao = 2
 
         dano = self.calcular_dano(20) # falta somar o dano da arma que o personagem ta usando, além dele poder escolher a habilidade do alien ou ataque básico
-
         print(f"\nVocê deu aplicou {dano} de dano!\n")
 
-        instancias[opcao].receber_dano(dano)
+        instancias[opcao].receber_dano(dano, instancias, opcao)
     
     def entrar_em_combate(self, id_sala, id_personagem):
         turno = 1
@@ -80,13 +79,12 @@ class MonstroService:
             instancias.append(MonstroInstance(monstro))
             instancias.append('jogador') ## sim, isso é gambiarra
 
-        num_instancias = len(instancias)
 
-        while instancias[0].saude_atual or instancias[2].saude_atual:
-            if turno%num_instancias == 1 or turno%num_instancias == 3:
+        while len(instancias):
+            if turno%len(instancias) == 1 or turno%len(instancias) == 3:
                 self.vez_jogador(id_personagem, instancias)
             else:
-                instancias[turno%4].atacar()
+                instancias[turno%len(instancias)].atacar()
 
             turno = turno + 1
         

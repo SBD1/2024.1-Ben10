@@ -111,7 +111,7 @@ INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel)
 VALUES ('Placa de Armadura', 3000, 'imunidade', 3);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Jato de Fuga', 10000, 'vida_extra', 50);
+VALUES ('Jato de Fuga', 10000, 'vida_extra', 25);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
 VALUES ('Campo de Força Portátil', 4000, 'buff_dano', 15);
