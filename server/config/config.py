@@ -3,6 +3,7 @@ GLOBAL_SETS = {
     'transformado': None,
     'vida_maxima': None,
     'vida_atual': None,
+    'dano': None,
     'consumivel': {
         'buff_dano': None,
         'critico': None,
@@ -11,6 +12,7 @@ GLOBAL_SETS = {
     },
     'alien': {
         'vida_maxima': None,
-        'vida_atual': None
+        'vida_atual': None,
+        'dano': None
     },
 }

@@ -91,6 +91,29 @@ BEFORE UPDATE ON STATUS_DO_ALIEN
 FOR EACH ROW
 EXECUTE FUNCTION atualizar_vida_alien();
 
+CREATE OR REPLACE FUNCTION atualizar_vida_monstro() RETURNS TRIGGER AS $$
+DECLARE
+    vida_maxima INTEGER;
+BEGIN
+    SELECT m.saude INTO vida_maxima
+    FROM MONSTRO m
+    WHERE m.nome = NEW.nome_especie;
+
+    IF NEW.saude_atual > vida_maxima THEN
+        NEW.saude_atual := vida_maxima;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_atualizar_vida_monstro
+BEFORE INSERT OR UPDATE ON INSTANCIA_MONSTRO
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_vida_monstro();
+
+
+
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Placa de Armadura', 'Consumível');
@@ -111,13 +134,13 @@ INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel)
 VALUES ('Placa de Armadura', 3000, 'imunidade', 3);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Jato de Fuga', 10000, 'vida_extra', 1);
+VALUES ('Jato de Fuga', 10000, 'vida_extra', 25);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Campo de Força Portátil', 4000, 'buff_dano', 1);
+VALUES ('Campo de Força Portátil', 4000, 'buff_dano', 15);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Camuflagem Alienígena', 4000, 'critico', 2);
+VALUES ('Camuflagem Alienígena', 4000, 'critico', 50);
 
 -- Inserir itens na tabela ARMA
 INSERT INTO ARMA (nome_item, preco, dano) 
@@ -168,27 +191,27 @@ INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Massa C
 INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Aquático', 'Alien que pode respirar debaixo dágua e manipular a água.', 95, 90, 87);
 
 -- Inserir monstros na tabela MONSTRO
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Vilgax', 'Espada Proto-Arma', 10, 10000, 550, 140, 130);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Humano Hipnotizado', 'Kit Médico', 1, 300, 40, 50, 60);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Servo', 'Granada Inibidora', 2, 500, 70, 80, 100);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Demônio', 'Pistola dos Encanadores', 3, 800, 150, 80, 150);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Soldado de Elite', 'Placa de Armadura', 3, 1000, 80, 30, 100);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Lobo de duas-cabeças', 'Camuflagem Alienígena', 4, 1500, 100, 100, 100);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Cavaleiro Eterno', 'Arma Tennyson', 5, 4000, 300, 100, 100);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Encanador Traidor', 'Campo de Força Portátil', 5, 3000, 200, 100, 70);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Vilgax', 'Espada Proto-Arma', 10, 10000, 550, 140, 10);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Humano Hipnotizado', 'Kit Médico', 1, 300, 40, 50, 10);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Servo', 'Granada Inibidora', 2, 500, 70, 80, 10);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Demônio', 'Pistola dos Encanadores', 3, 800, 150, 80, 10);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Soldado de Elite', 'Placa de Armadura', 3, 1000, 80, 30, 10);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Lobo de duas-cabeças', 'Camuflagem Alienígena', 4, 1500, 100, 100, 10);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Cavaleiro Eterno', 'Arma Tennyson', 5, 4000, 300, 100, 10);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base) VALUES ('Encanador Traidor', 'Campo de Força Portátil', 5, 3000, 200, 100, 10);
 
 -- Inserir habilidades na tabela HABILIDADE
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Quatro Braços', 'Força Bruta', 'dano', 70);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
-VALUES ('XLR8', 'Super Velocidade', 'paralisia', 120);
+VALUES ('XLR8', 'Super Velocidade', 'dano', 120);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Chama', 'Lançar Fogo', 'dano', 95);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
-VALUES ('Diamante', 'Corpo Cristalino', 'defesa', 120);
+VALUES ('Diamante', 'Corpo Cristalino', 'cura', 120);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Besta', 'Sentidos Aguçados', 'dano', 100);
@@ -197,10 +220,10 @@ INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade)
 VALUES ('Insectóide', 'Rajada de Ferrão', 'dano', 105);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
-VALUES ('Fantasmático', 'Intangibilidade', 'paralisia', 110);
+VALUES ('Fantasmático', 'Intangibilidade', 'cura', 110);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
-VALUES ('Ultra T', 'Armadura Tecnológica', 'defesa', 110);
+VALUES ('Ultra T', 'Armadura Tecnológica', 'cura', 110);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Massa Cinzenta', 'Intelecto Superior', 'cura', 120);
@@ -399,7 +422,8 @@ INSERT INTO INVENTARIO (id_personagem, id_item, nome_item)
 VALUES (1, DEFAULT, 'Kit Médico'),
        (2, DEFAULT, 'Placa de Armadura'),
        (2, DEFAULT, 'Kit Médico'),
-       (2, DEFAULT, 'Kit Médico'),
+       (2, DEFAULT, 'Campo de Força Portátil'),
+       (2, DEFAULT, 'Camuflagem Alienígena'),
        (3, DEFAULT, 'Jato de Fuga'),
        (3, DEFAULT, 'Kit Médico'),
        (4, DEFAULT, 'Campo de Força Portátil'),
@@ -409,22 +433,10 @@ VALUES (1, DEFAULT, 'Kit Médico'),
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
 VALUES ('Chama',150, 1),
        ('Ultra T',75, 2),
+       ('XLR8',120, 2),
        ('XLR8',120, 3),
        ('Massa Cinzenta',130, 4);
 
--- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO
-INSERT INTO INSTANCIA_MONSTRO (id_monstro, nome_especie, saude_atual) 
-VALUES (DEFAULT, 'Humano Hipnotizado', 80),
-       (DEFAULT, 'Servo', 75),
-       (DEFAULT, 'Demônio', 50),
-       (DEFAULT, 'Soldado de Elite', 250);
-
--- Inserir dados da zona de guerra na tabela INSTANCIA_ZONA_GUERRA
-INSERT INTO INSTANCIA_ZONA_GUERRA (id_zona_guerra, id_personagem, id_monstro) 
-VALUES (3, 1, 1),
-       (4, 2, 2),
-       (7, 3, 3),
-       (8, 4, 4);
 
 -- Inserir dados de NPC na tabela INSTANCIA_NPC_NA_SALA
 INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 

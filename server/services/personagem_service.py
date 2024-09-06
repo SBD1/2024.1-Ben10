@@ -78,3 +78,10 @@ class PersonagemService:
     def obter_itens_tipo_consumivel(self, id_personagem):
         items = self.personagem_repository.obter_itens_tipo_consumivel(id_personagem)
         return items
+
+    def receber_dano(self, id_personagem, fator):
+        ## diminuir no global set
+        return self.personagem_repository.receber_dano(id_personagem, fator)
+    
+    def obter_informacoes_personagem(self, id_personagem):
+        return self.personagem_repository.obter_informacoes_personagem(id_personagem)

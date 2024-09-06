@@ -34,9 +34,18 @@ class ItemService:
     def consumivel_cura(self, id_personagem, item):
         if GLOBAL_SETS['transformado']:
             self.item_repository.curar_vida_alien(id_personagem, GLOBAL_SETS['transformado'], item['valor_consumivel'])
+            if GLOBAL_SETS['alien']['vida_atual'] + item['valor_consumivel'] > GLOBAL_SETS['alien']['vida_maxima']:
+                GLOBAL_SETS['alien']['vida_atual'] = GLOBAL_SETS['alien']['vida_maxima']
+            else:
+                GLOBAL_SETS['alien']['vida_atual'] = GLOBAL_SETS['alien']['vida_atual'] + item['valor_consumivel']
         else:
             self.item_repository.curar_vida_personagem(id_personagem, item['valor_consumivel'])
-            print(f"\nVocê curou {item['valor_consumivel']} de vida!\n")
+            if GLOBAL_SETS['vida_atual'] + item['valor_consumivel'] > GLOBAL_SETS['vida_maxima']:
+                GLOBAL_SETS['vida_atual'] = GLOBAL_SETS['vida_maxima']            
+            else:
+                GLOBAL_SETS['vida_atual'] = GLOBAL_SETS['vida_atual'] + item['valor_consumivel']
+            
+        print(f"\nVocê curou {item['valor_consumivel']} de vida!\n")
         return
 
     def usar_consumivel(self, id_personagem, item):
