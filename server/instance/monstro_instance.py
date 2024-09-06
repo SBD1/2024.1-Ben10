@@ -1,6 +1,7 @@
 from repositories.monstro_repository import MonstroRepository
 from repositories.personagem_repository import PersonagemRepository
 from config.config import GLOBAL_SETS
+from repositories.npc_repository import NpcRepository
 
 personagem_repository = PersonagemRepository()
 monstro_repository = MonstroRepository()
@@ -20,6 +21,7 @@ class MonstroInstance:
         self.saude = monstro.get('saude')
         self.defesa = monstro.get('defesa')
         self.status_base = monstro.get('status_base')
+        self.npc_inventario = NpcRepository()
 
     def receber_dano(self, dano, instancias, index):
         if self.saude_atual - dano <= 0:
@@ -33,6 +35,10 @@ class MonstroInstance:
             print("O monstro foi derrotado")
             self.retirar_instancia(instancias, index)
             # entregar recompensa função aqui
+            print(f"Você recebeu {self.id_recompensa} de recompensa!")
+            self.npc_inventario.inserir_item_inventario(GLOBAL_SETS['id_personagem'], self.id_recompensa)
+
+
 
     def atacar(self):
         if self.saude_atual == 0:

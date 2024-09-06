@@ -66,7 +66,7 @@ class MonstroService:
             opcao = 2
 
         dano = self.calcular_dano(20) # falta somar o dano da arma que o personagem ta usando, além dele poder escolher a habilidade do alien ou ataque básico
-        print(f"\nVocê deu aplicou {dano} de dano!\n")
+        print(f"\nVocê aplicou {dano} de dano ao monstro!\n")
 
         instancias[opcao].receber_dano(dano, instancias, opcao)
     
@@ -75,9 +75,11 @@ class MonstroService:
 
         info_monstros = self.monstro_repository.informacoes_monstro(id_sala, id_personagem)
         instancias = []
+
         for monstro in info_monstros:
-            instancias.append(MonstroInstance(monstro))
-            instancias.append('jogador') ## sim, isso é gambiarra
+            if monstro['saude_atual'] > 0:
+                instancias.append(MonstroInstance(monstro))
+                instancias.append('jogador') ## sim, isso é gambiarra
 
 
         while len(instancias):
