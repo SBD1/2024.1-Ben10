@@ -99,17 +99,17 @@ VALUES (6, 1, 4);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
 VALUES (7, 8, 5);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (9, 7, 5);
+VALUES (9, 7, 6);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (10, 1, 6);
+VALUES (10, 1, 7);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
 VALUES (11, 15, 5);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (12, 1, 7);
+VALUES (12, 1, 8);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (13, 1, 8);
+VALUES (13, 1, 9);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (14, 1, 9);
+VALUES (14, 1, 10);
 
 
 -- Inserir as espécies dos monstros na tabela ESPECIE
@@ -136,15 +136,15 @@ VALUES ('Guarda do Templo', 'Espada Proto-Arma', 4, 150, 400, 70, 60);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
 VALUES ('Guarda de Elite', 'Granada Inibidora', 5, 300, 90, 70);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Estátua Viva', 'Jato de Fuga', 5, 400, 100, 80);
+VALUES ('Estátua Viva', 'Jato de Fuga', 6, 400, 100, 80);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Capitão do Exército', 'Camuflagem Alienígena', 6, 500, 110, 90);
+VALUES ('Capitão do Exército', 'Camuflagem Alienígena', 7, 500, 110, 90);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('General Khartosh', 'Pistola dos Encanadores', 7, 700, 130, 110);
+VALUES ('General Khartosh', 'Pistola dos Encanadores', 8, 700, 130, 110);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Guarda-Costas de Vilgax', 'Arma Tennyson', 8, 1000, 150, 130);
+VALUES ('Guarda-Costas de Vilgax', 'Arma Tennyson', 9, 1000, 150, 130);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Vilgax', 'Arma Tennyson', 9, 10000, 200, 170);
+VALUES ('Vilgax', 'Arma Tennyson', 10, 10000, 200, 170);
 
 
 -- Salas da região Selvatrama (1 a 20)
@@ -238,55 +238,56 @@ INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (55, 9, 'redução')
 
 
 
--- Zonas de Guerra na região Selvatrama
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (1, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (2, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (4, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (5, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (8, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (10, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (11, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (13, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (14, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (15, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (16, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (18, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (19, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (20, 1, NULL);
+-- Zonas de Guerra na primeira região
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (1, 1, 'A entrada está tranquila, mas não abaixe a guarda.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (2, 1, 'Você pode ouvir patrulhas de Vilgax ao longe.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (4, 2, 'Tropas de reconhecimento de Vilgax estão rondando a área.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (5, 2, 'Há sinais de uma recente batalha, prepare-se.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (8, 2, 'A área parece deserta, mas cuidado com emboscadas.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (10, 2, 'Você encontrou um ponto estratégico de defesa, mas não está seguro.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (11, 1, 'Os escombros indicam que este local foi palco de uma recente invasão.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (13, 3, 'Você está se aproximando do centro do conflito.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (14, 3, 'Guerras antigas foram travadas aqui, e agora você está no meio de mais uma.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (15, 3, 'Vilgax instalou uma base provisória aqui.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (16, 3, 'A resistência de Vilgax está aumentando à medida que você avança.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (18, 3, 'Os inimigos parecem estar mais organizados nesta área.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (19, 3, 'Vários grupos de soldados estão em patrulha.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (20, 4, 'Um grande contingente de tropas está estacionado aqui.');
 
 -- Zonas de Guerra na região Templo de Azshara
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (21, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (22, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (23, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (25, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (26, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (28, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (29, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (30, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (33, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (34, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (35, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (36, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (38, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (39, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (40, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (21, 5, 'Você chegou às ruínas do templo!');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (22, 5, 'O templo está fortemente vigiado, todo passo é uma ameaça.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (23, 6, 'As estátuas do templo começam a se mexer, um mau presságio');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (25, 5, 'Os caminhos são traiçoeiros e guardados por sentinelas.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (26, 6, 'Uma aura poderosa e opressora emana das profundezas do templo.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (28, 5, 'Os guardiões do templo protegem ferozmente este local sagrado.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (29, 5, 'Você está perto do centro do templo, mas a resistência ainda é intensa.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (30, 5, 'O salão principal está cercado de inimigos prontos para atacar.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (33, 6, 'Você sente que algo ancestral está prestes a despertar.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (34, 6, 'O coração do templo está perto, mas o perigo é maior do que nunca.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (35, 5, 'Os corredores estão cobertos de armadilhas e guardiões.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (36, 5, 'Relíquias antigas e guardas incansáveis bloqueiam seu caminho.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (38, 6, 'O templo emana uma força que ameaça sua sanidade.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (39, 5, 'A batalha contra o tempo e os guardiões não dá trégua.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (40, 7, 'Você está nas profundezas do templo, onde apenas os mais fortes sobrevivem.');
 
 -- Zonas de Guerra na região Nave do Vilgax
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (41, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (42, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (46, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (47, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (48, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (49, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (50, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (52, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (53, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (54, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (56, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (57, 1, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (58, 2, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (59, 3, NULL);
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (60, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (41, 5, 'Você invadiu a nave de Vilgax.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (42, 5, 'O corredor está repleto de guardas fortemente armados.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (46, 5, 'Sons metálicos ecoam pela nave, indicando movimento constante de tropas.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (47, 5, 'Você ouve as ordens dos capitães de Vilgax, coordenando os ataques.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (48, 5, 'A nave treme com a movimentação de forças inimigas. A batalha será dura.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (49, 5, 'Você está chegando perto do centro de comando, mas a resistência é feroz.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (50, 5, 'O controle da nave está próximo, mas muitos guardas ainda estão no caminho.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (52, 5, 'O caos reina nos corredores enquanto você enfrenta os últimos obstáculos.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (53, 5, 'As tropas estão concentradas na sala de controle, será uma batalha difícil.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (54, 5, 'O núcleo da nave está perto, protegido por guardas incansáveis.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (56, 8, 'Você sente a presença do general do exército de Vilgax, sua força é esmagadora.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (57, 5, 'Tropas de elite estão entre você e Vilgax, lute com tudo que tem.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (58, 9, 'A batalha final se aproxima, o guarda-costas de Vilgax é um oponente implacável.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (59, 5, 'As últimas defesas da nave estão sendo quebradas.');
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (60, 10, 'Você está cara a cara com Vilgax.');
+
 
 
 
@@ -335,41 +336,72 @@ VALUES (13, 'Thane', 'O Guarda-Costas está entre você e Vilgax. Está pronto p
 INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
 VALUES (14, 'Nimue', 'Vilgax está na sala de comando. Esta é sua última chance de derrotá-lo!', 14);
 
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (15, 'Quel Thalas', 'Tenho alguns itens a venda', NULL);
 
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (16, 'Gwendolin', 'Precisando de alguma coisa?', NULL);
 
-
-
-
-#### A FAZER #######
-
-dificulade na zona de guerra
-
-mais 3 npc
-
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (17, 'Artoras', 'Seja Bem-vindo a minha loja', NULL);
 
 
 -- Inserir estoque para NPCs vendedores
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Kit Médico', 6, 5000),
-       ('Kit Médico', 7, 5000),
-       ('Kit Médico', 8, 5000),
-       ('Kit Médico', 9, 5000),
-       ('Camuflagem Alienígena', 6, 4000),
-       ('Placa de Armadura', 7, 3000),
-       ('Granada Inibidora', 7, 3000),
-       ('Jato de Fuga', 8, 10000),
-       ('Arma Tennyson', 8, 3500),
-       ('Campo de Força Portátil', 9, 4000),
-       ('Espada Proto-Arma', 9, 5000);
 
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 6, 5000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Arma Tennyson', 6, 25000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Campo de Força Portátil', 6, 8000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Placa de Armadura', 6, 3000);
+
+
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Camuflagem Alienígena', 16, 12000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Projétil Laser', 16, 15000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 16, 5000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Jato de Fuga', 16, 7000);
+
+
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Espada Proto-Arma', 15, 30000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Granada Inibidora', 15, 20000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Pistola dos Encanadores', 15, 18000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Placa de Armadura', 15, 3000);
+
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Campo de Força Portátil', 17, 8000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Jato de Fuga', 17, 7000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Projétil Laser', 17, 15000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Granada Inibidora', 17, 20000);
 
 
 -- Inserir dados de NPC na tabela INSTANCIA_NPC_NA_SALA
-INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) 
-VALUES (1, 1),
-       (2, 2),
-       (2, 5),
-       (2, 6),
-       (3, 3),
-       (12, 8),
-       (13, 7);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (2, 1);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (4, 2);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (8, 3);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (14, 4);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (16, 5);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (19, 6);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (22, 7);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (26, 8);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (34, 9);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (39, 10);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (42, 11);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (50, 12);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (57, 13);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (59, 14);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (10, 15);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (25, 16);
+INSERT INTO INSTANCIA_NPC_NA_SALA (id_sala, id_npc) VALUES (49, 17);
