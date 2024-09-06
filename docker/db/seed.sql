@@ -91,6 +91,29 @@ BEFORE UPDATE ON STATUS_DO_ALIEN
 FOR EACH ROW
 EXECUTE FUNCTION atualizar_vida_alien();
 
+CREATE OR REPLACE FUNCTION atualizar_vida_monstro() RETURNS TRIGGER AS $$
+DECLARE
+    vida_maxima INTEGER;
+BEGIN
+    SELECT m.saude INTO vida_maxima
+    FROM MONSTRO m
+    WHERE m.nome = NEW.nome_especie;
+
+    IF NEW.saude_atual > vida_maxima THEN
+        NEW.saude_atual := vida_maxima;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_atualizar_vida_monstro
+BEFORE INSERT OR UPDATE ON INSTANCIA_MONSTRO
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_vida_monstro();
+
+
+
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Placa de Armadura', 'Consumível');

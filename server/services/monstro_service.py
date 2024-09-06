@@ -2,18 +2,21 @@ from repositories.monstro_repository import MonstroRepository
 from repositories.personagem_repository import PersonagemRepository
 from repositories.sala_repository import SalaRepository
 from services.sala_service import SalaService
+from services.habilidade_service import HabilidadeService
 import random
 from instance.monstro_instance import MonstroInstance
 from utils.validation_utils import ValidationUtils
 from random import randint
 import math
 from config.config import GLOBAL_SETS
+from tabulate import tabulate
 
 class MonstroService:
     def __init__(self):
         self.monstro_repository = MonstroRepository()
         self.sala_service = SalaService()
         self.validation_utils = ValidationUtils()
+        self.habilidade_service = HabilidadeService()
 
     def obter_monstros_por_dificuldade_da_sala(self, id_sala, quantidade_monstros):
         """
@@ -29,6 +32,9 @@ class MonstroService:
         return monstros_escolhidos
     
     def calcular_dano(self, dano_base):
+        if dano_base == 0:
+            return 0
+
         dano_final = dano_base
 
         if GLOBAL_SETS['consumivel']['buff_dano']:
@@ -41,6 +47,30 @@ class MonstroService:
                 dano_final = dano_final * critico
 
         return math.ceil(dano_final)
+    
+    def escolher_habilidade(self):
+        habilidades = self.habilidade_service.obter_habilidades_especie(GLOBAL_SETS['transformado'])
+
+        headers = ["Opção", "Nome da Habilidade", "Quantidade", "Efeito"]
+
+        tabela = [[j, habilidade['nome_habilidade'], habilidade['quantidade'], habilidade['efeito']] 
+                for j, habilidade in enumerate(habilidades)]
+
+        print(tabulate(tabela, headers=headers, tablefmt="grid"))
+
+            
+        while True:
+            opcao = input("\nEscolha uma habilidade para usar\n")
+            
+            if not self.validation_utils.validate_integer_in_range(opcao, 0, len(habilidades) - 1):
+                print("Opção inválida, tente novamente.")
+                continue 
+            
+            opcao = int(opcao)
+            break
+
+        dano = self.habilidade_service.usar_habilidade(habilidades[opcao])
+        return dano
 
     def vez_jogador(self, id_personagem, instancias):
         j = 0
@@ -65,7 +95,9 @@ class MonstroService:
         if opcao != 0:
             opcao = 2
 
-        dano = self.calcular_dano(20) # falta somar o dano da arma que o personagem ta usando, além dele poder escolher a habilidade do alien ou ataque básico
+        dano_habilidade = self.escolher_habilidade()
+
+        dano = self.calcular_dano(dano_habilidade) # falta somar o dano da arma que o personagem ta usando, além dele poder escolher a habilidade do alien ou ataque básico
         print(f"\nVocê deu aplicou {dano} de dano!\n")
 
         instancias[opcao].receber_dano(dano, instancias, opcao)
