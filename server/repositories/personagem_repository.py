@@ -25,8 +25,6 @@ class PersonagemRepository:
 
     def exibir_personagem(self, id_personagem):
 
-        result = []
-
         try:
             cursor = self.connection.cursor()
             query =  """
@@ -36,16 +34,10 @@ class PersonagemRepository:
             """
             
             cursor.execute(query, (id_personagem,))
-            dados = cursor.fetchall()
+            dados = fetch_as_dict(cursor)
             cursor.close()
 
-            for row in dados:
-                result.append(row)
-
-            if result:
-                return result
-            else:
-                return None
+            return dados
 
         except Exception as e:
             print(f"An error occurred: {e}")
