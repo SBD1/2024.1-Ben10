@@ -126,13 +126,13 @@ INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Vilgax', 'Monstro');
 
 -- Inserir os monstros na tabela MONSTRO
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Patrulheiro de Vilgax', 'Campo de Força Portátil', 1, 50, 200, 40, 30);
+VALUES ('Patrulheiro de Vilgax', 'Espada de Bog Kah', 1, 50, 200, 40, 30);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
 VALUES ('Fera da Selva', 'Kit Médico', 2, 80, 300, 50, 40);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
 VALUES ('Soldado de Vilgax', 'Placa de Armadura', 3, 100, 250, 60, 50);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Guarda do Templo', 'Espada Proto-Arma', 4, 150, 400, 70, 60);
+VALUES ('Guarda do Templo', 'Lança de Azshara', 4, 150, 400, 70, 60);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
 VALUES ('Guarda de Elite', 'Granada Inibidora', 5, 300, 90, 70);
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
