@@ -22,7 +22,7 @@ CREATE TABLE REGIAO (
 
 CREATE TABLE MISSAO (
     id_missao INT PRIMARY KEY,
-    nome_missao VARCHAR(30) NOT NULL,
+    nome_missao TEXT NOT NULL,
     experiencia INT NOT NULL,
     descricao TEXT NOT NULL,
     recompensa_em_moedas INT NOT NULL,
