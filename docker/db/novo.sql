@@ -103,13 +103,238 @@ VALUES (9, 7, 5);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
 VALUES (10, 1, 6);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (11, 15, 7);
+VALUES (11, 15, 5);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (12, 1, 8);
+VALUES (12, 1, 7);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (13, 1, 9);
+VALUES (13, 1, 8);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (14, 1, 10);
+VALUES (14, 1, 9);
+
+
+-- Inserir as espécies dos monstros na tabela ESPECIE
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Patrulheiro de Vilgax', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Fera da Selva', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Soldado de Vilgax', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Guarda do Templo', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Guarda de Elite', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Estátua Viva', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Capitão do Exército', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('General Khartosh', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Guarda-Costas de Vilgax', 'Monstro');
+INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Vilgax', 'Monstro');
+
+-- Inserir os monstros na tabela MONSTRO
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Patrulheiro de Vilgax', 'Campo de Força Portátil', 1, 50, 200, 40, 30);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Fera da Selva', 'Kit Médico', 2, 80, 300, 50, 40);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Soldado de Vilgax', 'Placa de Armadura', 3, 100, 250, 60, 50);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Guarda do Templo', 'Espada Proto-Arma', 4, 150, 400, 70, 60);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Guarda de Elite', 'Granada Inibidora', 5, 300, 90, 70);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Estátua Viva', 'Jato de Fuga', 5, 400, 100, 80);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Capitão do Exército', 'Camuflagem Alienígena', 6, 500, 110, 90);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('General Khartosh', 'Pistola dos Encanadores', 7, 700, 130, 110);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Guarda-Costas de Vilgax', 'Arma Tennyson', 8, 1000, 150, 130);
+INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
+VALUES ('Vilgax', 'Arma Tennyson', 9, 10000, 200, 170);
+
+
+-- Salas da região Selvatrama (1 a 20)
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (1, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (2, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (3, 'Selvatrama', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (4, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (5, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (6, 'Selvatrama', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (7, 'Selvatrama', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (8, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (9, 'Selvatrama', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (10, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (11, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (12, 'Selvatrama', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (13, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (14, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (15, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (16, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (17, 'Selvatrama', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (18, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (19, 'Selvatrama', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (20, 'Selvatrama', 'Zona de Guerra');
+
+-- Salas da região Templo de Azshara (21 a 40)
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (21, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (22, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (23, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (24, 'Templo de Azshara', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (25, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (26, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (27, 'Templo de Azshara', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (28, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (29, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (30, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (31, 'Templo de Azshara', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (32, 'Templo de Azshara', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (33, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (34, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (35, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (36, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (37, 'Templo de Azshara', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (38, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (39, 'Templo de Azshara', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (40, 'Templo de Azshara', 'Zona de Guerra');
+
+-- Salas da região Nave do Vilgax (41 a 60)
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (41, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (42, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (43, 'Nave do Vilgax', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (44, 'Nave do Vilgax', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (45, 'Nave do Vilgax', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (46, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (47, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (48, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (49, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (50, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (51, 'Nave do Vilgax', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (52, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (53, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (54, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (55, 'Nave do Vilgax', 'Zona de Armadilha');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (56, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (57, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (58, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (59, 'Nave do Vilgax', 'Zona de Guerra');
+INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (60, 'Nave do Vilgax', 'Zona de Guerra');
+
+-- Zonas de Armadilha na região Selvatrama
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (3, 2, 'acréscimo');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (6, 2, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (7, 2, 'acréscimo');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (9, 3, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (12, 3, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (17, 3, 'acréscimo');
+
+-- Zonas de Armadilha na região Templo de Azshara
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (24, 4, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (27, 4, 'acréscimo');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (31, 4, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (32, 5, 'acréscimo');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (37, 5, 'redução');
+
+-- Zonas de Armadilha na região Nave do Vilgax
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (43, 7, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (44, 7, 'acréscimo');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (45, 7, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (51, 8, 'acréscimo');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (55, 9, 'redução');
+
+
+
+
+-- Zonas de Guerra na região Selvatrama
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (1, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (2, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (4, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (5, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (8, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (10, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (11, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (13, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (14, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (15, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (16, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (18, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (19, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (20, 1, NULL);
+
+-- Zonas de Guerra na região Templo de Azshara
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (21, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (22, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (23, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (25, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (26, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (28, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (29, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (30, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (33, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (34, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (35, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (36, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (38, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (39, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (40, 1, NULL);
+
+-- Zonas de Guerra na região Nave do Vilgax
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (41, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (42, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (46, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (47, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (48, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (49, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (50, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (52, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (53, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (54, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (56, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (57, 1, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (58, 2, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (59, 3, NULL);
+INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (60, 1, NULL);
+
+
+
+-- NPCs da Região 1
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (1, 'Azmuth', 'Pronto para começar a missão de derrotar a patrulha de Vilgax?', 1);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (2, 'Tork', 'A Espada de Bog Kah pode levar ao próximo passo na batalha contra Vilgax. Vai recuperá-la?', 2);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (3, 'Zarik', 'A selva está cheia de monstros!', 3);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (4, 'Elara', 'Leve esses suprimentos ao vilarejo, eles precisam de ajuda!', 4);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (5, 'Xander', 'As tropas de Vilgax estão chegando, defenda o vilarejo!', 5);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (6, 'Max', 'O guarda do templo parece ser muito forte', 6);
+
+-- NPCs da Região 2
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (7, 'Thanos', 'O templo está infestado de guardas de Elite', 7);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (8, 'Kara', 'A Lança de Azshara tem informações valiosas sobre o paradeiro da relíquia, você pode entregá-la?', 8);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (9, 'Darios', 'As estátuas do templo parecem estar se mexendo!', 9);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (10, 'Lucan', 'O Capitão de Vilgax está no templo!', 10);
+
+-- NPCs da Região 3
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (11, 'Vega', 'A nave está cheia de soldados!', 11);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (12, 'Rogar', 'O General de Vilgax parece muito forte!', 12);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (13, 'Thane', 'O Guarda-Costas está entre você e Vilgax. Está pronto para enfrentá-lo?', 13);
+
+INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada) 
+VALUES (14, 'Nimue', 'Vilgax está na sala de comando. Esta é sua última chance de derrotá-lo!', 14);
+
 
 
 
@@ -117,68 +342,11 @@ VALUES (14, 1, 10);
 
 #### A FAZER #######
 
--- Inserir as espécies dos monstros na tabela ESPECIE
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Patrulheiro de Vilgax', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Fera da Selva', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Soldado de Vilgax', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Guarda do Templo', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Guarda de Elite de Vilgax', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Estátua Viva', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Capitão de Vilgax', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('General de Vilgax', 'Monstro');
-INSERT INTO ESPECIE (nome_especie, tipo_especie) VALUES ('Guarda-Costas de Vilgax', 'Monstro');
+dificulade na zona de guerra
 
--- monstros da região 1
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Patrulheiro de Vilgax', 'Campo de Força Portátil', 3, 50, 200, 50, 40);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Fera da Selva', 'Kit Médico', 4, 80, 300, 60, 50);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Soldado de Vilgax', 'Placa de Armadura', 5, 100, 250, 70, 60);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Guarda do Templo', 'Espada Proto-Arma', 6, 150, 400, 90, 80);
--- monstros da região 2
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Guarda de Elite de Vilgax', 'Granada Inibidora', 7, 300, 500, 120, 100);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Estátua Viva', 'Jato de Fuga', 8, 400, 600, 150, 120);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Capitão de Vilgax', 'Camuflagem Alienígena', 9, 500, 800, 200, 150);
--- monstros da região 3
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('General de Vilgax', 'Pistola dos Encanadores', 9, 700, 1000, 250, 200);
-INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
-VALUES ('Guarda-Costas de Vilgax', 'Arma Tennyson', 9, 1000, 1200, 300, 250);
-
--- Inserir salas 
-INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
-VALUES (1, 'Selvatrama', 'Zona de Guerra');
-INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
-VALUES (1, 'Templo de Azshara', 'Zona de Guerra');
-INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) 
-VALUES (1, 'Nave do Vilgax', 'Zona de Guerra');
+mais 3 npc
 
 
--- Inserir zonas de guerra na tabela ZONA_DE_GUERRA
-INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) 
-VALUES (1, 1, 'Zona de combate contra os Cavaleiros Eternos');
-
--- Inserir zonas de armadilha na tabela ZONA_DE_ARMADILHA
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) 
-VALUES (2, 3, 'acréscimo');
-
--- Inserir NPCs na tabela NPC e associar missões e vendas
-INSERT INTO NPC (id_npc, dialogo_associado_venda, id_missao_associada) 
-VALUES 
-    (1, 'Pronto para começar a missão?', 1), -- NPC com missão
-    (2, 'Tenho uma missão para você!', 2), -- NPC com missão
-    (3, NULL, 3), -- NPC apenas com missão
-    (4, 'Missão perigosa à vista!', 4), -- NPC com missão
-    (5, NULL, NULL), -- NPC sem missão e sem venda
-    (6, 'Bem-vindo! Veja nossas ofertas especiais.', NULL), -- NPC apenas vendedor
-    (7, 'Olá, Herói! Temos itens raros para você.', NULL), -- NPC apenas vendedor
-    (8, 'Saudações! Aposto que esses itens são o que você estava procurando.', NULL), -- NPC apenas vendedor
-    (9, 'Oi! Está procurando algo específico? Tenho itens únicos.', 5); -- NPC vendedor e com missão
 
 -- Inserir estoque para NPCs vendedores
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
