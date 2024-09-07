@@ -39,6 +39,7 @@ class MonstroInstance:
             print(f"Você recebeu {self.id_recompensa} de recompensa!")
             self.npc_inventario.inserir_item_inventario(GLOBAL_SETS['id_personagem'], self.id_recompensa)
 
+            print(f"Dificuldade: {self.dificuldade}\n")
             
             monstro_repository.registro_missao(self.id_personagem, self.dificuldade)
 

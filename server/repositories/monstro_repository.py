@@ -115,6 +115,18 @@ class MonstroRepository:
 
             dados = fetch_as_dict(cursor)
 
+            for missoes in dados:
+                if missoes.get('id_missao'):
+                    query_update_rg_missao = """
+                        UPDATE registro_da_missao
+                        SET quantidade_monstros = quantidade_monstros + 1
+                        WHERE id_missao = %s AND id_personagem = %s;
+                    """  
+
+                    cursor.execute(query_update_rg_missao, (missoes.get('id_missao'), id_personagem,))
+
+                    self.connection.commit()
+
         except Exception as e:
             print(f"An error occured: {e}")
             return None
