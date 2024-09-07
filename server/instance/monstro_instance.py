@@ -34,9 +34,13 @@ class MonstroInstance:
         if self.saude_atual == 0:
             print("O monstro foi derrotado")
             self.retirar_instancia(instancias, index)
-            # entregar recompensa função aqui
+
+            # Entrega a recompensa da função
             print(f"Você recebeu {self.id_recompensa} de recompensa!")
             self.npc_inventario.inserir_item_inventario(GLOBAL_SETS['id_personagem'], self.id_recompensa)
+
+            
+            monstro_repository.registro_missao(self.id_personagem, self.id_monstro, self.dificuldade)
 
 
 
