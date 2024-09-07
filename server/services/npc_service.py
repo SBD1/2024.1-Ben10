@@ -35,7 +35,7 @@ class NpcService:
         npc_id = self.verificar_npc_na_sala(id_sala)
         if npc_id:
             fala_npc = self.obter_fala_npc(npc_id)
-            if fala_npc:
+            if fala_npc['textoComercio']:
                 print(f"{fala_npc['nomeNpc']}: {fala_npc['textoComercio']}")
         else:
             print("A sala parece estar vazia.")
