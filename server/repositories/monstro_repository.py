@@ -120,7 +120,7 @@ class MonstroRepository:
                     query_update_rg_missao = """
                         UPDATE registro_da_missao
                         SET quantidade_monstros = quantidade_monstros + 1
-                        WHERE id_missao = %s AND id_personagem = %s AND;
+                        WHERE id_missao = %s AND id_personagem = %s;
                     """  
 
                     cursor.execute(query_update_rg_missao, (missoes.get('id_missao'), id_personagem,))
