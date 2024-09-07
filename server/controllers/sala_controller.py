@@ -60,7 +60,7 @@ class SalaController:
                 return
 
             # Obter NPCs da região
-            npcs_na_regiao = self.sala_service.verificar_missao(nome_regiao)
+            npcs_na_regiao = self.sala_service.verificar_local_missao(nome_regiao)
 
             # Criar um dicionário de mapeamento {id_sala: tipo_missao}
             npcs_por_sala = {npc['idSala']: npc['idMissaoAssociada'] for npc in npcs_na_regiao} if npcs_na_regiao else {}

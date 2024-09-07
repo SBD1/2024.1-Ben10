@@ -58,7 +58,7 @@ class SalaService:
         except IndexError:
             print("Não existe esta região.")
 
-    def verificar_missao(self, id_regiao):
+    def verificar_local_missao(self, id_regiao):
         """
         Obtém os NPCs presentes na região, com suas respectivas salas,
         e atribui 0 se o valor da missão for nulo, caso contrário, 1.
@@ -75,5 +75,4 @@ class SalaService:
                 npc["idMissaoAssociada"] = 1  # Atribui 1 caso não seja nulo
         
         return npcs
-        
-        return None 
+    
