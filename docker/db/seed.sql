@@ -131,6 +131,29 @@ AFTER DELETE ON INVENTARIO
 FOR EACH ROW
 EXECUTE FUNCTION verifica_arma_inventario();
 
+-- Trigger da missão
+CREATE OR REPLACE FUNCTION conclusao_missao_monstros() RETURNS trigger
+AS $conclusao_missao_monstros$
+BEGIN
+    IF EXISTS (SELECT 1
+    FROM registro_da_missao rm
+    JOIN caca c ON c.id_missao = NEW.id_missao
+    WHERE rm.id_personagem = NEW.id_personagem AND NEW.quantidade_monstros >= c.quantidade_monstros AND rm.status != 'completa') THEN
+        UPDATE registro_da_missao
+        SET status = 'completa'
+        WHERE id_personagem = NEW.id_personagem AND
+        id_missao = NEW.id_missao;
+    END IF;
+
+    RETURN NEW;
+END;
+$conclusao_missao_monstros$ LANGUAGE plpgsql;
+
+CREATE TRIGGER tg_conclusao_missao_monstros
+AFTER UPDATE OR INSERT ON registro_da_missao
+FOR EACH ROW
+EXECUTE FUNCTION conclusao_missao_monstros();
+
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Placa de Armadura', 'Consumível');
