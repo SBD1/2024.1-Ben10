@@ -3,6 +3,7 @@ from controllers.personagem_controller import PersonagemController
 import os
 from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
+from controllers.alien_controller import AlienController
 
 def main():
     global GLOBAL_SETS 
@@ -10,6 +11,7 @@ def main():
     personagem_controller = PersonagemController()
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
+    alien_controller = AlienController()
 
     GLOBAL_SETS = {
         'id_personagem': None
@@ -24,6 +26,20 @@ def main():
             'inventario': {
                 'descrição': 'comando para exibir informações sobre os itens do seu personagem no jogo',
                 'executar': lambda _: personagem_controller.exibir_inventario(GLOBAL_SETS['id_personagem'])
+            }
+        },
+        'alien':{
+            'atual':{
+                'descrição': 'comando para exibir alien que o personagem está',
+                'executar': lambda _: alien_controller.exibir_alien_atual(GLOBAL_SETS['id_personagem'])
+            },
+            'todos': {
+                'descrição': 'comando para exibir lista de aliens do personagem',
+                'executar': lambda _: alien_controller.exibir_aliens(GLOBAL_SETS['id_personagem'], "N")
+            },
+            'trocar': {
+                'descrição': 'comando para trocar de alien',
+                'executar': lambda _: alien_controller.exibir_aliens(GLOBAL_SETS['id_personagem'], "S")
             }
         },
         'sala': {
