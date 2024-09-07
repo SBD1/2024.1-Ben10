@@ -849,4 +849,4 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 | `1.2` | 19/08 | Atualizando INSERT e adicionando DELETE| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
 | `1.3` | 19/08 | Adicionando UPDATE | [Arthur Alves](https://github.com/arthrok) | [João Artur](https://github.com/joao-artl)|
 | `1.4` | 30/08 | Atualizando INSERT| [João Artur](https://github.com/joao-artl) | [Arthur Alves](https://github.com/arthrok)|
-| `1.4` | 06/09 | Atualizando INSERT para versão final| [João Artur](https://github.com/joao-artl) | [Arthur Alves](https://github.com/arthrok)|
+| `1.5` | 06/09 | Atualizando INSERT para versão final| [João Artur](https://github.com/joao-artl) | [Arthur Alves](https://github.com/arthrok)|
