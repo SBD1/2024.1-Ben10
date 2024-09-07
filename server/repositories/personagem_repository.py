@@ -25,8 +25,6 @@ class PersonagemRepository:
 
     def exibir_personagem(self, id_personagem):
 
-        result = []
-
         try:
             cursor = self.connection.cursor()
             query =  """
@@ -36,16 +34,10 @@ class PersonagemRepository:
             """
             
             cursor.execute(query, (id_personagem,))
-            dados = cursor.fetchall()
+            dados = fetch_as_dict(cursor)
             cursor.close()
 
-            for row in dados:
-                result.append(row)
-
-            if result:
-                return result
-            else:
-                return None
+            return dados
 
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -152,6 +144,82 @@ class PersonagemRepository:
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
+
+    def obter_itens_tipo_consumivel(self, id_personagem):
+        try:
+            cursor = self.connection.cursor()
+            query_inventario = """
+                SELECT *
+                FROM inventario i
+                JOIN ITEM it ON it.nome_item = i.nome_item
+                JOIN CONSUMIVEL c ON c.nome_item = i.nome_item
+                WHERE i.id_personagem = %s AND it.tipo_item = 'Consumível'
+            """
+
+            cursor.execute(query_inventario, (id_personagem,))
+            itens = fetch_as_dict(cursor)
+            cursor.close()
+            return itens
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None        
+
+    def receber_dano(self, id_personagem, fator):
+        """
+        Faz o personagem levar dano
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = saude - %s
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (fator, id_personagem,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def receber_dano_alien(self, id_personagem, fator, nome_alien):
+        """
+        Faz o personagem levar dano
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE STATUS_DO_ALIEN
+                SET saude = saude - %s
+                WHERE id_personagem = %s and nome_alien = %s;
+            """
+            cursor.execute(query, (fator, id_personagem, nome_alien,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def obter_informacoes_personagem(self, id_personagem):
+        try:
+            cursor = self.connection.cursor()
+            query_inventario = """
+                SELECT 
+                    p.*, 
+                    sda.saude AS saude_alien,
+                    a.saude AS saude_especie,
+                    a.status_base AS dano_alien
+                FROM PERSONAGEM p
+                JOIN STATUS_DO_ALIEN sda ON sda.nome_alien = p.nome_alien
+                JOIN ALIEN a ON sda.nome_alien = a.nome
+                WHERE p.id_personagem = %s;
+            """
+
+            cursor.execute(query_inventario, (id_personagem,))
+            personagem = fetch_as_dict(cursor)
+            cursor.close()
+            return personagem
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None       
 
     def close(self):
         """

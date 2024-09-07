@@ -46,6 +46,74 @@ CREATE TRIGGER trigger_ajustar_quantidade_monstros
 BEFORE INSERT OR UPDATE ON REGISTRO_DA_MISSAO
 FOR EACH ROW EXECUTE FUNCTION ajustar_quantidade_monstros();
 
+CREATE OR REPLACE FUNCTION atualizar_vida() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.saude > NEW.nivel * 100 THEN
+        NEW.saude := NEW.nivel * 100;
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_atualizar_vida
+BEFORE UPDATE ON personagem
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_vida();
+
+CREATE OR REPLACE FUNCTION atualizar_vida_alien() RETURNS TRIGGER AS $$
+DECLARE
+    vida_maxima INTEGER;
+    nivel INTEGER;
+BEGIN
+    -- Buscar a vida máxima do alien com base no personagem
+    SELECT a.saude INTO vida_maxima
+    FROM STATUS_DO_ALIEN sda
+    JOIN ALIEN a ON a.nome = sda.nome_alien
+    WHERE a.nome = NEW.nome_alien AND sda.id_personagem = NEW.id_personagem;
+
+    -- Buscar o nível do personagem
+    SELECT p.nivel INTO nivel
+    FROM PERSONAGEM p
+    WHERE p.id_personagem = NEW.id_personagem;
+
+    -- Se a nova saúde for maior que a vida máxima permitida pelo nível, ajusta
+    IF NEW.saude > vida_maxima * nivel THEN
+        NEW.saude := vida_maxima * nivel;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_atualizar_vida_alien
+BEFORE UPDATE ON STATUS_DO_ALIEN
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_vida_alien();
+
+CREATE OR REPLACE FUNCTION atualizar_vida_monstro() RETURNS TRIGGER AS $$
+DECLARE
+    vida_maxima INTEGER;
+BEGIN
+    SELECT m.saude INTO vida_maxima
+    FROM MONSTRO m
+    WHERE m.nome = NEW.nome_especie;
+
+    IF NEW.saude_atual > vida_maxima THEN
+        NEW.saude_atual := vida_maxima;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_atualizar_vida_monstro
+BEFORE INSERT OR UPDATE ON INSTANCIA_MONSTRO
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_vida_monstro();
+
+
+
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Placa de Armadura', 'Consumível');
@@ -63,19 +131,19 @@ INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Lança de Azshara', 'Arma');
 
 -- Inserir itens na tabela CONSUMIVEL
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Kit Médico', 5000, 'cura', 3);
+VALUES ('Kit Médico', 5000, 'cura', 100);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
 VALUES ('Placa de Armadura', 3000, 'imunidade', 3);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Jato de Fuga', 10000, 'imunidade', 1);
+VALUES ('Jato de Fuga', 10000, 'vida_extra', 25);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Campo de Força Portátil', 4000, 'imunidade', 1);
+VALUES ('Campo de Força Portátil', 4000, 'buff_dano', 15);
 
 INSERT INTO CONSUMIVEL (nome_item, preco, status, valor_consumivel) 
-VALUES ('Camuflagem Alienígena', 4000, 'imunidade', 2);
+VALUES ('Camuflagem Alienígena', 4000, 'critico', 50);
 
 -- Inserir itens na tabela ARMA
 INSERT INTO ARMA (nome_item, preco, dano) 
@@ -136,6 +204,7 @@ INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Ultra T
 INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Massa Cinzenta', 'Alien com intelecto superior e habilidades tecnológicas.', 40, 50, 120);
 INSERT INTO ALIEN (nome, descricao, saude, defesa, status_base) VALUES ('Aquático', 'Alien que pode respirar debaixo dágua e manipular a água.', 95, 90, 87);
 
+
 -- Inserir os monstros na tabela MONSTRO
 INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, saude, defesa, status_base)
 VALUES ('Patrulheiro de Vilgax', 'Espada de Bog Kah', 1, 50, 200, 40, 30);
@@ -169,7 +238,7 @@ INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade)
 VALUES ('Chama', 'Lançar Fogo', 'dano', 95);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
-VALUES ('Diamante', 'Corpo Cristalino', 'dano', 120);
+VALUES ('Diamante', 'Corpo Cristalino', 'cura', 120);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Besta', 'Sentidos Aguçados', 'dano', 100);
@@ -522,8 +591,8 @@ VALUES ('Granada Inibidora', 17, 20000);
 
 -- Inserir personagens na tabela PERSONAGEM
 INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
-VALUES (DEFAULT, 5000, 'Chama', 'Ben', 3, 350, 10),
-       (DEFAULT, 10000000, 'Ultra T', 'Max', 1, 100, 1),
+VALUES (DEFAULT, 5000, 'Chama', 'Ben', 3, 100, 10),
+       (DEFAULT, 10000000, 'Ultra T', 'Max', 1, 50, 1),
        (DEFAULT, 500, 'XLR8', 'Kevin', 1, 100, 1),
        (DEFAULT, 500, 'Massa Cinzenta', 'Gwen', 1, 100, 1);
 
@@ -539,6 +608,8 @@ INSERT INTO INVENTARIO (id_personagem, id_item, nome_item)
 VALUES (1, DEFAULT, 'Kit Médico'),
        (2, DEFAULT, 'Placa de Armadura'),
        (2, DEFAULT, 'Kit Médico'),
+       (2, DEFAULT, 'Campo de Força Portátil'),
+       (2, DEFAULT, 'Camuflagem Alienígena'),
        (3, DEFAULT, 'Jato de Fuga'),
        (3, DEFAULT, 'Kit Médico'),
        (4, DEFAULT, 'Campo de Força Portátil'),
@@ -548,6 +619,7 @@ VALUES (1, DEFAULT, 'Kit Médico'),
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
 VALUES ('Chama',150, 1),
        ('Ultra T',75, 2),
+       ('XLR8',120, 2),
        ('XLR8',120, 3),
        ('Massa Cinzenta',130, 4);
 

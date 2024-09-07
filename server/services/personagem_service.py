@@ -34,23 +34,23 @@ class PersonagemService:
         return id_sala
 
     def exibir_personagem(self, id_personagem, infos):
-        dados_personagem = self.personagem_repository.exibir_personagem(id_personagem)
+
+        dados = self.personagem_repository.exibir_personagem(id_personagem)[0]
 
         if infos == 'S':
             print(f"\n-----------------------------------------------\n")
 
-            for personagem in dados_personagem:
-                print(f" ID do seu personagem: {personagem[0]}")
-                print(f" Quantidade de moedas do personagem: {personagem[1]}")
-                print(f" Nome do Alien atual do personagem: {personagem[2]}")
-                print(f" Nome do personagem: {personagem[3]}")
-                print(f" ID da sala atual do personagem: {personagem[4]}")
-                print(f" Saúde do personagem: {personagem[5]}")
-                print(f" Nível do personagem atual: {personagem[6]}")
+            print(f" ID do seu personagem: {dados.get('id_personagem')}")
+            print(f" Quantidade de moedas do personagem: {dados.get('quantidade_moedas')}")
+            print(f" Nome do Alien atual do personagem: {dados.get('nome_alien')}")
+            print(f" Nome do personagem: {dados.get('nome')}")
+            print(f" ID da sala atual do personagem: {dados.get('id_sala')}")
+            print(f" Saúde do personagem: {dados.get('saude')}")
+            print(f" Nível do personagem atual: {dados.get('nivel')}")
 
             print(f"\n-----------------------------------------------")
 
-        return dados_personagem
+        return dados.get('id_personagem')
     
     def criar_personagem(self, personagem, alien):
         id_personage_criado = self.personagem_repository.criar_personagem(personagem, alien)
@@ -65,7 +65,7 @@ class PersonagemService:
 
         os.system('clear')
         print(f"\n-----------------------------------------------")
-        print('-------------Itens do iventário----------------\n')
+        print('-------------Itens do inventário----------------\n')
 
         for row in nome_itens:
             print(row)
@@ -74,3 +74,14 @@ class PersonagemService:
 
     def descontar_moedas_personagem(self, id_personagem, quantidade):
         return self.personagem_repository.descontar_moedas_personagem(id_personagem, quantidade)
+    
+    def obter_itens_tipo_consumivel(self, id_personagem):
+        items = self.personagem_repository.obter_itens_tipo_consumivel(id_personagem)
+        return items
+
+    def receber_dano(self, id_personagem, fator):
+        ## diminuir no global set
+        return self.personagem_repository.receber_dano(id_personagem, fator)
+    
+    def obter_informacoes_personagem(self, id_personagem):
+        return self.personagem_repository.obter_informacoes_personagem(id_personagem)

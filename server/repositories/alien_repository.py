@@ -63,7 +63,7 @@ class AlienRepository:
             FROM personagem p
             JOIN status_do_alien s
             ON p.nome_alien = s.nome_alien 
-            WHERE s.id_personagem = %s;
+            WHERE p.id_personagem = %s;
 
             """
 

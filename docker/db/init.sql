@@ -82,7 +82,7 @@ CREATE TABLE PERSONAGEM (
     nome_alien VARCHAR(30),
     nome VARCHAR(30) NOT NULL,
     id_sala INT,
-    saude INT NOT NULL,
+    saude INT NOT NULL CHECK (saude >= 0),
     nivel INT NOT NULL,
     FOREIGN KEY (nome_alien) REFERENCES ALIEN(nome),
     FOREIGN KEY (id_sala) REFERENCES SALA(id_sala)
