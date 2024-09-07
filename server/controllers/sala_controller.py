@@ -2,6 +2,7 @@ from services.sala_service import SalaService
 from services.personagem_service import PersonagemService
 from services.npc_service import NpcService
 from utils.validation_utils import ValidationUtils
+from tabulate import tabulate
 
 # Constante para definir que uma determinada variável não possui valor definido
 UNSET = -1
@@ -37,7 +38,7 @@ class SalaController:
         if self.get_regiao() == UNSET:
             print("Não existe nenhum mapa selecionado. Escreva \"mapa listar\" para listar as regiões.")
         else:
-            self.desdesenhar_mapa_regiaoenhar_mapa_regiao(str(self.get_regiao()))
+            self.desenhar_mapa_regiao(str(self.get_regiao()))
 
     # apresentar todas as regiões
     def desenhar_mapa_regiao(self, id_regiao : str):
@@ -58,30 +59,23 @@ class SalaController:
                 print("Nenhuma sala encontrada.")
                 return
 
-            largura_quadrado = 10
-            quantidade_salas = len(salas)
-            colunas = 3
+            # Extrair apenas os valores dos IDs
+            id_salas = [sala['id_sala'] for sala in salas]
 
-            print()
-            # Divide as salas em grupos de 3
-            for i in range(0, quantidade_salas, colunas):
-                salas_parte = salas[i:i + colunas]
+            # Extrair apenas os valores dos IDs e modificar a célula com o id_sala = 24
+            id_salas = [f"{id_sala}\n(Você está aqui)" if id_sala == 24 else str(id_sala) for id_sala in id_salas]
 
-                # Desenhar a linha superior de cada grupo
-                if (i == 0):
-                    for sala in salas_parte:
-                        print(f"+{'-' * (largura_quadrado - 2)}+", end=' ')
-                print()
+            # Garantir que todas as células tenham duas linhas (mesma altura)
+            id_salas = [f"{id_sala}\n" if '\n' not in id_sala else id_sala for id_sala in id_salas]
 
-                # Desenhar o conteúdo de cada grupo (ID da sala)
-                for sala in salas_parte:
-                    id_sala = sala['id_sala']
-                    print(f"| {id_sala:^6} |", end=' ')
-                print()
+            # Garantir que todas as células estejam alinhadas horizontalmente (20 caracteres)
+            id_salas = [id_sala.center(20) for id_sala in id_salas]
 
-                # Desenhar a linha inferior de cada grupo
-                for sala in salas_parte:
-                    print(f"+{'-' * (largura_quadrado - 2)}+", end=' ')
+            # Dividir a lista de IDs em grupos de 3
+            tabela = [id_salas[i:i + 3] for i in range(0, len(id_salas), 3)]
+
+            # Imprimir a tabela formatada com bordas uniformes
+            print(tabulate(tabela, tablefmt="grid", stralign='center'))
 
             print(f"\n\nRegião: {nome_regiao}")
 
