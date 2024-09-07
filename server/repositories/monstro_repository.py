@@ -97,8 +97,39 @@ class MonstroRepository:
             self.connection.commit()
             cursor.close()
         except Exception as e:
-            print(f"An error occurred: {e}")              
+            print(f"An error occurred: {e}")            
 
+    def registro_missao(self, id_personagem, dificuldade):
+
+        try:
+            cursor = self.connection.cursor()
+
+            query_selecionar_missao = """
+                SELECT rm.id_missao
+                FROM registro_da_missao rm
+                JOIN caca c ON c.id_missao = rm.id_missao
+                WHERE rm.id_personagem = %s AND c.dificuldade_monstro = %s;
+            """  
+
+            cursor.execute(query_selecionar_missao, (id_personagem, dificuldade,))
+
+            dados = fetch_as_dict(cursor)
+
+            for missoes in dados:
+                if missoes.get('id_missao'):
+                    query_update_rg_missao = """
+                        UPDATE registro_da_missao
+                        SET quantidade_monstros = quantidade_monstros + 1
+                        WHERE id_missao = %s AND id_personagem = %s;
+                    """  
+
+                    cursor.execute(query_update_rg_missao, (missoes.get('id_missao'), id_personagem,))
+
+                    self.connection.commit()
+
+        except Exception as e:
+            print(f"An error occured: {e}")
+            return None
 
     def close(self):
         """

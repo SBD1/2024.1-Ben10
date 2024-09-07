@@ -27,12 +27,12 @@ class PersonagemService:
             print('troca de sala não permitida')
 
     def obter_sala_personagem(self, id_personagem):
-        id_sala = self.personagem_repository.exibir_personagem(id_personagem)[0][4]
-        return id_sala
+        id_sala = self.personagem_repository.exibir_personagem(id_personagem)
+        return id_sala[0].get('id_sala')
 
     def obter_saldo_personagem(self, id_personagem):
-        id_sala = self.personagem_repository.exibir_personagem(id_personagem)[0][1]
-        return id_sala
+        id_sala = self.personagem_repository.exibir_personagem(id_personagem)
+        return id_sala[0].get('quantidade_moedas')
 
     def exibir_personagem(self, id_personagem, infos):
 
@@ -55,9 +55,9 @@ class PersonagemService:
         return dados.get('id_personagem')
     
     def criar_personagem(self, personagem, alien):
-        id_personage_criado = self.personagem_repository.criar_personagem(personagem, alien)
-        self.exibir_personagem(id_personage_criado, 'S')
-        return id_personage_criado
+        id_personagem_criado = self.personagem_repository.criar_personagem(personagem, alien)
+        self.exibir_personagem(id_personagem_criado, 'S')
+        return id_personagem_criado
     
     def exibir_inventario(self, id_personagem):
         itens = self.personagem_repository.exibir_inventario(id_personagem)
