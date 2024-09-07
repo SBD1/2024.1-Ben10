@@ -80,6 +80,9 @@ class SalaController:
 
                 id_salas.append(id_sala_formatado)
 
+            print(f"\n\nRegião: {nome_regiao}")
+            print("\n")
+
             # Garantir que todas as células tenham duas linhas (mesma altura)
             id_salas = [f"{id_sala}\n" if '\n' not in id_sala else id_sala for id_sala in id_salas]
 
@@ -91,8 +94,12 @@ class SalaController:
 
             # Imprimir a tabela formatada com bordas uniformes
             print(tabulate(tabela, tablefmt="grid", stralign='center'))
-
-            print(f"\n\nRegião: {nome_regiao}")
+            
+            # Imprimir a legenda
+            print("\n")
+            print("Legenda:")
+            print("M: Missão")
+            print("V: Vendedor")
 
     def trocar_jogador_de_sala(self, id_personagem, id_sala):
         if not self.validation_utils.validate_integer(id_sala):
