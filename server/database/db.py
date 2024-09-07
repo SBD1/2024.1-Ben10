@@ -4,7 +4,7 @@ from psycopg2 import OperationalError
 def create_connection(silent=False):
     try:
         connection = psycopg2.connect(
-            host="localhost",  # Usar 'localhost' se testar localmente, 'postgres' se testar com Docker
+            host="postgres",  # Usar 'localhost' se testar localmente, 'postgres' se testar com Docker
             database="postgres_ben10",
             port="5432",
             user="postgres_trabalho_ben10",
