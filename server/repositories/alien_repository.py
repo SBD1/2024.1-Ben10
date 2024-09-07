@@ -52,8 +52,6 @@ class AlienRepository:
             return None
         
     def exibir_alien_atual(self, id_personagem):
-
-        print(id_personagem)
         
         try:
 
