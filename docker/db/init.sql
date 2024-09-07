@@ -22,7 +22,7 @@ CREATE TABLE REGIAO (
 
 CREATE TABLE MISSAO (
     id_missao INT PRIMARY KEY,
-    nome_missao VARCHAR(30) NOT NULL,
+    nome_missao VARCHAR(50) NOT NULL,
     experiencia INT NOT NULL,
     descricao TEXT NOT NULL,
     recompensa_em_moedas INT NOT NULL,
@@ -31,6 +31,7 @@ CREATE TABLE MISSAO (
 
 CREATE TABLE NPC (
     id_npc INT PRIMARY KEY,
+    nome_npc VARCHAR(30) NOT NULL,
     dialogo_associado_venda TEXT,
     id_missao_associada INT,
     FOREIGN KEY (id_missao_associada) REFERENCES MISSAO(id_missao)
