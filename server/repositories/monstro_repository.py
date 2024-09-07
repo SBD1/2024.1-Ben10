@@ -97,8 +97,26 @@ class MonstroRepository:
             self.connection.commit()
             cursor.close()
         except Exception as e:
-            print(f"An error occurred: {e}")              
+            print(f"An error occurred: {e}")            
 
+    def registro_missao(self, id_personagem, id_monstro):
+
+        try:
+            cursor = self.connection.cursor()
+
+            query_selecionar_missao = """
+                SELECT p.id_personagem, id_missao
+                FROM personagem p
+                WHERE p.id_personagem = %s;
+            """  
+
+            cursor.execute(query_selecionar_missao, (id_personagem,))
+
+            dados = cursor.fetchall()
+
+        except Exception as e:
+            print(f"An error occured: {e}")
+            return None
 
     def close(self):
         """
