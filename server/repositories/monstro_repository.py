@@ -108,7 +108,7 @@ class MonstroRepository:
                 SELECT rm.id_missao
                 FROM registro_da_missao rm
                 JOIN caca c ON c.id_missao = rm.id_missao
-                WHERE rm.id_personagem = %s AND c.dificuldade_monstro = %s;
+                WHERE rm.id_personagem = %s AND c.dificuldade_monstro = %s AND rm.status = 'em progresso';
             """  
 
             cursor.execute(query_selecionar_missao, (id_personagem, dificuldade,))
@@ -120,7 +120,7 @@ class MonstroRepository:
                     query_update_rg_missao = """
                         UPDATE registro_da_missao
                         SET quantidade_monstros = quantidade_monstros + 1
-                        WHERE id_missao = %s AND id_personagem = %s;
+                        WHERE id_missao = %s AND id_personagem = %s AND;
                     """  
 
                     cursor.execute(query_update_rg_missao, (missoes.get('id_missao'), id_personagem,))
