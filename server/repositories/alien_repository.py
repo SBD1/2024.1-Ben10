@@ -52,6 +52,8 @@ class AlienRepository:
             return None
         
     def exibir_alien_atual(self, id_personagem):
+
+        print(id_personagem)
         
         try:
 
@@ -62,9 +64,7 @@ class AlienRepository:
             SELECT p.nome_alien, s.saude
             FROM personagem p
             JOIN status_do_alien s
-            ON p.nome_alien = s.nome_alien 
-            WHERE p.id_personagem = %s;
-
+            ON p.nome_alien = s.nome_alien AND s.id_personagem = %s;
             """
 
             cursor.execute(query, (id_personagem,))
