@@ -113,9 +113,25 @@ class MonstroService:
                 instancias.append(MonstroInstance(monstro))
                 instancias.append('jogador') ## sim, isso é gambiarra
 
+        if not len(instancias):
+            return
+
+        print("\nOhh, não! Monstros apareceram!")
+        
+        while True:
+            opcao = input('Entrar em combate? S (sim) ou N (não): ').strip().upper()
+
+            if opcao == 'N':
+                print("Você optou por não entrar em combate.")
+                return
+            elif opcao == 'S':
+                print("Você optou por entrar em combate!")
+                break 
+            else:
+                print("Opção inválida. Por favor, digite 'S' para sim ou 'N' para não.")
 
         while len(instancias):
-            if turno%len(instancias) == 1 or turno%len(instancias) == 3:
+            if (turno%len(instancias))%2:
                 self.vez_jogador(id_personagem, instancias)
             else:
                 instancias[turno%len(instancias)].atacar()
@@ -130,19 +146,5 @@ class MonstroService:
             if not existe_instancia:
                 monstros = self.obter_monstros_por_dificuldade_da_sala(id_sala, 2)
                 self.monstro_repository.instanciar_monstro(id_sala, id_personagem, monstros)
-        
-            print("\nOhh, não! Monstros apareceram!")
-            
-            while True:
-                opcao = input('Entrar em combate? S (sim) ou N (não): ').strip().upper()
 
-                if opcao == 'N':
-                    print("Você optou por não entrar em combate.")
-                    return
-                elif opcao == 'S':
-                    print("Você optou por entrar em combate!")
-                    break 
-                else:
-                    print("Opção inválida. Por favor, digite 'S' para sim ou 'N' para não.")
-            
             self.entrar_em_combate(id_sala, id_personagem)
