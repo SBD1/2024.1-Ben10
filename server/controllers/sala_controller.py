@@ -41,29 +41,44 @@ class SalaController:
             self.desenhar_mapa_regiao(str(self.get_regiao()))
 
     # apresentar todas as regiões
-    def desenhar_mapa_regiao(self, id_regiao : str):
-        
+    def desenhar_mapa_regiao(self, id_regiao: str):
         if self.get_regiao() == UNSET or self.get_regiao() != int(id_regiao):
-             self.set_regiao(int(id_regiao))
+            self.set_regiao(int(id_regiao))
 
         lista_regioes = self.sala_service.obter_todas_regioes()
         size = len(lista_regioes)
         indice = int(id_regiao)
+        
         if indice > size:
             print("ID inexistente.")
         else:
-            nome_regiao= lista_regioes[indice - 1].get('nome_regiao')
+            nome_regiao = lista_regioes[indice - 1].get('nome_regiao')
             salas = self.sala_service.obter_salas_por_regiao(nome_regiao)
 
             if not salas:
                 print("Nenhuma sala encontrada.")
                 return
 
-            # Extrair apenas os valores dos IDs
-            id_salas = [sala['id_sala'] for sala in salas]
+            # Obter NPCs da região
+            npcs_na_regiao = self.sala_service.verificar_missao(nome_regiao)
 
-            # Extrair apenas os valores dos IDs e modificar a célula com o id_sala = 24
-            id_salas = [f"{id_sala}\n(Você está aqui)" if id_sala == 24 else str(id_sala) for id_sala in id_salas]
+            # Criar um dicionário de mapeamento {id_sala: tipo_missao}
+            npcs_por_sala = {npc['idSala']: npc['idMissaoAssociada'] for npc in npcs_na_regiao} if npcs_na_regiao else {}
+
+            # Extrair apenas os valores dos IDs e adicionar M ou V onde for apropriado
+            id_salas = []
+            for sala in salas:
+                id_sala = sala['id_sala']
+                
+                # Verificar se a sala tem NPC com ou sem missão
+                if id_sala in npcs_por_sala:
+                    tipo_missao = npcs_por_sala[id_sala]
+                    simbolo = 'M' if tipo_missao == 1 else 'V'  # M para missão, V para sem missão
+                    id_sala_formatado = f"{id_sala} ({simbolo})"
+                else:
+                    id_sala_formatado = f"{id_sala}"
+
+                id_salas.append(id_sala_formatado)
 
             # Garantir que todas as células tenham duas linhas (mesma altura)
             id_salas = [f"{id_sala}\n" if '\n' not in id_sala else id_sala for id_sala in id_salas]
