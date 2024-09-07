@@ -108,7 +108,7 @@ class MonstroRepository:
                 SELECT rm.id_missao
                 FROM registro_da_missao rm
                 JOIN caca c ON c.id_missao = rm.id_missao
-                WHERE rm.id_personagem = %s AND c.dificuldade_monstro = %s;
+                WHERE rm.id_personagem = %s AND c.dificuldade_monstro = %s AND rm.status = 'em progresso';
             """  
 
             cursor.execute(query_selecionar_missao, (id_personagem, dificuldade,))
