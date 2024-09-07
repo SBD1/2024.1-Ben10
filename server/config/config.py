@@ -3,7 +3,10 @@ GLOBAL_SETS = {
     'transformado': None,
     'vida_maxima': None,
     'vida_atual': None,
-    'dano': None,
+    'arma': {
+        'nome': None,
+        'dano': None
+    },
     'consumivel': {
         'buff_dano': None,
         'critico': None,

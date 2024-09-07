@@ -162,7 +162,43 @@ class PersonagemRepository:
             return itens
         except Exception as e:
             print(f"An error occurred: {e}")
-            return None        
+            return None  
+
+    def obter_itens_tipo_arma(self, id_personagem):
+        try:
+            cursor = self.connection.cursor()
+            query_inventario = """
+                SELECT *
+                FROM inventario i
+                JOIN ITEM it ON it.nome_item = i.nome_item
+                JOIN ARMA a ON a.nome_item = i.nome_item
+                WHERE i.id_personagem = %s AND it.tipo_item = 'Arma'
+            """
+
+            cursor.execute(query_inventario, (id_personagem,))
+            itens = fetch_as_dict(cursor)
+            cursor.close()
+            return itens
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None  
+        
+    def trocar_arma(self, id_personagem, nome_arma):
+        """
+        Troca a arma do personagem
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET arma = %s
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (nome_arma, id_personagem,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")    
 
     def receber_dano(self, id_personagem, fator):
         """
@@ -206,10 +242,12 @@ class PersonagemRepository:
                     p.*, 
                     sda.saude AS saude_alien,
                     a.saude AS saude_especie,
-                    a.status_base AS dano_alien
+                    a.status_base AS dano_alien,
+                    ar.dano as dano_arma
                 FROM PERSONAGEM p
                 JOIN STATUS_DO_ALIEN sda ON sda.nome_alien = p.nome_alien
                 JOIN ALIEN a ON sda.nome_alien = a.nome
+                left join ARMA ar on ar.nome_item = p.arma
                 WHERE p.id_personagem = %s;
             """
 

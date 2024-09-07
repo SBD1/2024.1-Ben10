@@ -112,7 +112,24 @@ BEFORE INSERT OR UPDATE ON INSTANCIA_MONSTRO
 FOR EACH ROW
 EXECUTE FUNCTION atualizar_vida_monstro();
 
+CREATE OR REPLACE FUNCTION verifica_arma_inventario() RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM 1 FROM INVENTARIO WHERE nome_item = OLD.nome_item AND id_personagem = OLD.id_personagem;
+    
+    IF NOT FOUND THEN
+        UPDATE PERSONAGEM
+        SET arma = NULL
+        WHERE id_personagem = OLD.id_personagem AND arma = OLD.nome_item;
+    END IF;
 
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_verifica_arma_inventario
+AFTER DELETE ON INVENTARIO
+FOR EACH ROW
+EXECUTE FUNCTION verifica_arma_inventario();
 
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
@@ -228,38 +245,84 @@ INSERT INTO MONSTRO (nome, id_recompensa, dificuldade, recompensa_em_moedas, sau
 VALUES ('Vilgax', 'Arma Tennyson', 10, 10000, 200, 170, 250);
 
 -- Inserir habilidades na tabela HABILIDADE
+
+-- Quatro Braços (Força e resistência física, não faz sentido cura)
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Quatro Braços', 'Força Bruta', 'dano', 70);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Quatro Braços', 'Soco Devastador', 'dano', 80);
+
+-- XLR8 (Velocidade extrema, sem habilidades de cura)
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('XLR8', 'Super Velocidade', 'dano', 120);
 
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('XLR8', 'Aceleração Tempestiva', 'dano', 90);
+
+-- Chama (Controle de fogo, não faz sentido cura)
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Chama', 'Lançar Fogo', 'dano', 95);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Chama', 'Explosão de Fogo', 'dano', 100);
+
+-- Diamante (Corpo cristalino, pode ter uma habilidade de cura por regeneração)
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Diamante', 'Corpo Cristalino', 'cura', 120);
 
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Diamante', 'Lâmina Cristalina', 'dano', 85);
+
+-- Besta (Habilidades sensoriais e físicas, sem cura)
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Besta', 'Sentidos Aguçados', 'dano', 100);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Besta', 'Garras Letais', 'dano', 90);
+
+-- Insectóide (Capacidades de combate com ferrões, sem cura)
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Insectóide', 'Rajada de Ferrão', 'dano', 105);
 
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Insectóide', 'Explosão de Veneno', 'dano', 110);
+
+-- Fantasmático (Intangibilidade e poderes sobrenaturais, pode ter cura como efeito espectral)
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Fantasmático', 'Intangibilidade', 'cura', 110);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Fantasmático', 'Assombração', 'dano', 90);
+
+-- Ultra T (Armadura, pode ter cura como regeneração tecnológica)
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Ultra T', 'Armadura Tecnológica', 'cura', 110);
 
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Ultra T', 'Canhão Laser', 'dano', 100);
+
+-- Massa Cinzenta (Intelecto superior, pode ter cura como habilidade mental)
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Massa Cinzenta', 'Intelecto Superior', 'cura', 120);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Massa Cinzenta', 'Tecnologia Improvisada', 'dano', 85);
+
+-- Aquático (Controle da água, não faz sentido cura)
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Aquático', 'Hidroquinese', 'dano', 85);
 
 INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Aquático', 'Explosão de Água', 'dano', 95);
+
+-- Vilgax (Força bruta, sem habilidades de cura)
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
 VALUES ('Vilgax', 'Força Descomunal', 'dano', 150);
+
+INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+VALUES ('Vilgax', 'Raio Devastador', 'dano', 160);
+
 
 -- Inserir regiões na tabela REGIAO 
 INSERT INTO REGIAO(nome_regiao, descricao)

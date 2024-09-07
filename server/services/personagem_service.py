@@ -3,6 +3,7 @@ from services.sala_service import SalaService
 from services.npc_service import NpcService
 from services.monstro_service import MonstroService
 import os
+from config.config import GLOBAL_SETS
 
 
 class PersonagemService:
@@ -43,6 +44,7 @@ class PersonagemService:
             print(f" ID do seu personagem: {dados.get('id_personagem')}")
             print(f" Quantidade de moedas do personagem: {dados.get('quantidade_moedas')}")
             print(f" Nome do Alien atual do personagem: {dados.get('nome_alien')}")
+            print(f" Arma atual usada pelo personagem: {dados.get('arma')}")
             print(f" Nome do personagem: {dados.get('nome')}")
             print(f" ID da sala atual do personagem: {dados.get('id_sala')}")
             print(f" Saúde do personagem: {dados.get('saude')}")
@@ -78,10 +80,21 @@ class PersonagemService:
     def obter_itens_tipo_consumivel(self, id_personagem):
         items = self.personagem_repository.obter_itens_tipo_consumivel(id_personagem)
         return items
+    
+    def obter_itens_tipo_arma(self, id_personagem):
+        items = self.personagem_repository.obter_itens_tipo_arma(id_personagem)
+        return items
 
     def receber_dano(self, id_personagem, fator):
-        ## diminuir no global set
         return self.personagem_repository.receber_dano(id_personagem, fator)
     
     def obter_informacoes_personagem(self, id_personagem):
         return self.personagem_repository.obter_informacoes_personagem(id_personagem)
+    
+    def trocar_arma(self, id_personagem, arma):
+        self.personagem_repository.trocar_arma(id_personagem, arma['nome_item'])
+
+        GLOBAL_SETS['arma']['nome'] = arma['nome_item']
+        GLOBAL_SETS['arma']['dano'] = arma['dano']
+
+        print(f"\nAgora você está usando a arma {arma['nome_item']}\n")

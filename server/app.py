@@ -27,6 +27,10 @@ def main():
             'consumivel': {
                 'descrição': 'comando para exibir os itens consumíveis do jogador',
                 'executar': lambda _: personagem_controller.usar_consumivel(GLOBAL_SETS['id_personagem'])
+            },
+            'arma': {
+                'descrição': 'comando para trocar arma do personagem',
+                'executar': lambda _: personagem_controller.trocar_arma(GLOBAL_SETS['id_personagem'])
             }
         },
         'alien':{
