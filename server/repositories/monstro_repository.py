@@ -99,20 +99,21 @@ class MonstroRepository:
         except Exception as e:
             print(f"An error occurred: {e}")            
 
-    def registro_missao(self, id_personagem, id_monstro):
+    def registro_missao(self, id_personagem, dificuldade):
 
         try:
             cursor = self.connection.cursor()
 
             query_selecionar_missao = """
-                SELECT p.id_personagem, id_missao
-                FROM personagem p
-                WHERE p.id_personagem = %s;
+                SELECT rm.id_missao
+                FROM registro_da_missao rm
+                JOIN caca c ON c.id_missao = rm.id_missao
+                WHERE rm.id_personagem = %s AND c.dificuldade_monstro = %s;
             """  
 
-            cursor.execute(query_selecionar_missao, (id_personagem,))
+            cursor.execute(query_selecionar_missao, (id_personagem, dificuldade,))
 
-            dados = cursor.fetchall()
+            dados = fetch_as_dict(cursor)
 
         except Exception as e:
             print(f"An error occured: {e}")

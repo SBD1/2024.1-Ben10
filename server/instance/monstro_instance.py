@@ -40,7 +40,7 @@ class MonstroInstance:
             self.npc_inventario.inserir_item_inventario(GLOBAL_SETS['id_personagem'], self.id_recompensa)
 
             
-            monstro_repository.registro_missao(self.id_personagem, self.id_monstro, self.dificuldade)
+            monstro_repository.registro_missao(self.id_personagem, self.dificuldade)
 
 
 
