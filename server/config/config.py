@@ -11,11 +11,16 @@ GLOBAL_SETS = {
         'buff_dano': None,
         'critico': None,
         'imunidade': None,
-        'vida_extra': None
+        'vida_extra': None,
+
     },
     'alien': {
         'vida_maxima': None,
         'vida_atual': None,
         'dano': None
     },
+    'debuff':{
+        'debuff_arma_metade' : False,
+        'debuff_dano' : False,
+    }
 }

@@ -1,11 +1,10 @@
 CREATE TYPE efeito_armadilha AS ENUM (
-    'reducao_dano_arma_metade',
-    'reducao_dano_arma',
-    'reducao_vida_metade',
-    'reducao_vida',
-    'remocao_armadura',
-    'remocao_camuflagem',
-    'remocao_jato'
+    'debuff_arma_metade',
+    'debuff_dano',
+    'debuff_vida_metade',
+    'debuff_vida_extra',
+    'debuff_critico',
+    'debuff_imunidade'
 );
 
 CREATE TYPE tipo_status AS ENUM ('buff_dano', 'critico', 'imunidade', 'vida_extra', 'cura');

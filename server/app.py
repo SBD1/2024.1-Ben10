@@ -7,8 +7,8 @@ from config.config import GLOBAL_SETS
 from controllers.alien_controller import AlienController
 
 ###
-from repositories.personagem_repository import PersonagemRepository
-persona = PersonagemRepository()
+from controllers.armadilha_controller import ArmadilhaController
+test = ArmadilhaController()
 ###
 
 
@@ -24,9 +24,9 @@ def main():
         # comando para testar as coisas
         'a': {
                 'a':{
-                    'argumento': 'fator',
+                    # 'argumento': 'fator',
                     'descrição': 'teste aleatorio',
-                'executar': lambda fator: persona.aumentar_vida(GLOBAL_SETS['id_personagem'],fator)
+                'executar': lambda _:test.ganhar_recompensa(GLOBAL_SETS['id_personagem'])
                 }
         },
         'personagem': {
