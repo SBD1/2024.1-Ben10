@@ -22,6 +22,21 @@ class ArmadilhaRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
             return None
+    
+    def ganhar_moeda(self,id_personagem, moedas) -> bool:
+        """
+        Atualiza as moedas do personagem
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = 'UPDATE PERSONAGEM SET quantidade_moedas = quantidade_moedas + {} WHERE id_personagem = {}'.format(moedas,id_personagem)
+            cursor.execute(query)
+            self.connection.commit()
+            cursor.close()
+            return True
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return False
 
     def close(self):
         """

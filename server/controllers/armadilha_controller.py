@@ -6,7 +6,6 @@ class ArmadilhaController:
     def __init__(self):
         self.armadilha_service = ArmadilhaService()
 
-    
     def ganhar_recompensa(self, id_personagem):
         nome_personagem = GLOBAL_SETS['transformado']
         recompensa = self.armadilha_service.ganhar_recompensa(id_personagem)
