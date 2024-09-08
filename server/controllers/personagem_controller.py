@@ -80,8 +80,8 @@ class PersonagemController:
 
         return 
 
-    def setar_global_set(self, id_personagem):
-        personagem = self.personagem_service.obter_informacoes_personagem(id_personagem)[0]
+    def setar_global_set(self):
+        personagem = self.personagem_service.obter_informacoes_personagem(GLOBAL_SETS['id_personagem'])[0]
 
         GLOBAL_SETS['transformado'] = personagem['nome_alien']
         GLOBAL_SETS['vida_maxima'] = personagem['nivel'] * 100

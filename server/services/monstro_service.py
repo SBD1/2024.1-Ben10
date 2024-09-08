@@ -114,6 +114,10 @@ class MonstroService:
         instancias[opcao].receber_dano(dano, instancias, opcao)
     
     def entrar_em_combate(self, id_sala, id_personagem):
+        if not GLOBAL_SETS['alien']['vida_atual'] and GLOBAL_SETS['transformado']:
+            print(f"Seu alien {GLOBAL_SETS['transformado']} está muito exausto para lutar.")
+            return
+        
         turno = 1
 
         info_monstros = self.monstro_repository.informacoes_monstro(id_sala, id_personagem)
