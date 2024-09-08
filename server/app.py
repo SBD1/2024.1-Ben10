@@ -6,6 +6,12 @@ from controllers.npc_controller import NpcController
 from config.config import GLOBAL_SETS
 from controllers.alien_controller import AlienController
 
+###
+from repositories.personagem_repository import PersonagemRepository
+persona = PersonagemRepository()
+###
+
+
 def main():
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
@@ -15,7 +21,16 @@ def main():
 
 
     lista_comandos = {
+        # comando para testar as coisas
+        'a': {
+                'a':{
+                    'argumento': 'fator',
+                    'descrição': 'teste aleatorio',
+                'executar': lambda fator: persona.aumentar_vida(GLOBAL_SETS['id_personagem'],fator)
+                }
+        },
         'personagem': {
+            
             'exibir': {
                 'descrição': 'comando para exibir informações sobre o seu personagem no jogo',
                 'executar': lambda _: personagem_controller.exibir_personagem(GLOBAL_SETS['id_personagem'], 'S')
@@ -33,6 +48,7 @@ def main():
                 'executar': lambda _: personagem_controller.trocar_arma(GLOBAL_SETS['id_personagem'])
             }
         },
+         
         'alien':{
             'atual':{
                 'descrição': 'comando para exibir alien que o personagem está',
