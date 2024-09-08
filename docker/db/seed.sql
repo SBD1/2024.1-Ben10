@@ -87,7 +87,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_atualizar_vida_alien
-BEFORE UPDATE ON STATUS_DO_ALIEN
+BEFORE INSERT OR UPDATE ON STATUS_DO_ALIEN
 FOR EACH ROW
 EXECUTE FUNCTION atualizar_vida_alien();
 
@@ -130,6 +130,24 @@ CREATE TRIGGER trg_verifica_arma_inventario
 AFTER DELETE ON INVENTARIO
 FOR EACH ROW
 EXECUTE FUNCTION verifica_arma_inventario();
+
+CREATE OR REPLACE FUNCTION destransformar_personagem() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.saude <= 0 THEN
+        UPDATE PERSONAGEM
+        SET nome_alien = NULL
+        WHERE id_personagem = NEW.id_personagem;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_destransformar_personagem
+AFTER UPDATE ON STATUS_DO_ALIEN
+FOR EACH ROW
+WHEN (NEW.saude <= 0)
+EXECUTE FUNCTION destransformar_personagem();
 
 -- Trigger da missão
 -- CREATE OR REPLACE FUNCTION conclusao_missao_monstros() RETURNS trigger
@@ -705,8 +723,8 @@ VALUES (1, DEFAULT, 'Kit Médico'),
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
 VALUES ('Chama',150, 1),
        ('Ultra T',75, 2),
-       ('XLR8',120, 2),
-       ('XLR8',120, 3),
+       ('XLR8',65, 2),
+       ('XLR8',65, 3),
        ('Massa Cinzenta',130, 4);
 
 -- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO

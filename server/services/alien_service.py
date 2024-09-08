@@ -1,4 +1,5 @@
 from repositories.alien_repository import AlienRepository
+from config.config import GLOBAL_SETS
 
 class AlienService:
 
@@ -6,7 +7,6 @@ class AlienService:
         self.alien_repository = AlienRepository()
 
     def exibir_aliens(self, id_personagem, trocar):
-
         dados = self.alien_repository.exibir_aliens(id_personagem)
 
         i = 1 
@@ -14,7 +14,6 @@ class AlienService:
         aliens = []
 
         print(f"\n-------------------------------\n")
-
         for alien, vida in dados:
             aliens.append(alien)
             print(f"{i} - Alien: {alien} | Vida: {vida}\n")
@@ -22,7 +21,6 @@ class AlienService:
         print(f"-------------------------------")
 
         while validate == False:
-
             if(trocar == 'S'):
             
                 num_alien = input("Digite o número do alien que deseja escolher: ")
@@ -46,13 +44,19 @@ class AlienService:
                 validate = True
                 
     def exibir_alien_atual(self, id_personagem):
-
         dados = self.alien_repository.exibir_alien_atual(id_personagem)
 
         print(f"\n-------------------------------\n")
-
         print(f"{dados[0]} é o seu alien atual e possui {dados[1]} de saúde!")
-
         print(f"\n-------------------------------\n")
 
         return None
+    
+    def receber_dano_alien(self, id_personagem, fator, nome_alien):
+        if not GLOBAL_SETS['alien']['vida_atual']:
+            GLOBAL_SETS['transformado'] = None
+            GLOBAL_SETS['alien']['vida_maxima'] = None
+            GLOBAL_SETS['alien']['vida_atual'] = None
+            GLOBAL_SETS['alien']['dano'] = None
+
+        return self.alien_repository.receber_dano_alien(id_personagem, fator, nome_alien)
