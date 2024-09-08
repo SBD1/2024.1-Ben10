@@ -86,8 +86,11 @@ class PersonagemController:
         GLOBAL_SETS['transformado'] = personagem['nome_alien']
         GLOBAL_SETS['vida_maxima'] = personagem['nivel'] * 100
         GLOBAL_SETS['vida_atual'] = personagem['saude']
-        GLOBAL_SETS['alien']['vida_maxima'] = personagem['saude_especie'] * personagem['nivel']
+        GLOBAL_SETS['alien']['vida_maxima'] = personagem['saude_especie']
         GLOBAL_SETS['alien']['vida_atual'] = personagem['saude_alien']
         GLOBAL_SETS['alien']['dano'] = personagem['dano_alien']
         GLOBAL_SETS['arma']['nome'] = personagem['arma']
         GLOBAL_SETS['arma']['dano'] = personagem['dano_arma']
+
+        if GLOBAL_SETS['alien']['vida_maxima']:
+            GLOBAL_SETS['alien']['vida_maxima'] = GLOBAL_SETS['alien']['vida_maxima'] * personagem['nivel']

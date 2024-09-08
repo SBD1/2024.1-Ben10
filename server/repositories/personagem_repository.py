@@ -228,8 +228,8 @@ class PersonagemRepository:
                     a.status_base AS dano_alien,
                     ar.dano as dano_arma
                 FROM PERSONAGEM p
-                JOIN STATUS_DO_ALIEN sda ON sda.nome_alien = p.nome_alien
-                JOIN ALIEN a ON sda.nome_alien = a.nome
+                left JOIN STATUS_DO_ALIEN sda ON sda.nome_alien = p.nome_alien
+                left JOIN ALIEN a ON sda.nome_alien = a.nome
                 left join ARMA ar on ar.nome_item = p.arma
                 WHERE p.id_personagem = %s;
             """
