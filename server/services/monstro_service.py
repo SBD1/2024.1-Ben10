@@ -79,7 +79,7 @@ class MonstroService:
             if i == 1 or i == 3:
                 continue
 
-            print(f"{j} - Monstro: {instancias[i].nome_especie} [Saúde Atual: {instancias[i].saude_atual}]")
+            print(f"{j} - Monstro: {instancias[i].nome_especie} ♥ [Saúde Atual: {instancias[i].saude_atual}] | ★[Dificuldade: {instancias[i].dificuldade}]")
             j = j+ 1
 
         while True:
@@ -137,10 +137,10 @@ class MonstroService:
                 opcao = input('Entrar em combate? S (sim) ou N (não): ').strip().upper()
 
                 if opcao == 'N':
-                    print("Você optou por não entrar em combate.")
+                    print("Você optou por não entrar em combate.\n")
                     return
                 elif opcao == 'S':
-                    print("Você optou por entrar em combate!")
+                    print("\nVocê optou por entrar em combate!\n♛\n")
                     break 
                 else:
                     print("Opção inválida. Por favor, digite 'S' para sim ou 'N' para não.")
