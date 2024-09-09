@@ -76,6 +76,9 @@ class MonstroService:
         return dano
 
     def vez_jogador(self, id_personagem, instancias):
+        self.print_barra_vida_jogador()
+        self.print_barra_vida_alien()
+
         j = 0
 
         for i in range(0, len(instancias)):
@@ -165,3 +168,38 @@ class MonstroService:
                 self.monstro_repository.instanciar_monstro(id_sala, id_personagem, monstros)
 
             self.entrar_em_combate(id_sala, id_personagem)
+
+    def print_barra_vida_alien(self):
+        if not GLOBAL_SETS['transformado']:
+            return
+
+        vida_maxima = GLOBAL_SETS['alien']['vida_maxima']
+        vida_atual = GLOBAL_SETS['alien']['vida_atual']
+        
+        porcentagem_vida = (vida_atual / vida_maxima) * 100
+        
+        tamanho_barra = 50
+        
+        vida_preenchida = int((porcentagem_vida / 100) * tamanho_barra)
+        
+        vida_vazia = tamanho_barra - vida_preenchida
+
+        barra = '█' * vida_preenchida + ' ' * vida_vazia
+
+        print(f"\n[{barra}] [Alien: {GLOBAL_SETS['transformado']} {porcentagem_vida:.1f}% ({vida_atual}/{vida_maxima})]\n")
+
+    def print_barra_vida_jogador(self):
+        vida_maxima = GLOBAL_SETS['vida_maxima']
+        vida_atual = GLOBAL_SETS['vida_atual']
+        
+        porcentagem_vida = (vida_atual / vida_maxima) * 100
+        
+        tamanho_barra = 50
+        
+        vida_preenchida = int((porcentagem_vida / 100) * tamanho_barra)
+        
+        vida_vazia = tamanho_barra - vida_preenchida
+
+        barra = '█' * vida_preenchida + ' ' * vida_vazia
+
+        print(f"\n[{barra}] [Vida do Ben {porcentagem_vida:.1f}% ({vida_atual}/{vida_maxima})]\n")
