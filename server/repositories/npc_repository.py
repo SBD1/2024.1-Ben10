@@ -150,6 +150,72 @@ class NpcRepository:
             print(f"An error occurred: {e}")
             self.connection.rollback()
             return None
+        
+    def preco_item(self, id_personagem, nome_itens, key_item_venda):
+        try:
+            cursor = self.connection.cursor()
+
+            item = nome_itens[key_item_venda]
+
+            query_buscar_item = """
+                SELECT 
+                    CASE 
+                        WHEN i.tipo_item = 'Consumível' THEN c.preco
+                        WHEN i.tipo_item = 'Arma' THEN a.preco
+                    END AS preco
+                FROM item i
+                LEFT JOIN arma a ON a.nome_item = i.nome_item
+                LEFT JOIN consumivel c ON c.nome_item = i.nome_item
+                WHERE i.nome_item = %s;
+            """
+
+            cursor.execute(query_buscar_item, (item,))
+            preco = cursor.fetchone()
+            return preco[0]
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
+        
+    def vender_item(self, id_personagem, nome_itens, key_item_venda):
+
+        item = nome_itens[key_item_venda]
+
+        try:
+            cursor = self.connection.cursor()
+
+            query_inventario = """
+
+            DELETE FROM inventario
+            WHERE id_personagem = %s 
+            AND nome_item = %s
+            AND id_item = (
+                SELECT MAX(id_item)
+                FROM inventario
+                WHERE id_personagem = %s
+                AND nome_item = %s
+            );
+
+            """
+
+            cursor.execute(query_inventario, (id_personagem, item, id_personagem, item,))
+
+            self.connection.commit()
+            cursor.close()
+
+            return
+
+            cursor.execute(query_inventario, (id_personagem,))
+
+            itens = cursor.fetchall()
+
+            cursor.close()
+
+            return itens
+        
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
 
     def close(self):
         """

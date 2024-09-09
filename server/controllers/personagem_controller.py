@@ -17,8 +17,8 @@ class PersonagemController:
     def criar_personagem(self, personagem, alien):
         return self.personagem_service.criar_personagem(personagem, alien)
     
-    def exibir_inventario(self, id_personagem):
-        return self.personagem_service.exibir_inventario(id_personagem)
+    def exibir_inventario(self, id_personagem, vender):
+        return self.personagem_service.exibir_inventario(id_personagem, vender)
     
     def listar_itens_consumivel(self, items):
         headers = ["Opção", "Nome do Item", "Buff", "Fator"]

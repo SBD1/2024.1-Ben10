@@ -257,7 +257,28 @@ class PersonagemRepository:
             return personagem
         except Exception as e:
             print(f"An error occurred: {e}")
-            return None       
+            return None
+        
+    def adiciona_moedas_personagem(self, id_personagem, valor):
+        try:
+            cursor = self.connection.cursor()
+
+            query_adiciona_moedas = """
+
+            UPDATE personagem
+            SET quantidade_moedas = quantidade_moedas + %s
+            WHERE id_personagem = %s;
+
+            """
+
+            cursor.execute(query_adiciona_moedas, (valor, id_personagem,))
+            cursor.close()
+            self.connection.commit()
+
+            return
+
+        except Exception as e:
+            print(f"An occurred error: {e}")
 
     def close(self):
         """
