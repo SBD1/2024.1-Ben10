@@ -156,7 +156,7 @@ class MonstroService:
 
                 turno = turno + 1
             
-            print("todos os monstros estão mortos!")
+            print("Todos os monstros estão mortos!")
         except:
             return
 
