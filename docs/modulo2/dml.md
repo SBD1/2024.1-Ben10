@@ -133,38 +133,84 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       VALUES ('Vilgax', 'Arma Tennyson', 10, 10000, 200, 170, 250);
 
       -- Inserir habilidades na tabela HABILIDADE
+
+      -- Quatro Braços (Força e resistência física, não faz sentido cura)
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Quatro Braços', 'Força Bruta', 'dano', 70);
 
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Quatro Braços', 'Soco Devastador', 'dano', 80);
+
+      -- XLR8 (Velocidade extrema, sem habilidades de cura)
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('XLR8', 'Super Velocidade', 'dano', 120);
 
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('XLR8', 'Aceleração Tempestiva', 'dano', 90);
+
+      -- Chama (Controle de fogo, não faz sentido cura)
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Chama', 'Lançar Fogo', 'dano', 95);
 
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Chama', 'Explosão de Fogo', 'dano', 100);
+
+      -- Diamante (Corpo cristalino, pode ter uma habilidade de cura por regeneração)
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Diamante', 'Corpo Cristalino', 'cura', 120);
 
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Diamante', 'Lâmina Cristalina', 'dano', 85);
+
+      -- Besta (Habilidades sensoriais e físicas, sem cura)
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Besta', 'Sentidos Aguçados', 'dano', 100);
 
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Besta', 'Garras Letais', 'dano', 90);
+
+      -- Insectóide (Capacidades de combate com ferrões, sem cura)
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Insectóide', 'Rajada de Ferrão', 'dano', 105);
 
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Insectóide', 'Explosão de Veneno', 'dano', 110);
+
+      -- Fantasmático (Intangibilidade e poderes sobrenaturais, pode ter cura como efeito espectral)
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Fantasmático', 'Intangibilidade', 'cura', 110);
 
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Fantasmático', 'Assombração', 'dano', 90);
+
+      -- Ultra T (Armadura, pode ter cura como regeneração tecnológica)
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Ultra T', 'Armadura Tecnológica', 'cura', 110);
 
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Ultra T', 'Canhão Laser', 'dano', 100);
+
+      -- Massa Cinzenta (Intelecto superior, pode ter cura como habilidade mental)
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Massa Cinzenta', 'Intelecto Superior', 'cura', 120);
 
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Massa Cinzenta', 'Tecnologia Improvisada', 'dano', 85);
+
+      -- Aquático (Controle da água, não faz sentido cura)
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Aquático', 'Hidroquinese', 'dano', 85);
 
       INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Aquático', 'Explosão de Água', 'dano', 95);
+
+      -- Vilgax (Força bruta, sem habilidades de cura)
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
       VALUES ('Vilgax', 'Força Descomunal', 'dano', 150);
+
+      INSERT INTO HABILIDADE (nome_especie, nome_habilidade, efeito, quantidade) 
+      VALUES ('Vilgax', 'Raio Devastador', 'dano', 160);
+
 
       -- Inserir regiões na tabela REGIAO 
       INSERT INTO REGIAO(nome_regiao, descricao)
@@ -177,29 +223,29 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       -- Inserção de missões na tabela MISSAO com o tipo de missão especificado
       -- regiao 1
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-      VALUES (1, 'Derrote a patrulha de Vilgax', 75, 'Vilgax não sabe que estamos no planeta, garanta que permaneça assim', 300, 'CACA');
+      VALUES (1, 'Derrote a patrulha de Vilgax', 75, 'Vilgax não sabe que estamos no planeta, garanta que permaneça assim, mate 4 Patrulheiros', 300, 'CACA');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
       VALUES (2, 'Recupere a Espada de Bog Kah', 150, 'A Espada de Bog Kah, tem um mapa entalhado na lâmina, talvez ele leva ao templo que Vilgax está procurando', 400, 'Entrega');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-      VALUES (3, 'Derrote os monstros da selva', 150, 'A selva possui muitos perigos, tome cuidado', 300, 'CACA');
+      VALUES (3, 'Derrote os monstros da selva', 150, 'A selva possui muitos perigos, mate 5 Monstros da Selva', 300, 'CACA');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
       VALUES (4, 'Entregue os suprimentos ao vilarejo', 200, 'Quando chegou ao planeta, Vilgax trouxe muita destruição, ajude os habitantes do planeta e leve suprimentos médicos', 1000, 'Entrega');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-      VALUES (5, 'Proteja o vilarejo', 250, 'Vilgax enviou tropas para investigar a área, defenda o vilarejo', 1000, 'CACA');
+      VALUES (5, 'Proteja o vilarejo', 250, 'Vilgax enviou tropas para investigar a área, defenda o vilarejo, mate 4 soldados', 1000, 'CACA');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
       VALUES (6, 'Derrote o guarda do templo ', 350, 'Vilgax localizou o templo e deixou um guarda em sua porta, derrote-o', 1000, 'CACA');
       -- regiao 2
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-      VALUES (7, 'Derrote os guardas de elite', 350, 'Guardas de elite estão aqui para nos parar, derrote-os', 1300, 'CACA');
+      VALUES (7, 'Derrote os guardas de elite', 350, 'Guardas de elite estão aqui para nos parar, mate 8 Guardas de Elite', 1300, 'CACA');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
       VALUES (8, 'Entregue a Lança de Azshara', 350, 'Assim como a espada que nos trouxe até aqui, a lança pode ter informaçoes de como devemos seguir no templo', 1300, 'Entrega');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-      VALUES (9, 'Derrote os guardas do templo', 400, 'Algumas estátuas estão ganhando vida, cuide delas', 2000, 'CACA');
+      VALUES (9, 'Derrote os guardas do templo', 400, 'Algumas estátuas estão ganhando vida, mate 7 Guardas do templo', 2000, 'CACA');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
       VALUES (10, 'Derrote o Capitão', 500, 'Vilgax mandou um de seus capitães explorar o templo, pare ele', 2500, 'CACA');
       -- regiao 3
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-      VALUES (11, 'Derrote os guardas da nave', 500, 'A nave está cheia de soldados, cuide deles', 2500, 'CACA');
+      VALUES (11, 'Derrote os guardas da nave', 500, 'A nave está cheia de soldados, mate 11 Guardas de Elite', 2500, 'CACA');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
       VALUES (12, 'Derrote o General do Exército', 500, 'Acabe com o comandante das forças de Vilgax', 2500, 'CACA');
       INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
@@ -237,11 +283,11 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 
       -- inserção na tabela CACA
       INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-      VALUES (1, 5, 1);
+      VALUES (1, 4, 1);
       INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-      VALUES (3, 7, 2);
+      VALUES (3, 5, 2);
       INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-      VALUES (5, 7, 3);
+      VALUES (5, 4, 3);
       INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
       VALUES (6, 1, 4);
       INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
@@ -461,6 +507,37 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       VALUES (17, 'Artoras', 'Seja Bem-vindo a minha loja', NULL);
 
       -- Inserir estoque para NPCs vendedores
+      -- NPC 1
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Kit Médico', 1, 2500);
+
+      -- NPC 2
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Campo de Força Portátil', 2, 4000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Kit Médico', 2, 2000);
+
+      -- NPC 3
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Campo de Força Portátil', 3, 8000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Kit Médico', 3, 2000);
+
+      -- NPC 4
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Camuflagem Alienígena', 4, 12000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Campo de Força Portátil', 4, 8000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Kit Médico', 4, 5000);
+
+      -- NPC 5
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Camuflagem Alienígena', 5, 12000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Projétil Laser', 5, 15000);
+
+      -- NPC 6 
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
       VALUES ('Kit Médico', 6, 5000);
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
@@ -469,6 +546,76 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       VALUES ('Campo de Força Portátil', 6, 8000);
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
       VALUES ('Placa de Armadura', 6, 3000);
+
+      -- NPC 7
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Jato de Fuga', 7, 7000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Placa de Armadura', 7, 3000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Granada Inibidora', 7, 20000);
+
+      -- NPC 8
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Arma Tennyson', 8, 25000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Camuflagem Alienígena', 8, 12000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Projétil Laser', 8, 15000);
+
+      -- NPC 9
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Kit Médico', 9, 5000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Campo de Força Portátil', 9, 8000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Granada Inibidora', 9, 20000);
+
+      -- NPC 10
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Espada Proto-Arma', 10, 30000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Jato de Fuga', 10, 7000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Placa de Armadura', 10, 3000);
+
+      -- NPC 11
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Camuflagem Alienígena', 11, 12000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Granada Inibidora', 11, 20000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Arma Tennyson', 11, 25000);
+
+      -- NPC 12
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Camuflagem Alienígena', 12, 12000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Projétil Laser', 12, 15000);
+
+      -- NPC 13
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Kit Médico', 13, 5000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Camuflagem Alienígena', 13, 15000);
+
+      -- NPC 14
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Campo de Força Portátil', 14, 8000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Projétil Laser', 14, 15000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Jato de Fuga', 14, 7000);
+
+      -- NPC 15
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Espada Proto-Arma', 15, 30000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Granada Inibidora', 15, 20000);
+      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+      VALUES ('Pistola dos Encanadores', 15, 18000);
+
+      -- NPC 16
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
       VALUES ('Camuflagem Alienígena', 16, 12000);
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
@@ -477,14 +624,8 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       VALUES ('Kit Médico', 16, 5000);
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
       VALUES ('Jato de Fuga', 16, 7000);
-      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-      VALUES ('Espada Proto-Arma', 15, 30000);
-      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-      VALUES ('Granada Inibidora', 15, 20000);
-      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-      VALUES ('Pistola dos Encanadores', 15, 18000);
-      INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-      VALUES ('Placa de Armadura', 15, 3000);
+
+      -- NPC 17
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
       VALUES ('Campo de Força Portátil', 17, 8000);
       INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
@@ -524,8 +665,8 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
       INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
       VALUES ('Chama',150, 1),
             ('Ultra T',75, 2),
-            ('XLR8',120, 2),
-            ('XLR8',120, 3),
+            ('XLR8',65, 2),
+            ('XLR8',65, 3),
             ('Massa Cinzenta',130, 4);
 
       -- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO
@@ -849,4 +990,5 @@ Este documento tem como objetivo detalhar o uso do DML (Data Manipulation Langua
 | `1.2` | 19/08 | Atualizando INSERT e adicionando DELETE| [João Artur](https://github.com/joao-artl) | [Eric Silveira](https://github.com/ericbky)|
 | `1.3` | 19/08 | Adicionando UPDATE | [Arthur Alves](https://github.com/arthrok) | [João Artur](https://github.com/joao-artl)|
 | `1.4` | 30/08 | Atualizando INSERT| [João Artur](https://github.com/joao-artl) | [Arthur Alves](https://github.com/arthrok)|
-| `1.5` | 06/09 | Atualizando INSERT para versão final| [João Artur](https://github.com/joao-artl) | [Arthur Alves](https://github.com/arthrok)|
+| `1.5` | 06/09 | Atualizando INSERT| [João Artur](https://github.com/joao-artl) | [Arthur Alves](https://github.com/arthrok)|
+| `1.6` | 09/09 | Atualizando INSERT para versão final| [João Artur](https://github.com/joao-artl) | [Arthur Alves](https://github.com/arthrok)|
