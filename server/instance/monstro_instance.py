@@ -79,6 +79,7 @@ class MonstroInstance:
                 personagem_repository.receber_dano(self.id_personagem, -10)
                 personagem_repository.atualizar_sala_personagem(GLOBAL_SETS['id_personagem'], 1)
                 print('Seu personagem morreu! Você foi redirecionado para a sala 1 e possui 10 de vida!')    
+                self.setar_global_set()
             GLOBAL_SETS['vida_atual'] -= fator
             personagem_repository.receber_dano(self.id_personagem, fator)   
 
@@ -88,3 +89,18 @@ class MonstroInstance:
     def retirar_instancia(self, instancias, index):
         del instancias[index]
         del instancias[index]
+
+    def setar_global_set(self):
+        personagem = personagem_repository.obter_informacoes_personagem(GLOBAL_SETS['id_personagem'])[0]
+
+        GLOBAL_SETS['transformado'] = personagem['nome_alien']
+        GLOBAL_SETS['vida_maxima'] = personagem['nivel'] * 100
+        GLOBAL_SETS['vida_atual'] = personagem['saude']
+        GLOBAL_SETS['alien']['vida_maxima'] = personagem['saude_especie']
+        GLOBAL_SETS['alien']['vida_atual'] = personagem['saude_alien']
+        GLOBAL_SETS['alien']['dano'] = personagem['dano_alien']
+        GLOBAL_SETS['arma']['nome'] = personagem['arma']
+        GLOBAL_SETS['arma']['dano'] = personagem['dano_arma']
+
+        if GLOBAL_SETS['alien']['vida_maxima']:
+            GLOBAL_SETS['alien']['vida_maxima'] = GLOBAL_SETS['alien']['vida_maxima'] * personagem['nivel']
