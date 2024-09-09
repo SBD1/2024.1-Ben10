@@ -456,15 +456,15 @@ VALUES ('Nave do Vilgax', 'Nave principal do exército de Vilgax');
 -- Inserção de missões na tabela MISSAO com o tipo de missão especificado
 -- regiao 1
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (1, 'Derrote a patrulha de Vilgax', 75, 'Vilgax não sabe que estamos no planeta, garanta que permaneça assim, mate 5 Patrulheiros', 300, 'CACA');
+VALUES (1, 'Derrote a patrulha de Vilgax', 75, 'Vilgax não sabe que estamos no planeta, garanta que permaneça assim, mate 4 Patrulheiros', 300, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
 VALUES (2, 'Recupere a Espada de Bog Kah', 150, 'A Espada de Bog Kah, tem um mapa entalhado na lâmina, talvez ele leva ao templo que Vilgax está procurando', 400, 'Entrega');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (3, 'Derrote os monstros da selva', 150, 'A selva possui muitos perigos, mate 7 Monstros da Selva', 300, 'CACA');
+VALUES (3, 'Derrote os monstros da selva', 150, 'A selva possui muitos perigos, mate 5 Monstros da Selva', 300, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
 VALUES (4, 'Entregue os suprimentos ao vilarejo', 200, 'Quando chegou ao planeta, Vilgax trouxe muita destruição, ajude os habitantes do planeta e leve suprimentos médicos', 1000, 'Entrega');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (5, 'Proteja o vilarejo', 250, 'Vilgax enviou tropas para investigar a área, defenda o vilarejo, mate 7 soldados', 1000, 'CACA');
+VALUES (5, 'Proteja o vilarejo', 250, 'Vilgax enviou tropas para investigar a área, defenda o vilarejo, mate 4 soldados', 1000, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
 VALUES (6, 'Derrote o guarda do templo ', 350, 'Vilgax localizou o templo e deixou um guarda em sua porta, derrote-o', 1000, 'CACA');
 -- regiao 2
@@ -516,11 +516,11 @@ VALUES (14, 13);
 
 -- inserção na tabela CACA
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (1, 5, 1);
+VALUES (1, 4, 1);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (3, 7, 2);
+VALUES (3, 5, 2);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
-VALUES (5, 7, 3);
+VALUES (5, 4, 3);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
 VALUES (6, 1, 4);
 INSERT INTO CACA (id_missao, quantidade_monstros, dificuldade_monstro) 
@@ -740,6 +740,37 @@ INSERT INTO NPC (id_npc, nome_npc, dialogo_associado_venda, id_missao_associada)
 VALUES (17, 'Artoras', 'Seja Bem-vindo a minha loja', NULL);
 
 -- Inserir estoque para NPCs vendedores
+-- NPC 1
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 1, 2500);
+
+-- NPC 2
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Campo de Força Portátil', 2, 4000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 2, 2000);
+
+-- NPC 3
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Campo de Força Portátil', 3, 8000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 3, 2000);
+
+-- NPC 4
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Camuflagem Alienígena', 4, 12000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Campo de Força Portátil', 4, 8000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 4, 5000);
+
+-- NPC 5
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Camuflagem Alienígena', 5, 12000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Projétil Laser', 5, 15000);
+
+-- NPC 6 
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
 VALUES ('Kit Médico', 6, 5000);
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
@@ -748,6 +779,76 @@ INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco)
 VALUES ('Campo de Força Portátil', 6, 8000);
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
 VALUES ('Placa de Armadura', 6, 3000);
+
+-- NPC 7
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Jato de Fuga', 7, 7000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Placa de Armadura', 7, 3000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Granada Inibidora', 7, 20000);
+
+-- NPC 8
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Arma Tennyson', 8, 25000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Camuflagem Alienígena', 8, 12000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Projétil Laser', 8, 15000);
+
+-- NPC 9
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 9, 5000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Campo de Força Portátil', 9, 8000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Granada Inibidora', 9, 20000);
+
+-- NPC 10
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Espada Proto-Arma', 10, 30000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Jato de Fuga', 10, 7000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Placa de Armadura', 10, 3000);
+
+-- NPC 11
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Camuflagem Alienígena', 11, 12000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Granada Inibidora', 11, 20000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Arma Tennyson', 11, 25000);
+
+-- NPC 12
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Camuflagem Alienígena', 12, 12000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Projétil Laser', 12, 15000);
+
+-- NPC 13
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Kit Médico', 13, 5000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Camuflagem Alienígena', 13, 15000);
+
+-- NPC 14
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Campo de Força Portátil', 14, 8000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Projétil Laser', 14, 15000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Jato de Fuga', 14, 7000);
+
+-- NPC 15
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Espada Proto-Arma', 15, 30000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Granada Inibidora', 15, 20000);
+INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
+VALUES ('Pistola dos Encanadores', 15, 18000);
+
+-- NPC 16
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
 VALUES ('Camuflagem Alienígena', 16, 12000);
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
@@ -756,14 +857,8 @@ INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco)
 VALUES ('Kit Médico', 16, 5000);
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
 VALUES ('Jato de Fuga', 16, 7000);
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Espada Proto-Arma', 15, 30000);
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Granada Inibidora', 15, 20000);
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Pistola dos Encanadores', 15, 18000);
-INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
-VALUES ('Placa de Armadura', 15, 3000);
+
+-- NPC 17
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
 VALUES ('Campo de Força Portátil', 17, 8000);
 INSERT INTO ESTOQUE_DO_ITEM (nome_item, id_npc, preco) 
