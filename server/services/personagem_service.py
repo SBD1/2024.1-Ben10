@@ -2,6 +2,7 @@ from repositories.personagem_repository import PersonagemRepository
 from services.sala_service import SalaService
 from services.npc_service import NpcService
 from services.monstro_service import MonstroService
+from repositories.npc_repository import NpcRepository
 import os
 from config.config import GLOBAL_SETS
 
@@ -12,6 +13,7 @@ class PersonagemService:
         self.sala_service = SalaService()
         self.npc_service = NpcService()
         self.monstro_service = MonstroService()
+        self.npc_repository = NpcRepository()
 
     def atualizar_sala_personagem(self, id_personagem, id_sala):
         return self.personagem_repository.atualizar_sala_personagem(id_personagem, id_sala)
@@ -59,20 +61,59 @@ class PersonagemService:
         self.exibir_personagem(id_personagem_criado, 'S')
         return id_personagem_criado
     
-    def exibir_inventario(self, id_personagem):
+    def exibir_inventario(self, id_personagem, vender):
         itens = self.personagem_repository.exibir_inventario(id_personagem)
 
         nome_itens = [item[2] for item in itens]
+        i = 1
 
+        validate = False
 
         os.system('clear')
-        print(f"\n-----------------------------------------------")
-        print('-------------Itens do inventário----------------\n')
+        while(validate == False):
+            print(f"\n-----------------------------------------------")
+            print('-------------Itens do inventário----------------\n')
 
-        for row in nome_itens:
-            print(row)
+            for row in nome_itens:
+                print(f"{i} - {row}")
+                i += 1
+            print(f"\n-----------------------------------------------\n")
 
-        print(f"\n-----------------------------------------------")
+            if vender == 'S':
+                key_item_venda = input("Obs: Os itens não são vendidos pelo mesmo valor da compra!\nQual item você deseja vender? ")
+                key_item_venda = int(key_item_venda)
+                if key_item_venda > 0 and key_item_venda < i: 
+                    key_item_venda = key_item_venda - 1
+                    preco = self.npc_repository.preco_item(id_personagem, nome_itens, key_item_venda)
+
+                    print("\nPreco de venda do item: ", preco,"\n")
+
+                    confirmacao = input('Realmente deseja vender esse item? (S / N): ')
+
+                    if confirmacao == 'S' or confirmacao == 's':
+                        self.npc_repository.vender_item(id_personagem, nome_itens, key_item_venda)
+
+                        self.personagem_repository.adiciona_moedas_personagem(id_personagem, preco)
+
+                        print('Item vendido com sucesso!')
+                        validate = True
+
+                    elif confirmacao == 'N' or confirmacao == 'n':
+                        print("Ok! Até uma próxima! :)")
+                        validate = True
+
+                    else:
+                        os.system('clear')
+                        print('Não foi possível efetuar a operação, digite um valor válido!')
+
+                else:
+                    os.system('clear')
+                    print('Não foi possível efetuar a operação, digite um valor válido!')
+
+            else:
+                validate = True
+
+            return 
 
     def descontar_moedas_personagem(self, id_personagem, quantidade):
         return self.personagem_repository.descontar_moedas_personagem(id_personagem, quantidade)

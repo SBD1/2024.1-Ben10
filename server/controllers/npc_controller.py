@@ -4,6 +4,8 @@ from services.npc_service import NpcService
 from utils.validation_utils import ValidationUtils
 from tabulate import tabulate
 from services.missao_service import MissaoService
+from controllers.personagem_controller import PersonagemController
+import os
 
 class NpcError(Exception):
     pass
@@ -15,6 +17,7 @@ class NpcController:
         self.npc_service = NpcService()
         self.validation_utils = ValidationUtils()
         self.missao_service = MissaoService()
+        self.personagem_controller = PersonagemController()
 
 
     def listar_estoque_npc(self, id_npc):
@@ -31,24 +34,44 @@ class NpcController:
     def negociar_com_npc(self, id_npc, id_personagem):
         saldo_personagem = self.personagem_service.obter_saldo_personagem(id_personagem)
         print(f"\nSeu saldo atual é: {saldo_personagem}\n")
-        estoque = self.listar_estoque_npc(id_npc)
-        escolha = input("\nEscolha uma opção de item para comprar ou digite \"sair\" para cancelar a compra!\n")
+        validate = False
 
-        if escolha == "SAIR" or escolha == "sair":
-            return
+        while(validate == False):
+            operacao_negociar = input("1 - Desejo comprar um item\n2 - Desejo vender um item\n")
+
+            operacao_negociar = int(operacao_negociar)
+            
+            if operacao_negociar == 1:
+
+
+                estoque = self.listar_estoque_npc(id_npc)
+                escolha = input("\nEscolha uma opção de item para comprar ou digite \"sair\" para cancelar a compra!\n")
+
+                if escolha == "SAIR" or escolha == "sair":
+                    return
+                        
+                if not self.validation_utils.validate_integer_in_range(escolha, 1, len(estoque)):
+                    raise NpcError("Opção Inválida")
                 
-        if not self.validation_utils.validate_integer_in_range(escolha, 1, len(estoque)):
-            raise NpcError("Opção Inválida")
-        
-        escolha = int(escolha)
+                escolha = int(escolha)
 
-        item_escolhido = estoque[escolha - 1]
+                item_escolhido = estoque[escolha - 1]
 
-        if int(item_escolhido['preco']) > int(saldo_personagem):
-            print("Saldo insuficiente para comprar este item!")
-            return
-        
-        self.npc_service.comprar_item(id_personagem, item_escolhido)
+                if int(item_escolhido['preco']) > int(saldo_personagem):
+                    print("Saldo insuficiente para comprar este item!")
+                    return
+                
+                self.npc_service.comprar_item(id_personagem, item_escolhido)
+
+                validate = True
+
+            elif operacao_negociar == 2:
+                self.personagem_controller.exibir_inventario(id_personagem, 'S')
+                validate = True
+            else :
+                os.system('clear')
+                print('Não foi possível efetuar a operação, digite um valor válido!')
+
 
     def falar_sobre_missao(self, id_npc, id_personagem):
         missao = self.missao_service.obter_missao_por_npc(id_npc)[0]
