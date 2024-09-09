@@ -7,6 +7,7 @@ from services.alien_service import AlienService
 personagem_repository = PersonagemRepository()
 monstro_repository = MonstroRepository()
 alien_service = AlienService()
+npc_inventario = NpcRepository
 
 
 class MonstroInstance:
@@ -23,7 +24,6 @@ class MonstroInstance:
         self.saude = monstro.get('saude')
         self.defesa = monstro.get('defesa')
         self.status_base = monstro.get('status_base')
-        self.npc_inventario = NpcRepository()
 
     def receber_dano(self, dano, instancias, index):
         if self.saude_atual - dano <= 0:
@@ -39,7 +39,7 @@ class MonstroInstance:
 
             # Entrega a recompensa da função
             print(f"Você recebeu {self.id_recompensa} de recompensa!")
-            self.npc_inventario.inserir_item_inventario(GLOBAL_SETS['id_personagem'], self.id_recompensa)
+            npc_inventario.inserir_item_inventario(GLOBAL_SETS['id_personagem'], self.id_recompensa)
 
             print(f"Dificuldade: {self.dificuldade}\n")
             

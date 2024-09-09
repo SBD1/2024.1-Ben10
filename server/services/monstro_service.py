@@ -166,7 +166,7 @@ class MonstroService:
             if not existe_instancia:
                 monstros = self.obter_monstros_por_dificuldade_da_sala(id_sala, 2)
                 self.monstro_repository.instanciar_monstro(id_sala, id_personagem, monstros)
-
+    
             self.entrar_em_combate(id_sala, id_personagem)
 
     def print_barra_vida_alien(self):
