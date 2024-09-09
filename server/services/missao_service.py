@@ -1,4 +1,5 @@
 from repositories.missao_repository import MissaoRepository
+from config.config import GLOBAL_SETS
 
 class MissaoError(Exception):
     pass
@@ -78,3 +79,7 @@ class MissaoService:
         print("Por favor, aceite a recompensa de bom grado!")
         
         self.entregar_recompensa(id_personagem, missao)
+
+    def obter_missoes_em_progresso(self):
+        missoes = self.missao_repository.obter_missoes_em_progresso(GLOBAL_SETS['id_personagem'])
+        return missoes

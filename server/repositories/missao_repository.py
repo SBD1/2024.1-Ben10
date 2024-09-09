@@ -234,6 +234,28 @@ class MissaoRepository:
             print(f"An error occurred: {e}")
             self.connection.rollback()  # Desfaz a transação em caso de erro
 
+    def obter_missoes_em_progresso(self, id_personagem):
+        """
+        Retorna as missões em progresso de um personagem
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT m.nome_missao, rdm.quantidade_monstros, m.tipo_missao, n.nome_npc, ins.id_sala
+                FROM REGISTRO_DA_MISSAO rdm
+                JOIN MISSAO m ON m.id_missao = rdm.id_missao
+                JOIN NPC n ON n.id_missao_associada = rdm.id_missao
+                JOIN INSTANCIA_NPC_NA_SALA ins ON ins.id_npc = n.id_npc
+                WHERE rdm.id_personagem = %s and rdm.status != 'completa';
+            """
+            cursor.execute(query, (id_personagem,))
+            missao = fetch_as_dict(cursor)
+            cursor.close()
+            return missao
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None             
+
     def close(self):
         """
         Fecha a conexão com o banco de dados.

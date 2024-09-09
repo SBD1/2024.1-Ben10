@@ -3,6 +3,7 @@ from tabulate import tabulate
 from utils.validation_utils import ValidationUtils
 from services.item_service import ItemService
 from config.config import GLOBAL_SETS
+from services.missao_service import MissaoService
 
 class PersonagemController:
 
@@ -10,6 +11,7 @@ class PersonagemController:
         self.personagem_service = PersonagemService()
         self.validation_utils = ValidationUtils()
         self.item_service = ItemService()
+        self.missao_service = MissaoService()
 
     def exibir_personagem(self, id_personagem, infos):
         return self.personagem_service.exibir_personagem(id_personagem, infos)
@@ -94,3 +96,15 @@ class PersonagemController:
 
         if GLOBAL_SETS['alien']['vida_maxima']:
             GLOBAL_SETS['alien']['vida_maxima'] = GLOBAL_SETS['alien']['vida_maxima'] * personagem['nivel']
+
+    def obter_missoes_em_progresso(self):
+        missoes = self.missao_service.obter_missoes_em_progresso()
+
+        headers = ["Nome", "Tipo de Missão", "Quantidade de Monstros"]
+        
+        tabela = [
+            [missao['nome_missao'], missao['tipo_missao'], missao['quantidade_monstros']]
+            for missao in missoes
+        ]
+
+        print(tabulate(tabela, headers=headers, tablefmt="grid"))
