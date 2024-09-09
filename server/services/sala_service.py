@@ -1,11 +1,11 @@
-from repositories.sala_repository import SalaRepository
+from repositories.sala_repository import sala_repository
 from utils.database_helpers import fetch_as_dict
-from repositories.regiao_repository import RegiaoRepository
+from repositories.regiao_repository import regiao_repository
 
 class SalaService:
     def __init__(self):
-        self.sala_repository = SalaRepository()
-        self.regiao_repository = RegiaoRepository()
+        self.sala_repository = sala_repository
+        self.regiao_repository = regiao_repository
 
     def obter_salas_por_tipo(self, tipo_sala):
         """

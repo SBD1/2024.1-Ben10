@@ -1,8 +1,8 @@
-from repositories.personagem_repository import PersonagemRepository
+from repositories.personagem_repository import personagem_repository
 from services.sala_service import SalaService
 from services.npc_service import NpcService
 from services.monstro_service import MonstroService
-from repositories.npc_repository import NpcRepository
+from repositories.npc_repository import npc_repository
 import os
 import textwrap
 from config.config import GLOBAL_SETS
@@ -10,11 +10,11 @@ from config.config import GLOBAL_SETS
 
 class PersonagemService:
     def __init__(self):
-        self.personagem_repository = PersonagemRepository()
+        self.personagem_repository = personagem_repository
         self.sala_service = SalaService()
         self.npc_service = NpcService()
         self.monstro_service = MonstroService()
-        self.npc_repository = NpcRepository()
+        self.npc_repository = npc_repository
 
     def atualizar_sala_personagem(self, id_personagem, id_sala):
         return self.personagem_repository.atualizar_sala_personagem(id_personagem, id_sala)

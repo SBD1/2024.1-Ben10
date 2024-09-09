@@ -1,4 +1,4 @@
-from repositories.alien_repository import AlienRepository
+from repositories.alien_repository import alien_repository
 from config.config import GLOBAL_SETS
 import time
 import threading
@@ -6,7 +6,7 @@ import threading
 class AlienService:
 
     def __init__(self):
-        self.alien_repository = AlienRepository()
+        self.alien_repository = alien_repository
 
     def exibir_aliens(self, id_personagem, trocar):
         dados = self.alien_repository.exibir_aliens(id_personagem)

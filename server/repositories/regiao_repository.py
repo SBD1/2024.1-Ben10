@@ -3,14 +3,14 @@ from utils.database_helpers import fetch_as_dict
 
 class RegiaoRepository:
     def __init__(self):
-        self.connection = create_connection
+        self.connection = create_connection()
 
     def obter_todas_regioes(self):
         """
         Retorna todas as salas de uma determinada região
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 SELECT *
                 FROM REGIAO
@@ -39,5 +39,7 @@ class RegiaoRepository:
         """
         Fecha a conexão com o banco de dados.
         """
-        if self.connection():
-            self.connection().close()
+        if self.connection:
+            self.connection.close()
+
+regiao_repository = RegiaoRepository()
