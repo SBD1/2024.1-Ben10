@@ -77,8 +77,11 @@ class MonstroInstance:
         else:
             if GLOBAL_SETS['vida_atual'] - fator <= 0:
                 fator = GLOBAL_SETS['vida_atual']
+                personagem_repository.receber_dano(self.id_personagem, -10)
+                personagem_repository.atualizar_sala_personagem(GLOBAL_SETS['id_personagem'], 1)
+                print('Seu personagem morreu! Você foi redirecionado para a sala 1 e possui 10 de vida!')    
             GLOBAL_SETS['vida_atual'] -= fator
-            personagem_repository.receber_dano(self.id_personagem, fator)
+            personagem_repository.receber_dano(self.id_personagem, fator)   
 
         print(f"\nVocê recebeu {fator} de dano!\n")
 
