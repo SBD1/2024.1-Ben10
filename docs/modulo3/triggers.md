@@ -280,3 +280,15 @@ Nesta seção, são apresentados exemplos de **triggers** e **functions** implem
     BEFORE INSERT OR UPDATE ON ARMA
     FOR EACH ROW EXECUTE PROCEDURE insere_arma();
     ```
+
+## <a>Bibliografia</a>
+
+> <a id="REF1" href="#anchor_1">1.</a> ELMASRI, Ramez; NAVATHE, Shamkant B. **Sistemas de banco de dados**. Tradução: Daniel Vieira. Revisão técnica: Enzo Seraphim; Thatyana de Faria Piola Seraphim. 6. ed. São Paulo: Pearson Addison Wesley, 2011. Capítulo 24.1, Conceitos de banco de dados ativos e gatilhos (Triggers), página 545【8:9†source.
+
+> <a id="REF2" href="#anchor_2">2.</a> SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. **Database system concepts**. 6. ed. New York: McGraw-Hill, 2011. Capítulo 5, Advanced SQL, tópico 5.3 Triggers, páginas 180-184【8:5†source.
+
+## <a>Histórico de Versão</a>
+
+| Versão| Data | Descrição  | Autor(es)  | Revisor(es) |
+| ----- |----- | ---------- | ---------- | ----------- | 
+| `1.0` | 09/09 | Criando documento e adicionando introdução e referencias bibliográficas| [Eric Silveira](https://github.com/ericbky)| [Arthur Alves](https://github.com/Arthrok)|
