@@ -166,6 +166,36 @@ class SalaRepository:
             print(f"An error occurred: {e}")
             return None
         
+    def obter_pre_requisitos_missao_por_regiao(self, nome_regiao):
+        """
+        Obtém os pré-requisitos, ID da missão e sala onde o NPC da missão foi instanciado para uma determinada região.
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT PRE_REQUISITO.id_pre_requisito AS pre_requisito, INSTANCIA_NPC_NA_SALA.id_sala AS sala_npc
+                FROM PRE_REQUISITO
+                INNER JOIN MISSAO ON PRE_REQUISITO.id_missao = MISSAO.id_missao
+                INNER JOIN NPC ON NPC.id_missao_associada = MISSAO.id_missao
+                INNER JOIN INSTANCIA_NPC_NA_SALA ON INSTANCIA_NPC_NA_SALA.id_npc = NPC.id_npc
+                INNER JOIN SALA ON INSTANCIA_NPC_NA_SALA.id_sala = SALA.id_sala
+                WHERE SALA.nome_regiao = %s;
+            """
+            cursor.execute(query, (nome_regiao,))
+            resultados = cursor.fetchall()
+            cursor.close()
+
+            pre_requisitos = [{
+                "pre_requisito": pre_requisito,
+                "sala_npc": sala_npc
+            } for pre_requisito, sala_npc in resultados]
+
+            return pre_requisitos if pre_requisitos else None
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None
+
     def close(self):
         """
         Fecha a conexão com o banco de dados.

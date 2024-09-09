@@ -73,6 +73,9 @@ class SalaService:
                 npc["idMissaoAssociada"] = 0  # Atribui 0 se for nulo
             else:
                 npc["idMissaoAssociada"] = 1  # Atribui 1 caso não seja nulo
-        
+                                
         return npcs
     
+    def obter_pre_requisitos_missao_por_regiao(self, nome_regiao):
+        pre_requisitos = self.sala_repository.obter_pre_requisitos_missao_por_regiao(nome_regiao)
+        return pre_requisitos

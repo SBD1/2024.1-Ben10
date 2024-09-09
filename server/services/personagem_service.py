@@ -98,3 +98,7 @@ class PersonagemService:
         GLOBAL_SETS['arma']['dano'] = arma['dano']
 
         print(f"\nAgora você está usando a arma {arma['nome_item']}\n")
+
+    def obter_registro_de_missao(self, id_personagem):
+        registro = self.personagem_repository.obter_registro_de_missao(id_personagem)
+        return registro
