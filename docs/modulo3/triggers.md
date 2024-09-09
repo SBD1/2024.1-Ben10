@@ -1,0 +1,8 @@
+### <a>Introdução</a>
+De acordo com Silberschatz et al., os triggers são uma ferramenta importante em bancos de dados, permitindo a execução automática de ações em resposta a eventos, como inserções, atualizações ou exclusões. Esses gatilhos são úteis para garantir integridade referencial, além de automatizar tarefas como o controle de estoque ou o monitoramento de alterações em dados críticos. Funções, por outro lado, oferecem uma maneira de encapsular lógicas complexas em operações reutilizáveis, frequentemente integradas diretamente na execução das consultas SQL, aumentando a flexibilidade e a eficiência dos SGBDs modernos  .
+
+### <a>Objetivo</a>
+Este trabalho tem como objetivo explorar as funcionalidades dos **triggers** e **functions** em sistemas de banco de dados relacionais, focando em como essas ferramentas podem ser utilizadas para automatizar processos e garantir a consistência dos dados. Além disso, será abordada a criação de funções externas em linguagens de programação como C e Java, destacando os benefícios e riscos associados à sua integração nos bancos de dados  .
+
+### <a>Exemplos de Triggers e Functions</a>
+Nesta seção, são apresentados exemplos de **triggers** e **functions** implementados em SQL, com descrições detalhadas de suas funcionalidades. Por exemplo, um trigger pode ser utilizado para garantir que, ao atualizar uma tabela de inventário, seja verificada a quantidade mínima de um item, disparando automaticamente uma ordem de reposição quando o nível estiver abaixo do mínimo. Já uma função pode ser definida para calcular o número de alunos matriculados em um curso específico, utilizando a linguagem C para otimizar o processamento.
