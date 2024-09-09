@@ -33,6 +33,10 @@ def main():
             'arma': {
                 'descrição': 'comando para trocar arma do personagem',
                 'executar': lambda _: personagem_controller.trocar_arma(GLOBAL_SETS['id_personagem'])
+            },
+            'missao': {
+                'descricao': 'comando para verificar missões disponíveis e em progresso',
+                'executar': lambda _: personagem_controller.missoes()
             }
         },
         'alien':{
@@ -106,21 +110,21 @@ def main():
         alien = 0
 
         aliens = {
-        1: 'Quatro Braços',
-        2: 'XLR8',
-        3: 'Chama',
-        4: 'Diamante',
-        5: 'Besta',
-        6: 'Insectóide',
-        7: 'Fantasmático',
-        8: 'Ultra T',
-        9: 'Massa Cinzenta',
-        10: 'Aquático'}
+            1: 'Quatro Braços',
+            2: 'XLR8',
+            3: 'Chama',
+            4: 'Diamante',
+            5: 'Besta',
+            6: 'Insectóide',
+            7: 'Fantasmático',
+            8: 'Ultra T',
+            9: 'Massa Cinzenta',
+            10: 'Aquático'
+        }
 
         print('Digite o nome que deseja ser chamado no jogo:')
 
         while verificacao == False:
-
             personagem = input('')
             if len(personagem) <= 2:
                 personagem = ''
@@ -151,6 +155,12 @@ def main():
                     verificacao = True
 
         GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
+
+        # Tela de introdução 
+        os.system('clear')  
+        print(f"Bem-vindo, {personagem}!\nVocê escolheu o Alien: {aliens[alien]}\n")
+        personagem_controller.exibir_missoes_e_intro()
+        input("\nPressione a tecla Enter para continuar...")  # Aguarda o jogador apertar Enter
 
     def personagem():
         id_personagem_atual = 0

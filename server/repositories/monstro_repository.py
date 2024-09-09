@@ -3,14 +3,14 @@ from utils.database_helpers import fetch_as_dict
 
 class MonstroRepository:
     def __init__(self):
-        self.connection = create_connection()
+        self.connection = create_connection
 
     def obter_monstros_por_dificuldade_sala(self, id_sala):
         """
         Retorna uma lista de monstros filtrados pela dificuldade de alguma sala
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT m.nome
                 FROM MONSTRO m
@@ -34,7 +34,7 @@ class MonstroRepository:
         param: monstros é uma lista de nomes de monstros (PK da tabela MONSTRO)
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             
             # Query para inserir na tabela INSTANCIA_MONSTRO
             query_insert_monstro = """
@@ -55,7 +55,7 @@ class MonstroRepository:
 
                 cursor.execute(query_insert_zona_guerra, (id_sala, id_personagem, id_monstro))
             
-            self.connection.commit()
+            self.connection().commit()
             cursor.close()
             
         except Exception as e:
@@ -67,7 +67,7 @@ class MonstroRepository:
         Retorna as informações dos monstros completa da instancia em determinada sala
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM INSTANCIA_ZONA_GUERRA izg
@@ -87,14 +87,14 @@ class MonstroRepository:
         Faz o monstro levar dano
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 UPDATE INSTANCIA_MONSTRO
                 SET saude_atual = saude_atual - %s
                 WHERE id_monstro = %s;
             """
             cursor.execute(query, (fator, id_monstro,))
-            self.connection.commit()
+            self.connection().commit()
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")            
@@ -102,7 +102,7 @@ class MonstroRepository:
     def registro_missao(self, id_personagem, dificuldade):
 
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
 
             query_selecionar_missao = """
                 SELECT rm.id_missao
@@ -125,7 +125,7 @@ class MonstroRepository:
 
                     cursor.execute(query_update_rg_missao, (missoes.get('id_missao'), id_personagem,))
 
-                    self.connection.commit()
+                    self.connection().commit()
 
         except Exception as e:
             print(f"An error occured: {e}")
@@ -135,5 +135,5 @@ class MonstroRepository:
         """
         Fecha a conexão com o banco de dados.
         """
-        if self.connection:
-            self.connection.close()
+        if self.connection():
+            self.connection().close()

@@ -3,6 +3,7 @@ from tabulate import tabulate
 from utils.validation_utils import ValidationUtils
 from services.item_service import ItemService
 from config.config import GLOBAL_SETS
+from services.missao_service import MissaoService
 
 class PersonagemController:
 
@@ -10,9 +11,13 @@ class PersonagemController:
         self.personagem_service = PersonagemService()
         self.validation_utils = ValidationUtils()
         self.item_service = ItemService()
+        self.missao_service = MissaoService()
 
     def exibir_personagem(self, id_personagem, infos):
         return self.personagem_service.exibir_personagem(id_personagem, infos)
+    
+    def exibir_missoes_e_intro(self):
+        return self.personagem_service.exibir_missoes_e_intro()
     
     def criar_personagem(self, personagem, alien):
         return self.personagem_service.criar_personagem(personagem, alien)
@@ -94,3 +99,50 @@ class PersonagemController:
 
         if GLOBAL_SETS['alien']['vida_maxima']:
             GLOBAL_SETS['alien']['vida_maxima'] = GLOBAL_SETS['alien']['vida_maxima'] * personagem['nivel']
+
+    def obter_missoes_em_progresso(self):
+        missoes = self.missao_service.obter_missoes_em_progresso()
+
+        headers = ["Nome", "Tipo de Missão", "Quantidade de Monstros", "Entregue para"]
+        
+        tabela = [
+            [missao['nome_missao'], missao['tipo_missao'], missao['quantidade_monstros'], f"{missao['nome_npc']} na sala {missao['id_sala']}"]
+            for missao in missoes
+        ]
+
+        print(tabulate(tabela, headers=headers, tablefmt="grid"))
+
+    def obter_missoes_disponiveis(self):
+        missoes = self.missao_service.obter_missoes_disponiveis()
+
+        headers = ["Nome da Missão", "Tipo de Missão", "Nome do NPC", "Sala"]
+        
+        tabela = [
+            [missao['nome_missao'], missao['tipo_missao'], missao['nome_npc'], missao['id_sala']]
+            for missao in missoes
+        ]
+
+        print(tabulate(tabela, headers=headers, tablefmt="grid"))
+
+    def missoes(self): 
+        print("\n1 - Ver missões em progresso")
+        print("2 - Ver missões disponíveis para fazer")
+
+        while True:
+            opcao = input("\nEscolha uma opção! Ou digite 'sair' para sair da seleção.\n")
+            
+            if opcao.lower() == 'sair':
+                print("Você fugiu do combate.")
+                return
+            
+            if not self.validation_utils.validate_integer_in_range(int(opcao), 1, 2):
+                print("Opção inválida, tente novamente.")
+                continue 
+            
+            opcao = int(opcao)
+            break
+
+        if opcao == 1:
+            self.obter_missoes_em_progresso()
+        else:
+            self.obter_missoes_disponiveis()

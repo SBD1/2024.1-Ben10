@@ -2,10 +2,12 @@ from services.sala_service import SalaService
 from services.personagem_service import PersonagemService
 from services.npc_service import NpcService
 from utils.validation_utils import ValidationUtils
+from tabulate import tabulate
 from controllers.npc_controller import NpcController
 from config.config import GLOBAL_SETS
 
 npc_controller = NpcController()
+
 
 # Constante para definir que uma determinada variável não possui valor definido
 UNSET = -1
@@ -41,53 +43,68 @@ class SalaController:
         if self.get_regiao() == UNSET:
             print("Não existe nenhum mapa selecionado. Escreva \"mapa listar\" para listar as regiões.")
         else:
-            self.desdesenhar_mapa_regiaoenhar_mapa_regiao(str(self.get_regiao()))
+            self.desenhar_mapa_regiao(str(self.get_regiao()))
 
     # apresentar todas as regiões
-    def desenhar_mapa_regiao(self, id_regiao : str):
-        
+    def desenhar_mapa_regiao(self, id_regiao: str):
         if self.get_regiao() == UNSET or self.get_regiao() != int(id_regiao):
-             self.set_regiao(int(id_regiao))
+            self.set_regiao(int(id_regiao))
 
         lista_regioes = self.sala_service.obter_todas_regioes()
         size = len(lista_regioes)
         indice = int(id_regiao)
+        
         if indice > size:
             print("ID inexistente.")
         else:
-            nome_regiao= lista_regioes[indice - 1].get('nome_regiao')
+            nome_regiao = lista_regioes[indice - 1].get('nome_regiao')
             salas = self.sala_service.obter_salas_por_regiao(nome_regiao)
 
             if not salas:
                 print("Nenhuma sala encontrada.")
                 return
 
-            largura_quadrado = 10
-            quantidade_salas = len(salas)
-            colunas = 3
+            # Obter NPCs da região
+            npcs_na_regiao = self.sala_service.verificar_local_missao(nome_regiao)
 
-            print()
-            # Divide as salas em grupos de 3
-            for i in range(0, quantidade_salas, colunas):
-                salas_parte = salas[i:i + colunas]
+            # Criar um dicionário de mapeamento {id_sala: tipo_missao}
+            npcs_por_sala = {npc['idSala']: npc['idMissaoAssociada'] for npc in npcs_na_regiao} if npcs_na_regiao else {}
 
-                # Desenhar a linha superior de cada grupo
-                if (i == 0):
-                    for sala in salas_parte:
-                        print(f"+{'-' * (largura_quadrado - 2)}+", end=' ')
-                print()
+            # Extrair apenas os valores dos IDs e adicionar M ou V onde for apropriado
+            id_salas = []
+            for sala in salas:
+                id_sala = sala['id_sala']
+                
+                # Verificar se a sala tem NPC com ou sem missão
+                if id_sala in npcs_por_sala:
+                    tipo_missao = npcs_por_sala[id_sala]
+                    simbolo = 'M' if tipo_missao == 1 else 'V'  # M para missão, V para sem missão
+                    id_sala_formatado = f"{id_sala} ({simbolo})"
+                else:
+                    id_sala_formatado = f"{id_sala}"
 
-                # Desenhar o conteúdo de cada grupo (ID da sala)
-                for sala in salas_parte:
-                    id_sala = sala['id_sala']
-                    print(f"| {id_sala:^6} |", end=' ')
-                print()
-
-                # Desenhar a linha inferior de cada grupo
-                for sala in salas_parte:
-                    print(f"+{'-' * (largura_quadrado - 2)}+", end=' ')
+                id_salas.append(id_sala_formatado)
 
             print(f"\n\nRegião: {nome_regiao}")
+            print("\n")
+
+            # Garantir que todas as células tenham duas linhas (mesma altura)
+            id_salas = [f"{id_sala}\n" if '\n' not in id_sala else id_sala for id_sala in id_salas]
+
+            # Garantir que todas as células estejam alinhadas horizontalmente (20 caracteres)
+            id_salas = [id_sala.center(20) for id_sala in id_salas]
+
+            # Dividir a lista de IDs em grupos de 3
+            tabela = [id_salas[i:i + 3] for i in range(0, len(id_salas), 3)]
+
+            # Imprimir a tabela formatada com bordas uniformes
+            print(tabulate(tabela, tablefmt="grid", stralign='center'))
+            
+            # Imprimir a legenda
+            print("\n")
+            print("Legenda:")
+            print("M: Missão")
+            print("V: Vendedor")
 
     def trocar_jogador_de_sala(self, id_personagem, id_sala):
         if not self.validation_utils.validate_integer(id_sala):

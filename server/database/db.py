@@ -10,8 +10,6 @@ def create_connection(silent=False):
             user="postgres_trabalho_ben10",
             password="1234"
         )
-        if not silent:
-            print("Connection to PostgreSQL DB successful")
         return connection
     except OperationalError as e:
         print(f"The error '{e}' occurred")
