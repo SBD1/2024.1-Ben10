@@ -1,5 +1,7 @@
 from repositories.alien_repository import AlienRepository
 from config.config import GLOBAL_SETS
+import time
+import threading
 
 class AlienService:
 
@@ -60,3 +62,14 @@ class AlienService:
             GLOBAL_SETS['alien']['dano'] = None
 
         return self.alien_repository.receber_dano_alien(id_personagem, fator, nome_alien)
+    
+    def ativar_cura_gradativa(self, duration):
+        while True:
+            self.alien_repository.curar_alien_gradativamente(GLOBAL_SETS['id_personagem'])
+            time.sleep(duration)
+
+    def curar_alien_gradativamente(self):
+        """Coloca para curar o alien gradativamente em uma thread"""
+
+        thread = threading.Thread(target=self.ativar_cura_gradativa, args=(15,))
+        thread.start()

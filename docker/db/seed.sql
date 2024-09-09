@@ -149,6 +149,29 @@ FOR EACH ROW
 WHEN (NEW.saude <= 0)
 EXECUTE FUNCTION destransformar_personagem();
 
+CREATE OR REPLACE FUNCTION curar_alien_gradativamente(personagem_id INTEGER) RETURNS VOID AS $$
+DECLARE
+    cursor_aliens CURSOR FOR 
+        SELECT sda.*, a.saude AS saude_maxima 
+        FROM STATUS_DO_ALIEN sda 
+        JOIN ALIEN a ON a.nome = sda.nome_alien 
+        WHERE sda.id_personagem = personagem_id;
+
+    alien_row RECORD;
+    nivel_personagem INTEGER;
+BEGIN
+    SELECT nivel INTO nivel_personagem
+    FROM PERSONAGEM
+    WHERE id_personagem = personagem_id;
+
+    FOR alien_row IN cursor_aliens LOOP
+        UPDATE STATUS_DO_ALIEN
+        SET saude = LEAST(saude + GREATEST(FLOOR(alien_row.saude_maxima * nivel_personagem * 0.02), 1), alien_row.saude_maxima * nivel_personagem)
+        WHERE nome_alien = alien_row.nome_alien AND id_personagem = alien_row.id_personagem;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Trigger da missão
 -- CREATE OR REPLACE FUNCTION conclusao_missao_monstros() RETURNS trigger
 -- AS $conclusao_missao_monstros$

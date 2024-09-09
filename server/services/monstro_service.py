@@ -114,7 +114,7 @@ class MonstroService:
         instancias[opcao].receber_dano(dano, instancias, opcao)
     
     def entrar_em_combate(self, id_sala, id_personagem):
-        if not GLOBAL_SETS['alien']['vida_atual'] and GLOBAL_SETS['transformado']:
+        if GLOBAL_SETS['transformado'] and GLOBAL_SETS['alien']['vida_atual'] < GLOBAL_SETS['alien']['vida_maxima'] * 0.10:
             print(f"Seu alien {GLOBAL_SETS['transformado']} está muito exausto para lutar.")
             return
         

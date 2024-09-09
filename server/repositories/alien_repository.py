@@ -93,3 +93,18 @@ class AlienRepository:
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
+
+    def curar_alien_gradativamente(self, id_personagem):
+        """
+        Cura os aliens do personagem gradativamente em 1% de vida
+        """
+        try:
+            cursor = self.connection.cursor()
+            
+            query = "SELECT curar_alien_gradativamente(%s);"
+
+            cursor.execute(query, (id_personagem,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
