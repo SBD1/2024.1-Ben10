@@ -1,6 +1,6 @@
-from repositories.monstro_repository import MonstroRepository
-from repositories.personagem_repository import PersonagemRepository
-from repositories.sala_repository import SalaRepository
+from repositories.monstro_repository import monstro_repository
+from repositories.personagem_repository import personagem_repository
+from repositories.sala_repository import sala_repository
 from services.sala_service import SalaService
 from services.habilidade_service import HabilidadeService
 import random
@@ -16,7 +16,7 @@ class MonstroError(Exception):
 
 class MonstroService:
     def __init__(self):
-        self.monstro_repository = MonstroRepository()
+        self.monstro_repository = monstro_repository
         self.sala_service = SalaService()
         self.validation_utils = ValidationUtils()
         self.habilidade_service = HabilidadeService()

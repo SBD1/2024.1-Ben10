@@ -1,4 +1,4 @@
-from repositories.missao_repository import MissaoRepository
+from repositories.missao_repository import missao_repository
 from config.config import GLOBAL_SETS
 
 class MissaoError(Exception):
@@ -6,7 +6,7 @@ class MissaoError(Exception):
 
 class MissaoService:
     def __init__(self):
-        self.missao_repository = MissaoRepository()
+        self.missao_repository = missao_repository
 
     def obter_missao_por_npc(self, id_npc):
         return self.missao_repository.obter_missao_por_npc(id_npc)

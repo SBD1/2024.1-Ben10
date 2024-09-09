@@ -1,15 +1,15 @@
-from repositories.npc_repository import NpcRepository
+from repositories.npc_repository import npc_repository
 from utils.validation_utils import ValidationUtils
-from repositories.personagem_repository import PersonagemRepository
+from repositories.personagem_repository import personagem_repository
 
 class NpcError(Exception):
     pass
 
 class NpcService:
     def __init__(self):
-        self.npc_repository = NpcRepository()
+        self.npc_repository = npc_repository
         self.validation_utils = ValidationUtils()
-        self.personagem_repository = PersonagemRepository()
+        self.personagem_repository = personagem_repository
 
     def verificar_npc_na_sala(self, id_sala):
         """
