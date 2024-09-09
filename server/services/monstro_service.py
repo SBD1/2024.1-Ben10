@@ -11,6 +11,9 @@ import math
 from config.config import GLOBAL_SETS
 from tabulate import tabulate
 
+class MonstroError(Exception):
+    pass
+
 class MonstroService:
     def __init__(self):
         self.monstro_repository = MonstroRepository()
@@ -83,19 +86,27 @@ class MonstroService:
             j = j+ 1
 
         while True:
-            opcao = input("\nEscolha um monstro para atacar!\n")
+            opcao = input("\nEscolha um monstro para atacar! Ou digite 'fugir' para sair do combate.\n")
             
-            if not self.validation_utils.validate_integer_in_range(opcao, 0, j - 1):
+            if opcao.lower() == 'fugir':
+                print("Você fugiu do combate.")
+                raise MonstroError("Fugiu do combate")
+            
+            if not opcao.isdigit() or not self.validation_utils.validate_integer_in_range(int(opcao), 0, j - 1):
                 print("Opção inválida, tente novamente.")
                 continue 
             
             opcao = int(opcao)
             break
+
     
         if opcao != 0:
             opcao = 2
 
-        dano_habilidade = self.escolher_habilidade()
+        dano_habilidade = 0
+
+        if GLOBAL_SETS['transformado']:
+            dano_habilidade = self.escolher_habilidade()
 
         dano = self.calcular_dano(dano_habilidade) # falta somar o dano da arma que o personagem ta usando, além dele poder escolher a habilidade do alien ou ataque básico
         print(f"\nVocê aplicou {dano} de dano ao monstro!\n")
@@ -103,6 +114,10 @@ class MonstroService:
         instancias[opcao].receber_dano(dano, instancias, opcao)
     
     def entrar_em_combate(self, id_sala, id_personagem):
+        if GLOBAL_SETS['transformado'] and GLOBAL_SETS['alien']['vida_atual'] < GLOBAL_SETS['alien']['vida_maxima'] * 0.10:
+            print(f"Seu alien {GLOBAL_SETS['transformado']} está muito exausto para lutar.")
+            return
+        
         turno = 1
 
         info_monstros = self.monstro_repository.informacoes_monstro(id_sala, id_personagem)
@@ -113,16 +128,34 @@ class MonstroService:
                 instancias.append(MonstroInstance(monstro))
                 instancias.append('jogador') ## sim, isso é gambiarra
 
+        if not len(instancias):
+            return
 
-        while len(instancias):
-            if turno%len(instancias) == 1 or turno%len(instancias) == 3:
-                self.vez_jogador(id_personagem, instancias)
-            else:
-                instancias[turno%len(instancias)].atacar()
-
-            turno = turno + 1
+        print("\nOhh, não! Monstros apareceram!")
         
-        print("todos os monstros estão mortos!")
+        while True:
+            opcao = input('Entrar em combate? S (sim) ou N (não): ').strip().upper()
+
+            if opcao == 'N':
+                print("Você optou por não entrar em combate.")
+                return
+            elif opcao == 'S':
+                print("Você optou por entrar em combate!")
+                break 
+            else:
+                print("Opção inválida. Por favor, digite 'S' para sim ou 'N' para não.")
+        try:
+            while len(instancias):
+                if (turno%len(instancias))%2:
+                    self.vez_jogador(id_personagem, instancias)
+                else:
+                    instancias[turno%len(instancias)].atacar()
+
+                turno = turno + 1
+            
+            print("todos os monstros estão mortos!")
+        except:
+            return
 
     def instanciar_monstro(self, id_sala, id_personagem):
         if self.sala_service.verificar_zona_guerra(id_sala):
@@ -130,19 +163,5 @@ class MonstroService:
             if not existe_instancia:
                 monstros = self.obter_monstros_por_dificuldade_da_sala(id_sala, 2)
                 self.monstro_repository.instanciar_monstro(id_sala, id_personagem, monstros)
-        
-            print("\nOhh, não! Monstros apareceram!")
-            
-            while True:
-                opcao = input('Entrar em combate? S (sim) ou N (não): ').strip().upper()
 
-                if opcao == 'N':
-                    print("Você optou por não entrar em combate.\n")
-                    return
-                elif opcao == 'S':
-                    print("\nVocê optou por entrar em combate!\n♛\n")
-                    break 
-                else:
-                    print("Opção inválida. Por favor, digite 'S' para sim ou 'N' para não.")
-            
             self.entrar_em_combate(id_sala, id_personagem)

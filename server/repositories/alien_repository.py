@@ -77,3 +77,34 @@ class AlienRepository:
             print(f"An error occurred: {e}")
             return None
             
+    def receber_dano_alien(self, id_personagem, fator, nome_alien):
+        """
+        Faz o personagem levar dano
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE STATUS_DO_ALIEN
+                SET saude = saude - %s
+                WHERE id_personagem = %s and nome_alien = %s;
+            """
+            cursor.execute(query, (fator, id_personagem, nome_alien,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def curar_alien_gradativamente(self, id_personagem):
+        """
+        Cura os aliens do personagem gradativamente em 1% de vida
+        """
+        try:
+            cursor = self.connection.cursor()
+            
+            query = "SELECT curar_alien_gradativamente(%s);"
+
+            cursor.execute(query, (id_personagem,))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")

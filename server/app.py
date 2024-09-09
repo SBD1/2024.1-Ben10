@@ -12,6 +12,7 @@ def main():
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
     alien_controller = AlienController()
+    alien_service = alien_controller.alien_service
 
 
     lista_comandos = {
@@ -232,7 +233,10 @@ def main():
     print("Bem-vindo ao jogo!")
 
     personagem()
-    personagem_controller.setar_global_set(GLOBAL_SETS['id_personagem'])
+    personagem_controller.setar_global_set()
+
+    alien_service.curar_alien_gradativamente()
+
 
     # Exibe comandos do jogo ao iniciar
     listar_comandos()

@@ -10,7 +10,7 @@ class AlienController:
     
     def exibir_aliens(self, id_personagem, trocar):
         self.alien_service.exibir_aliens(id_personagem, trocar)
-        personagem_controller.setar_global_set(id_personagem)
+        personagem_controller.setar_global_set()
         return 
     
     def exibir_alien_atual(self, id_personagem):
