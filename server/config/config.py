@@ -12,7 +12,6 @@ GLOBAL_SETS = {
         'critico': None,
         'imunidade': None,
         'vida_extra': None,
-
     },
     'alien': {
         'vida_maxima': None,

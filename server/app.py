@@ -5,11 +5,8 @@ from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
 from config.config import GLOBAL_SETS
 from controllers.alien_controller import AlienController
-
-###
 from controllers.armadilha_controller import ArmadilhaController
-test = ArmadilhaController()
-###
+from services.armadilha_service import ArmadilhaService
 
 
 def main():
@@ -18,15 +15,14 @@ def main():
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
     alien_controller = AlienController()
+    armadilha_controller = ArmadilhaController()
 
 
     lista_comandos = {
-        # comando para testar as coisas
-        'a': {
-                'a':{
-                    # 'argumento': 'fator',
+        'zona': {
+                'armadilha':{
                     'descrição': 'teste aleatorio',
-                'executar': lambda _:test.ganhar_recompensa(GLOBAL_SETS['id_personagem'])
+                    'executar': lambda _:armadilha_controller.cair_armadilha( GLOBAL_SETS['id_personagem'])
                 }
         },
         'personagem': {
