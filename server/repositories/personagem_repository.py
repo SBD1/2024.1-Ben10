@@ -240,6 +240,33 @@ class PersonagemRepository:
             return personagem
         except Exception as e:
             print(f"An error occurred: {e}")
+            return None     
+          
+    def obter_registro_de_missao(self, id_personagem):
+        """
+        Obtém o registro de missão e seu status
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT id_missao, status
+                FROM REGISTRO_DA_MISSAO
+                WHERE id_personagem = %s
+            """
+            cursor.execute(query, (id_personagem,))
+            resultados = cursor.fetchall()
+            cursor.close()
+
+            # Sempre retorna uma lista, mesmo se estiver vazia
+            registro = [{"idMissao": id_missao, "statusPreRequisito": status}
+                        for id_missao, status in resultados]
+
+            return registro  # Retorna uma lista vazia se não houver resultados
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return []
+
             return None
         
     def adiciona_moedas_personagem(self, id_personagem, valor):
@@ -262,6 +289,7 @@ class PersonagemRepository:
 
         except Exception as e:
             print(f"An occurred error: {e}")
+
 
     def close(self):
         """

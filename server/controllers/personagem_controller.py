@@ -16,6 +16,9 @@ class PersonagemController:
     def exibir_personagem(self, id_personagem, infos):
         return self.personagem_service.exibir_personagem(id_personagem, infos)
     
+    def exibir_missoes_e_intro(self):
+        return self.personagem_service.exibir_missoes_e_intro()
+    
     def criar_personagem(self, personagem, alien):
         return self.personagem_service.criar_personagem(personagem, alien)
     
