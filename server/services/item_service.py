@@ -1,5 +1,5 @@
-from repositories.item_repository import ItemRepository
-from repositories.missao_repository import MissaoRepository
+from repositories.item_repository import item_repository
+from repositories.missao_repository import missao_repository
 from config.config import GLOBAL_SETS
 import threading
 import time
@@ -9,8 +9,8 @@ class ItemError(Exception):
 
 class ItemService:
     def __init__(self):
-        self.item_repository = ItemRepository()
-        self.missao_repository = MissaoRepository()
+        self.item_repository = item_repository
+        self.missao_repository = missao_repository
         self.BUFF_DURATION = 90 # 1 minuto e 30 segundos
 
     def ativar_buff(self, buff_name, fator: int):

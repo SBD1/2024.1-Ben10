@@ -3,14 +3,14 @@ from utils.database_helpers import fetch_as_dict
 
 class NpcRepository:
     def __init__(self):
-        self.connection = create_connection
+        self.connection = create_connection()
 
     def verificar_npc_na_sala(self, id_sala):
         """
         Retorna o NPC atrelado à sala com o ID especificado.
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 SELECT id_npc 
                 FROM INSTANCIA_NPC_NA_SALA
@@ -29,7 +29,7 @@ class NpcRepository:
         Obtém o texto da missão baseado no ID da missão.
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 SELECT descricao
                 FROM MISSAO
@@ -48,7 +48,7 @@ class NpcRepository:
         Obtém a fala do NPC com base no ID do NPC.
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 SELECT dialogo_associado_venda, id_missao_associada, nome_npc
                 FROM NPC
@@ -79,7 +79,7 @@ class NpcRepository:
         Retorna as informações de todos npcs em uma sala
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 SELECT n.id_npc, n.dialogo_associado_venda, n.id_missao_associada, n.nome_npc
                 FROM NPC n
@@ -99,7 +99,7 @@ class NpcRepository:
         Retorna as roles de um npc em determinada sala
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 SELECT n.id_npc, n.dialogo_associado_venda, n.id_missao_associada
                 FROM NPC n
@@ -119,7 +119,7 @@ class NpcRepository:
         Retorna o estoque do npc
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 SELECT nome_item, preco
                 FROM ESTOQUE_DO_ITEM
@@ -138,22 +138,22 @@ class NpcRepository:
         Insere um item no inventário do personagem.
         """
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
             query = """
                 INSERT INTO INVENTARIO (id_personagem, id_item, nome_item) 
                 VALUES (%s, DEFAULT, %s);
             """
             cursor.execute(query, (id_personagem, nome_item))
-            self.connection().commit() 
+            self.connection.commit() 
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
-            self.connection().rollback()
+            self.connection.rollback()
             return None
         
     def preco_item(self, id_personagem, nome_itens, key_item_venda):
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
 
             item = nome_itens[key_item_venda]
 
@@ -182,7 +182,7 @@ class NpcRepository:
         item = nome_itens[key_item_venda]
 
         try:
-            cursor = self.connection().cursor()
+            cursor = self.connection.cursor()
 
             query_inventario = """
 
@@ -200,7 +200,7 @@ class NpcRepository:
 
             cursor.execute(query_inventario, (id_personagem, item, id_personagem, item,))
 
-            self.connection().commit()
+            self.connection.commit()
             cursor.close()
 
             return
@@ -221,5 +221,7 @@ class NpcRepository:
         """
         Fecha a conexão com o banco de dados.
         """
-        if self.connection():
-            self.connection().close()
+        if self.connection:
+            self.connection.close()
+
+npc_repository = NpcRepository()

@@ -1,13 +1,12 @@
-from repositories.monstro_repository import MonstroRepository
-from repositories.personagem_repository import PersonagemRepository
+from repositories.monstro_repository import monstro_repository
+from repositories.personagem_repository import personagem_repository
 from config.config import GLOBAL_SETS
-from repositories.npc_repository import NpcRepository
+from repositories.npc_repository import npc_repository
 from services.alien_service import AlienService
 
-personagem_repository = PersonagemRepository()
-monstro_repository = MonstroRepository()
+monstro_repository = monstro_repository
 alien_service = AlienService()
-npc_inventario = NpcRepository
+npc_inventario = npc_repository
 
 
 class MonstroInstance:

@@ -1,13 +1,13 @@
-from repositories.habilidade_repository import HabilidadeRepository
-from repositories.item_repository import ItemRepository
+from repositories.habilidade_repository import habilidade_repository
+from repositories.item_repository import item_repository
 from config.config import GLOBAL_SETS
 
 
-item_repository = ItemRepository()
+item_repository = item_repository
 
 class HabilidadeService:
     def __init__(self):
-        self.habilidade_repository = HabilidadeRepository()
+        self.habilidade_repository = habilidade_repository
 
     def obter_habilidades_especie(self, nome_especie):
         return self.habilidade_repository.obter_habilidades_especie(nome_especie)
