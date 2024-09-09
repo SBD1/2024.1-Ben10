@@ -3,6 +3,7 @@ from services.sala_service import SalaService
 from services.npc_service import NpcService
 from services.monstro_service import MonstroService
 import os
+import textwrap
 from config.config import GLOBAL_SETS
 
 
@@ -102,3 +103,37 @@ class PersonagemService:
     def obter_registro_de_missao(self, id_personagem):
         registro = self.personagem_repository.obter_registro_de_missao(id_personagem)
         return registro
+
+    def exibir_missoes_e_intro(self):
+        # Introdução do jogo
+        intro_text = textwrap.dedent("""\
+            Em um canto distante do universo, um novo perigo emerge. Vilgax, o conquistador, descobriu a localização
+            de uma relíquia há muito tempo perdida, um artefato de poder incalculável. Seu alvo é Eugera, um planeta de antigas 
+            civilizações e segredos guardados pelos séculos.
+
+            Azmuth, o brilhante criador do Omnitrix, sabe que uma grande ameaça se aproxima. Em uma transmissão urgente, ele enviou 
+            um comunicado a você, herói. Vilgax não buscava apenas conquistar Eugera; ele desejava saquear a relíquia e utilizar 
+            seu poder para dominar sistemas inteiros.
+
+            A missão é clara: você precisa impedir que Vilgax encontre o artefato. 
+            O destino de Eugera, e talvez de todo o universo, está em suas mãos.
+        """)
+
+        # Explicação dos dois tipos de missão
+        missao_text = textwrap.dedent("""\
+            No jogo, há dois tipos principais de missões que você pode enfrentar: missões de caça e missões de entrega.
+
+            As missões de caça envolvem a eliminação de um determinado número de inimigos específicos. O jogador deve explorar diferentes 
+            regiões, localizar os monstros ou adversários indicados, e derrotá-los para completar a tarefa. O sucesso depende da força, 
+            habilidade e estratégias utilizadas para lidar com as ameaças que surgem no caminho.
+
+            Por outro lado, as missões de entrega exigem que você colete e entregue itens específicos para NPCs ou locais designados. 
+            Esses itens podem ser encontrados derrotando inimigos.
+
+            Ambos os tipos de missão oferecem recompensas valiosas que ajudarão você a progredir em sua jornada e enfrentar desafios 
+            cada vez maiores.
+        """)
+
+        # Exibindo o texto formatado
+        print(intro_text)
+        print(missao_text)
