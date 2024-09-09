@@ -2,6 +2,10 @@ from services.sala_service import SalaService
 from services.personagem_service import PersonagemService
 from services.npc_service import NpcService
 from utils.validation_utils import ValidationUtils
+from controllers.npc_controller import NpcController
+from config.config import GLOBAL_SETS
+
+npc_controller = NpcController()
 
 # Constante para definir que uma determinada variável não possui valor definido
 UNSET = -1
@@ -99,11 +103,33 @@ class SalaController:
 
         if not len(npcs):
             print("Nenhum NPC na sala!")
+            return 
 
-        for npc in npcs:
-            output = f"NPC: {npc['id_npc']}"
+        for indice, npc in enumerate(npcs):
+            output = f"{indice + 1} - {npc['nome_npc']}"
+            
             if npc['dialogo_associado_venda']:
                 output += " [VENDEDOR]"
+            
             if npc['id_missao_associada']:
                 output += " [MISSÃO]"
+            
             print(output)
+
+        while True:
+            opcao = input('\nEscolha uma opção para interagir com NPC (ou digite "sair" para cancelar): ')
+
+            if opcao.lower() == 'sair':
+                print("Saindo da interação com NPCs...")
+                return
+
+            if self.validation_utils.validate_integer_in_range(opcao, 1, len(npcs)):
+                opcao = int(opcao)
+                break  
+            else:
+                print("Este NPC não está nas opções. Tente novamente ou digite 'sair'.")
+
+        npc = npcs[opcao - 1]
+
+        npc_controller.interagir_com_npc(id_personagem, npc['id_npc'])
+        

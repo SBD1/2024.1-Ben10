@@ -87,7 +87,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_atualizar_vida_alien
-BEFORE UPDATE ON STATUS_DO_ALIEN
+BEFORE INSERT OR UPDATE ON STATUS_DO_ALIEN
 FOR EACH ROW
 EXECUTE FUNCTION atualizar_vida_alien();
 
@@ -130,6 +130,47 @@ CREATE TRIGGER trg_verifica_arma_inventario
 AFTER DELETE ON INVENTARIO
 FOR EACH ROW
 EXECUTE FUNCTION verifica_arma_inventario();
+
+CREATE OR REPLACE FUNCTION destransformar_personagem() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.saude <= 0 THEN
+        UPDATE PERSONAGEM
+        SET nome_alien = NULL
+        WHERE id_personagem = NEW.id_personagem;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_destransformar_personagem
+AFTER UPDATE ON STATUS_DO_ALIEN
+FOR EACH ROW
+WHEN (NEW.saude <= 0)
+EXECUTE FUNCTION destransformar_personagem();
+
+CREATE OR REPLACE FUNCTION curar_alien_gradativamente(personagem_id INTEGER) RETURNS VOID AS $$
+DECLARE
+    cursor_aliens CURSOR FOR 
+        SELECT sda.*, a.saude AS saude_maxima 
+        FROM STATUS_DO_ALIEN sda 
+        JOIN ALIEN a ON a.nome = sda.nome_alien 
+        WHERE sda.id_personagem = personagem_id;
+
+    alien_row RECORD;
+    nivel_personagem INTEGER;
+BEGIN
+    SELECT nivel INTO nivel_personagem
+    FROM PERSONAGEM
+    WHERE id_personagem = personagem_id;
+
+    FOR alien_row IN cursor_aliens LOOP
+        UPDATE STATUS_DO_ALIEN
+        SET saude = LEAST(saude + GREATEST(FLOOR(alien_row.saude_maxima * nivel_personagem * 0.02), 1), alien_row.saude_maxima * nivel_personagem)
+        WHERE nome_alien = alien_row.nome_alien AND id_personagem = alien_row.id_personagem;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
 
 -- Trigger da missão
 -- CREATE OR REPLACE FUNCTION conclusao_missao_monstros() RETURNS trigger
@@ -358,35 +399,35 @@ VALUES ('Nave do Vilgax', 'Nave principal do exército de Vilgax');
 -- Inserção de missões na tabela MISSAO com o tipo de missão especificado
 -- regiao 1
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (1, 'Derrote a patrulha de Vilgax', 75, 'Vilgax não sabe que estamos no planeta, garanta que permaneça assim', 300, 'CACA');
+VALUES (1, 'Derrote a patrulha de Vilgax', 1, 'Vilgax não sabe que estamos no planeta, garanta que permaneça assim', 300, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (2, 'Recupere a Espada de Bog Kah', 150, 'A Espada de Bog Kah, tem um mapa entalhado na lâmina, talvez ele leva ao templo que Vilgax está procurando', 400, 'Entrega');
+VALUES (2, 'Recupere a Espada de Bog Kah', 1, 'A Espada de Bog Kah, tem um mapa entalhado na lâmina, talvez ele leva ao templo que Vilgax está procurando', 400, 'Entrega');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (3, 'Derrote os monstros da selva', 150, 'A selva possui muitos perigos, tome cuidado', 300, 'CACA');
+VALUES (3, 'Derrote os monstros da selva', 1, 'A selva possui muitos perigos, tome cuidado', 300, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (4, 'Entregue os suprimentos ao vilarejo', 200, 'Quando chegou ao planeta, Vilgax trouxe muita destruição, ajude os habitantes do planeta e leve suprimentos médicos', 1000, 'Entrega');
+VALUES (4, 'Entregue os suprimentos ao vilarejo', 1, 'Quando chegou ao planeta, Vilgax trouxe muita destruição, ajude os habitantes do planeta e leve suprimentos médicos', 1000, 'Entrega');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (5, 'Proteja o vilarejo', 250, 'Vilgax enviou tropas para investigar a área, defenda o vilarejo', 1000, 'CACA');
+VALUES (5, 'Proteja o vilarejo', 1, 'Vilgax enviou tropas para investigar a área, defenda o vilarejo', 1000, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (6, 'Derrote o guarda do templo ', 350, 'Vilgax localizou o templo e deixou um guarda em sua porta, derrote-o', 1000, 'CACA');
+VALUES (6, 'Derrote o guarda do templo ', 1, 'Vilgax localizou o templo e deixou um guarda em sua porta, derrote-o', 1000, 'CACA');
 -- regiao 2
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (7, 'Derrote os guardas de elite', 350, 'Guardas de elite estão aqui para nos parar, derrote-os', 1300, 'CACA');
+VALUES (7, 'Derrote os guardas de elite', 1, 'Guardas de elite estão aqui para nos parar, derrote-os', 1300, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (8, 'Entregue a Lança de Azshara', 350, 'Assim como a espada que nos trouxe até aqui, a lança pode ter informaçoes de como devemos seguir no templo', 1300, 'Entrega');
+VALUES (8, 'Entregue a Lança de Azshara', 1, 'Assim como a espada que nos trouxe até aqui, a lança pode ter informaçoes de como devemos seguir no templo', 1300, 'Entrega');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (9, 'Derrote os guardas do templo', 400, 'Algumas estátuas estão ganhando vida, cuide delas', 2000, 'CACA');
+VALUES (9, 'Derrote os guardas do templo', 1, 'Algumas estátuas estão ganhando vida, cuide delas', 2000, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (10, 'Derrote o Capitão', 500, 'Vilgax mandou um de seus capitães explorar o templo, pare ele', 2500, 'CACA');
+VALUES (10, 'Derrote o Capitão', 1, 'Vilgax mandou um de seus capitães explorar o templo, pare ele', 2500, 'CACA');
 -- regiao 3
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (11, 'Derrote os guardas da nave', 500, 'A nave está cheia de soldados, cuide deles', 2500, 'CACA');
+VALUES (11, 'Derrote os guardas da nave', 1, 'A nave está cheia de soldados, cuide deles', 2500, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (12, 'Derrote o General do Exército', 500, 'Acabe com o comandante das forças de Vilgax', 2500, 'CACA');
+VALUES (12, 'Derrote o General do Exército', 1, 'Acabe com o comandante das forças de Vilgax', 2500, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (13, 'Derrote o Guarda-Costas', 700, 'O Guarda-Costas é a única coisa que separa você de Vilgax, acabe com ele', 5000, 'CACA');
+VALUES (13, 'Derrote o Guarda-Costas', 1, 'O Guarda-Costas é a única coisa que separa você de Vilgax, acabe com ele', 5000, 'CACA');
 INSERT INTO MISSAO (id_missao, nome_missao, experiencia, descricao, recompensa_em_moedas, tipo_missao) 
-VALUES (14, 'Derrote Vilgax', 3000, 'Vilgax está na sala de comando, derrote-o', 10000, 'CACA');
+VALUES (14, 'Derrote Vilgax', 1, 'Vilgax está na sala de comando, derrote-o', 10000, 'CACA');
 
 -- Inserção de pre-requisitos das missões na tabela PRE_REQUISITO
 INSERT INTO PRE_REQUISITO (id_missao, id_pre_requisito) 
@@ -705,8 +746,8 @@ VALUES (1, DEFAULT, 'Kit Médico'),
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
 VALUES ('Chama',150, 1),
        ('Ultra T',75, 2),
-       ('XLR8',120, 2),
-       ('XLR8',120, 3),
+       ('XLR8',65, 2),
+       ('XLR8',65, 3),
        ('Massa Cinzenta',130, 4);
 
 -- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO

@@ -81,7 +81,7 @@ class NpcRepository:
         try:
             cursor = self.connection.cursor()
             query = """
-                SELECT n.id_npc, n.dialogo_associado_venda, n.id_missao_associada
+                SELECT n.id_npc, n.dialogo_associado_venda, n.id_missao_associada, n.nome_npc
                 FROM NPC n
                 JOIN INSTANCIA_NPC_NA_SALA ins ON ins.id_npc = n.id_npc
                 WHERE ins.id_sala = %s;

@@ -2,9 +2,11 @@ from repositories.monstro_repository import MonstroRepository
 from repositories.personagem_repository import PersonagemRepository
 from config.config import GLOBAL_SETS
 from repositories.npc_repository import NpcRepository
+from services.alien_service import AlienService
 
 personagem_repository = PersonagemRepository()
 monstro_repository = MonstroRepository()
+alien_service = AlienService()
 
 
 class MonstroInstance:
@@ -52,7 +54,7 @@ class MonstroInstance:
         fator = self.status_base
 
         if GLOBAL_SETS['consumivel']['vida_extra']:
-            if GLOBAL_SETS['consumivel']['vida_extra'] - fator < 0:
+            if GLOBAL_SETS['consumivel']['vida_extra'] - fator <= 0:
                 fator_restante = fator - GLOBAL_SETS['consumivel']['vida_extra']
                 GLOBAL_SETS['consumivel']['vida_extra'] = 0
                 fator = fator_restante
@@ -67,12 +69,13 @@ class MonstroInstance:
             return
 
         if GLOBAL_SETS['transformado']:
-            if GLOBAL_SETS['alien']['vida_atual'] - fator < 0:
+            if GLOBAL_SETS['alien']['vida_atual'] - fator <= 0:
                 fator = GLOBAL_SETS['alien']['vida_atual']
+                print(f"\nSeu alien {GLOBAL_SETS['transformado']} está exausto. Sua transformação foi desfeita.\n")
             GLOBAL_SETS['alien']['vida_atual'] -= fator
-            personagem_repository.receber_dano_alien(self.id_personagem, fator, GLOBAL_SETS['transformado'])
+            alien_service.receber_dano_alien(self.id_personagem, fator, GLOBAL_SETS['transformado'])
         else:
-            if GLOBAL_SETS['vida_atual'] - fator < 0:
+            if GLOBAL_SETS['vida_atual'] - fator <= 0:
                 fator = GLOBAL_SETS['vida_atual']
             GLOBAL_SETS['vida_atual'] -= fator
             personagem_repository.receber_dano(self.id_personagem, fator)
