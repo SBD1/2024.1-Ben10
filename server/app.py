@@ -36,7 +36,7 @@ def main():
             },
             'missao': {
                 'descricao': 'comando para verificar missões disponíveis e em progresso',
-                'executar': lambda _: personagem_controller.obter_missoes_em_progresso()
+                'executar': lambda _: personagem_controller.missoes()
             }
         },
         'alien':{

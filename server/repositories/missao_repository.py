@@ -254,7 +254,41 @@ class MissaoRepository:
             return missao
         except Exception as e:
             print(f"An error occurred: {e}")
-            return None             
+            return None           
+
+    def obter_missoes_disponiveis(self, id_personagem):
+        """
+        Retorna as missões disponiveis para o personagem fazer
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT m.nome_missao, m.tipo_missao, n.nome_npc, ins.id_sala
+                FROM MISSAO m
+                LEFT JOIN PRE_REQUISITO pr ON pr.id_missao = m.id_missao
+                JOIN NPC n ON n.id_missao_associada = m.id_missao
+                JOIN INSTANCIA_NPC_NA_SALA ins ON ins.id_npc = n.id_npc
+                WHERE m.id_missao NOT IN (
+                    SELECT id_missao
+                    FROM REGISTRO_DA_MISSAO
+                    WHERE id_personagem = %s
+                )
+                AND (
+                    pr.id_pre_requisito IS NULL
+                    OR pr.id_pre_requisito IN (
+                        SELECT rdm.id_missao
+                        FROM REGISTRO_DA_MISSAO rdm
+                        WHERE rdm.id_personagem = %s AND rdm.status = 'completa'
+                    )
+                );
+            """
+            cursor.execute(query, (id_personagem, id_personagem,))
+            missao = fetch_as_dict(cursor)
+            cursor.close()
+            return missao
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return None        
 
     def close(self):
         """

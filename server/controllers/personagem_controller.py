@@ -100,11 +100,46 @@ class PersonagemController:
     def obter_missoes_em_progresso(self):
         missoes = self.missao_service.obter_missoes_em_progresso()
 
-        headers = ["Nome", "Tipo de Missão", "Quantidade de Monstros"]
+        headers = ["Nome", "Tipo de Missão", "Quantidade de Monstros", "Entregue para"]
         
         tabela = [
-            [missao['nome_missao'], missao['tipo_missao'], missao['quantidade_monstros']]
+            [missao['nome_missao'], missao['tipo_missao'], missao['quantidade_monstros'], f"{missao['nome_npc']} na sala {missao['id_sala']}"]
             for missao in missoes
         ]
 
         print(tabulate(tabela, headers=headers, tablefmt="grid"))
+
+    def obter_missoes_disponiveis(self):
+        missoes = self.missao_service.obter_missoes_disponiveis()
+
+        headers = ["Nome da Missão", "Tipo de Missão", "Nome do NPC", "Sala"]
+        
+        tabela = [
+            [missao['nome_missao'], missao['tipo_missao'], missao['nome_npc'], missao['id_sala']]
+            for missao in missoes
+        ]
+
+        print(tabulate(tabela, headers=headers, tablefmt="grid"))
+
+    def missoes(self): 
+        print("\n1 - Ver missões em progresso")
+        print("2 - Ver missões disponíveis para fazer")
+
+        while True:
+            opcao = input("\nEscolha uma opção! Ou digite 'sair' para sair da seleção.\n")
+            
+            if opcao.lower() == 'sair':
+                print("Você fugiu do combate.")
+                return
+            
+            if not self.validation_utils.validate_integer_in_range(int(opcao), 1, 2):
+                print("Opção inválida, tente novamente.")
+                continue 
+            
+            opcao = int(opcao)
+            break
+
+        if opcao == 1:
+            self.obter_missoes_em_progresso()
+        else:
+            self.obter_missoes_disponiveis()

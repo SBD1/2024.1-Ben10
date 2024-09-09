@@ -83,3 +83,7 @@ class MissaoService:
     def obter_missoes_em_progresso(self):
         missoes = self.missao_repository.obter_missoes_em_progresso(GLOBAL_SETS['id_personagem'])
         return missoes
+    
+    def obter_missoes_disponiveis(self):
+        missoes = self.missao_repository.obter_missoes_disponiveis(GLOBAL_SETS['id_personagem'])
+        return missoes
