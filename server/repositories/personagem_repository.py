@@ -302,23 +302,6 @@ class PersonagemRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
 
-    def receber_dano_alien(self, id_personagem, fator, nome_alien):
-        """
-        Faz o personagem levar dano
-        """
-        try:
-            cursor = self.connection.cursor()
-            query = """
-                UPDATE STATUS_DO_ALIEN
-                SET saude = saude - %s
-                WHERE id_personagem = %s and nome_alien = %s;
-            """
-            cursor.execute(query, (fator, id_personagem, nome_alien,))
-            self.connection.commit()
-            cursor.close()
-        except Exception as e:
-            print(f"An error occurred: {e}")
-
     def obter_informacoes_personagem(self, id_personagem):
         try:
             cursor = self.connection.cursor()
@@ -330,8 +313,8 @@ class PersonagemRepository:
                     a.status_base AS dano_alien,
                     ar.dano as dano_arma
                 FROM PERSONAGEM p
-                JOIN STATUS_DO_ALIEN sda ON sda.nome_alien = p.nome_alien
-                JOIN ALIEN a ON sda.nome_alien = a.nome
+                left JOIN STATUS_DO_ALIEN sda ON sda.nome_alien = p.nome_alien and sda.id_personagem = p.id_personagem
+                left JOIN ALIEN a ON sda.nome_alien = a.nome
                 left join ARMA ar on ar.nome_item = p.arma
                 WHERE p.id_personagem = %s;
             """

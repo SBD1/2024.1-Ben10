@@ -101,7 +101,7 @@ class SalaController:
             print("Nenhum NPC na sala!")
 
         for npc in npcs:
-            output = f"NPC: {npc['id_npc']}"
+            output = f"{npc['id_npc']} - {npc['nome_npc']}"
             if npc['dialogo_associado_venda']:
                 output += " [VENDEDOR]"
             if npc['id_missao_associada']:

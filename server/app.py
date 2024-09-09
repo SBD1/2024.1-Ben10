@@ -115,6 +115,7 @@ def main():
     }
 
     def criar_personagem():
+        global GLOBAL_SETS
         id_personagem_atual = 0
         verificacao = False
         personagem = 0
@@ -168,6 +169,7 @@ def main():
         GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
 
     def personagem():
+        global GLOBAL_SETS
         id_personagem_atual = 0
         condicao = 0
         
@@ -244,7 +246,6 @@ def main():
     print("Bem-vindo ao jogo!")
 
     personagem()
-    personagem_controller.setar_global_set(GLOBAL_SETS['id_personagem'])
 
     # Exibe comandos do jogo ao iniciar
     listar_comandos()
