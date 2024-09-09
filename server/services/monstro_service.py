@@ -133,6 +133,31 @@ class MonstroService:
 
         print("\nOhh, não! Monstros apareceram!")
         
+<<<<<<< HEAD
+        print("todos os monstros estão mortos!")
+# VERFI
+    def instanciar_monstro(self, id_sala, id_personagem):
+        existe_instancia = len(self.sala_service.verificar_instancia_zona_guerra(id_personagem, id_sala))
+        if not existe_instancia:
+            monstros = self.obter_monstros_por_dificuldade_da_sala(id_sala, 2)
+            self.monstro_repository.instanciar_monstro(id_sala, id_personagem, monstros)
+    
+        print("\nOhh, não! Monstros apareceram!")
+        
+        while True:
+            opcao = input('Entrar em combate? S (sim) ou N (não): ').strip().upper()
+
+            if opcao == 'N':
+                print("Você optou por não entrar em combate.")
+                return
+            elif opcao == 'S':
+                print("Você optou por entrar em combate!")
+                break 
+            else:
+                print("Opção inválida. Por favor, digite 'S' para sim ou 'N' para não.")
+        
+        self.entrar_em_combate(id_sala, id_personagem)
+=======
         while True:
             opcao = input('Entrar em combate? S (sim) ou N (não): ').strip().upper()
 
@@ -165,3 +190,4 @@ class MonstroService:
                 self.monstro_repository.instanciar_monstro(id_sala, id_personagem, monstros)
 
             self.entrar_em_combate(id_sala, id_personagem)
+>>>>>>> development

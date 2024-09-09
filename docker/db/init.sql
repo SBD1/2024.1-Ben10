@@ -1,4 +1,12 @@
-CREATE TYPE tipo_reducao_acrescimo AS ENUM ('redução', 'acréscimo');
+CREATE TYPE efeito_armadilha AS ENUM (
+    'debuff_arma_metade',
+    'debuff_dano',
+    'debuff_vida_metade',
+    'debuff_vida_extra',
+    'debuff_critico',
+    'debuff_imunidade'
+);
+
 CREATE TYPE tipo_status AS ENUM ('buff_dano', 'critico', 'imunidade', 'vida_extra', 'cura');
 CREATE TYPE tipo_status_missao AS ENUM ('completa', 'em progresso');
 CREATE TYPE tipo_habilidade AS ENUM ('dano', 'cura');
@@ -123,7 +131,7 @@ CREATE TABLE ZONA_DE_GUERRA (
 CREATE TABLE ZONA_DE_ARMADILHA (
     id_sala INT PRIMARY KEY,
     fator INT NOT NULL,
-    tipo tipo_reducao_acrescimo NOT NULL,
+    tipo efeito_armadilha NOT NULL,
     FOREIGN KEY (id_sala) REFERENCES SALA(id_sala)
 );
 

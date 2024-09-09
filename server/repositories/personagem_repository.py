@@ -22,6 +22,57 @@ class PersonagemRepository:
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
+    
+    def aumentar_vida(self, id_personagem, fator ):
+        """
+        Reduz a vida do personagem
+        """
+        fator = abs(int(fator))
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = saude + {}
+                WHERE id_personagem = {}
+            """.format(fator,id_personagem)
+
+            cursor.execute(query)
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def obter_vida(self, id_personagem) -> str:
+            try:
+                cursor = self.connection.cursor()
+                query_inventario =  'SELECT saude FROM PERSONAGEM WHERE id_personagem = {}'.format(id_personagem)
+
+                cursor.execute(query_inventario)
+                itens = fetch_as_dict(cursor)
+                cursor.close()
+                return itens[0].get('saude')
+            except Exception as e:
+                print(f"An error occurred: {e}")
+                return None 
+            
+    def reduzir_vida(self, id_personagem, fator ):
+        """
+        Reduz a vida do personagem
+        """
+
+        vida_atual = abs(int(self.obter_vida(id_personagem)))
+        fator = abs(int(fator))
+        vida_atual = str(0 if fator >= vida_atual else vida_atual - fator)
+
+        try:
+            cursor = self.connection.cursor()
+            query = 'UPDATE PERSONAGEM SET saude = {} WHERE id_personagem = {}'.format(vida_atual,id_personagem)
+            
+            cursor.execute(query)
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
     def exibir_personagem(self, id_personagem):
 
@@ -144,7 +195,41 @@ class PersonagemRepository:
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
+    
+    def reduzir_vida(self, id_personagem, saude):
+        """
+        Reduz a vida do personagem com base no fator
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = saude - %s
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (saude, id_personagem))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
+    def zerar_vida(self, id_personagem):
+        """
+        Reduz a vida do personagem com base no fator
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = 0
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (id_personagem))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+    
     def obter_itens_tipo_consumivel(self, id_personagem):
         try:
             cursor = self.connection.cursor()

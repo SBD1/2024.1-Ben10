@@ -30,6 +30,12 @@ class SalaService:
         """
         return self.sala_repository.verificar_permissao_sala(id_personagem, id_sala)
     
+    def verificar_zona_armadilha(self, id_sala):
+        """
+        Retorna se a sala que o jogador está entrando é zona de armadilha.
+        """
+        return self.sala_repository.verificar_zona_armadilha(id_sala)[0]['count']
+
     def verificar_zona_guerra(self, id_sala):
         """
         Retorna se a sala que o jogador está entrando é zona de guerra.

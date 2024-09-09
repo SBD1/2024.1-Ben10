@@ -115,6 +115,24 @@ class SalaRepository:
         except Exception as e:
             print(f"An error occurred: {e}")
 
+    def verificar_zona_armadilha(self, id_sala):
+        """
+        Retorna 1 quando a sala for uma zona de guerra
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                SELECT COUNT(*)
+                FROM SALA
+                WHERE id_sala = %s and tipo_sala = 'Zona de Armadilha';
+            """
+            cursor.execute(query, (id_sala,))
+            resposta = fetch_as_dict(cursor)
+            cursor.close()
+            return resposta
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
     def verificar_instancia_zona_guerra(self, id_personagem, id_zona_guerra):
         """
         Retorna a tupla do personagem em uma zona de guerra específica

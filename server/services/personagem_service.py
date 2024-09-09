@@ -2,7 +2,9 @@ from repositories.personagem_repository import PersonagemRepository
 from services.sala_service import SalaService
 from services.npc_service import NpcService
 from services.monstro_service import MonstroService
+from random import randint
 import os
+
 from config.config import GLOBAL_SETS
 
 
@@ -22,7 +24,18 @@ class PersonagemService:
             self.personagem_repository.atualizar_sala_personagem(id_personagem, id_sala)
             print(f'Você foi para a sala {id_sala}')
             self.npc_service.exibir_fala_npc_na_sala(id_sala)
-            self.monstro_service.instanciar_monstro(id_sala, id_personagem)
+
+            if self.sala_service.verificar_zona_guerra(id_sala):
+                self.monstro_service.instanciar_monstro(id_sala, id_personagem)
+            elif self.sala_service.verificar_zona_armadilha(id_sala):
+                if randint(0,1) : # se os efeitos serão aplicados
+                    # aplica os danos
+                    pass
+                else:
+                    # não aplica e ganha recompensa
+                    pass
+
+            
         else:
             print('troca de sala não permitida')
 
