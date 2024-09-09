@@ -85,7 +85,7 @@ class MonstroService:
             if i == 1 or i == 3:
                 continue
 
-            print(f"{j} - Monstro: {instancias[i].nome_especie} ♥ [Saúde Atual: {instancias[i].saude_atual}] | ★[Dificuldade: {instancias[i].dificuldade}]")
+            print(f"{j} - Monstro: {instancias[i].nome_especie} ♥ [Saúde Atual: {instancias[i].saude_atual}] | ★ [Dificuldade: {instancias[i].dificuldade}]")
             j = j+ 1
 
         while True:
