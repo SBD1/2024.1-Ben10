@@ -5,9 +5,6 @@ from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
 from config.config import GLOBAL_SETS
 from controllers.alien_controller import AlienController
-from controllers.armadilha_controller import ArmadilhaController
-from services.armadilha_service import ArmadilhaService
-
 
 def main():
     sala_controller = SalaController()
@@ -15,18 +12,11 @@ def main():
     npc_controller = NpcController()
     validation_utils = ValidationUtils()
     alien_controller = AlienController()
-    armadilha_controller = ArmadilhaController()
+    alien_service = alien_controller.alien_service
 
 
     lista_comandos = {
-        'zona': {
-                'armadilha':{
-                    'descrição': 'teste aleatorio',
-                    'executar': lambda _:armadilha_controller.cair_armadilha( GLOBAL_SETS['id_personagem'])
-                }
-        },
         'personagem': {
-            
             'exibir': {
                 'descrição': 'comando para exibir informações sobre o seu personagem no jogo',
                 'executar': lambda _: personagem_controller.exibir_personagem(GLOBAL_SETS['id_personagem'], 'S')
@@ -44,7 +34,6 @@ def main():
                 'executar': lambda _: personagem_controller.trocar_arma(GLOBAL_SETS['id_personagem'])
             }
         },
-         
         'alien':{
             'atual':{
                 'descrição': 'comando para exibir alien que o personagem está',
@@ -115,7 +104,6 @@ def main():
     }
 
     def criar_personagem():
-        global GLOBAL_SETS
         id_personagem_atual = 0
         verificacao = False
         personagem = 0
@@ -169,7 +157,6 @@ def main():
         GLOBAL_SETS['id_personagem'] = personagem_controller.criar_personagem(personagem, aliens[alien])
 
     def personagem():
-        global GLOBAL_SETS
         id_personagem_atual = 0
         condicao = 0
         
@@ -246,6 +233,10 @@ def main():
     print("Bem-vindo ao jogo!")
 
     personagem()
+    personagem_controller.setar_global_set()
+
+    alien_service.curar_alien_gradativamente()
+
 
     # Exibe comandos do jogo ao iniciar
     listar_comandos()

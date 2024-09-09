@@ -55,5 +55,4 @@ class ItemService:
             self.consumivel_cura(id_personagem, item)
         else:
             self.ativar_buff(item['status'], item['valor_consumivel'])
-        # print(GLOBAL_SETS['consumivel'])
         return
