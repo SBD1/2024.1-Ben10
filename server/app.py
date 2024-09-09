@@ -5,6 +5,7 @@ from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
 from config.config import GLOBAL_SETS
 from controllers.alien_controller import AlienController
+from config.config import printar_ben10
 
 def main():
     sala_controller = SalaController()
@@ -67,10 +68,6 @@ def main():
                 'argumento': 'id_sala',
                 'descrição': 'comando para trocar de sala',
                 'executar': lambda id_sala: sala_controller.trocar_jogador_de_sala(GLOBAL_SETS['id_personagem'], id_sala)
-            },
-            'npc': {
-                'descrição': 'comando para listar os npcs na sala atual com sua role',
-                'executar': lambda _: sala_controller.mostrar_npcs_na_sala(GLOBAL_SETS['id_personagem'])
             }
         },
         'mapa': {
@@ -90,9 +87,8 @@ def main():
         },
         'npc': {
             'falar': {
-                'argumento': 'id_npc',
-                'descrição': 'comando para falar com um npc',
-                'executar': lambda id_npc: npc_controller.interagir_com_npc(GLOBAL_SETS['id_personagem'], id_npc)
+                'descrição': 'comando para falar com um npc na sala em que o personagem se encontra',
+                'executar': lambda _: sala_controller.mostrar_npcs_na_sala(GLOBAL_SETS['id_personagem'])
             }
         },
         'help': {
@@ -229,6 +225,8 @@ def main():
             print("Comando inválido. Tente novamente.")
 
     os.system('clear')
+
+    printar_ben10()
 
     print("Bem-vindo ao jogo!")
 
