@@ -291,4 +291,4 @@ Nesta seção, são apresentados exemplos de **triggers** e **functions** implem
 
 | Versão| Data | Descrição  | Autor(es)  | Revisor(es) |
 | ----- |----- | ---------- | ---------- | ----------- | 
-| `1.0` | 09/09 | Criando documento e adicionando introdução e referencias bibliográficas| [Eric Silveira](https://github.com/ericbky)| [Arthur Alves](https://github.com/Arthrok)|
+| `1.0` | 09/09 | Criando documento e adicionando introdução, referencias bibliográficas e triggers| [Eric Silveira](https://github.com/ericbky)| [Arthur Alves](https://github.com/Arthrok)|

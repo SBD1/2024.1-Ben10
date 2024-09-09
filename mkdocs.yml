@@ -34,6 +34,7 @@ nav:
         - Álgebra Relacional: "modulo2/algebraRelacional.md"
     - Módulo 3:
         - Triggers e Stored Procedures : "modulo3/triggers.md"
+        - Views : "modulo3/view.md"
 
 theme:
   name: material
