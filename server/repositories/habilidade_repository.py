@@ -3,14 +3,14 @@ from utils.database_helpers import fetch_as_dict
 
 class HabilidadeRepository:
     def __init__(self):
-        self.connection = create_connection(silent=True)
+        self.connection = create_connection
 
     def obter_habilidades_especie(self, nome_especie):
         """
         Retorna as habilidades de uma espécie
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM HABILIDADE
@@ -28,5 +28,5 @@ class HabilidadeRepository:
         """
         Fecha a conexão com o banco de dados.
         """
-        if self.connection:
-            self.connection.close()
+        if self.connection():
+            self.connection().close()

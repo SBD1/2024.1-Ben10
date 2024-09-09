@@ -3,14 +3,14 @@ from utils.database_helpers import fetch_as_dict
 
 class SalaRepository:
     def __init__(self):
-        self.connection = create_connection()
+        self.connection = create_connection
 
     def obter_todas_regioes(self):
         """
         Retorna todas as salas de uma determinada região
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM REGIAO
@@ -40,7 +40,7 @@ class SalaRepository:
         Retorna todas as salas de um determinado tipo.
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT * 
                 FROM SALA 
@@ -59,7 +59,7 @@ class SalaRepository:
         Retorna todas as salas de uma determinada região
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT  s.id_sala
                 FROM SALA s
@@ -79,7 +79,7 @@ class SalaRepository:
         No caso de existir tupla, ele tem os pré-requisitos pra entrar na sala
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 select COUNT(*)
                 from sala s 
@@ -102,7 +102,7 @@ class SalaRepository:
         Retorna 1 quando a sala for uma zona de guerra
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT COUNT(*)
                 FROM SALA
@@ -120,7 +120,7 @@ class SalaRepository:
         Retorna a tupla do personagem em uma zona de guerra específica
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM INSTANCIA_ZONA_GUERRA
@@ -138,7 +138,7 @@ class SalaRepository:
         Obtém os NPCs presentes na região, com suas respectivas salas.
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT s.id_sala, n.id_missao_associada
                 FROM NPC n
@@ -171,7 +171,7 @@ class SalaRepository:
         Obtém os pré-requisitos, ID da missão e sala onde o NPC da missão foi instanciado para uma determinada região.
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT PRE_REQUISITO.id_pre_requisito AS pre_requisito, INSTANCIA_NPC_NA_SALA.id_sala AS sala_npc
                 FROM PRE_REQUISITO
@@ -200,5 +200,5 @@ class SalaRepository:
         """
         Fecha a conexão com o banco de dados.
         """
-        if self.connection:
-            self.connection.close()
+        if self.connection():
+            self.connection().close()

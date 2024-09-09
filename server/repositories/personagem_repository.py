@@ -4,21 +4,21 @@ import os
 
 class PersonagemRepository:
     def __init__(self):
-        self.connection = create_connection()
+        self.connection = create_connection
 
     def atualizar_sala_personagem(self, id_personagem, id_sala):
         """
         Atualiza a sala em que o personagem está
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 UPDATE PERSONAGEM
                 SET id_sala = %s
                 WHERE id_personagem = %s;
             """
             cursor.execute(query, (id_sala, id_personagem))
-            self.connection.commit()
+            self.connection().commit()
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -26,7 +26,7 @@ class PersonagemRepository:
     def exibir_personagem(self, id_personagem):
 
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query =  """
             SELECT p.*
             FROM personagem p
@@ -46,7 +46,7 @@ class PersonagemRepository:
     def criar_personagem(self, personagem, alien):
 
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
 
             insert = """
                 INSERT INTO PERSONAGEM (id_personagem, quantidade_moedas, nome_alien, nome, id_sala, saude, nivel) 
@@ -58,7 +58,7 @@ class PersonagemRepository:
 
             id_personagem_criado = cursor.fetchone()[0]
 
-            self.connection.commit()
+            self.connection().commit()
 
             os.system('clear')
 
@@ -73,7 +73,7 @@ class PersonagemRepository:
 
             cursor.execute(query_inventario, (id_personagem_criado, id_personagem_criado,))
 
-            self.connection.commit()
+            self.connection().commit()
 
             query_alien = """
             SELECT a.*
@@ -91,7 +91,7 @@ class PersonagemRepository:
             """
             cursor.execute(query_status_alien, (alien, vida_alien, id_personagem_criado,))
 
-            self.connection.commit()
+            self.connection().commit()
 
             cursor.close()
 
@@ -106,7 +106,7 @@ class PersonagemRepository:
         itens = []
 
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
 
             query_inventario = """
 
@@ -133,21 +133,21 @@ class PersonagemRepository:
         Desconta as moedas do personagem
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 UPDATE PERSONAGEM
                 SET quantidade_moedas = quantidade_moedas - %s
                 WHERE id_personagem = %s;
             """
             cursor.execute(query, (preco, id_personagem))
-            self.connection.commit()
+            self.connection().commit()
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
 
     def obter_itens_tipo_consumivel(self, id_personagem):
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query_inventario = """
                 SELECT *
                 FROM inventario i
@@ -166,7 +166,7 @@ class PersonagemRepository:
 
     def obter_itens_tipo_arma(self, id_personagem):
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query_inventario = """
                 SELECT *
                 FROM inventario i
@@ -188,14 +188,14 @@ class PersonagemRepository:
         Troca a arma do personagem
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 UPDATE PERSONAGEM
                 SET arma = %s
                 WHERE id_personagem = %s;
             """
             cursor.execute(query, (nome_arma, id_personagem,))
-            self.connection.commit()
+            self.connection().commit()
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")    
@@ -205,21 +205,21 @@ class PersonagemRepository:
         Faz o personagem levar dano
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 UPDATE PERSONAGEM
                 SET saude = saude - %s
                 WHERE id_personagem = %s;
             """
             cursor.execute(query, (fator, id_personagem,))
-            self.connection.commit()
+            self.connection().commit()
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
 
     def obter_informacoes_personagem(self, id_personagem):
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query_inventario = """
                 SELECT 
                     p.*, 
@@ -247,7 +247,7 @@ class PersonagemRepository:
         Obtém o registro de missão e seu status
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT id_missao, status
                 FROM REGISTRO_DA_MISSAO
@@ -271,7 +271,7 @@ class PersonagemRepository:
         
     def adiciona_moedas_personagem(self, id_personagem, valor):
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
 
             query_adiciona_moedas = """
 
@@ -283,7 +283,7 @@ class PersonagemRepository:
 
             cursor.execute(query_adiciona_moedas, (valor, id_personagem,))
             cursor.close()
-            self.connection.commit()
+            self.connection().commit()
 
             return
 
@@ -295,5 +295,5 @@ class PersonagemRepository:
         """
         Fecha a conexão com o banco de dados.
         """
-        if self.connection:
-            self.connection.close()
+        if self.connection():
+            self.connection().close()

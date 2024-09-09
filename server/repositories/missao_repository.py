@@ -3,14 +3,14 @@ from utils.database_helpers import fetch_as_dict
 
 class MissaoRepository:
     def __init__(self):
-        self.connection = create_connection(silent=True)
+        self.connection = create_connection
 
     def obter_missao_por_npc(self, id_npc):
         """
         Retorna informações da missão associada ao npc
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM MISSAO
@@ -33,7 +33,7 @@ class MissaoRepository:
         Retorna informação de uma missao específica que o personagem está fazendo
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM REGISTRO_DA_MISSAO
@@ -52,7 +52,7 @@ class MissaoRepository:
         Retorna o id de uma missao pre requisito
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT id_pre_requisito
                 FROM PRE_REQUISITO
@@ -71,7 +71,7 @@ class MissaoRepository:
         Retorna informação de uma missao completa pelo personagem
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 select *
                 from registro_da_missao rdm 
@@ -91,25 +91,25 @@ class MissaoRepository:
         Insere um novo registro na tabela REGISTRO_DA_MISSAO.
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 INSERT INTO REGISTRO_DA_MISSAO (id_personagem, id_missao, status, quantidade_monstros)
                 VALUES (%s, %s, 'em progresso', 0)
             """
             
             cursor.execute(query, (id_personagem, id_missao))
-            self.connection.commit()  # Confirma a transação
+            self.connection().commit()  # Confirma a transação
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
-            self.connection.rollback()  # Desfaz a transação em caso de erro
+            self.connection().rollback()  # Desfaz a transação em caso de erro
 
     def verificar_item_inventario(self, id_personagem, id_missao):
         """
         Retorna o item no inventario do personagem
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM INVENTARIO
@@ -133,7 +133,7 @@ class MissaoRepository:
         Atualiza o status de uma missão para 'completa' na tabela REGISTRO_DA_MISSAO.
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 UPDATE REGISTRO_DA_MISSAO
                 SET status = 'completa'
@@ -141,18 +141,18 @@ class MissaoRepository:
             """
 
             cursor.execute(query, (id_personagem, id_missao))
-            self.connection.commit()  # Confirma a transação
+            self.connection().commit()  # Confirma a transação
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
-            self.connection.rollback()  # Desfaz a transação em caso de erro
+            self.connection().rollback()  # Desfaz a transação em caso de erro
 
     def entregar_recompensa(self, id_personagem, experiencia, moedas):
         """
         Atualiza o dinherio e nível do personagem de acordo com a recompensa da missao
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 UPDATE PERSONAGEM
                 SET nivel = nivel + %s,
@@ -162,18 +162,18 @@ class MissaoRepository:
 
 
             cursor.execute(query, (experiencia, moedas, id_personagem))
-            self.connection.commit()  # Confirma a transação
+            self.connection().commit()  # Confirma a transação
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
-            self.connection.rollback()  # Desfaz a transação em caso de erro        
+            self.connection().rollback()  # Desfaz a transação em caso de erro        
 
     def obter_missao_caca(self, id_missao):
         """
         Retorna a missao de caça pelo id da missao
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT *
                 FROM CACA
@@ -194,7 +194,7 @@ class MissaoRepository:
         Retorna True se a condição for satisfeita, caso contrário, False.
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT quantidade_monstros
                 FROM REGISTRO_DA_MISSAO
@@ -221,25 +221,25 @@ class MissaoRepository:
         Remove um item específico do inventário de um personagem.
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 DELETE FROM INVENTARIO
                 WHERE id_personagem = %s AND id_item = %s
             """
 
             cursor.execute(query, (id_personagem, id_item))
-            self.connection.commit()  # Confirma a transação
+            self.connection().commit()  # Confirma a transação
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")
-            self.connection.rollback()  # Desfaz a transação em caso de erro
+            self.connection().rollback()  # Desfaz a transação em caso de erro
 
     def obter_missoes_em_progresso(self, id_personagem):
         """
         Retorna as missões em progresso de um personagem
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT m.nome_missao, rdm.quantidade_monstros, m.tipo_missao, n.nome_npc, ins.id_sala
                 FROM REGISTRO_DA_MISSAO rdm
@@ -261,7 +261,7 @@ class MissaoRepository:
         Retorna as missões disponiveis para o personagem fazer
         """
         try:
-            cursor = self.connection.cursor()
+            cursor = self.connection().cursor()
             query = """
                 SELECT m.nome_missao, m.tipo_missao, n.nome_npc, ins.id_sala
                 FROM MISSAO m
@@ -294,5 +294,5 @@ class MissaoRepository:
         """
         Fecha a conexão com o banco de dados.
         """
-        if self.connection:
-            self.connection.close()
+        if self.connection():
+            self.connection().close()
