@@ -172,6 +172,63 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Trigger dos itens
+CREATE OR REPLACE FUNCTION insere_item() RETURNS TRIGGER AS $check_item$
+BEGIN
+    IF new.tipo_item IS NULL THEN
+        RETURN NULL;
+    END IF;
+    IF NEW.tipo_item = 'Consumível' THEN
+        PERFORM * FROM item WHERE nome_item = NEW.nome_item AND tipo_item = 'Arma';
+        IF FOUND THEN 
+            RAISE EXCEPTION 'O item não pode ter dois tipos';
+        END IF;
+    END IF;
+    IF NEW.tipo_item = 'Arma' THEN
+        PERFORM * FROM item WHERE nome_item = NEW.nome_item AND tipo_item = 'Consumível';
+        IF FOUND THEN 
+            RAISE EXCEPTION 'O item não pode ter dois tipos';
+        END IF;
+    END IF;
+    RETURN NEW;
+END;
+$check_item$ LANGUAGE plpgsql;
+
+CREATE TRIGGER check_insere_item 
+BEFORE INSERT OR UPDATE ON item
+FOR EACH ROW EXECUTE PROCEDURE insere_item();
+
+-- Trigger dos consumíveis
+CREATE OR REPLACE FUNCTION insere_consumivel() RETURNS TRIGGER AS $check_consumivel$
+BEGIN
+    PERFORM * FROM item WHERE nome_item = NEW.nome_item AND tipo_item = 'Arma';
+    IF FOUND THEN 
+        RAISE EXCEPTION 'O item é uma arma e não um consumível';
+    END IF;
+    RETURN NEW;
+END;
+$check_consumivel$ LANGUAGE plpgsql;
+
+CREATE TRIGGER check_insere_consumivel 
+BEFORE INSERT OR UPDATE ON CONSUMIVEL
+FOR EACH ROW EXECUTE PROCEDURE insere_consumivel();
+
+-- Trigger das armas
+CREATE OR REPLACE FUNCTION insere_arma() RETURNS TRIGGER AS $check_arma$
+BEGIN
+    PERFORM * FROM item WHERE nome_item = NEW.nome_item AND tipo_item = 'Consumível';
+    IF FOUND THEN 
+        RAISE EXCEPTION 'O item é um consumível e não uma arma';
+    END IF;
+    RETURN NEW;
+END;
+$check_arma$ LANGUAGE plpgsql;
+
+CREATE TRIGGER check_insere_arma
+BEFORE INSERT OR UPDATE ON ARMA
+FOR EACH ROW EXECUTE PROCEDURE insere_arma();
+
+
 -- Trigger da missão
 -- CREATE OR REPLACE FUNCTION conclusao_missao_monstros() RETURNS trigger
 -- AS $conclusao_missao_monstros$
