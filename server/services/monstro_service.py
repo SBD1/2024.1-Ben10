@@ -76,6 +76,9 @@ class MonstroService:
         return dano
 
     def vez_jogador(self, id_personagem, instancias):
+        if not GLOBAL_SETS['vida_atual']:
+            raise Exception('A saúde do jogador esgotou!')
+
         self.print_barra_vida_jogador()
         self.print_barra_vida_alien()
 
@@ -125,7 +128,7 @@ class MonstroService:
 
         info_monstros = self.monstro_repository.informacoes_monstro(id_sala, id_personagem)
         instancias = []
-
+        
         for monstro in info_monstros:
             if monstro['saude_atual'] > 0:
                 instancias.append(MonstroInstance(monstro))
@@ -156,7 +159,7 @@ class MonstroService:
 
                 turno = turno + 1
             
-            print("todos os monstros estão mortos!")
+            print("Todos os monstros estão mortos!")
         except:
             return
 
