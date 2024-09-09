@@ -76,6 +76,9 @@ class MonstroService:
         return dano
 
     def vez_jogador(self, id_personagem, instancias):
+        if not GLOBAL_SETS['vida_atual']:
+            raise Exception('A saúde do jogador esgotou!')
+
         self.print_barra_vida_jogador()
         self.print_barra_vida_alien()
 
