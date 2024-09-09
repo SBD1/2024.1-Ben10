@@ -87,7 +87,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_atualizar_vida_alien
-BEFORE UPDATE ON STATUS_DO_ALIEN
+BEFORE INSERT OR UPDATE ON STATUS_DO_ALIEN
 FOR EACH ROW
 EXECUTE FUNCTION atualizar_vida_alien();
 
@@ -130,6 +130,70 @@ CREATE TRIGGER trg_verifica_arma_inventario
 AFTER DELETE ON INVENTARIO
 FOR EACH ROW
 EXECUTE FUNCTION verifica_arma_inventario();
+
+CREATE OR REPLACE FUNCTION destransformar_personagem() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.saude <= 0 THEN
+        UPDATE PERSONAGEM
+        SET nome_alien = NULL
+        WHERE id_personagem = NEW.id_personagem;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_destransformar_personagem
+AFTER UPDATE ON STATUS_DO_ALIEN
+FOR EACH ROW
+WHEN (NEW.saude <= 0)
+EXECUTE FUNCTION destransformar_personagem();
+
+CREATE OR REPLACE FUNCTION curar_alien_gradativamente(personagem_id INTEGER) RETURNS VOID AS $$
+DECLARE
+    cursor_aliens CURSOR FOR 
+        SELECT sda.*, a.saude AS saude_maxima 
+        FROM STATUS_DO_ALIEN sda 
+        JOIN ALIEN a ON a.nome = sda.nome_alien 
+        WHERE sda.id_personagem = personagem_id;
+
+    alien_row RECORD;
+    nivel_personagem INTEGER;
+BEGIN
+    SELECT nivel INTO nivel_personagem
+    FROM PERSONAGEM
+    WHERE id_personagem = personagem_id;
+
+    FOR alien_row IN cursor_aliens LOOP
+        UPDATE STATUS_DO_ALIEN
+        SET saude = LEAST(saude + GREATEST(FLOOR(alien_row.saude_maxima * nivel_personagem * 0.02), 1), alien_row.saude_maxima * nivel_personagem)
+        WHERE nome_alien = alien_row.nome_alien AND id_personagem = alien_row.id_personagem;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger da missão
+-- CREATE OR REPLACE FUNCTION conclusao_missao_monstros() RETURNS trigger
+-- AS $conclusao_missao_monstros$
+-- BEGIN
+--     IF EXISTS (SELECT 1
+--     FROM registro_da_missao rm
+--     JOIN caca c ON c.id_missao = NEW.id_missao
+--     WHERE rm.id_personagem = NEW.id_personagem AND NEW.quantidade_monstros >= c.quantidade_monstros AND rm.status != 'completa') THEN
+--         UPDATE registro_da_missao
+--         SET status = 'completa'
+--         WHERE id_personagem = NEW.id_personagem AND
+--         id_missao = NEW.id_missao;
+--     END IF;
+
+--     RETURN NEW;
+-- END;
+-- $conclusao_missao_monstros$ LANGUAGE plpgsql;
+
+-- CREATE TRIGGER tg_conclusao_missao_monstros
+-- AFTER UPDATE OR INSERT ON registro_da_missao
+-- FOR EACH ROW
+-- EXECUTE FUNCTION conclusao_missao_monstros();
 
 -- Insere itens na tabela ITEM
 INSERT INTO ITEM (nome_item, tipo_item) VALUES ('Kit Médico', 'Consumível');
@@ -682,8 +746,8 @@ VALUES (1, DEFAULT, 'Kit Médico'),
 INSERT INTO STATUS_DO_ALIEN (nome_alien, saude, id_personagem)
 VALUES ('Chama',150, 1),
        ('Ultra T',75, 2),
-       ('XLR8',120, 2),
-       ('XLR8',120, 3),
+       ('XLR8',65, 2),
+       ('XLR8',65, 3),
        ('Massa Cinzenta',130, 4);
 
 -- Inserir instâncias dos monstros na tabela INSTANCIA_MONSTRO

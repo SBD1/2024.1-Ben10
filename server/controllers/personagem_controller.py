@@ -20,8 +20,8 @@ class PersonagemController:
     def criar_personagem(self, personagem, alien):
         return self.personagem_service.criar_personagem(personagem, alien)
     
-    def exibir_inventario(self, id_personagem):
-        return self.personagem_service.exibir_inventario(id_personagem)
+    def exibir_inventario(self, id_personagem, vender):
+        return self.personagem_service.exibir_inventario(id_personagem, vender)
     
     def listar_itens_consumivel(self, items):
         headers = ["Opção", "Nome do Item", "Buff", "Fator"]
@@ -83,14 +83,17 @@ class PersonagemController:
 
         return 
 
-    def setar_global_set(self, id_personagem):
-        personagem = self.personagem_service.obter_informacoes_personagem(id_personagem)[0]
+    def setar_global_set(self):
+        personagem = self.personagem_service.obter_informacoes_personagem(GLOBAL_SETS['id_personagem'])[0]
 
         GLOBAL_SETS['transformado'] = personagem['nome_alien']
         GLOBAL_SETS['vida_maxima'] = personagem['nivel'] * 100
         GLOBAL_SETS['vida_atual'] = personagem['saude']
-        GLOBAL_SETS['alien']['vida_maxima'] = personagem['saude_especie'] * personagem['nivel']
+        GLOBAL_SETS['alien']['vida_maxima'] = personagem['saude_especie']
         GLOBAL_SETS['alien']['vida_atual'] = personagem['saude_alien']
         GLOBAL_SETS['alien']['dano'] = personagem['dano_alien']
         GLOBAL_SETS['arma']['nome'] = personagem['arma']
         GLOBAL_SETS['arma']['dano'] = personagem['dano_arma']
+
+        if GLOBAL_SETS['alien']['vida_maxima']:
+            GLOBAL_SETS['alien']['vida_maxima'] = GLOBAL_SETS['alien']['vida_maxima'] * personagem['nivel']
