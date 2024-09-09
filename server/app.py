@@ -33,6 +33,10 @@ def main():
             'arma': {
                 'descrição': 'comando para trocar arma do personagem',
                 'executar': lambda _: personagem_controller.trocar_arma(GLOBAL_SETS['id_personagem'])
+            },
+            'missao': {
+                'descricao': 'comando para verificar missões disponíveis e em progresso',
+                'executar': lambda _: personagem_controller.missoes()
             }
         },
         'alien':{
