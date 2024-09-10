@@ -24,99 +24,97 @@ Este documento tem como objetivo detalhar o uso de Views no contexto do projeto.
         SELECT n.id_npc, m.*
         FROM instancia_npc_na_sala inns 
         JOIN npc n ON inns.id_npc = n.id_npc
-        JOIN missao m ON m.id_missao = n.id_missao_associada
-        WHERE inns.id_sala = 2;
+        JOIN missao m ON m.id_missao = n.id_missao_associada;
 
-        -- SELECIONANDO MISSÕES CONCLUÍDAS PELO PERSONAGEM
+        -- Selecionando missões concluídas pelo personagem
         CREATE VIEW missoes_concluidas_personagem AS
         SELECT p.id_personagem, rdm.id_missao, rdm.status
         FROM personagem p
         JOIN registro_da_missao rdm ON p.id_personagem = rdm.id_personagem
-        WHERE rdm.status = 'completa' AND rdm.id_personagem = 2;
+        WHERE rdm.status = 'completa';
 
         -- Verificando os pré-requisitos para uma missão específica
         CREATE VIEW pre_requisitos_missao AS
         SELECT m.id_missao, m.nome_missao, pr.id_pre_requisito 
         FROM missao m
-        JOIN pre_requisito pr ON m.id_missao = pr.id_missao
-        WHERE m.id_missao = 5;
+        JOIN pre_requisito pr ON m.id_missao = pr.id_missao;
 
         -- Verificando a capacidade do inventário
         CREATE VIEW capacidade_inventario_personagem AS
-        SELECT COUNT(i.id_personagem) AS quantidade_itens
+        SELECT p.id_personagem, COUNT(i.id_personagem) AS quantidade_itens
         FROM personagem p
         JOIN inventario i ON i.id_personagem = p.id_personagem
-        WHERE i.id_personagem = 3;
+        GROUP BY p.id_personagem;
 
         -- Verificando todos os itens do inventário
         CREATE VIEW itens_inventario_personagem AS
-        SELECT i.nome_item 
+        SELECT p.id_personagem, i.nome_item 
         FROM personagem p
-        JOIN inventario i ON i.id_personagem = p.id_personagem
-        WHERE i.id_personagem = 3;
+        JOIN inventario i ON i.id_personagem = p.id_personagem;
 
         -- Verificando todos os aliens de um personagem
         CREATE VIEW aliens_personagem AS
-        SELECT sda.nome_alien
+        SELECT p.id_personagem, sda.nome_alien
         FROM personagem p
-        JOIN status_do_alien sda ON sda.id_personagem = p.id_personagem
-        WHERE sda.id_personagem = 3;
+        JOIN status_do_alien sda ON sda.id_personagem = p.id_personagem;
 
         -- Quantidade de moedas do personagem
         CREATE VIEW moedas_personagem AS
-        SELECT quantidade_moedas
-        FROM personagem p
-        WHERE p.id_personagem = 3;
+        SELECT p.id_personagem, p.quantidade_moedas
+        FROM personagem p;
 
         -- Recompensa relacionada a um personagem específico
         CREATE VIEW recompensa_personagem AS
-        SELECT r.*
+        SELECT p.id_personagem, r.*
         FROM personagem p
-        JOIN recompensa r ON r.id_personagem = p.id_personagem
-        WHERE p.id_personagem = 3;
+        JOIN recompensa r ON r.id_personagem = p.id_personagem;
 
         -- Listar um npc em uma sala
         CREATE VIEW npc_na_sala AS
         SELECT inns.id_npc, inns.id_sala
         FROM instancia_npc_na_sala inns
-        JOIN sala s ON s.id_sala = inns.id_sala
-        WHERE s.id_sala = 3;
+        JOIN sala s ON s.id_sala = inns.id_sala;
 
         -- Listar todas as salas de uma determinada região, com seus pré-requisitos
         CREATE VIEW salas_com_pre_requisitos_regiao AS
         SELECT r.nome_regiao, s.id_sala, s.id_pre_req_missao
         FROM sala s
-        JOIN regiao r ON s.nome_regiao = r.nome_regiao
-        WHERE r.nome_regiao = 'Nave do Vilgax';
+        JOIN regiao r ON s.nome_regiao = r.nome_regiao;
 
         -- Buscando detalhes da recompensa na zona de armadilha
         CREATE VIEW detalhes_recompensa_zona_armadilha AS
-        SELECT r.*
+        SELECT zda.id_sala, r.*
         FROM zona_de_armadilha zda
-        JOIN recompensa r ON r.id_sala = zda.id_sala
-        WHERE r.id_sala = 3;
+        JOIN recompensa r ON r.id_sala = zda.id_sala;
 
         -- Monstro e Drop do item
         CREATE VIEW drop_item_monstro AS
-        SELECT m.nome, i.*
+        SELECT m.nome AS monstro, i.*
         FROM monstro m 
-        JOIN item i ON m.id_recompensa = i.nome_item
-        WHERE m.nome = 'Demônio';
+        JOIN item i ON m.id_recompensa = i.nome_item;
 
         -- Verificar o status de vida de um alien de um personagem
         CREATE VIEW status_vida_alien AS
         SELECT p.id_personagem, sda.nome_alien, sda.saude
         FROM status_do_alien sda
-        JOIN personagem p ON p.id_personagem = sda.id_personagem
-        WHERE p.id_personagem = 3 AND sda.nome_alien = 'XLR8';
+        JOIN personagem p ON p.id_personagem = sda.id_personagem;
 
         -- Consultar as recompensas de uma sala específica
         CREATE VIEW recompensas_sala AS
         SELECT s.id_sala, r.nome_item, r.recompensa_recebida
         FROM recompensa r
-        JOIN sala s ON s.id_sala = r.id_sala
-        WHERE s.id_sala = 3;
+        JOIN sala s ON s.id_sala = r.id_sala;
     ```
+
+**Ao consultar essas VIEWs, basta passar as condições necessárias nas cláusulas WHERE nas consultas como por exemplo:**
+
+```sql
+-- Para consultar detalhes de missões de um NPC específico
+SELECT * FROM detalhes_missoes_npc WHERE id_npc = 2;
+
+-- Para verificar as missões concluídas por um personagem específico
+SELECT * FROM missoes_concluidas_personagem WHERE id_personagem = 3
+```
 
 ## <a>Referência Bibliográfica</a>
 
