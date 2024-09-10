@@ -11,9 +11,9 @@ A importância das views reside na sua capacidade de oferecer uma interface simp
 
 Este documento tem como objetivo detalhar o uso de Views no contexto do projeto. Serão abordadas as principais views criadas para facilitar consultas de dados, focando em como elas são utilizadas para otimizar o acesso às informações e garantir a integridade e eficiência do sistema. Essas views organizam os dados de forma clara e estruturada, permitindo uma consulta simplificada, além de melhorar a manutenção e a legibilidade do código, sem a necessidade de repetir as consultas SQL complexas em diferentes partes do projeto.
 
-## <a> Views </>
+## <a> VIEWs </>
 
-**Abaixo estão as views desenvolvidas durante o projeto:**
+**Abaixo estão as VIEWs desenvolvidas durante o projeto:**
 
 ??? "Views"
     #### Views
