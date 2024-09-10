@@ -22,6 +22,10 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
     - [DQL](https://sbd1.github.io/2024.1-Ben10/modulo2/dql/)
     - [Álgebra Relacional](https://sbd1.github.io/2024.1-Ben10/modulo2/algebraRelacional/)
 
+- Módulo 3
+    - [Triggers e Stored Procedures](https://sbd1.github.io/2024.1-Ben10/modulo3/triggers/)
+    - [Views](https://sbd1.github.io/2024.1-Ben10/modulo3/view/)
+
 ##  Apresentações 
 
 - [Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/)
