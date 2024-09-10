@@ -198,6 +198,40 @@ class PersonagemRepository:
             cursor.close()
         except Exception as e:
             print(f"An error occurred: {e}")    
+    
+    def reduzir_vida(self, id_personagem, saude):
+        """
+        Reduz a vida do personagem com base no fator
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = saude - %s
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (saude, id_personagem))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def zerar_vida(self, id_personagem):
+        """
+        Reduz a vida do personagem com base no fator
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = """
+                UPDATE PERSONAGEM
+                SET saude = 0
+                WHERE id_personagem = %s;
+            """
+            cursor.execute(query, (id_personagem))
+            self.connection.commit()
+            cursor.close()
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
     def receber_dano(self, id_personagem, fator):
         """

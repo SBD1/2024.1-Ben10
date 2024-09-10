@@ -4,6 +4,7 @@ import os
 from utils.validation_utils import ValidationUtils
 from controllers.npc_controller import NpcController
 from config.config import GLOBAL_SETS
+from controllers.armadilha_controller import ArmadilhaController
 from controllers.alien_controller import AlienController
 from config.config import printar_ben10
 
@@ -11,12 +12,19 @@ def main():
     sala_controller = SalaController()
     personagem_controller = PersonagemController()
     npc_controller = NpcController()
+    armadilha_controller = ArmadilhaController()
     validation_utils = ValidationUtils()
     alien_controller = AlienController()
     alien_service = alien_controller.alien_service
 
 
     lista_comandos = {
+        'zona': {
+            'armadilha':{
+                'descrição': 'Zona de armadilha, para o personagem arriscar a sua vida em troca de recompensa',
+                'executar': lambda _:armadilha_controller.cair_armadilha( GLOBAL_SETS['id_personagem'])
+            }
+        },
         'personagem': {
             'exibir': {
                 'descrição': 'comando para exibir informações sobre o seu personagem no jogo',

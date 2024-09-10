@@ -612,27 +612,28 @@ INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (58, 'Nave do Vilgax',
 INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (59, 'Nave do Vilgax', 'Zona de Guerra');
 INSERT INTO SALA (id_sala, nome_regiao, tipo_sala) VALUES (60, 'Nave do Vilgax', 'Zona de Guerra');
 
+
 -- Zonas de Armadilha na região Selvatrama
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (3, 2, 'acréscimo');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (6, 2, 'redução');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (7, 2, 'acréscimo');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (9, 3, 'redução');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (12, 3, 'redução');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (17, 3, 'acréscimo');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (3, 2, 'debuff_arma_metade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (6, 2, 'debuff_dano');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (7, 2, 'debuff_vida_metade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (9, 3, 'debuff_vida_extra');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (12, 3, 'debuff_imunidade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (17, 3, 'debuff_critico');
 
 -- Zonas de Armadilha na região Templo de Azshara
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (24, 4, 'redução');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (27, 4, 'acréscimo');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (31, 4, 'redução');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (32, 5, 'acréscimo');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (37, 5, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (24, 4, 'debuff_imunidade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (27, 4, 'debuff_arma_metade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (31, 4, 'debuff_dano');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (32, 5, 'debuff_vida_metade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (37, 5, 'debuff_vida_extra');
 
 -- Zonas de Armadilha na região Nave do Vilgax
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (43, 7, 'redução');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (44, 7, 'acréscimo');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (45, 7, 'redução');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (51, 8, 'acréscimo');
-INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (55, 9, 'redução');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (43, 7, 'debuff_imunidade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (44, 7, 'debuff_critico');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (45, 7, 'debuff_imunidade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (51, 8, 'debuff_arma_metade');
+INSERT INTO ZONA_DE_ARMADILHA (id_sala, fator, tipo) VALUES (55, 9, 'debuff_dano');
 
 -- Zonas de Guerra na primeira região
 INSERT INTO ZONA_DE_GUERRA (id_sala, dificuldade, descricao) VALUES (1, 1, 'A entrada está tranquila, mas não abaixe a guarda.');

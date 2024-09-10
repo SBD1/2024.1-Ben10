@@ -18,6 +18,10 @@ GLOBAL_SETS = {
         'vida_atual': None,
         'dano': None
     },
+    'debuff':{
+        'debuff_arma_metade' : False,
+        'debuff_dano' : False,
+    }
 }
 
 def printar_ben10():
