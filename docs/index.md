@@ -29,6 +29,7 @@ Projeto criado para a disciplina de Sistema de Banco de Dados 1. Neste projeto, 
 
 - [Módulo 1](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao1/)
 - [Módulo 2](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao2/)
+- [Módulo 3](https://sbd1.github.io/2024.1-Ben10/apresentacao/apresentacao3/)
 
 ## <a>Como jogar</a>
 
