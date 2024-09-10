@@ -1,0 +1,106 @@
+from repositories.monstro_repository import monstro_repository
+from repositories.personagem_repository import personagem_repository
+from config.config import GLOBAL_SETS
+from repositories.npc_repository import npc_repository
+from services.alien_service import AlienService
+
+monstro_repository = monstro_repository
+alien_service = AlienService()
+npc_inventario = npc_repository
+
+
+class MonstroInstance:
+    def __init__(self, monstro):
+        self.id_zona_guerra = monstro.get('id_zona_guerra')
+        self.id_personagem = monstro.get('id_personagem')
+        self.id_monstro = monstro.get('id_monstro')
+        self.nome_especie = monstro.get('nome_especie')
+        self.saude_atual = monstro.get('saude_atual')
+        self.nome = monstro.get('nome')
+        self.id_recompensa = monstro.get('id_recompensa')
+        self.dificuldade = monstro.get('dificuldade')
+        self.recompensa_em_moedas = monstro.get('recompensa_em_moedas')
+        self.saude = monstro.get('saude')
+        self.defesa = monstro.get('defesa')
+        self.status_base = monstro.get('status_base')
+
+    def receber_dano(self, dano, instancias, index):
+        if self.saude_atual - dano <= 0:
+            dano = self.saude_atual
+        
+        self.saude_atual = self.saude_atual - dano
+
+        monstro_repository.receber_dano(self.id_monstro, dano)
+
+        if self.saude_atual == 0:
+            print("O monstro foi derrotado")
+            self.retirar_instancia(instancias, index)
+
+            # Entrega a recompensa da função
+            print(f"Você recebeu {self.id_recompensa} de recompensa!")
+            npc_inventario.inserir_item_inventario(GLOBAL_SETS['id_personagem'], self.id_recompensa)
+
+            print(f"Dificuldade: {self.dificuldade}\n")
+            
+            monstro_repository.registro_missao(self.id_personagem, self.dificuldade)
+
+
+
+    def atacar(self):
+        if self.saude_atual == 0:
+            return
+        
+        fator = self.status_base
+
+        if GLOBAL_SETS['consumivel']['vida_extra']:
+            if GLOBAL_SETS['consumivel']['vida_extra'] - fator <= 0:
+                fator_restante = fator - GLOBAL_SETS['consumivel']['vida_extra']
+                GLOBAL_SETS['consumivel']['vida_extra'] = 0
+                fator = fator_restante
+            else:
+                GLOBAL_SETS['consumivel']['vida_extra'] = GLOBAL_SETS['consumivel']['vida_extra'] - fator
+                print(f"\n{fator} de dano foi descontado da vida extra!")
+                return
+
+        if GLOBAL_SETS['consumivel']['imunidade']:
+            GLOBAL_SETS['consumivel']['imunidade'] -= 1
+            print(f"\n{fator} de dano ignorado devido à imunidade!\n")
+            return
+
+        if GLOBAL_SETS['transformado']:
+            if GLOBAL_SETS['alien']['vida_atual'] - fator <= 0:
+                fator = GLOBAL_SETS['alien']['vida_atual']
+                print(f"\nSeu alien {GLOBAL_SETS['transformado']} está exausto. Sua transformação foi desfeita.\n")
+            GLOBAL_SETS['alien']['vida_atual'] -= fator
+            alien_service.receber_dano_alien(self.id_personagem, fator, GLOBAL_SETS['transformado'])
+        else:
+            if GLOBAL_SETS['vida_atual'] - fator <= 0:
+                fator = GLOBAL_SETS['vida_atual']
+                personagem_repository.receber_dano(self.id_personagem, -10)
+                personagem_repository.atualizar_sala_personagem(GLOBAL_SETS['id_personagem'], 1)
+                print('Seu personagem morreu! Você foi redirecionado para a sala 1 e possui 10 de vida!')    
+                self.setar_global_set()
+            GLOBAL_SETS['vida_atual'] -= fator
+            personagem_repository.receber_dano(self.id_personagem, fator)   
+
+        print(f"\nVocê recebeu {fator} de dano!\n")
+
+
+    def retirar_instancia(self, instancias, index):
+        del instancias[index]
+        del instancias[index]
+
+    def setar_global_set(self):
+        personagem = personagem_repository.obter_informacoes_personagem(GLOBAL_SETS['id_personagem'])[0]
+
+        GLOBAL_SETS['transformado'] = personagem['nome_alien']
+        GLOBAL_SETS['vida_maxima'] = personagem['nivel'] * 100
+        GLOBAL_SETS['vida_atual'] = personagem['saude']
+        GLOBAL_SETS['alien']['vida_maxima'] = personagem['saude_especie']
+        GLOBAL_SETS['alien']['vida_atual'] = personagem['saude_alien']
+        GLOBAL_SETS['alien']['dano'] = personagem['dano_alien']
+        GLOBAL_SETS['arma']['nome'] = personagem['arma']
+        GLOBAL_SETS['arma']['dano'] = personagem['dano_arma']
+
+        if GLOBAL_SETS['alien']['vida_maxima']:
+            GLOBAL_SETS['alien']['vida_maxima'] = GLOBAL_SETS['alien']['vida_maxima'] * personagem['nivel']

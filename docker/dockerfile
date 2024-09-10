@@ -1,0 +1,13 @@
+FROM python:3.10-slim
+
+USER root
+
+RUN apt-get update -y && apt-get install -y openssl
+
+WORKDIR /home/app
+
+COPY ./server .
+
+RUN pip install --no-cache-dir --upgrade pip
+
+RUN pip install --no-cache-dir --user -r requirements.txt
