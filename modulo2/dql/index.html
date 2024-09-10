@@ -1,0 +1,1458 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../dml/">
+      
+      
+        <link rel="next" href="../algebraRelacional/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>DQL - Ben 10</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="light-green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introducao" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Ben 10" class="md-header__button md-logo" aria-label="Ben 10" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ben 10
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="light-green"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para a preferência do sistema"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para a preferência do sistema" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SBD1/2024.1-Ben10" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2024.1-Ben10
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../apresentacao/apresentacao1/" class="md-tabs__link">
+          
+  
+  Apresentações
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../modulo1/MER/" class="md-tabs__link">
+          
+  
+  Módulo 1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ddl/" class="md-tabs__link">
+          
+  
+  Módulo 2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../modulo3/triggers/" class="md-tabs__link">
+          
+  
+  Módulo 3
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ben 10" class="md-nav__button md-logo" aria-label="Ben 10" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Ben 10
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SBD1/2024.1-Ben10" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2024.1-Ben10
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Início
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Apresentações
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Apresentações
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacao/apresentacao1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apresentação 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacao/apresentacao2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apresentação 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacao/apresentacao3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apresentação 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Módulo 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Módulo 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo1/MER/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modelo Entidade Relacionamento
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo1/DER/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagrama Entidade Relacionamento
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo1/MR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modelo Relacional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo1/DD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dicionário de Dados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Módulo 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Módulo 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ddl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DDL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DML
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    DQL
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    DQL
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introdução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todos-os-selects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Todos os SELECT's
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-bibliografica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referência Bibliográfica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bibliografia
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algebraRelacional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Álgebra Relacional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Módulo 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Módulo 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo3/triggers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Triggers e Stored Procedures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo3/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introdução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todos-os-selects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Todos os SELECT's
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-bibliografica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referência Bibliográfica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bibliografia
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>DQL</h1>
+
+<h2 id="introducao"><a>Introdução</a></h2>
+<p>De acordo com Elmasri e Navathe, a instrução básica para realizar consultas em um banco de dados é denominada <strong>SELECT</strong>. Essa instrução é fundamental para a recuperação de dados em sistemas de gerenciamento de banco de dados (SGBD). O <strong>SELECT</strong> oferece uma ampla variedade de opções, permitindo desde consultas simples até consultas de alta complexidade. Além disso, uma tabela SQL pode ser considerada um <strong>multiconjunto</strong> de tuplas, permitindo a existência de duplicatas, a menos que restrições de chaves ou a cláusula <code>DISTINCT</code> sejam aplicadas, forçando a tabela a se comportar como um conjunto, sem duplicatas.</p>
+<h2 id="objetivo"><a>Objetivo</a></h2>
+<p>Este trabalho tem como objetivo explorar as funcionalidades da instrução <strong>SELECT</strong> em SQL, demonstrando como ela pode ser utilizada para realizar consultas eficientes e complexas em bancos de dados relacionais. Serão abordadas diferentes técnicas e práticas para otimizar consultas, assim como as implicações do uso de <code>DISTINCT</code> e de restrições de chave na estrutura e na recuperação dos dados. O objetivo é fornecer uma compreensão aprofundada das capacidades do <strong>SELECT</strong> e suas variações, capacitando o leitor a aplicar essas técnicas em cenários práticos de gerenciamento de banco de dados.</p>
+<h2 id="todos-os-selects"><a>Todos os SELECT's</a></h2>
+<p>Nesta seção, são apresentadas as diversas consultas <strong>SELECT</strong> utilizadas no projeto. Cada consulta é acompanhada por uma breve descrição, com o objetivo de documentar de forma clara e objetiva as operações realizadas. Este registro serve como referência para entender o propósito de cada consulta e a lógica aplicada, facilitando a manutenção e o desenvolvimento futuro do projeto. </p>
+<p>Ao todo são <strong>36 queries</strong> inicialmente, podendo se adaptar de acordo com o desenvolvimento do projeto e necessidades.</p>
+<details>
+<summary>Todas as consultas</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">-- ================ MISSÃO ================</span>
+
+<span class="c1">-- Consultar os detalhes de todas as missões associadas a um determinado NPC</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">id_npc</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">instancia_npc_na_sala</span><span class="w"> </span><span class="n">inns</span><span class="w"> </span>
+<span class="k">join</span><span class="w"> </span><span class="n">npc</span><span class="w"> </span><span class="n">n</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">id_npc</span>
+<span class="k">join</span><span class="w"> </span><span class="n">missao</span><span class="w"> </span><span class="n">m</span>
+<span class="k">on</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_missao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">id_missao_associada</span>
+<span class="k">where</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+
+<span class="c1">-- Consultando todos os itens e valores e diálogo associado ao estoque de um NPC</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">edi</span><span class="p">.</span><span class="n">id_npc</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">dialogo_associado_venda</span><span class="p">,</span><span class="w"> </span><span class="n">edi</span><span class="p">.</span><span class="n">nome_item</span><span class="p">,</span><span class="w"> </span><span class="n">edi</span><span class="p">.</span><span class="n">preco</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">instancia_npc_na_sala</span><span class="w"> </span><span class="n">inns</span><span class="w"> </span>
+<span class="k">join</span><span class="w"> </span><span class="n">npc</span><span class="w"> </span><span class="n">n</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">id_npc</span>
+<span class="k">join</span><span class="w"> </span><span class="n">estoque_do_item</span><span class="w"> </span><span class="n">edi</span>
+<span class="k">on</span><span class="w"> </span><span class="n">edi</span><span class="p">.</span><span class="n">id_npc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_npc</span>
+<span class="k">where</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+
+
+<span class="c1">-- SELECIONANDO MISSÕES CONCLUÍDAS PELO PERSONAGEM</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="p">,</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_missao</span><span class="p">,</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">status</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">registro_da_missao</span><span class="w"> </span><span class="n">rdm</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="s1">&#39;completa&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">-- SELECIONANDO MISSÕES QUE O PERSONAGEM AINDA NÃO FEZ</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_missao</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">missao</span><span class="w"> </span><span class="n">m</span>
+<span class="k">except</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_missao</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">registro_da_missao</span><span class="w"> </span><span class="n">rdm</span>
+<span class="k">join</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;completa&#39;</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">-- Verificando os pré requisitos para uma missão específica</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_missao</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">nome_missao</span><span class="p">,</span><span class="w"> </span><span class="n">pr</span><span class="p">.</span><span class="n">id_pre_requisito</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">missao</span><span class="w"> </span><span class="n">m</span>
+<span class="k">join</span><span class="w"> </span><span class="n">pre_requisito</span><span class="w"> </span><span class="n">pr</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_missao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pr</span><span class="p">.</span><span class="n">id_missao</span>
+<span class="k">where</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_missao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">-- Verificando quais missões aquela missão desbloqueia</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">pr</span><span class="p">.</span><span class="n">id_missao</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">missao_posterior</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pr</span><span class="p">.</span><span class="n">id_pre_requisito</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">id_missao</span><span class="p">,</span>
+<span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">nome_missao</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">missao</span><span class="w"> </span><span class="n">m</span>
+<span class="k">join</span><span class="w"> </span><span class="n">pre_requisito</span><span class="w"> </span><span class="n">pr</span>
+<span class="k">on</span><span class="w"> </span><span class="n">pr</span><span class="p">.</span><span class="n">id_pre_requisito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_missao</span>
+<span class="k">where</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_missao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+
+<span class="c1">-- ================ PERSONAGEM ================</span>
+
+<span class="c1">-- Verificando a capacidade do iventário</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="p">)</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">join</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">where</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Verificando todos os itens do iventário</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">join</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="n">i</span>
+<span class="k">on</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">where</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Verificando todos os aliens de um personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">nome_alien</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">join</span><span class="w"> </span><span class="n">status_do_alien</span><span class="w"> </span><span class="n">sda</span>
+<span class="k">on</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">where</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Nome do personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">nome</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Nivel do personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">nivel</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Saude do personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">saude</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Quantidade de moedas do personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">quantidade_moedas</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+
+<span class="c1">-- Recompensa relacionada a um personagem específico</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">join</span><span class="w"> </span><span class="n">recompensa</span><span class="w"> </span><span class="n">r</span>
+<span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+
+<span class="c1">-- ================ SALAS E REGIÕES ================</span>
+
+<span class="c1">-- Listar um npc em uma sala</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_npc</span><span class="p">,</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">instancia_npc_na_sala</span><span class="w"> </span><span class="n">inns</span>
+<span class="k">join</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">on</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inns</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Listar todas as zonas de guerra de uma região e sua dificuldade</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">zg</span><span class="p">.</span><span class="n">id_sala</span><span class="p">,</span><span class="w"> </span><span class="n">zg</span><span class="p">.</span><span class="n">dificuldade</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">nome_regiao</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">zona_de_guerra</span><span class="w"> </span><span class="n">zg</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zg</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">join</span><span class="w"> </span><span class="n">regiao</span><span class="w"> </span><span class="n">r</span>
+<span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_regiao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">nome_regiao</span>
+<span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">tipo_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Zona de Guerra&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Listar todas as zonas de armadilha de uma região</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">zda</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">nome_regiao</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">zona_de_armadilha</span><span class="w"> </span><span class="n">zda</span><span class="w"> </span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zda</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">join</span><span class="w"> </span><span class="n">regiao</span><span class="w"> </span><span class="n">r</span>
+<span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_regiao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">nome_regiao</span>
+<span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">tipo_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Zona de Armadilha&#39;</span><span class="p">;</span>
+
+<span class="c1">-- listar todas as regiões</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">regiao</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+
+<span class="c1">-- listar todas as regiões e suas salas</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_pre_req_missao</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">tipo_sala</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">regiao</span><span class="w"> </span><span class="n">r</span>
+<span class="k">join</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_regiao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">nome_regiao</span><span class="p">;</span>
+
+
+<span class="c1">-- Listar todas as regiões</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">regiao</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+
+<span class="c1">-- Listar todas as salas de uma determinada região, com seus pré requisitos</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_regiao</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_pre_req_missao</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">join</span><span class="w"> </span><span class="n">regiao</span><span class="w"> </span><span class="n">r</span>
+<span class="k">on</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">nome_regiao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_regiao</span>
+<span class="k">where</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_regiao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Nave do Vilgax&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Lista as salas que não tem pre-requisito</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">join</span><span class="w"> </span><span class="n">registro_da_missao</span><span class="w"> </span><span class="n">rdm</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_pre_req_missao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_missao</span>
+<span class="k">join</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">on</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;completa&#39;</span>
+<span class="k">union</span><span class="w"> </span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_pre_req_missao</span><span class="w"> </span><span class="k">ISNULL</span><span class="p">;</span>
+
+<span class="c1">-- Buscando o log de uma determinada sala</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">zdg</span><span class="p">.</span><span class="n">descricao</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">zona_de_guerra</span><span class="w"> </span><span class="n">zdg</span>
+<span class="k">join</span><span class="w"> </span><span class="n">instancia_zona_guerra</span><span class="w"> </span><span class="n">izg</span>
+<span class="k">on</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="n">id_zona_guerra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zdg</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">where</span><span class="w"> </span><span class="n">zdg</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Buscando o log de um personagem específico</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">join</span><span class="w"> </span><span class="n">instancia_zona_guerra</span><span class="w"> </span><span class="n">izg</span>
+<span class="k">on</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="n">id_zona_guerra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">where</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">-- Buscando detalhes da recompensa na zona de armadilha</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">zona_de_armadilha</span><span class="w"> </span><span class="n">zda</span>
+<span class="k">join</span><span class="w"> </span><span class="n">recompensa</span><span class="w"> </span><span class="n">r</span>
+<span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zda</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">where</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Verificar qual sala está desbloqueada para um personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">registro_da_missao</span><span class="w"> </span><span class="n">rdm</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_pre_req_missao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_missao</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;completa&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">rdm</span><span class="p">.</span><span class="n">id_missao</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_pre_req_missao</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+
+
+<span class="c1">-- ================ MONSTRO ================</span>
+
+<span class="c1">-- Consultar todas as instâncias de monstros em uma determinada sala</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="n">id_zona_guerra</span><span class="p">,</span><span class="w"> </span><span class="n">im</span><span class="p">.</span><span class="n">id_monstro</span><span class="p">,</span><span class="w"> </span><span class="n">im</span><span class="p">.</span><span class="n">nome_especie</span><span class="p">,</span><span class="w"> </span><span class="n">im</span><span class="p">.</span><span class="n">saude_atual</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">instancia_monstro</span><span class="w"> </span><span class="n">im</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">instancia_zona_guerra</span><span class="w"> </span><span class="n">izg</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">im</span><span class="p">.</span><span class="n">id_monstro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="n">id_monstro</span>
+<span class="k">where</span><span class="w"> </span><span class="n">izg</span><span class="p">.</span><span class="n">id_zona_guerra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Consultar dados especificos de uma espécie</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">especie</span><span class="w"> </span><span class="n">e</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">alien</span><span class="w"> </span><span class="n">a</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">tipo_especie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Alien&#39;</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">monstro</span><span class="w"> </span><span class="n">m</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">tipo_especie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Monstro&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Insectóide&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Consultar habilidades especificas de uma espécie</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">especie</span><span class="w"> </span><span class="n">e</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidade</span><span class="w"> </span><span class="n">h</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">nome_especie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nome</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Insectóide&#39;</span><span class="p">;</span>
+
+
+<span class="c1">-- Monstro e Drop do item</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">monstro</span><span class="w"> </span><span class="n">m</span><span class="w"> </span>
+<span class="k">join</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">i</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">id_recompensa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span>
+<span class="k">where</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Demônio&#39;</span><span class="p">;</span>
+
+
+<span class="c1">-- ================ ITEM ================</span>
+
+<span class="c1">-- Verificando os itens do inventário do personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">join</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="n">i</span>
+<span class="k">on</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">where</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Verificando o valor de venda do item do personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span><span class="p">,</span><span class="w">  </span><span class="k">c</span><span class="p">.</span><span class="n">preco</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">preco</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="n">i</span>
+<span class="k">on</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">it</span>
+<span class="k">on</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span>
+<span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">consumivel</span><span class="w"> </span><span class="k">c</span>
+<span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="n">tipo_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Consumível&#39;</span>
+<span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">arma</span><span class="w"> </span><span class="n">a</span>
+<span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="n">tipo_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Arma&#39;</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Consultar as recompensas de uma sala específica</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_item</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">recompensa_recebida</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">recompensa</span><span class="w"> </span><span class="n">r</span>
+<span class="k">join</span><span class="w"> </span><span class="n">sala</span><span class="w"> </span><span class="n">s</span>
+<span class="k">on</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">id_sala</span>
+<span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id_sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">-- Consultar qual a recompensa em forma de item</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">recompensa</span><span class="w"> </span><span class="n">r</span>
+<span class="k">join</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">CONSUMIVEL</span><span class="w"> </span><span class="k">c</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">tipo_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Consumível&#39;</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">ARMA</span><span class="w"> </span><span class="n">a</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">tipo_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Arma&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">nome_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Kit Médico&#39;</span><span class="p">;</span>
+
+
+<span class="c1">-- ================ ALIEN ================</span>
+
+<span class="c1">-- Verificar o status de vida de um alien de um personagem</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="p">,</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">nome_alien</span><span class="p">,</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">saude</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">status_do_alien</span><span class="w"> </span><span class="n">sda</span>
+<span class="k">join</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">nome_alien</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;XLR8&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Verificar os detalhes do alien dos aliens dos personagens</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">status_do_alien</span><span class="w"> </span><span class="n">sda</span>
+<span class="k">join</span><span class="w"> </span><span class="n">personagem</span><span class="w"> </span><span class="n">p</span>
+<span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">id_personagem</span>
+<span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">alien</span><span class="w"> </span><span class="n">a</span>
+<span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sda</span><span class="p">.</span><span class="n">nome_alien</span>
+<span class="k">where</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id_personagem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+</details>
+<p><font size="3"><p style="text-align: center">Fonte: <a href="https://github.com/ericbky">Eric Silveira</a>.</p></font></p>
+<h2 id="referencia-bibliografica"><a>Referência Bibliográfica</a></h2>
+<blockquote>
+<p><a id="REF1" href="#anchor_1">1.</a> ELMASRI, Ramez; NAVATHE, Shamkant B. Sistemas de banco de dados. Tradução: Daniel Vieira. Revisão técnica: Enzo Seraphim; Thatyana de Faria Piola Seraphim. 6. ed. São Paulo: Pearson Addison Wesley, 2011. Capítulo 4.3 Consultas de recuperação básicas em SQL, página 63.</p>
+</blockquote>
+<h2 id="bibliografia"><a>Bibliografia</a></h2>
+<blockquote>
+<p>Queries de consulta, Entrega 02, Stardew Valley. Disponível em: <a href="https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/queries-de-consulta/docs/Entrega-02/DQL.sql">https://github.com/SBD1/2023.2-Grupo01-StardewValley/blob/queries-de-consulta/docs/Entrega-02/DQL.sql</a>. Acesso em 15 de agosto de 2024.</p>
+</blockquote>
+<h2 id="historico-de-versao"><a>Histórico de Versão</a></h2>
+<table>
+<thead>
+<tr>
+<th>Versão</th>
+<th>Data</th>
+<th>Descrição</th>
+<th>Autor(es)</th>
+<th>Revisor(es)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1.0</code></td>
+<td>15/08</td>
+<td>Inserindo a introdução</td>
+<td><a href="https://github.com/ericbky">Eric Silveira</a></td>
+<td><a href="https://github.com/Arthrok">Arthur Alves</a> e <a href="https://github.com/joao-artl">João Artur</a></td>
+</tr>
+<tr>
+<td><code>1.1</code></td>
+<td>19/08</td>
+<td>Atualizando o documento e inserindo as consultas</td>
+<td><a href="https://github.com/ericbky">Eric Silveira</a></td>
+<td><a href="https://github.com/Arthrok">Arthur Alves</a> e <a href="https://github.com/joao-artl">João Artur</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../dml/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: DML">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                DML
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../algebraRelacional/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Álgebra Relacional">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Álgebra Relacional
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
