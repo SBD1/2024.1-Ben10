@@ -38,7 +38,7 @@ class ArmadilhaController:
                  self.armadilha_service.debuff_consumivel(armadilha)
                  print('{} você caiu na zona armadilha de armadilha e acabou por perder o seu poder de fogo pela metade, agora a sua arma causará danos pela metade aos oponentes.'.format(nome_personagem))
             else:
-                 self.armadilha_service.ganhar_recompensa(GLOBAL_SETS[' id_personagem'])
+                 self.armadilha_service.ganhar_recompensa(GLOBAL_SETS['id_personagem'])
                  print('{} você caiu na zona armadilha de armadilha e saiu ileso dela. Parrabéns, você ganhou um item novo'.format(nome_personagem))
 
 
