@@ -21,7 +21,6 @@ nav:
         - Apresentação 1: "apresentacao/apresentacao1.md"
         - Apresentação 2: "apresentacao/apresentacao2.md"
         - Apresentação 3: "apresentacao/apresentacao3.md"
-        - Apresentação Final: "apresentacao/apresentacaoFinal.md"
     - Módulo 1:
         - Modelo Entidade Relacionamento: "modulo1/MER.md"
         - Diagrama Entidade Relacionamento: "modulo1/DER.md"
